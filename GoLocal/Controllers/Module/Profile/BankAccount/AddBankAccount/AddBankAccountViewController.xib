@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddBankAccountViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="btnBack" destination="n24-kk-EGS" id="GMC-cL-pvY"/>
+                <outlet property="tableView" destination="pO9-sR-hUB" id="eQd-bu-2Ft"/>
+                <outlet property="view" destination="6d3-lA-367" id="bhM-16-zGr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="6d3-lA-367">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pO9-sR-hUB">
+                    <rect key="frame" x="10" y="116.5" width="394" height="655.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G6C-Db-OWk">
+                    <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n24-kk-EGS">
+                            <rect key="frame" x="0.0" y="0.0" width="62.5" height="62.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="n24-kk-EGS" secondAttribute="height" multiplier="1:1" id="nqB-wN-cJK"/>
+                            </constraints>
+                            <state key="normal" image="icon_back_b"/>
+                            <connections>
+                                <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="Idb-pV-wZR"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Bank Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9I-GS-UgV">
+                            <rect key="frame" x="120" y="0.0" width="174.5" height="62.5"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <color key="highlightedColor" red="0.23273468019999999" green="0.2327727973" blue="0.2327226996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="n24-kk-EGS" firstAttribute="leading" secondItem="G6C-Db-OWk" secondAttribute="leading" id="2sd-CL-fVW"/>
+                        <constraint firstAttribute="bottom" secondItem="k9I-GS-UgV" secondAttribute="bottom" id="I6I-hk-eEw"/>
+                        <constraint firstItem="k9I-GS-UgV" firstAttribute="centerX" secondItem="G6C-Db-OWk" secondAttribute="centerX" id="KOa-Yz-4b5"/>
+                        <constraint firstAttribute="bottom" secondItem="n24-kk-EGS" secondAttribute="bottom" id="o6n-lo-tS7"/>
+                        <constraint firstItem="n24-kk-EGS" firstAttribute="top" secondItem="G6C-Db-OWk" secondAttribute="top" id="q9w-6O-zYl"/>
+                        <constraint firstItem="k9I-GS-UgV" firstAttribute="top" secondItem="G6C-Db-OWk" secondAttribute="top" id="vpB-iS-k4Z"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOE-7o-5Cm">
+                    <rect key="frame" x="20" y="792" width="374" height="50"/>
+                    <color key="backgroundColor" red="0.0" green="0.43921568630000002" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="TVj-Zo-ahU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                    <state key="normal" title="Add">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="pdu-vl-cuM"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="G6C-Db-OWk" firstAttribute="top" secondItem="pdu-vl-cuM" secondAttribute="top" id="3hh-CX-tDZ"/>
+                <constraint firstItem="vOE-7o-5Cm" firstAttribute="leading" secondItem="pdu-vl-cuM" secondAttribute="leading" constant="20" id="BQE-xo-sSv"/>
+                <constraint firstAttribute="trailing" secondItem="pO9-sR-hUB" secondAttribute="trailing" constant="10" id="CTE-L2-oBY"/>
+                <constraint firstItem="pO9-sR-hUB" firstAttribute="leading" secondItem="6d3-lA-367" secondAttribute="leading" constant="10" id="KVV-JS-r5k"/>
+                <constraint firstItem="vOE-7o-5Cm" firstAttribute="top" secondItem="pO9-sR-hUB" secondAttribute="bottom" constant="20" id="KWy-ZN-dXu"/>
+                <constraint firstItem="G6C-Db-OWk" firstAttribute="leading" secondItem="pdu-vl-cuM" secondAttribute="leading" id="Ppw-L7-S0T"/>
+                <constraint firstItem="G6C-Db-OWk" firstAttribute="height" secondItem="6d3-lA-367" secondAttribute="height" multiplier="0.07" id="aHh-8V-NCf"/>
+                <constraint firstAttribute="trailing" secondItem="vOE-7o-5Cm" secondAttribute="trailing" constant="20" id="mX6-wZ-JH5"/>
+                <constraint firstItem="pdu-vl-cuM" firstAttribute="trailing" secondItem="G6C-Db-OWk" secondAttribute="trailing" id="oTd-rL-WG2"/>
+                <constraint firstItem="pdu-vl-cuM" firstAttribute="bottom" secondItem="vOE-7o-5Cm" secondAttribute="bottom" constant="20" id="qLq-CV-zYU"/>
+                <constraint firstItem="pO9-sR-hUB" firstAttribute="top" secondItem="G6C-Db-OWk" secondAttribute="bottom" constant="10" id="qQb-gb-eyM"/>
+            </constraints>
+            <point key="canvasLocation" x="-1865.217391304348" y="-76.339285714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_back_b" width="25" height="20.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

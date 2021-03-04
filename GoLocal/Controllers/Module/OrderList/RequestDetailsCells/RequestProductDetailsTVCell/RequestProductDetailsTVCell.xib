@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="KGk-i7-Jjw" customClass="RequestDetailsShopTVcell" customModule="GoLocal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4v8-E5-KWw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_shop_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Ywd-Zi-mjW">
+                                <rect key="frame" x="15" y="15" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="LdT-g1-qMd"/>
+                                    <constraint firstAttribute="height" constant="50" id="doI-sT-Vos"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_location_pin_white" translatesAutoresizingMaskIntoConstraints="NO" id="6oo-4a-piX">
+                                <rect key="frame" x="251" y="53.5" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="2na-TQ-ubE"/>
+                                    <constraint firstAttribute="width" constant="15" id="RsC-yx-QJ5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCt-He-3fM">
+                                <rect key="frame" x="266" y="52.5" width="39" height="17.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UCt-He-3fM" firstAttribute="leading" secondItem="6oo-4a-piX" secondAttribute="trailing" id="CeC-WN-xmc"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UCt-He-3fM" secondAttribute="bottom" constant="10" id="F7a-Fv-ssh"/>
+                            <constraint firstItem="UCt-He-3fM" firstAttribute="centerY" secondItem="6oo-4a-piX" secondAttribute="centerY" id="KXo-aX-2EL"/>
+                            <constraint firstItem="Ywd-Zi-mjW" firstAttribute="leading" secondItem="4v8-E5-KWw" secondAttribute="leading" constant="15" id="aB4-zc-JVW"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Ywd-Zi-mjW" secondAttribute="bottom" constant="10" id="aET-p2-wLK"/>
+                            <constraint firstItem="Ywd-Zi-mjW" firstAttribute="centerY" secondItem="4v8-E5-KWw" secondAttribute="centerY" id="f1Z-0h-DQt"/>
+                            <constraint firstAttribute="bottom" secondItem="6oo-4a-piX" secondAttribute="bottom" constant="11.5" id="kRx-Dn-DKe"/>
+                            <constraint firstAttribute="trailing" secondItem="UCt-He-3fM" secondAttribute="trailing" constant="15" id="l6e-eR-zou"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4v8-E5-KWw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3L9-pe-gf4"/>
+                    <constraint firstAttribute="trailing" secondItem="4v8-E5-KWw" secondAttribute="trailing" id="hCM-qW-H7B"/>
+                    <constraint firstAttribute="bottom" secondItem="4v8-E5-KWw" secondAttribute="bottom" id="iKv-dR-dwu"/>
+                    <constraint firstItem="4v8-E5-KWw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="j7e-Ks-AAo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgShopImage" destination="Ywd-Zi-mjW" id="0Aj-aF-wio"/>
+                <outlet property="lblDeliveryAddress" destination="UCt-He-3fM" id="fNa-as-5Me"/>
+                <outlet property="mainView" destination="4v8-E5-KWw" id="4ru-ms-iss"/>
+            </connections>
+            <point key="canvasLocation" x="48" y="60"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_location_pin_white" width="10.5" height="13.5"/>
+        <image name="icon_shop_placeholder" width="37" height="37"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

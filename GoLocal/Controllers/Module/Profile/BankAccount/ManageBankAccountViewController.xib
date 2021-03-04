@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ManageBankAccountViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="lblTitle" destination="EtH-2k-JjW" id="YC6-OU-6B8"/>
+                <outlet property="navView" destination="px2-j2-6l0" id="5As-0i-QS2"/>
+                <outlet property="tableView" destination="5In-Do-tcu" id="Xfe-b1-qap"/>
+                <outlet property="view" destination="kO3-1n-D96" id="V0Z-b2-Aas"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="kO3-1n-D96">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5In-Do-tcu">
+                    <rect key="frame" x="10" y="181.5" width="394" height="665.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="px2-j2-6l0">
+                    <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pEt-qb-fNb">
+                            <rect key="frame" x="0.0" y="0.0" width="62.5" height="62.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="pEt-qb-fNb" secondAttribute="height" multiplier="1:1" id="IMV-9S-q2Q"/>
+                            </constraints>
+                            <state key="normal" image="icon_back_b"/>
+                            <connections>
+                                <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="yoS-Fw-t3g"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Mathod" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Uc-Ir-qJM">
+                            <rect key="frame" x="126.5" y="0.0" width="161.5" height="62.5"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <color key="highlightedColor" red="0.23273468019999999" green="0.2327727973" blue="0.2327226996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="1Uc-Ir-qJM" secondAttribute="bottom" id="54F-Tx-Kpr"/>
+                        <constraint firstItem="1Uc-Ir-qJM" firstAttribute="top" secondItem="px2-j2-6l0" secondAttribute="top" id="LoZ-pU-TyU"/>
+                        <constraint firstAttribute="bottom" secondItem="pEt-qb-fNb" secondAttribute="bottom" id="X03-s4-rcd"/>
+                        <constraint firstItem="pEt-qb-fNb" firstAttribute="top" secondItem="px2-j2-6l0" secondAttribute="top" id="htS-84-bBy"/>
+                        <constraint firstItem="1Uc-Ir-qJM" firstAttribute="centerX" secondItem="px2-j2-6l0" secondAttribute="centerX" id="lo9-W0-BfG"/>
+                        <constraint firstItem="pEt-qb-fNb" firstAttribute="leading" secondItem="px2-j2-6l0" secondAttribute="leading" id="uhn-cV-TqU"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Bank Account or Import your Details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EtH-2k-JjW">
+                    <rect key="frame" x="20" y="116.5" width="374" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="TtV-FT-4Ph"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
+                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="k7f-Br-J4d"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="EtH-2k-JjW" firstAttribute="top" secondItem="px2-j2-6l0" secondAttribute="bottom" constant="10" id="5NV-Xs-JDJ"/>
+                <constraint firstItem="px2-j2-6l0" firstAttribute="height" secondItem="kO3-1n-D96" secondAttribute="height" multiplier="0.07" id="Ebt-wb-dYe"/>
+                <constraint firstItem="px2-j2-6l0" firstAttribute="leading" secondItem="k7f-Br-J4d" secondAttribute="leading" id="LB9-VC-TYH"/>
+                <constraint firstAttribute="trailing" secondItem="EtH-2k-JjW" secondAttribute="trailing" constant="20" id="OqJ-bA-CDI"/>
+                <constraint firstItem="5In-Do-tcu" firstAttribute="top" secondItem="EtH-2k-JjW" secondAttribute="bottom" constant="15" id="PWy-TB-GgA"/>
+                <constraint firstItem="5In-Do-tcu" firstAttribute="leading" secondItem="kO3-1n-D96" secondAttribute="leading" constant="10" id="RJE-FM-VvY"/>
+                <constraint firstItem="k7f-Br-J4d" firstAttribute="bottom" secondItem="5In-Do-tcu" secondAttribute="bottom" constant="15" id="cQs-oo-Zn8"/>
+                <constraint firstAttribute="trailing" secondItem="5In-Do-tcu" secondAttribute="trailing" constant="10" id="e7O-dj-tqb"/>
+                <constraint firstItem="k7f-Br-J4d" firstAttribute="trailing" secondItem="px2-j2-6l0" secondAttribute="trailing" id="fs2-wK-qna"/>
+                <constraint firstItem="px2-j2-6l0" firstAttribute="top" secondItem="k7f-Br-J4d" secondAttribute="top" id="gSk-fi-E1r"/>
+                <constraint firstItem="EtH-2k-JjW" firstAttribute="leading" secondItem="kO3-1n-D96" secondAttribute="leading" constant="20" id="hPg-1L-m3r"/>
+            </constraints>
+            <point key="canvasLocation" x="-1513.0434782608697" y="-84.375"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_back_b" width="25" height="20.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

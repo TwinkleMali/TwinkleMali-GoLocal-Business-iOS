@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OpenCloseTimeTVCell" rowHeight="60" id="hsf-x1-Ddq" customClass="BusinessDetailsTVCell" customModule="GoLocal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hsf-x1-Ddq" id="Xal-aH-PNn">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="kbT-gJ-kW3">
+                        <rect key="frame" x="0.0" y="5" width="414" height="50"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzo-YC-UOB">
+                                <rect key="frame" x="0.0" y="0.0" width="133.5" height="50"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="MON" image="switch_off">
+                                    <color key="titleColor" red="0.44795602559999997" green="0.44802260399999999" blue="0.44793504480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="09:00 AM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ajz-Z6-fyO">
+                                <rect key="frame" x="140.5" y="0.0" width="133" height="50"/>
+                                <color key="textColor" red="0.44795602559999997" green="0.44802260399999999" blue="0.44793504480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="09:00 AM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iWg-Qy-F1F">
+                                <rect key="frame" x="280.5" y="0.0" width="133.5" height="50"/>
+                                <color key="textColor" red="0.44795602559999997" green="0.44802260399999999" blue="0.44793504480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="xtb-zY-9zK"/>
+                        </constraints>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="1TO-w0-qOb">
+                        <rect key="frame" x="0.0" y="10" width="414" height="40"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyy-CF-Swh">
+                                <rect key="frame" x="0.0" y="0.0" width="133.5" height="40"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Days">
+                                    <color key="titleColor" red="0.44795602559999997" green="0.44802260399999999" blue="0.44793504480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Open Time" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eza-SE-Vzt">
+                                <rect key="frame" x="140.5" y="0.0" width="133" height="40"/>
+                                <color key="textColor" red="0.44795602559999997" green="0.44802260399999999" blue="0.44793504480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Close Time" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oIm-Nr-QC8">
+                                <rect key="frame" x="280.5" y="0.0" width="133.5" height="40"/>
+                                <color key="textColor" red="0.44795602559999997" green="0.44802260399999999" blue="0.44793504480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="dqa-I7-3cO"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="kbT-gJ-kW3" secondAttribute="bottom" constant="5" id="1Ob-ke-50k"/>
+                    <constraint firstItem="kbT-gJ-kW3" firstAttribute="top" secondItem="Xal-aH-PNn" secondAttribute="top" constant="5" id="LxC-Gt-Pfz"/>
+                    <constraint firstItem="kbT-gJ-kW3" firstAttribute="leading" secondItem="Xal-aH-PNn" secondAttribute="leading" id="ccN-wB-Pyx"/>
+                    <constraint firstAttribute="trailing" secondItem="1TO-w0-qOb" secondAttribute="trailing" id="eiM-Ak-g0m"/>
+                    <constraint firstItem="1TO-w0-qOb" firstAttribute="top" secondItem="Xal-aH-PNn" secondAttribute="top" constant="10" id="p9o-cP-zAn"/>
+                    <constraint firstAttribute="trailing" secondItem="kbT-gJ-kW3" secondAttribute="trailing" id="qQ9-fC-II5"/>
+                    <constraint firstItem="1TO-w0-qOb" firstAttribute="leading" secondItem="Xal-aH-PNn" secondAttribute="leading" id="uq6-zQ-NNl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="svTime" destination="kbT-gJ-kW3" id="fGk-BM-RRC"/>
+                <outlet property="svTitle" destination="1TO-w0-qOb" id="T6R-94-r8R"/>
+                <outlet property="txtCloseTime" destination="iWg-Qy-F1F" id="TI1-Nv-fpk"/>
+                <outlet property="txtOpenTime" destination="ajz-Z6-fyO" id="xVO-yu-AM8"/>
+            </connections>
+            <point key="canvasLocation" x="839" y="78"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="switch_off" width="43" height="23"/>
+    </resources>
+</document>

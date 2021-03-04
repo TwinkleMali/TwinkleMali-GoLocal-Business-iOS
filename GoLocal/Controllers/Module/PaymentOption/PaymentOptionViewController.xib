@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaymentOptionViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="vlJ-fD-3dk" id="vxh-8S-BBP"/>
+                <outlet property="view" destination="4IN-OO-Vh9" id="7S8-od-ueR"/>
+                <outlet property="vwNav" destination="gwd-qc-aYK" id="fcb-RZ-bHR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="4IN-OO-Vh9">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vlJ-fD-3dk">
+                    <rect key="frame" x="20" y="126.5" width="374" height="725.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sco-lt-JQu">
+                    <rect key="frame" x="0.0" y="106.5" width="414" height="1"/>
+                    <color key="backgroundColor" red="0.80000000000000004" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="vyH-AU-Ec1"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwd-qc-aYK">
+                    <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9p-ul-vuA">
+                            <rect key="frame" x="0.0" y="0.0" width="62.5" height="62.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="w9p-ul-vuA" secondAttribute="height" multiplier="1:1" id="9K0-j4-xda"/>
+                            </constraints>
+                            <state key="normal" image="icon_back_b"/>
+                            <connections>
+                                <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="wnP-XP-Qsx"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Option" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZ0-Kc-WiM">
+                            <rect key="frame" x="130.5" y="0.0" width="153.5" height="62.5"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="w9p-ul-vuA" firstAttribute="top" secondItem="gwd-qc-aYK" secondAttribute="top" id="CXv-if-xkg"/>
+                        <constraint firstItem="QZ0-Kc-WiM" firstAttribute="top" secondItem="gwd-qc-aYK" secondAttribute="top" id="JbT-QL-gwZ"/>
+                        <constraint firstAttribute="bottom" secondItem="w9p-ul-vuA" secondAttribute="bottom" id="baQ-S0-O8h"/>
+                        <constraint firstAttribute="bottom" secondItem="QZ0-Kc-WiM" secondAttribute="bottom" id="k3q-Do-IwU"/>
+                        <constraint firstItem="QZ0-Kc-WiM" firstAttribute="centerX" secondItem="gwd-qc-aYK" secondAttribute="centerX" id="pMt-zf-EDF"/>
+                        <constraint firstItem="w9p-ul-vuA" firstAttribute="leading" secondItem="gwd-qc-aYK" secondAttribute="leading" id="wG8-bs-B97"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="lwb-jT-QVm"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="gwd-qc-aYK" firstAttribute="leading" secondItem="lwb-jT-QVm" secondAttribute="leading" id="4mR-Pf-ggL"/>
+                <constraint firstItem="gwd-qc-aYK" firstAttribute="top" secondItem="lwb-jT-QVm" secondAttribute="top" id="8ie-uq-UEB"/>
+                <constraint firstAttribute="trailing" secondItem="vlJ-fD-3dk" secondAttribute="trailing" constant="20" id="Ch6-ai-tg7"/>
+                <constraint firstAttribute="trailing" secondItem="sco-lt-JQu" secondAttribute="trailing" id="JRI-Bw-ncO"/>
+                <constraint firstItem="gwd-qc-aYK" firstAttribute="height" secondItem="4IN-OO-Vh9" secondAttribute="height" multiplier="0.07" id="KXv-Nb-wJh"/>
+                <constraint firstItem="vlJ-fD-3dk" firstAttribute="top" secondItem="gwd-qc-aYK" secondAttribute="bottom" constant="20" id="Pee-cp-HDD"/>
+                <constraint firstItem="vlJ-fD-3dk" firstAttribute="leading" secondItem="4IN-OO-Vh9" secondAttribute="leading" constant="20" id="RIF-d5-zCq"/>
+                <constraint firstItem="lwb-jT-QVm" firstAttribute="bottom" secondItem="vlJ-fD-3dk" secondAttribute="bottom" constant="10" id="UpE-Db-a87"/>
+                <constraint firstItem="lwb-jT-QVm" firstAttribute="trailing" secondItem="gwd-qc-aYK" secondAttribute="trailing" id="evN-Nl-8RE"/>
+                <constraint firstItem="sco-lt-JQu" firstAttribute="leading" secondItem="4IN-OO-Vh9" secondAttribute="leading" id="nDt-ku-QHj"/>
+                <constraint firstItem="sco-lt-JQu" firstAttribute="top" secondItem="gwd-qc-aYK" secondAttribute="bottom" id="o0v-mX-U0e"/>
+            </constraints>
+            <point key="canvasLocation" x="-313.04347826086956" y="-213.61607142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_back_b" width="25" height="20.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

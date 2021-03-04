@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="NotificationTVCell" customModule="GoLocal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gko-bP-nD1" customClass="CardView" customModule="GoLocal" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="300" height="85"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xcq-9z-2fy">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="85"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notification_icon_bag" translatesAutoresizingMaskIntoConstraints="NO" id="Mbq-g2-8yD">
+                                <rect key="frame" x="10" y="13" width="54" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="6GX-FM-UG0"/>
+                                    <constraint firstAttribute="height" constant="54" id="Pb4-OK-AmZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have New Delivery Request." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yzu-aA-rSp">
+                                <rect key="frame" x="74" y="30" width="216" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="ooK-66-H2T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2d ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsw-wd-el0">
+                                <rect key="frame" x="249.5" y="10" width="40.5" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="tfh-xA-t1a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
+                                <color key="textColor" name="DarkGreyColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Mbq-g2-8yD" firstAttribute="centerY" secondItem="Yzu-aA-rSp" secondAttribute="centerY" id="0CD-2c-RXG"/>
+                            <constraint firstAttribute="bottom" secondItem="Xcq-9z-2fy" secondAttribute="bottom" id="2K7-Ic-lTC"/>
+                            <constraint firstItem="Mbq-g2-8yD" firstAttribute="leading" secondItem="gko-bP-nD1" secondAttribute="leading" constant="10" id="D4G-IK-ByA"/>
+                            <constraint firstItem="Xcq-9z-2fy" firstAttribute="top" secondItem="gko-bP-nD1" secondAttribute="top" id="O5X-ex-n2w"/>
+                            <constraint firstItem="Yzu-aA-rSp" firstAttribute="top" secondItem="Qsw-wd-el0" secondAttribute="bottom" constant="5" id="P5A-pG-oYh"/>
+                            <constraint firstAttribute="trailing" secondItem="Qsw-wd-el0" secondAttribute="trailing" constant="10" id="b1C-68-NrH"/>
+                            <constraint firstAttribute="bottom" secondItem="Yzu-aA-rSp" secondAttribute="bottom" constant="35" id="hKK-p0-coH"/>
+                            <constraint firstAttribute="trailing" secondItem="Xcq-9z-2fy" secondAttribute="trailing" id="mdn-Kg-H5B"/>
+                            <constraint firstItem="Qsw-wd-el0" firstAttribute="top" secondItem="gko-bP-nD1" secondAttribute="top" constant="10" id="nZQ-4X-ecf"/>
+                            <constraint firstItem="Yzu-aA-rSp" firstAttribute="leading" secondItem="Mbq-g2-8yD" secondAttribute="trailing" constant="10" id="rxW-Ay-vYy"/>
+                            <constraint firstItem="Xcq-9z-2fy" firstAttribute="leading" secondItem="gko-bP-nD1" secondAttribute="leading" id="ysR-gj-6P7"/>
+                            <constraint firstAttribute="trailing" secondItem="Yzu-aA-rSp" secondAttribute="trailing" constant="10" id="zqw-If-93W"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetWidth">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetHeight">
+                                <integer key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" red="0.59607843137254901" green="0.59607843137254901" blue="0.59607843137254901" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="gko-bP-nD1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="LrR-RK-LwE"/>
+                    <constraint firstAttribute="trailing" secondItem="gko-bP-nD1" secondAttribute="trailing" constant="10" id="N6b-JJ-7ec"/>
+                    <constraint firstAttribute="bottom" secondItem="gko-bP-nD1" secondAttribute="bottom" constant="10" id="Nxb-3z-Nq7"/>
+                    <constraint firstItem="gko-bP-nD1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TWr-6E-tFV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnNavigateToScreens" destination="Xcq-9z-2fy" id="dom-K9-Grn"/>
+                <outlet property="imgNotificationType" destination="Mbq-g2-8yD" id="6NL-7q-Epl"/>
+                <outlet property="lblNotificationTime" destination="Qsw-wd-el0" id="I3O-4J-ddy"/>
+                <outlet property="lblNotificationTitle" destination="Yzu-aA-rSp" id="Vi1-nG-1LQ"/>
+                <outlet property="viewMain" destination="gko-bP-nD1" id="uTZ-Ih-Sgl"/>
+            </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="59.598214285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="notification_icon_bag" width="54" height="54"/>
+        <namedColor name="DarkGreyColor">
+            <color red="0.50599998235702515" green="0.50599998235702515" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.otf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.otf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="LoginLabelTopConstraint" destination="bRq-H4-FT4" id="dSe-eC-wGx"/>
+                <outlet property="btnBack" destination="gP8-BT-an5" id="gya-mq-fDt"/>
+                <outlet property="btnSkip" destination="KLK-bR-dHr" id="1PS-d1-X7o"/>
+                <outlet property="lblLoginSubText" destination="Y5z-b1-Oge" id="SU2-Zq-JQS"/>
+                <outlet property="lblLoginText" destination="nFF-We-xp7" id="D8g-q1-cJ0"/>
+                <outlet property="lblWelcomeSubText" destination="76U-rW-Sbd" id="uez-f4-Lr6"/>
+                <outlet property="lblWelcomeText" destination="7R5-Qy-Zy4" id="VJb-gS-Umz"/>
+                <outlet property="mainView" destination="Qnv-gc-5rU" id="QhN-vS-Xaz"/>
+                <outlet property="tableView" destination="bzt-gf-Bbz" id="bo7-cj-eq8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_top_bg" translatesAutoresizingMaskIntoConstraints="NO" id="vxZ-lx-s7E">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="vxZ-lx-s7E" secondAttribute="height" multiplier="16:9" id="pIn-iI-5ev"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP8-BT-an5">
+                    <rect key="frame" x="8" y="44" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="gGm-U4-PrW"/>
+                        <constraint firstAttribute="width" constant="44" id="nNG-Am-Hc7"/>
+                    </constraints>
+                    <state key="normal" image="icon_back_w"/>
+                    <connections>
+                        <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="i00-ye-iKM"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qnv-gc-5rU">
+                    <rect key="frame" x="0.0" y="233" width="414" height="663"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFF-We-xp7">
+                            <rect key="frame" x="15" y="40" width="77" height="32"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="26"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to your account or register below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5z-b1-Oge">
+                            <rect key="frame" x="15" y="80" width="353.5" height="22"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bzt-gf-Bbz">
+                            <rect key="frame" x="10" y="128" width="394" height="535"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="nFF-We-xp7" firstAttribute="leading" secondItem="Qnv-gc-5rU" secondAttribute="leading" constant="15" id="8Z4-Lm-Ipf"/>
+                        <constraint firstAttribute="trailing" secondItem="bzt-gf-Bbz" secondAttribute="trailing" constant="10" id="CXb-7T-b7L"/>
+                        <constraint firstAttribute="bottom" secondItem="bzt-gf-Bbz" secondAttribute="bottom" id="JLG-Nq-897"/>
+                        <constraint firstItem="Y5z-b1-Oge" firstAttribute="leading" secondItem="nFF-We-xp7" secondAttribute="leading" id="WP3-6z-htf"/>
+                        <constraint firstItem="nFF-We-xp7" firstAttribute="top" secondItem="Qnv-gc-5rU" secondAttribute="top" constant="40" id="bRq-H4-FT4"/>
+                        <constraint firstItem="bzt-gf-Bbz" firstAttribute="top" secondItem="Y5z-b1-Oge" secondAttribute="bottom" multiplier="120:102" constant="8" symbolic="YES" id="c6I-tQ-Nhw"/>
+                        <constraint firstItem="Y5z-b1-Oge" firstAttribute="top" secondItem="nFF-We-xp7" secondAttribute="bottom" multiplier="80:72" id="jmQ-El-paG"/>
+                        <constraint firstItem="bzt-gf-Bbz" firstAttribute="leading" secondItem="Qnv-gc-5rU" secondAttribute="leading" constant="10" id="p5t-Ts-OLd"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7R5-Qy-Zy4">
+                    <rect key="frame" x="18" y="111" width="125" height="31"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="25"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go local first today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76U-rW-Sbd">
+                    <rect key="frame" x="18" y="157" width="161" height="21"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLK-bR-dHr">
+                    <rect key="frame" x="362" y="44" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="cJP-Y8-aQC"/>
+                        <constraint firstAttribute="width" constant="44" id="v98-kT-mLr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                    <state key="normal" title="Skip"/>
+                    <connections>
+                        <action selector="actionSkipLogin:" destination="-1" eventType="touchUpInside" id="n1b-6E-MoN"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.0" green="0.43921568630000002" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Qnv-gc-5rU" secondAttribute="trailing" id="0K1-UV-AVG"/>
+                <constraint firstItem="gP8-BT-an5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="1kw-AC-RU1"/>
+                <constraint firstItem="76U-rW-Sbd" firstAttribute="top" secondItem="7R5-Qy-Zy4" secondAttribute="bottom" constant="15" id="6wV-Qc-ZsB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KLK-bR-dHr" secondAttribute="trailing" constant="8" id="9UW-SJ-fpd"/>
+                <constraint firstItem="KLK-bR-dHr" firstAttribute="width" secondItem="KLK-bR-dHr" secondAttribute="height" multiplier="1:1" id="EBr-3i-KRh"/>
+                <constraint firstItem="7R5-Qy-Zy4" firstAttribute="leading" secondItem="gP8-BT-an5" secondAttribute="leading" constant="10" id="GWB-bd-28j"/>
+                <constraint firstItem="gP8-BT-an5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="K6r-lh-BzS"/>
+                <constraint firstItem="76U-rW-Sbd" firstAttribute="leading" secondItem="7R5-Qy-Zy4" secondAttribute="leading" id="Reh-jI-WKo"/>
+                <constraint firstItem="vxZ-lx-s7E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Woo-Ey-Wod"/>
+                <constraint firstItem="7R5-Qy-Zy4" firstAttribute="centerY" secondItem="vxZ-lx-s7E" secondAttribute="centerY" constant="10" id="YFL-xs-6Rr"/>
+                <constraint firstItem="KLK-bR-dHr" firstAttribute="centerY" secondItem="gP8-BT-an5" secondAttribute="centerY" id="fAQ-RH-Aoq"/>
+                <constraint firstAttribute="bottom" secondItem="Qnv-gc-5rU" secondAttribute="bottom" id="gcW-Aa-jal"/>
+                <constraint firstItem="vxZ-lx-s7E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iFy-st-mmz"/>
+                <constraint firstItem="Qnv-gc-5rU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="n81-Jr-tQT"/>
+                <constraint firstItem="vxZ-lx-s7E" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="nLv-FR-uMF"/>
+                <constraint firstItem="Qnv-gc-5rU" firstAttribute="top" secondItem="vxZ-lx-s7E" secondAttribute="bottom" id="pvy-wm-mKU"/>
+                <constraint firstItem="gP8-BT-an5" firstAttribute="width" secondItem="gP8-BT-an5" secondAttribute="height" multiplier="1:1" id="rnP-J7-vsC"/>
+            </constraints>
+            <point key="canvasLocation" x="60.869565217391312" y="76.339285714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_back_w" width="25" height="20.5"/>
+        <image name="login_top_bg" width="375" height="226.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

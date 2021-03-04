@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "2EED3582-B90C-45F0-AF2E-473D1649FF36"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "462ADB56-7A4A-4F8A-9ECA-978A3C120ADE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/OrderDetails/dataSourceAndModel/OrderDetailsDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "timerLabel(_:finshedCountDownTimerWithTime:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "462ADB56-7A4A-4F8A-9ECA-978A3C120ADE - 9b4d6b118b470edb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoLocal.OrderDetailsDataSource.timerLabel(_: Swift.Optional&lt;__C.MZTimerLabel&gt;, finshedCountDownTimerWithTime: Swift.Double) -&gt; ()"
+                  moduleName = "GoLocal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Controllers/Module/OrderDetails/dataSourceAndModel/OrderDetailsDataSource.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "287"
+                  endingLineNumber = "287"
+                  offsetFromSymbolStart = "822">
+               </Location>
+               <Location
+                  uuid = "462ADB56-7A4A-4F8A-9ECA-978A3C120ADE - 38fe37c861b6d14d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (GoLocal.OrderRequests) -&gt; Swift.Bool in GoLocal.OrderDetailsDataSource.timerLabel(_: Swift.Optional&lt;__C.MZTimerLabel&gt;, finshedCountDownTimerWithTime: Swift.Double) -&gt; ()"
+                  moduleName = "GoLocal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Controllers/Module/OrderDetails/dataSourceAndModel/OrderDetailsDataSource.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "287"
+                  endingLineNumber = "287"
+                  offsetFromSymbolStart = "123">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "882F59CB-C142-4680-888E-59267D8FCC96"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/DriverSelection/DriverSeleListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "timerLabel(_:finshedCountDownTimerWithTime:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "882F59CB-C142-4680-888E-59267D8FCC96 - bd93f4e5eb3c0256"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoLocal.DriverSeleListViewController.timerLabel(_: Swift.Optional&lt;__C.MZTimerLabel&gt;, finshedCountDownTimerWithTime: Swift.Double) -&gt; ()"
+                  moduleName = "GoLocal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Controllers/Module/DriverSelection/DriverSeleListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
+                  offsetFromSymbolStart = "123">
+               </Location>
+               <Location
+                  uuid = "882F59CB-C142-4680-888E-59267D8FCC96 - 2882faa84744f269"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (GoLocal.OrderRequests) -&gt; Swift.Bool in GoLocal.DriverSeleListViewController.timerLabel(_: Swift.Optional&lt;__C.MZTimerLabel&gt;, finshedCountDownTimerWithTime: Swift.Double) -&gt; ()"
+                  moduleName = "GoLocal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Controllers/Module/DriverSelection/DriverSeleListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "168"
+                  endingLineNumber = "168"
+                  offsetFromSymbolStart = "123">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EB3E3774-D872-4BE7-B44D-5AEDBCAA9865"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "AcceptOrderRequest(dictionary:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EB3E3774-D872-4BE7-B44D-5AEDBCAA9865 - 87652185d4729a8e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;Any&gt;) -&gt; () in GoLocal.SocketIOHandler.AcceptOrderRequest(dictionary: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "GoLocal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  uuid = "EB3E3774-D872-4BE7-B44D-5AEDBCAA9865 - bae0af5b56ac779e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (GoLocal.OrderRequests) -&gt; Swift.Bool in closure #1 (Swift.Array&lt;Any&gt;) -&gt; () in GoLocal.SocketIOHandler.AcceptOrderRequest(dictionary: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "GoLocal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "121">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "12ECE98C-C5C9-4CBF-B8CB-508AC13FF7DE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "RejectOrderRequest(dictionary:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "12ECE98C-C5C9-4CBF-B8CB-508AC13FF7DE - dd08a8da67449e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;Any&gt;) -&gt; () in GoLocal.SocketIOHandler.RejectOrderRequest(dictionary: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "GoLocal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "184"
+                  endingLineNumber = "184"
+                  offsetFromSymbolStart = "629">
+               </Location>
+               <Location
+                  uuid = "12ECE98C-C5C9-4CBF-B8CB-508AC13FF7DE - bae0af5b56ac71eb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (GoLocal.OrderRequests) -&gt; Swift.Bool in closure #1 (Swift.Array&lt;Any&gt;) -&gt; () in GoLocal.SocketIOHandler.RejectOrderRequest(dictionary: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "GoLocal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "184"
+                  endingLineNumber = "184"
+                  offsetFromSymbolStart = "121">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F3048CF4-69C8-41BE-88A0-ED2A55DD6023"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/TimeSelection/TimeSelectionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "OrderRequestAccepted(notification:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "842575EF-3311-4078-9F7D-1E03F56F4999"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/DriverSelection/DriverSeleListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "OrderRequestAccepted(notification:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AD58F93E-A07E-4B9F-930D-B078C1A486EC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/TimeSelection/TimeSelectionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "allNotificationCenterObservers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A1A6D64-C434-47F2-B0CA-9C4FC029FAC4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/TimeSelection/TimeSelectionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "btnSelectDriver(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            uuid = "A34DC461-B9E8-4B74-966D-36D21560237C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            breakpointStackSelectionBehavior = "1"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "41150109-EA48-4A5C-988F-014AD50DB92B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/DriversStatus/Model&amp;DataSource/DriverStatusViewDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D70C4013-FD5A-4361-8A9A-291D3B9A48C2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/Drivers/Model&amp;DataSource/DriverListViewDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9B30A1BE-19A1-4F96-A2FD-B04C8CD46C34"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/OrderList/dataSourceAndModel/OrderDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "62FF8E8B-8F0E-404A-A160-C70605291095"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/DriverSelection/DriverSeleListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "btnSelectDriver(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE72585A-8890-437C-8049-25A83F56A4F9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "AcceptOrderRequest(dictionary:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CE72585A-8890-437C-8049-25A83F56A4F9 - edae7c0db6560686"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GoLocal.SocketIOHandler.AcceptOrderRequest(dictionary: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "GoLocal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "169"
+                  endingLineNumber = "169"
+                  offsetFromSymbolStart = "95">
+               </Location>
+               <Location
+                  uuid = "CE72585A-8890-437C-8049-25A83F56A4F9 - 87652185d4729a8e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;Any&gt;) -&gt; () in GoLocal.SocketIOHandler.AcceptOrderRequest(dictionary: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "GoLocal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EFA61FB7-00E6-46FF-8366-6014429B936B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/Utils.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "socketAcceptOrderRequest(dictionary:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A2BC944F-E881-4560-939A-73E7C6821A74"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "addHandlers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43A8573A-CCD1-415A-A62C-B8C2FB4D1B1C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
+            landmarkName = "addHandlers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6871D2FD-C3D3-42CD-9A28-C7684FCFDFEB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "addHandlers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E053352C-F845-46AD-A20A-14895148F6A3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/Utils.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "socketGetOrderDetail(strOrder:)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "07FAB5CC-4706-4B2B-88B2-DD7E507FA852"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "getSingleOrderDetails(orderId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A4B189B-64D8-45C4-BC88-8F258BD7E426"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "getSingleOrderDetails(orderId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C86E2FA8-9A24-445D-9BDD-8378FC062FE4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/OrderDetails/OrderDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "getSingleOrderDetails(notification:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A7BF9C47-32A0-4E59-9BBA-547733348C36"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/OrderDetails/OrderDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "setupView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BBB94BAE-7234-4231-9376-62AEC2F5A9C2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/Profile/Notifications/dataSourceAndViewModel/NotificationViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "setNotifications(arrNoti:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

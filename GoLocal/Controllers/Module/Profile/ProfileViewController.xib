@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="3p0-Ii-pa7" id="Hew-Ju-U2S"/>
+                <outlet property="view" destination="dS8-V3-1Co" id="yac-yC-HaG"/>
+                <outlet property="vwNav" destination="oWj-Ok-7Sn" id="CxP-Xd-zKz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dS8-V3-1Co">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3p0-Ii-pa7">
+                    <rect key="frame" x="0.0" y="115" width="414" height="737"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYx-Nf-46b">
+                    <rect key="frame" x="0.0" y="106.5" width="414" height="1"/>
+                    <color key="backgroundColor" red="0.80000000000000004" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="P2K-DA-81y"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWj-Ok-7Sn">
+                    <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qac-ul-vVp">
+                            <rect key="frame" x="176.5" y="0.0" width="61.5" height="62.5"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Qac-ul-vVp" secondAttribute="bottom" id="4CH-oC-0RN"/>
+                        <constraint firstItem="Qac-ul-vVp" firstAttribute="centerX" secondItem="oWj-Ok-7Sn" secondAttribute="centerX" id="AMr-bi-hnw"/>
+                        <constraint firstItem="Qac-ul-vVp" firstAttribute="top" secondItem="oWj-Ok-7Sn" secondAttribute="top" id="G0k-gA-th4"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="UTW-ws-Z3G"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="3p0-Ii-pa7" firstAttribute="top" secondItem="WYx-Nf-46b" secondAttribute="bottom" constant="7.5" id="8OS-uR-TPA"/>
+                <constraint firstItem="UTW-ws-Z3G" firstAttribute="bottom" secondItem="3p0-Ii-pa7" secondAttribute="bottom" constant="10" id="Hv2-ZJ-rZv"/>
+                <constraint firstItem="WYx-Nf-46b" firstAttribute="top" secondItem="oWj-Ok-7Sn" secondAttribute="bottom" id="I6f-Ek-zja"/>
+                <constraint firstItem="WYx-Nf-46b" firstAttribute="leading" secondItem="dS8-V3-1Co" secondAttribute="leading" id="OUj-uP-IlY"/>
+                <constraint firstAttribute="trailing" secondItem="3p0-Ii-pa7" secondAttribute="trailing" id="U5m-oD-vjc"/>
+                <constraint firstItem="oWj-Ok-7Sn" firstAttribute="top" secondItem="UTW-ws-Z3G" secondAttribute="top" id="WLh-bz-ZIm"/>
+                <constraint firstItem="oWj-Ok-7Sn" firstAttribute="height" secondItem="dS8-V3-1Co" secondAttribute="height" multiplier="0.07" id="dGD-KO-AW4"/>
+                <constraint firstItem="3p0-Ii-pa7" firstAttribute="leading" secondItem="dS8-V3-1Co" secondAttribute="leading" id="f4W-aD-5e5"/>
+                <constraint firstItem="UTW-ws-Z3G" firstAttribute="trailing" secondItem="oWj-Ok-7Sn" secondAttribute="trailing" id="icy-IP-aQa"/>
+                <constraint firstAttribute="trailing" secondItem="WYx-Nf-46b" secondAttribute="trailing" id="pO1-zl-Rp7"/>
+                <constraint firstItem="oWj-Ok-7Sn" firstAttribute="leading" secondItem="UTW-ws-Z3G" secondAttribute="leading" id="y7J-tG-Fwk"/>
+            </constraints>
+            <point key="canvasLocation" x="-707.24637681159425" y="95.758928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

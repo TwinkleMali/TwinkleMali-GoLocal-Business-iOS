@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DriverStatusViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="lblTitle" destination="QZ0-Kc-WiM" id="PNj-ag-jnQ"/>
+                <outlet property="tableView" destination="vlJ-fD-3dk" id="AKO-8N-odO"/>
+                <outlet property="view" destination="4IN-OO-Vh9" id="7S8-od-ueR"/>
+                <outlet property="vwNav" destination="gwd-qc-aYK" id="fcb-RZ-bHR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="4IN-OO-Vh9">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vlJ-fD-3dk">
+                    <rect key="frame" x="0.0" y="106.5" width="414" height="694.5"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0i-YJ-OOE">
+                    <rect key="frame" x="20" y="821" width="374" height="45"/>
+                    <color key="backgroundColor" name="AppGreenColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="TaP-M0-mCF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                    <state key="normal" title="Select Driver">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="btnSelectDriver:" destination="-1" eventType="touchUpInside" id="gVC-a6-pYM"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwd-qc-aYK">
+                    <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
+                    <subviews>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w9p-ul-vuA">
+                            <rect key="frame" x="351.5" y="0.0" width="62.5" height="62.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="w9p-ul-vuA" secondAttribute="height" multiplier="1:1" id="9K0-j4-xda"/>
+                            </constraints>
+                            <state key="normal" image="icon_search_b"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZNf-Pb-6AI">
+                            <rect key="frame" x="0.0" y="0.0" width="62.5" height="62.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="ZNf-Pb-6AI" secondAttribute="height" multiplier="1:1" id="l82-EX-ghk"/>
+                            </constraints>
+                            <state key="normal" image="icon_back_b"/>
+                            <connections>
+                                <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="aGE-Rd-XSw"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Driver" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZ0-Kc-WiM">
+                            <rect key="frame" x="155.5" y="0.0" width="103" height="62.5"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="w9p-ul-vuA" firstAttribute="top" secondItem="gwd-qc-aYK" secondAttribute="top" id="CXv-if-xkg"/>
+                        <constraint firstItem="ZNf-Pb-6AI" firstAttribute="leading" secondItem="gwd-qc-aYK" secondAttribute="leading" id="GK1-kX-bUX"/>
+                        <constraint firstItem="QZ0-Kc-WiM" firstAttribute="top" secondItem="gwd-qc-aYK" secondAttribute="top" id="JbT-QL-gwZ"/>
+                        <constraint firstItem="ZNf-Pb-6AI" firstAttribute="top" secondItem="gwd-qc-aYK" secondAttribute="top" id="U7M-Pd-iM1"/>
+                        <constraint firstAttribute="bottom" secondItem="w9p-ul-vuA" secondAttribute="bottom" id="baQ-S0-O8h"/>
+                        <constraint firstAttribute="bottom" secondItem="ZNf-Pb-6AI" secondAttribute="bottom" id="fO1-Ny-AAh"/>
+                        <constraint firstAttribute="trailing" secondItem="w9p-ul-vuA" secondAttribute="trailing" id="jWY-Lv-NFE"/>
+                        <constraint firstAttribute="bottom" secondItem="QZ0-Kc-WiM" secondAttribute="bottom" id="k3q-Do-IwU"/>
+                        <constraint firstItem="QZ0-Kc-WiM" firstAttribute="centerX" secondItem="gwd-qc-aYK" secondAttribute="centerX" id="pMt-zf-EDF"/>
+                        <constraint firstItem="ZNf-Pb-6AI" firstAttribute="width" secondItem="ZNf-Pb-6AI" secondAttribute="height" multiplier="1:1" id="rva-gH-Lip"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="lwb-jT-QVm"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="gwd-qc-aYK" firstAttribute="leading" secondItem="lwb-jT-QVm" secondAttribute="leading" id="4mR-Pf-ggL"/>
+                <constraint firstItem="gwd-qc-aYK" firstAttribute="top" secondItem="lwb-jT-QVm" secondAttribute="top" id="8ie-uq-UEB"/>
+                <constraint firstAttribute="trailing" secondItem="vlJ-fD-3dk" secondAttribute="trailing" id="Ch6-ai-tg7"/>
+                <constraint firstItem="E0i-YJ-OOE" firstAttribute="top" secondItem="vlJ-fD-3dk" secondAttribute="bottom" constant="20" id="IHP-b6-UY5"/>
+                <constraint firstItem="gwd-qc-aYK" firstAttribute="height" secondItem="4IN-OO-Vh9" secondAttribute="height" multiplier="0.07" id="KXv-Nb-wJh"/>
+                <constraint firstItem="vlJ-fD-3dk" firstAttribute="leading" secondItem="4IN-OO-Vh9" secondAttribute="leading" id="RIF-d5-zCq"/>
+                <constraint firstItem="vlJ-fD-3dk" firstAttribute="top" secondItem="gwd-qc-aYK" secondAttribute="bottom" id="cz9-eV-JX8"/>
+                <constraint firstItem="lwb-jT-QVm" firstAttribute="trailing" secondItem="gwd-qc-aYK" secondAttribute="trailing" id="evN-Nl-8RE"/>
+                <constraint firstItem="lwb-jT-QVm" firstAttribute="trailing" secondItem="E0i-YJ-OOE" secondAttribute="trailing" constant="20" id="lCW-M7-EQX"/>
+                <constraint firstItem="E0i-YJ-OOE" firstAttribute="leading" secondItem="lwb-jT-QVm" secondAttribute="leading" constant="20" id="urj-Ic-iJH"/>
+                <constraint firstAttribute="bottom" secondItem="E0i-YJ-OOE" secondAttribute="bottom" constant="30" id="zg9-RT-MDZ"/>
+            </constraints>
+            <point key="canvasLocation" x="-313.04347826086956" y="-213.61607142857142"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_back_b" width="25" height="20.5"/>
+        <image name="icon_search_b" width="20" height="20"/>
+        <namedColor name="AppGreenColor">
+            <color red="0.0" green="0.43900001049041748" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

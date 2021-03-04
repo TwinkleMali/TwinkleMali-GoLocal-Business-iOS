@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessDetailsViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="navView" destination="YxL-v9-IyS" id="tkp-vF-MwM"/>
+                <outlet property="tableView" destination="GQ2-Dd-b3l" id="dSh-xL-KzS"/>
+                <outlet property="view" destination="Rxe-5I-ha8" id="PDt-zm-NUq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Rxe-5I-ha8">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="GQ2-Dd-b3l">
+                    <rect key="frame" x="10" y="126.5" width="394" height="680.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxL-v9-IyS">
+                    <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alK-kt-b0r">
+                            <rect key="frame" x="140.5" y="0.0" width="133" height="62.5"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDs-xc-pXS">
+                            <rect key="frame" x="0.0" y="0.0" width="62.5" height="62.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="XDs-xc-pXS" secondAttribute="height" multiplier="1:1" id="90N-Qy-abt"/>
+                            </constraints>
+                            <state key="normal" image="icon_back_b"/>
+                            <connections>
+                                <action selector="btnBack:" destination="-1" eventType="touchUpInside" id="HTH-tA-qmw"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="alK-kt-b0r" firstAttribute="centerX" secondItem="YxL-v9-IyS" secondAttribute="centerX" id="759-2D-0MF"/>
+                        <constraint firstItem="XDs-xc-pXS" firstAttribute="leading" secondItem="YxL-v9-IyS" secondAttribute="leading" id="JQQ-1J-c5G"/>
+                        <constraint firstItem="XDs-xc-pXS" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="top" id="Ve7-38-B55"/>
+                        <constraint firstItem="alK-kt-b0r" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="top" id="Vwo-O0-YzF"/>
+                        <constraint firstAttribute="bottom" secondItem="alK-kt-b0r" secondAttribute="bottom" id="eXc-qD-IS2"/>
+                        <constraint firstAttribute="bottom" secondItem="XDs-xc-pXS" secondAttribute="bottom" id="yF4-ZS-jKE"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8qQ-5E-Zcb">
+                    <rect key="frame" x="20" y="807" width="374" height="45"/>
+                    <color key="backgroundColor" name="AppGreenColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="28e-QG-bMX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
+                    <state key="normal" title="Edit Details">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="kst-Nq-xyz"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="GQ2-Dd-b3l" secondAttribute="trailing" constant="10" id="0Ay-KG-pM6"/>
+                <constraint firstItem="8qQ-5E-Zcb" firstAttribute="leading" secondItem="kst-Nq-xyz" secondAttribute="leading" constant="20" id="42Z-1T-RZT"/>
+                <constraint firstItem="YxL-v9-IyS" firstAttribute="height" secondItem="Rxe-5I-ha8" secondAttribute="height" multiplier="0.07" id="88o-U9-vXa"/>
+                <constraint firstItem="GQ2-Dd-b3l" firstAttribute="leading" secondItem="Rxe-5I-ha8" secondAttribute="leading" constant="10" id="GXd-Xv-fvE"/>
+                <constraint firstItem="8qQ-5E-Zcb" firstAttribute="top" secondItem="GQ2-Dd-b3l" secondAttribute="bottom" id="ICb-13-uDM"/>
+                <constraint firstItem="GQ2-Dd-b3l" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="bottom" constant="20" id="Jac-qr-8Os"/>
+                <constraint firstItem="kst-Nq-xyz" firstAttribute="trailing" secondItem="YxL-v9-IyS" secondAttribute="trailing" id="MKb-iM-aOu"/>
+                <constraint firstItem="kst-Nq-xyz" firstAttribute="bottom" secondItem="8qQ-5E-Zcb" secondAttribute="bottom" constant="10" id="W9U-C7-PNR"/>
+                <constraint firstItem="kst-Nq-xyz" firstAttribute="trailing" secondItem="8qQ-5E-Zcb" secondAttribute="trailing" constant="20" id="fAn-ey-TmL"/>
+                <constraint firstItem="YxL-v9-IyS" firstAttribute="leading" secondItem="kst-Nq-xyz" secondAttribute="leading" id="hja-lK-p8l"/>
+                <constraint firstItem="YxL-v9-IyS" firstAttribute="top" secondItem="kst-Nq-xyz" secondAttribute="top" id="qIa-O2-rb9"/>
+            </constraints>
+            <point key="canvasLocation" x="-1520.289855072464" y="-219.64285714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_back_b" width="25" height="20.5"/>
+        <namedColor name="AppGreenColor">
+            <color red="0.0" green="0.43900001049041748" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
