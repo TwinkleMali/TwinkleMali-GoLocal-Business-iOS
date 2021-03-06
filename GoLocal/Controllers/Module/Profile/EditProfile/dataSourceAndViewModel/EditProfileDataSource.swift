@@ -38,7 +38,15 @@ extension EditProfileDataSource: UITableViewDelegate,UITableViewDataSource{
         case EditProfileField.firstname.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextFieldTVCell", for: indexPath) as? CommonTextFieldTVCell{
                 cell.selectionStyle = .none
-                
+                if editProfileViewController?.isEditEnable == true{
+                    cell.lblTitle.alpha = 1
+                    cell.textField.alpha = 1
+                    cell.imgIcon.alpha = 1
+                }else {
+                    cell.lblTitle.alpha = 0.5
+                    cell.textField.alpha = 0.5
+                    cell.imgIcon.alpha = 0.5
+                }
                 cell.bottomView.isHidden = true
                 cell.btnHidePassword.isHidden = true
                 cell.textField.isSecureTextEntry = false
@@ -54,7 +62,15 @@ extension EditProfileDataSource: UITableViewDelegate,UITableViewDataSource{
         case EditProfileField.lastname.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextFieldTVCell", for: indexPath) as? CommonTextFieldTVCell{
                 cell.selectionStyle = .none
-                
+                if editProfileViewController?.isEditEnable == true{
+                    cell.lblTitle.alpha = 1
+                    cell.textField.alpha = 1
+                    cell.imgIcon.alpha = 1
+                }else {
+                    cell.lblTitle.alpha = 0.5
+                    cell.textField.alpha = 0.5
+                    cell.imgIcon.alpha = 0.5
+                }
                 cell.bottomView.isHidden = true
                 cell.btnHidePassword.isHidden = true
                 cell.textField.isSecureTextEntry = false
@@ -73,6 +89,9 @@ extension EditProfileDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.bottomView.isHidden = true
                 cell.btnHidePassword.isHidden = true
                 cell.textField.isSecureTextEntry = false
+                cell.lblTitle.alpha = 0.5
+                cell.textField.alpha = 0.5
+                cell.imgIcon.alpha = 0.5
                 cell.lblTitle.text = "Email"
                 cell.imgIcon.image = #imageLiteral(resourceName: "icon_email")
                 cell.textField.text = viewModel.getEmail()
@@ -91,6 +110,9 @@ extension EditProfileDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.bottomView.isHidden = true
                 cell.btnHidePassword.isHidden = true
                 cell.textField.isSecureTextEntry = false
+                cell.lblTitle.alpha = 0.5
+                cell.textField.alpha = 0.5
+                cell.imgIcon.alpha = 0.5
                 cell.lblTitle.text = "Phone Number"
                 cell.imgIcon.image = #imageLiteral(resourceName: "icon_phone")
                 cell.textField.isUserInteractionEnabled = false

@@ -60,7 +60,7 @@
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery by : Go Local" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUf-vL-loj">
-                                <rect key="frame" x="15" y="64" width="195" height="20"/>
+                                <rect key="frame" x="15" y="66" width="195" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="iuQ-m9-qZy"/>
                                 </constraints>
@@ -111,7 +111,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starSize">
-                                        <real key="value" value="15"/>
+                                        <real key="value" value="17"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
                                         <real key="value" value="5"/>
@@ -151,12 +151,12 @@
                             <constraint firstItem="O8N-38-oxp" firstAttribute="leading" secondItem="yTO-Zg-Bdm" secondAttribute="leading" id="hKx-FK-6Ge"/>
                             <constraint firstItem="J3e-Ix-7aM" firstAttribute="top" secondItem="iTp-zB-FeV" secondAttribute="bottom" constant="4" id="hw6-tq-edI"/>
                             <constraint firstItem="Aeb-8n-8Jq" firstAttribute="leading" secondItem="yTO-Zg-Bdm" secondAttribute="leading" constant="15" id="iMD-bu-BGP"/>
-                            <constraint firstItem="wUf-vL-loj" firstAttribute="top" secondItem="qoB-HL-hau" secondAttribute="bottom" constant="5" id="ncS-uI-PUf"/>
+                            <constraint firstItem="wUf-vL-loj" firstAttribute="top" secondItem="qoB-HL-hau" secondAttribute="bottom" constant="7" id="ncS-uI-PUf"/>
                             <constraint firstItem="gIx-yt-YYe" firstAttribute="leading" secondItem="yTO-Zg-Bdm" secondAttribute="leading" constant="15" id="rEJ-Ga-hsj"/>
                             <constraint firstItem="9wm-jq-gIz" firstAttribute="leading" secondItem="qoB-HL-hau" secondAttribute="trailing" constant="5" id="rEg-Xh-AO5"/>
                             <constraint firstItem="OTO-Kq-QVq" firstAttribute="trailing" secondItem="9wm-jq-gIz" secondAttribute="trailing" id="t4G-EA-Yia"/>
                             <constraint firstItem="qoB-HL-hau" firstAttribute="top" secondItem="iTp-zB-FeV" secondAttribute="bottom" constant="3" id="vAH-pS-t9K"/>
-                            <constraint firstItem="Aeb-8n-8Jq" firstAttribute="top" secondItem="wUf-vL-loj" secondAttribute="bottom" constant="10" id="ybp-9T-liy"/>
+                            <constraint firstItem="Aeb-8n-8Jq" firstAttribute="top" secondItem="wUf-vL-loj" secondAttribute="bottom" constant="7" id="ybp-9T-liy"/>
                             <constraint firstItem="OTO-Kq-QVq" firstAttribute="leading" secondItem="gIx-yt-YYe" secondAttribute="trailing" constant="110" id="zoS-Ck-0Et"/>
                         </constraints>
                     </view>
@@ -186,7 +186,7 @@
     </objects>
     <designables>
         <designable name="gIx-yt-YYe">
-            <size key="intrinsicContentSize" width="95" height="15"/>
+            <size key="intrinsicContentSize" width="105" height="17"/>
         </designable>
     </designables>
     <resources>

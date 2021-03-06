@@ -15,6 +15,10 @@ class CommonTextFieldTVCell: UITableViewCell {
         }
     }
     @IBOutlet weak var imgIcon: UIImageView!
+    @IBOutlet weak var stviewRadio: UIStackView!
+    @IBOutlet weak var rdb1: UIButton!
+    @IBOutlet weak var rdb2: UIButton!
+    @IBOutlet weak var rdb3: UIButton!
     @IBOutlet weak var textField: UITextField!{
         didSet{
             textField.font = UIFont(name: fFONT_SEMIBOLD, size: calculateFontForWidth(size: 16.0))

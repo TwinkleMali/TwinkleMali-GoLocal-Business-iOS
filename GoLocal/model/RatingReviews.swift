@@ -38,7 +38,7 @@ public struct RatingReviews {
   public var username: String?
   public var storeLogo: String?
   public var review: String?
-  public var replies: [Any]?
+  public var replies: [ReviewReplies]?
   public var id: Int?
   public var lname: String?
   public var createdAt: String?
@@ -66,8 +66,8 @@ public struct RatingReviews {
     shopId = json[SerializationKeys.shopId].int
     username = json[SerializationKeys.username].string
     storeLogo = json[SerializationKeys.storeLogo].string
-    review = json[SerializationKeys.review].string
-    if let items = json[SerializationKeys.replies].array { replies = items.map { $0.object} }
+    review = json[SerializationKeys.review].string   
+    if let items = json[SerializationKeys.replies].array { replies = items.map { ReviewReplies(json: $0)} }
     id = json[SerializationKeys.id].int
     lname = json[SerializationKeys.lname].string
     createdAt = json[SerializationKeys.createdAt].string
@@ -89,7 +89,7 @@ public struct RatingReviews {
     if let value = username { dictionary[SerializationKeys.username] = value }
     if let value = storeLogo { dictionary[SerializationKeys.storeLogo] = value }
     if let value = review { dictionary[SerializationKeys.review] = value }
-    if let value = replies { dictionary[SerializationKeys.replies] = value }
+    if let value = replies { dictionary[SerializationKeys.replies] = value.map { $0.dictionaryRepresentation() } }
     if let value = id { dictionary[SerializationKeys.id] = value }
     if let value = lname { dictionary[SerializationKeys.lname] = value }
     if let value = createdAt { dictionary[SerializationKeys.createdAt] = value }

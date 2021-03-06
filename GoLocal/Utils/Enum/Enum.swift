@@ -123,6 +123,12 @@ enum OrderType : Int {
     case PastOrder
 }
 
+enum DeliveryType : String{
+    case collection = "Collection"
+    case delivery = "Delivery"
+    case both = "Both"
+}
+
 enum DriverType : Int{
     case GoLocalFirstDrivers = 0
     case OwnDrivers
@@ -143,6 +149,16 @@ enum DriverStatus : Int{
     case Offline = 0
     case Available
     case Busy
+}
+
+enum URLTypes : String {
+    case shop = "Shop"
+    case shopGallery = "ShopGallery"
+    case product = "Product"
+    case productGallery = "ProductGallery"
+    case users = "Users"
+    case driver = "Driver"
+    case orders = "Orders"
 }
 
 

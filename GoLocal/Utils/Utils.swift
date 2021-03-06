@@ -52,24 +52,20 @@ func roundingCorners(_ view: UIView?, byRoundingCorners Corners: UIRectCorner, s
 }
 
 func getSecondsBetweenDates(date1 : Date, date2 : Date,orderTimerValue: Double) -> TimeInterval{
-   
     let difference = Calendar.current.dateComponents([.second], from: date2, to: date1)
     let seconds = difference.second ?? 0
-//    print(seconds)
-//    print(orderTimerValue)
-//    print(Double(orderTimerValue) - Double(seconds))
     return Double(orderTimerValue) - Double(seconds)
-    
 }
 
 
 func serverToLocal(date:String) -> Date? {
-//   print(date)
+    //   print(date)
     let dateFormatter = DateFormatter()
     //let tempLocale = dateFormatter.locale // save locale temporarily
-    dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+//    dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    let date1 = dateFormatter.date(from: date)!
+    var date1 = dateFormatter.date(from: date)!
+    date1 = date1.UTCtoLocal().toDate()!
     return date1
 }
 

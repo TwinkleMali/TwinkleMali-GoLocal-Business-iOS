@@ -21,11 +21,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderDetailsViewController" customModule="GoLocal" customModuleProvider="target">
             <connections>
                 <outlet property="btnAccept" destination="W4d-Kf-ikC" id="opy-WD-di4"/>
-                <outlet property="btnHeight" destination="512-xZ-evR" id="vt3-D8-8FH"/>
                 <outlet property="btnMarkOrderLeft" destination="I8U-eQ-YSb" id="IUC-js-p7Q"/>
                 <outlet property="btnReject" destination="9B0-HU-AU6" id="jRj-ik-u6l"/>
+                <outlet property="lblOrderStatus" destination="cQX-89-YFh" id="oSh-Mb-Rpt"/>
                 <outlet property="navView" destination="YxL-v9-IyS" id="tkp-vF-MwM"/>
-                <outlet property="stHeight" destination="rU5-gR-Bj1" id="CPn-pl-BPS"/>
                 <outlet property="stackView" destination="oIl-LC-hki" id="5lD-LL-bXJ"/>
                 <outlet property="tableView" destination="GQ2-Dd-b3l" id="dSh-xL-KzS"/>
                 <outlet property="view" destination="Rxe-5I-ha8" id="PDt-zm-NUq"/>
@@ -36,41 +35,78 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oIl-LC-hki">
-                    <rect key="frame" x="20" y="811" width="374" height="45"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4d-Kf-ikC">
-                            <rect key="frame" x="0.0" y="0.0" width="182" height="45"/>
-                            <color key="backgroundColor" name="GreenColor"/>
-                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
-                            <state key="normal" title="ACCEPT">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="btnAcceptClick:" destination="-1" eventType="touchUpInside" id="bez-i5-JHm"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9B0-HU-AU6">
-                            <rect key="frame" x="192" y="0.0" width="182" height="45"/>
-                            <color key="backgroundColor" name="RedColor"/>
-                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
-                            <state key="normal" title="REJECT">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="btnRejectClick:" destination="-1" eventType="touchUpInside" id="QDU-zm-WHP"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="rU5-gR-Bj1"/>
-                    </constraints>
-                </stackView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="GQ2-Dd-b3l">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="GQ2-Dd-b3l">
                     <rect key="frame" x="0.0" y="106.5" width="414" height="689.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uac-u5-ra7" userLabel="bottomview">
+                    <rect key="frame" x="0.0" y="811" width="414" height="45"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8U-eQ-YSb">
+                            <rect key="frame" x="20" y="0.0" width="374" height="45"/>
+                            <color key="backgroundColor" name="AppGreenColor"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                            <state key="normal" title="Mark order has left">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="btnOrderStatusChange:" destination="-1" eventType="touchUpInside" id="xvr-RI-JcJ"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Cancelled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQX-89-YFh">
+                            <rect key="frame" x="20" y="0.0" width="131.5" height="45"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="45" id="I63-HW-lcn"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <color key="textColor" name="AppGreenColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oIl-LC-hki">
+                            <rect key="frame" x="20" y="0.0" width="374" height="45"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4d-Kf-ikC">
+                                    <rect key="frame" x="0.0" y="0.0" width="182" height="45"/>
+                                    <color key="backgroundColor" name="GreenColor"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                    <state key="normal" title="ACCEPT">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="btnAcceptClick:" destination="-1" eventType="touchUpInside" id="bez-i5-JHm"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9B0-HU-AU6">
+                                    <rect key="frame" x="192" y="0.0" width="182" height="45"/>
+                                    <color key="backgroundColor" name="RedColor"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                    <state key="normal" title="REJECT">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="btnRejectClick:" destination="-1" eventType="touchUpInside" id="QDU-zm-WHP"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="cQX-89-YFh" secondAttribute="bottom" id="7vO-14-FIy"/>
+                        <constraint firstItem="I8U-eQ-YSb" firstAttribute="top" secondItem="uac-u5-ra7" secondAttribute="top" id="A3t-Nb-36P"/>
+                        <constraint firstItem="oIl-LC-hki" firstAttribute="leading" secondItem="uac-u5-ra7" secondAttribute="leading" constant="20" id="Aah-Mp-6H1"/>
+                        <constraint firstAttribute="trailing" secondItem="I8U-eQ-YSb" secondAttribute="trailing" constant="20" id="Bf6-hF-ycB"/>
+                        <constraint firstItem="oIl-LC-hki" firstAttribute="top" secondItem="uac-u5-ra7" secondAttribute="top" id="IT5-pB-Ru0"/>
+                        <constraint firstAttribute="bottom" secondItem="oIl-LC-hki" secondAttribute="bottom" id="JIZ-jv-Ib8"/>
+                        <constraint firstItem="cQX-89-YFh" firstAttribute="top" secondItem="uac-u5-ra7" secondAttribute="top" id="Odz-Pz-iWD"/>
+                        <constraint firstItem="I8U-eQ-YSb" firstAttribute="leading" secondItem="uac-u5-ra7" secondAttribute="leading" constant="20" id="SvJ-ry-xMo"/>
+                        <constraint firstAttribute="trailing" secondItem="oIl-LC-hki" secondAttribute="trailing" constant="20" id="VJd-qW-Olj"/>
+                        <constraint firstItem="cQX-89-YFh" firstAttribute="leading" secondItem="uac-u5-ra7" secondAttribute="leading" constant="20" id="Vbc-xJ-Es8"/>
+                        <constraint firstAttribute="height" constant="45" id="eMP-0e-rQi"/>
+                        <constraint firstAttribute="bottom" secondItem="I8U-eQ-YSb" secondAttribute="bottom" id="mPh-xD-hZc"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="371-rb-gJV">
                     <rect key="frame" x="0.0" y="106.5" width="414" height="1"/>
                     <color key="backgroundColor" red="0.80000000000000004" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -78,20 +114,6 @@
                         <constraint firstAttribute="height" constant="1" id="6qS-Fj-GIE"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8U-eQ-YSb">
-                    <rect key="frame" x="20" y="811" width="374" height="45"/>
-                    <color key="backgroundColor" name="AppGreenColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="512-xZ-evR"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
-                    <state key="normal" title="Mark order has left">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="btnOrderStatusChange:" destination="-1" eventType="touchUpInside" id="xvr-RI-JcJ"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxL-v9-IyS">
                     <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
                     <subviews>
@@ -127,19 +149,16 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="GQ2-Dd-b3l" secondAttribute="trailing" id="0Ay-KG-pM6"/>
-                <constraint firstItem="kst-Nq-xyz" firstAttribute="trailing" secondItem="oIl-LC-hki" secondAttribute="trailing" constant="20" id="3H0-NS-aHA"/>
                 <constraint firstItem="371-rb-gJV" firstAttribute="leading" secondItem="Rxe-5I-ha8" secondAttribute="leading" id="6Sm-Jo-f1Y"/>
                 <constraint firstItem="YxL-v9-IyS" firstAttribute="height" secondItem="Rxe-5I-ha8" secondAttribute="height" multiplier="0.07" id="88o-U9-vXa"/>
+                <constraint firstItem="kst-Nq-xyz" firstAttribute="trailing" secondItem="uac-u5-ra7" secondAttribute="trailing" id="9ZN-cs-Y0S"/>
+                <constraint firstItem="uac-u5-ra7" firstAttribute="top" secondItem="GQ2-Dd-b3l" secondAttribute="bottom" constant="15" id="EBb-ih-d49"/>
+                <constraint firstAttribute="bottom" secondItem="uac-u5-ra7" secondAttribute="bottom" constant="40" id="F36-zE-Nqg"/>
                 <constraint firstItem="GQ2-Dd-b3l" firstAttribute="leading" secondItem="Rxe-5I-ha8" secondAttribute="leading" id="GXd-Xv-fvE"/>
                 <constraint firstItem="GQ2-Dd-b3l" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="bottom" id="Jac-qr-8Os"/>
                 <constraint firstItem="kst-Nq-xyz" firstAttribute="trailing" secondItem="YxL-v9-IyS" secondAttribute="trailing" id="MKb-iM-aOu"/>
                 <constraint firstAttribute="trailing" secondItem="371-rb-gJV" secondAttribute="trailing" id="NFc-7Z-xup"/>
-                <constraint firstAttribute="trailing" secondItem="I8U-eQ-YSb" secondAttribute="trailing" constant="20" id="O7k-0j-hfX"/>
-                <constraint firstItem="oIl-LC-hki" firstAttribute="leading" secondItem="kst-Nq-xyz" secondAttribute="leading" constant="20" id="SXB-T1-RAi"/>
-                <constraint firstAttribute="bottom" secondItem="I8U-eQ-YSb" secondAttribute="bottom" constant="40" id="Sz7-3o-16p"/>
-                <constraint firstItem="I8U-eQ-YSb" firstAttribute="leading" secondItem="Rxe-5I-ha8" secondAttribute="leading" constant="20" id="Xx4-Gu-dWW"/>
-                <constraint firstItem="I8U-eQ-YSb" firstAttribute="top" secondItem="GQ2-Dd-b3l" secondAttribute="bottom" constant="15" id="hAw-m8-GLO"/>
-                <constraint firstAttribute="bottom" secondItem="oIl-LC-hki" secondAttribute="bottom" constant="40" id="hXO-cR-aRd"/>
+                <constraint firstItem="uac-u5-ra7" firstAttribute="leading" secondItem="kst-Nq-xyz" secondAttribute="leading" id="URE-xG-IaZ"/>
                 <constraint firstItem="YxL-v9-IyS" firstAttribute="leading" secondItem="kst-Nq-xyz" secondAttribute="leading" id="hja-lK-p8l"/>
                 <constraint firstItem="371-rb-gJV" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="bottom" id="l0o-vV-fvH"/>
                 <constraint firstItem="YxL-v9-IyS" firstAttribute="top" secondItem="kst-Nq-xyz" secondAttribute="top" id="qIa-O2-rb9"/>

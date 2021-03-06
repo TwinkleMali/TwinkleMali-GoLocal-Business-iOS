@@ -131,8 +131,7 @@ var IS_UPDATE_POPUP_SEEN = false
 var CURRENT_VERSION = ""
 let APP_NAME = "Go Local First Business"
 let USER_DEFAULTS = UserDefaults.standard
-let DELIVERY_TYPE_COLLECTION = "Collection"
-let DELIVERY_TYPE_DELIVERY = "Delivery"
+
 
 //MARK:- Bottomsheet Title
 let BS_FILTER = "Filter"
@@ -188,3 +187,24 @@ let ORANGE_COLOR = UIColor(red: 255/255, green: 161/255, blue: 89/255, alpha: 1.
 let MainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 let LoginStoryboard = UIStoryboard(name: "Login", bundle: nil)
 let HomeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+
+//MARK:- SET PATHS IN DEFAULTS
+func savePathInUserDefaults(mediaUrl: MediaUrl) {
+    let encoder = JSONEncoder()
+    if let encoded = try? encoder.encode(mediaUrl) {
+        USER_DEFAULTS.set(encoded, forKey: "\(URLTypes(rawValue: mediaUrl.type ?? "")?.rawValue ?? "")_url_key")
+        //USER_DEFAULTS.setValue(user.globalCharacter, forKey: defaultsKey.globalCaracters.rawValue)
+    }
+}
+
+func getURL(forType:URLTypes) -> MediaUrl?{
+    if let savedURL = USER_DEFAULTS.object(forKey: "\(forType.rawValue)_url_key") as? Data {
+        let decoder = JSONDecoder()
+        if let loadedUrl = try? decoder.decode(MediaUrl.self, from: savedURL) {
+            print("____USER LOGGED IN AS : ",loadedUrl.type ?? "UnKNown URL")
+            return loadedUrl
+        }
+        return nil
+    }
+    return nil
+}

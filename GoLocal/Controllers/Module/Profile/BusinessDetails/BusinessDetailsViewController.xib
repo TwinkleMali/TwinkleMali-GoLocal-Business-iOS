@@ -20,6 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessDetailsViewController" customModule="GoLocal" customModuleProvider="target">
             <connections>
+                <outlet property="btnEdit" destination="8qQ-5E-Zcb" id="3Fg-Zf-418"/>
                 <outlet property="navView" destination="YxL-v9-IyS" id="tkp-vF-MwM"/>
                 <outlet property="tableView" destination="GQ2-Dd-b3l" id="dSh-xL-KzS"/>
                 <outlet property="view" destination="Rxe-5I-ha8" id="PDt-zm-NUq"/>
@@ -30,11 +31,18 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="GQ2-Dd-b3l">
-                    <rect key="frame" x="10" y="126.5" width="394" height="680.5"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="GQ2-Dd-b3l">
+                    <rect key="frame" x="10" y="106.5" width="394" height="700.5"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8K6-Iw-iNh">
+                    <rect key="frame" x="0.0" y="106.5" width="414" height="1"/>
+                    <color key="backgroundColor" red="0.80000000000000004" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="94e-Ok-OZQ"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YxL-v9-IyS">
                     <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
                     <subviews>
@@ -80,6 +88,9 @@
                             <integer key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="actionEdit:" destination="-1" eventType="touchUpInside" id="73x-x9-3t0"/>
+                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="kst-Nq-xyz"/>
@@ -90,10 +101,13 @@
                 <constraint firstItem="YxL-v9-IyS" firstAttribute="height" secondItem="Rxe-5I-ha8" secondAttribute="height" multiplier="0.07" id="88o-U9-vXa"/>
                 <constraint firstItem="GQ2-Dd-b3l" firstAttribute="leading" secondItem="Rxe-5I-ha8" secondAttribute="leading" constant="10" id="GXd-Xv-fvE"/>
                 <constraint firstItem="8qQ-5E-Zcb" firstAttribute="top" secondItem="GQ2-Dd-b3l" secondAttribute="bottom" id="ICb-13-uDM"/>
-                <constraint firstItem="GQ2-Dd-b3l" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="bottom" constant="20" id="Jac-qr-8Os"/>
+                <constraint firstItem="GQ2-Dd-b3l" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="bottom" id="Jac-qr-8Os"/>
                 <constraint firstItem="kst-Nq-xyz" firstAttribute="trailing" secondItem="YxL-v9-IyS" secondAttribute="trailing" id="MKb-iM-aOu"/>
                 <constraint firstItem="kst-Nq-xyz" firstAttribute="bottom" secondItem="8qQ-5E-Zcb" secondAttribute="bottom" constant="10" id="W9U-C7-PNR"/>
+                <constraint firstAttribute="trailing" secondItem="8K6-Iw-iNh" secondAttribute="trailing" id="WMv-RT-t8n"/>
+                <constraint firstItem="8K6-Iw-iNh" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="bottom" id="WoS-Go-JrV"/>
                 <constraint firstItem="kst-Nq-xyz" firstAttribute="trailing" secondItem="8qQ-5E-Zcb" secondAttribute="trailing" constant="20" id="fAn-ey-TmL"/>
+                <constraint firstItem="8K6-Iw-iNh" firstAttribute="leading" secondItem="Rxe-5I-ha8" secondAttribute="leading" id="go2-Ly-fBA"/>
                 <constraint firstItem="YxL-v9-IyS" firstAttribute="leading" secondItem="kst-Nq-xyz" secondAttribute="leading" id="hja-lK-p8l"/>
                 <constraint firstItem="YxL-v9-IyS" firstAttribute="top" secondItem="kst-Nq-xyz" secondAttribute="top" id="qIa-O2-rb9"/>
             </constraints>

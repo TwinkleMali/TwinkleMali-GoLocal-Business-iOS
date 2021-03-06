@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OrderRequestViewController: UIViewController, BottomSheetDelegate {
+class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
   
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var navView : UIView!
@@ -23,6 +23,10 @@ class OrderRequestViewController: UIViewController, BottomSheetDelegate {
         self.tableView.delegate = dataSource
         self.tableView.dataSource = dataSource
         self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 5, right: 0)
+        DispatchQueue.global().async {
+            self.getUpdatedUserData()
+        }
+        getUpdatedUserData()
 //        self.navView.addBottomShadow()
         if !USER_DEFAULTS.contains(key: defaultsKey.RejectReasons.rawValue){
         switch APP_DELEGATE?.socketIOHandler?.socket?.status{
@@ -101,7 +105,7 @@ class OrderRequestViewController: UIViewController, BottomSheetDelegate {
     // Accept Order Request Click
     @objc func actionAcceptRequest(_ sender : UIButton) {
            viewModel.setSelectedOrderIndex(index: sender.tag)
-        if viewModel.getOrderRequest(at: sender.tag).orderDetails?.deliveryType == DELIVERY_TYPE_COLLECTION {
+        if viewModel.getOrderRequest(at: sender.tag).orderDetails?.deliveryType == DeliveryType.collection.rawValue {
             let vc = TimeSelectionVC(nibName: "TimeSelectionVC", bundle: .main)
             vc.objOrderRequest = viewModel.getOrderRequest(at: sender.tag)
             self.navigationController?.pushViewController(vc, animated: true)

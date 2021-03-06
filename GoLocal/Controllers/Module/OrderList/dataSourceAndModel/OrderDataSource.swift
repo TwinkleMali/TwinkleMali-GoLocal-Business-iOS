@@ -78,6 +78,7 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
                 }
                 cell.lblDeliveryAddress.text = objOrderDetail.deliveryAddress
                 cell.ratingView.rating = Double(objCustomerDetail.rating ?? 0)
+            
                 cell.lblTime.timeFormat = "mm:ss"
                 cell.lblTime.timerType = MZTimerLabelTypeTimer
                 cell.lblTime.delegate =  self
@@ -122,6 +123,7 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
                 if strStatus == OrderStatus.OrderLeft.rawValue {
                     cell.btnOrderStatus.isHidden = false
                     cell.btnOrderStatus.setTitle("Order has Left Restaurant", for: .normal)
+                    cell.btnOrderStatus.addTarget(self.orderViewController, action: #selector(self.orderViewController?.actionMarkOrderLeft(_:)),for: .touchUpInside)
                 }
                 cell.lblOrderDescription.text = "\(strStatus) on \(date1.toDateString(outputFormat: REQUESTED_TIME_FORMATE) ?? "")"
             }

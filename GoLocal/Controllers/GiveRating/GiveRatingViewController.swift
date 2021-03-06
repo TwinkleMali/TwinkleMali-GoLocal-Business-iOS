@@ -9,8 +9,8 @@ import UIKit
 import Cosmos
 
 protocol GiveRatingViewControllerDelegate {
-    func actioncancel(vc: GiveRatingViewController)
-    func actionSendReview(vc: GiveRatingViewController)
+    func actioncancel()
+    func actionSendReview(strReply : String)
 }
 class GiveRatingViewController: UIViewController {
 
@@ -22,7 +22,6 @@ class GiveRatingViewController: UIViewController {
 //                // Fallback on earlier versions
 //            }
             ratingTextView.layer.borderColor = UIColor.lightGray.cgColor
-//            UIColor.init(hex: "#D0CFD4")?.cgColor
             ratingTextView.layer.borderWidth = 1.0
             ratingTextView.layer.cornerRadius = 5.0
         }
@@ -46,10 +45,13 @@ class GiveRatingViewController: UIViewController {
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var btnSendReview: UIButton!
     var delegateGiveratingViewController: GiveRatingViewControllerDelegate?
-    var index = 0
+    var rating : Double!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ratingView.rating = rating
+//        ratingTextView.text = "Thanks for your valuable time to rate us"
     }
     var vc = UIViewController()
     var blurview = UIView()
@@ -72,7 +74,8 @@ class GiveRatingViewController: UIViewController {
         blurview.removeFromSuperview()
     }
     @IBAction func btnSendReview(_ sender: UIButton) {
-        delegateGiveratingViewController?.actionSendReview(vc: self)
+        hidescanView()
+        delegateGiveratingViewController?.actionSendReview(strReply: ratingTextView.text)       
     }
     
     @IBAction func btnCancel(_ sender: UIButton) {

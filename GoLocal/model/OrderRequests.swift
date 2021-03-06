@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public struct OrderRequests : Codable{
+public struct OrderRequests {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {

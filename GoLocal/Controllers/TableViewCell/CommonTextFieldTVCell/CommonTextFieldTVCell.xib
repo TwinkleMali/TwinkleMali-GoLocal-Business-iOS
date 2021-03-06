@@ -30,7 +30,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="359" height="115"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYi-J2-i73">
-                                <rect key="frame" x="10" y="5" width="37" height="20.5"/>
+                                <rect key="frame" x="10" y="5" width="44" height="20.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -92,7 +92,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="On4-X3-jkF">
-                                                <rect key="frame" x="232" y="0.0" width="107" height="28"/>
+                                                <rect key="frame" x="220" y="0.0" width="119" height="28"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
                                                 <state key="normal" title="Forgot Password?">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -115,6 +115,36 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="eDI-vo-0Fe"/>
                                 </constraints>
                             </stackView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="mN3-bM-YiE">
+                                <rect key="frame" x="10" y="27.5" width="339" height="34"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKg-cK-HmQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="118" height="34"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Delivery" image="icon_radio_select">
+                                            <color key="titleColor" red="0.23273468019999999" green="0.2327727973" blue="0.2327226996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZW-7q-Oug">
+                                        <rect key="frame" x="118" y="0.0" width="137" height="34"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Collection" image="icon_radio_select">
+                                            <color key="titleColor" red="0.23273468019999999" green="0.2327727973" blue="0.2327226996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoO-pO-DVl">
+                                        <rect key="frame" x="255" y="0.0" width="84" height="34"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                                        <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Both" image="icon_radio_select">
+                                            <color key="titleColor" red="0.23273468019999999" green="0.2327727973" blue="0.2327226996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -126,6 +156,9 @@
                             <constraint firstItem="OSY-bz-mcN" firstAttribute="leading" secondItem="oUy-Ci-Jev" secondAttribute="trailing" constant="10" id="Lxv-lS-SCE"/>
                             <constraint firstAttribute="trailing" secondItem="OSY-bz-mcN" secondAttribute="trailing" constant="10" id="Ogx-6F-okZ"/>
                             <constraint firstItem="fYi-J2-i73" firstAttribute="top" secondItem="hoR-Sq-oea" secondAttribute="top" constant="5" id="PUl-Su-ufm"/>
+                            <constraint firstItem="mN3-bM-YiE" firstAttribute="trailing" secondItem="OSY-bz-mcN" secondAttribute="trailing" id="QNR-ue-4UB"/>
+                            <constraint firstItem="mN3-bM-YiE" firstAttribute="bottom" secondItem="OSY-bz-mcN" secondAttribute="bottom" id="R0q-tj-CMV"/>
+                            <constraint firstItem="mN3-bM-YiE" firstAttribute="leading" secondItem="hoR-Sq-oea" secondAttribute="leading" constant="10" id="RM0-Hj-oap"/>
                             <constraint firstItem="VNL-ki-5Bp" firstAttribute="leading" secondItem="oUy-Ci-Jev" secondAttribute="leading" id="Vib-H2-KdZ"/>
                             <constraint firstItem="sXR-LJ-yl2" firstAttribute="bottom" secondItem="OSY-bz-mcN" secondAttribute="bottom" id="ZpG-rV-UjH"/>
                             <constraint firstItem="oUy-Ci-Jev" firstAttribute="top" secondItem="fYi-J2-i73" secondAttribute="bottom" multiplier="33.5:23.5" id="bGU-v3-c6d"/>
@@ -134,6 +167,7 @@
                             <constraint firstItem="VNL-ki-5Bp" firstAttribute="top" secondItem="OSY-bz-mcN" secondAttribute="bottom" id="jTj-yh-K3r"/>
                             <constraint firstItem="OSY-bz-mcN" firstAttribute="centerY" secondItem="oUy-Ci-Jev" secondAttribute="centerY" id="jbV-CD-Eng"/>
                             <constraint firstItem="fYi-J2-i73" firstAttribute="leading" secondItem="hoR-Sq-oea" secondAttribute="leading" constant="10" id="kT9-c5-7FT"/>
+                            <constraint firstItem="mN3-bM-YiE" firstAttribute="top" secondItem="OSY-bz-mcN" secondAttribute="top" id="uTR-qv-mpw"/>
                             <constraint firstAttribute="trailing" secondItem="sXR-LJ-yl2" secondAttribute="trailing" constant="10" id="vBM-8j-ib5"/>
                         </constraints>
                     </view>
@@ -154,6 +188,10 @@
                 <outlet property="imgIcon" destination="oUy-Ci-Jev" id="WxQ-dD-auu"/>
                 <outlet property="imgIconWidthConstraint" destination="Jyc-La-nUP" id="JBe-H0-7rg"/>
                 <outlet property="lblTitle" destination="fYi-J2-i73" id="dZs-GU-3r7"/>
+                <outlet property="rdb1" destination="vKg-cK-HmQ" id="NWx-ZV-QLS"/>
+                <outlet property="rdb2" destination="PZW-7q-Oug" id="fhS-bg-joQ"/>
+                <outlet property="rdb3" destination="EoO-pO-DVl" id="pE0-mU-Lef"/>
+                <outlet property="stviewRadio" destination="mN3-bM-YiE" id="mJp-BA-2ED"/>
                 <outlet property="textField" destination="OSY-bz-mcN" id="nLa-Mn-qaA"/>
             </connections>
             <point key="canvasLocation" x="160.1449275362319" y="109.82142857142857"/>
@@ -165,6 +203,7 @@
         <image name="icon_checkbox" width="20.5" height="19.5"/>
         <image name="icon_checkbox_checked" width="20.5" height="19.5"/>
         <image name="icon_email" width="17.5" height="12"/>
+        <image name="icon_radio_select" width="26" height="26"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

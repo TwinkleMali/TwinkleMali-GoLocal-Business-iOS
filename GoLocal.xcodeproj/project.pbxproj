@@ -81,6 +81,8 @@
 		005DB99125D3B19700B7766D /* Addons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005DB98925D3B19700B7766D /* Addons.swift */; };
 		005DB99225D3B19700B7766D /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005DB98A25D3B19700B7766D /* Products.swift */; };
 		005F87F025D1588C000A475A /* SocketIOHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F87EF25D1588C000A475A /* SocketIOHandler.swift */; };
+		005FE44925F2656E0093483B /* ImageSliderTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005FE44825F2656E0093483B /* ImageSliderTVCell.xib */; };
+		005FE44B25F269760093483B /* MediaUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FE44A25F269760093483B /* MediaUrl.swift */; };
 		0061591225CAB71000F7ED1E /* CalanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061591025CAB70F00F7ED1E /* CalanderViewController.swift */; };
 		0061591325CAB71000F7ED1E /* CalanderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0061591125CAB70F00F7ED1E /* CalanderViewController.xib */; };
 		0061592225CAB76F00F7ED1E /* VACalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061591525CAB76F00F7ED1E /* VACalendar.swift */; };
@@ -147,12 +149,18 @@
 		00A4698425C965D2008B7671 /* SelectDriverTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00A4697E25C965D2008B7671 /* SelectDriverTVCell.xib */; };
 		00A4698525C965D2008B7671 /* DriverSeleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A4697F25C965D2008B7671 /* DriverSeleListViewController.swift */; };
 		00A58FE425EE61E200F31118 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A58FE325EE61E200F31118 /* ChangePasswordViewModel.swift */; };
+		00B0922A25F0BC10008DAC82 /* ReviewReplies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B0922925F0BC10008DAC82 /* ReviewReplies.swift */; };
 		00B98D2925BEDD6700538651 /* NotificationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B98D2825BEDD6700538651 /* NotificationDataSource.swift */; };
 		00B98D2D25BEDEA500538651 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B98D2C25BEDEA500538651 /* NotificationViewModel.swift */; };
 		00B98D3225BEDF5C00538651 /* NotificationTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B98D3025BEDF5B00538651 /* NotificationTVCell.swift */; };
 		00B98D3325BEDF5C00538651 /* NotificationTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B98D3125BEDF5B00538651 /* NotificationTVCell.xib */; };
 		00B98D3925BEF2C300538651 /* GiveRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B98D3725BEF2C300538651 /* GiveRatingViewController.swift */; };
 		00B98D3A25BEF2C300538651 /* GiveRatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B98D3825BEF2C300538651 /* GiveRatingViewController.xib */; };
+		00C2F48025F2038B00032EBE /* SliderImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F47D25F2038B00032EBE /* SliderImages.swift */; };
+		00C2F48125F2038B00032EBE /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F47E25F2038B00032EBE /* Schedule.swift */; };
+		00C2F48225F2038B00032EBE /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2F47F25F2038B00032EBE /* Categories.swift */; };
+		00CB992A25F0F02A00161590 /* DriverLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CB992825F0F02A00161590 /* DriverLocationViewController.swift */; };
+		00CB992B25F0F02A00161590 /* DriverLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00CB992925F0F02A00161590 /* DriverLocationViewController.xib */; };
 		00D1FB0225DBD06F00EA63DC /* TimeSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D1FB0125DBD06F00EA63DC /* TimeSelectionVC.swift */; };
 		00D1FB0425DBD08500EA63DC /* TimeSelectionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D1FB0325DBD08500EA63DC /* TimeSelectionVC.xib */; };
 		00DE283E25DA90AC00B1EC94 /* RejectReasons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00DE283D25DA90AC00B1EC94 /* RejectReasons.swift */; };
@@ -321,6 +329,8 @@
 		005DB98925D3B19700B7766D /* Addons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Addons.swift; sourceTree = "<group>"; };
 		005DB98A25D3B19700B7766D /* Products.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		005F87EF25D1588C000A475A /* SocketIOHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOHandler.swift; sourceTree = "<group>"; };
+		005FE44825F2656E0093483B /* ImageSliderTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSliderTVCell.xib; sourceTree = "<group>"; };
+		005FE44A25F269760093483B /* MediaUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaUrl.swift; sourceTree = "<group>"; };
 		0061591025CAB70F00F7ED1E /* CalanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalanderViewController.swift; sourceTree = "<group>"; };
 		0061591125CAB70F00F7ED1E /* CalanderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalanderViewController.xib; sourceTree = "<group>"; };
 		0061591525CAB76F00F7ED1E /* VACalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VACalendar.swift; sourceTree = "<group>"; };
@@ -387,12 +397,18 @@
 		00A4697E25C965D2008B7671 /* SelectDriverTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectDriverTVCell.xib; sourceTree = "<group>"; };
 		00A4697F25C965D2008B7671 /* DriverSeleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverSeleListViewController.swift; sourceTree = "<group>"; };
 		00A58FE325EE61E200F31118 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		00B0922925F0BC10008DAC82 /* ReviewReplies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewReplies.swift; sourceTree = "<group>"; };
 		00B98D2825BEDD6700538651 /* NotificationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDataSource.swift; sourceTree = "<group>"; };
 		00B98D2C25BEDEA500538651 /* NotificationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		00B98D3025BEDF5B00538651 /* NotificationTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTVCell.swift; sourceTree = "<group>"; };
 		00B98D3125BEDF5B00538651 /* NotificationTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationTVCell.xib; sourceTree = "<group>"; };
 		00B98D3725BEF2C300538651 /* GiveRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiveRatingViewController.swift; sourceTree = "<group>"; };
 		00B98D3825BEF2C300538651 /* GiveRatingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GiveRatingViewController.xib; sourceTree = "<group>"; };
+		00C2F47D25F2038B00032EBE /* SliderImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderImages.swift; sourceTree = "<group>"; };
+		00C2F47E25F2038B00032EBE /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		00C2F47F25F2038B00032EBE /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
+		00CB992825F0F02A00161590 /* DriverLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverLocationViewController.swift; sourceTree = "<group>"; };
+		00CB992925F0F02A00161590 /* DriverLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DriverLocationViewController.xib; sourceTree = "<group>"; };
 		00D1FB0125DBD06F00EA63DC /* TimeSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionVC.swift; sourceTree = "<group>"; };
 		00D1FB0325DBD08500EA63DC /* TimeSelectionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeSelectionVC.xib; sourceTree = "<group>"; };
 		00DE283D25DA90AC00B1EC94 /* RejectReasons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RejectReasons.swift; sourceTree = "<group>"; };
@@ -1111,6 +1127,15 @@
 			path = GiveRating;
 			sourceTree = "<group>";
 		};
+		00CB992725F0F02A00161590 /* DriverLocation */ = {
+			isa = PBXGroup;
+			children = (
+				00CB992825F0F02A00161590 /* DriverLocationViewController.swift */,
+				00CB992925F0F02A00161590 /* DriverLocationViewController.xib */,
+			);
+			path = DriverLocation;
+			sourceTree = "<group>";
+		};
 		00D1FB0025DBD03800EA63DC /* TimeSelection */ = {
 			isa = PBXGroup;
 			children = (
@@ -1260,6 +1285,7 @@
 				00F0664025C82BEC00BAB8E3 /* BussinessImageCVCell.xib */,
 				00F0664425C82CE900BAB8E3 /* BussinessImageCVCell.swift */,
 				00A4697425C950BD008B7671 /* OpenCloseTimeTVCell.xib */,
+				005FE44825F2656E0093483B /* ImageSliderTVCell.xib */,
 			);
 			path = BussinessImageCVCell;
 			sourceTree = "<group>";
@@ -1285,6 +1311,7 @@
 		46595040258B3217001D8CC0 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				00CB992725F0F02A00161590 /* DriverLocation */,
 				00F16F2325E7ADA00078C2F1 /* DeliveryRoute */,
 				0020282E25DE820F008E0E2E /* DriversStatus */,
 				00D1FB0025DBD03800EA63DC /* TimeSelection */,
@@ -1376,6 +1403,11 @@
 		46CDA38D2589BB430089105D /* model */ = {
 			isa = PBXGroup;
 			children = (
+				005FE44A25F269760093483B /* MediaUrl.swift */,
+				00C2F47F25F2038B00032EBE /* Categories.swift */,
+				00C2F47E25F2038B00032EBE /* Schedule.swift */,
+				00C2F47D25F2038B00032EBE /* SliderImages.swift */,
+				00B0922925F0BC10008DAC82 /* ReviewReplies.swift */,
 				007B98AA25EFC2B800891839 /* RatingReviews.swift */,
 				007B98A825EF998100891839 /* Notifications.swift */,
 				0043A2FC25E0D3BD00A74E08 /* OrderDetails.swift */,
@@ -1681,12 +1713,14 @@
 				00F065B225C42E4D00BAB8E3 /* BottomSheetCell.xib in Resources */,
 				00F16F7725E8C97B0078C2F1 /* DeliveryRouteVC.xib in Resources */,
 				00F065DC25C5494F00BAB8E3 /* PaymentOptionTVCell.xib in Resources */,
+				005FE44925F2656E0093483B /* ImageSliderTVCell.xib in Resources */,
 				0099D94625C1717700383466 /* OptionViewController.xib in Resources */,
 				46BBFE78258BA2DC0088CBB9 /* ForgotPasswordViewController.xib in Resources */,
 				00A4698425C965D2008B7671 /* SelectDriverTVCell.xib in Resources */,
 				00A4697525C950BD008B7671 /* OpenCloseTimeTVCell.xib in Resources */,
 				006D7F7E25B5B9F80068C598 /* OrderRequestViewController.xib in Resources */,
 				0019F61525B9904E005139F4 /* SingleCategoryTVCell.xib in Resources */,
+				00CB992B25F0F02A00161590 /* DriverLocationViewController.xib in Resources */,
 				0036BB6A25BAE87F00FFCC5E /* NotificationsViewController.xib in Resources */,
 				00084C8F25C2B46100758ADA /* PastOrdersTVCell.xib in Resources */,
 				46F7DA102598623100923A08 /* MainTabBarController.xib in Resources */,
@@ -1795,6 +1829,7 @@
 				46CDA3BB2589CF380089105D /* JSON+Extensions.swift in Sources */,
 				0089110C25B1AE4F00C9125A /* Struct.swift in Sources */,
 				0036BB5525BAE87F00FFCC5E /* AddBankAccountDataSource.swift in Sources */,
+				00B0922A25F0BC10008DAC82 /* ReviewReplies.swift in Sources */,
 				0061592625CAB76F00F7ED1E /* VADayView.swift in Sources */,
 				B58B75FC25A5D5F600446FB7 /* GenericUtils.swift in Sources */,
 				00A4698225C965D2008B7671 /* DriverSeleListViewModel.swift in Sources */,
@@ -1815,6 +1850,7 @@
 				005DB98E25D3B19700B7766D /* BillingDetails.swift in Sources */,
 				006D7F7525B5B8870068C598 /* DriversListViewController.swift in Sources */,
 				0061592C25CAB76F00F7ED1E /* VAWeek.swift in Sources */,
+				005FE44B25F269760093483B /* MediaUrl.swift in Sources */,
 				46CDA3B82589CF380089105D /* UITextField+Extensions.swift in Sources */,
 				00B98D2925BEDD6700538651 /* NotificationDataSource.swift in Sources */,
 				005DB98C25D3B19700B7766D /* SelectedProducts.swift in Sources */,
@@ -1841,6 +1877,7 @@
 				0020285025DE8B99008E0E2E /* GoLocalDriverTVCell.swift in Sources */,
 				00F0661025C7DE3100BAB8E3 /* ConfirmAmountAlert.swift in Sources */,
 				00F065A325C407B600BAB8E3 /* OrderDetailsViewModel.swift in Sources */,
+				00C2F48225F2038B00032EBE /* Categories.swift in Sources */,
 				005DB98B25D3B19700B7766D /* ShopDetail.swift in Sources */,
 				00F0662625C7F92700BAB8E3 /* OrderDetailsTVCell.swift in Sources */,
 				006D7F7F25B5B9F80068C598 /* OrderRequestViewController.swift in Sources */,
@@ -1906,8 +1943,10 @@
 				0019F61025B9904E005139F4 /* CategoryListViewDataSource.swift in Sources */,
 				46CDA3D42589D0330089105D /* CustomDesignSegment + Helper.swift in Sources */,
 				00F065A225C407B600BAB8E3 /* OrderDetailsDataSource.swift in Sources */,
+				00CB992A25F0F02A00161590 /* DriverLocationViewController.swift in Sources */,
 				0019F61425B9904E005139F4 /* SingleCategoryTVCell.swift in Sources */,
 				0089110925B1AE4800C9125A /* FAShimmerView.swift in Sources */,
+				00C2F48125F2038B00032EBE /* Schedule.swift in Sources */,
 				46BBFE79258BA2DC0088CBB9 /* ForgotPasswordViewModel.swift in Sources */,
 				46595044258B3237001D8CC0 /* LoginViewController.swift in Sources */,
 				00A58FE425EE61E200F31118 /* ChangePasswordViewModel.swift in Sources */,
@@ -1943,6 +1982,7 @@
 				46CDA3D52589D0330089105D /* AnimationManager.swift in Sources */,
 				00F0659A25C3CE5B00BAB8E3 /* OrderRequestViewModel.swift in Sources */,
 				0089111825B1AE6200C9125A /* APIHelper.swift in Sources */,
+				00C2F48025F2038B00032EBE /* SliderImages.swift in Sources */,
 				0025339F25D50D4D00A21776 /* BusinessDrivers.swift in Sources */,
 				0061593425CACC5000F7ED1E /* SingleMonthCVCell.swift in Sources */,
 				0099D95225C194C900383466 /* OrderViewModel.swift in Sources */,
@@ -2095,9 +2135,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NUV8D2659N;
 				INFOPLIST_FILE = GoLocal/SupportingFiles/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2107,7 +2147,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.golocalfirst.businessapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dev;
+				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dis;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2122,7 +2162,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NUV8D2659N;
 				INFOPLIST_FILE = GoLocal/SupportingFiles/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

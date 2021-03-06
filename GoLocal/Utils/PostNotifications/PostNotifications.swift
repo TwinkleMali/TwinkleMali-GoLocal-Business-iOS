@@ -32,5 +32,6 @@ enum notificationCenterKeys : String {
     case driver_availibility_change_ack = "driver_availibility_change_ack"
     case changeTakeawayOrderStatus = "changeTakeawayOrderStatus"
     case getSingleOrderDetails = "getSingleOrderDetails"
+    case updateDriverLocation = "updateDriverLocation"
   
 }

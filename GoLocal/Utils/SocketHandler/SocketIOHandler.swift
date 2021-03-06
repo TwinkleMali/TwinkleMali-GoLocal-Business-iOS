@@ -88,7 +88,7 @@ class SocketIOHandler: NSObject {
             }
         }
         socket?.connect()
-        print(socket?.status)
+//        print(socket?.status)
     }
     func callFunctionsAfterConnection()  {
         if(USER_DETAILS != nil /* && !isJoinSocket*/){
@@ -256,6 +256,23 @@ class SocketIOHandler: NSObject {
             print(result)
         })
     }
+    
+    //MARK: - START DRIVER LOCATION UPDATE
+    func StartDriverLocationUpdate(dic : [String : Any])
+    {
+        socket?.emitWithAck(API_SOCKET_START_DRIVER_LOCATION_UPDATE, dic).timingOut(after: 0, callback: { (result) in
+                   print(result)
+                    //NotificationCenter.default.post(name: NSNotification.Name("NewOrder"), object: nil, userInfo: result[0] as? [AnyHashable : Any])
+               })
+    }
+    //MARK: - STOP DRIVER LOCATION UPDATE
+    func StopDriverLocationUpdate(dic : [String : Any])
+      {
+          socket?.emitWithAck(API_SOCKET_STOP_DRIVER_LOCATION_UPDATE, dic).timingOut(after: 0, callback: { (result) in
+                     print(result)
+                      //NotificationCenter.default.post(name: NSNotification.Name("NewOrder"), object: nil, userInfo: result[0] as? [AnyHashable : Any])
+                 })
+      }
         
     //MARK:- EVENTS
     func addHandlers() {
@@ -307,6 +324,15 @@ class SocketIOHandler: NSObject {
         //EVENT FOR CHANGE TAKEAWAY ORDER STATUS
         socket?.on(API_ORDER_STATUS_CHANGE_ACK, callback: { (data, ack) in
             print("EVENT FOR API_ORDER_STATUS_CHANGE_ACK")
+        })
+        
+        //MARK:- DRIVER LOCATION UPDATE
+        socket?.on(API_SOCKET_DRIVER_LOCATION_CHANGED, callback: { (data, ack) in
+            if let dict = data[0] as? [String : Any] {
+                //POST NOTIFICATION
+                //APP_DELEGATE.scheduleNotification(notificationType: .driverLocationUpdated)
+                postNotification(withName: notificationCenterKeys.updateDriverLocation.rawValue, userInfo: dict)
+            }
         })
         
         //        //EVENT FOR DRIVER AVAIALBLITY CHANGE ACK

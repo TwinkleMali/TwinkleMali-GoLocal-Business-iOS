@@ -22,13 +22,13 @@ class RatingViewController: BaseViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var offset = 0
     var isLoadMore:Bool = false
+    var selRating : RatingReviews!
     
     override func viewDidLoad() {
         super.viewDidLoad()        
         dataSource = RatingDataSource(tableView: tableView, viewModel: viewModel, viewController: self)
         self.tableView.delegate = dataSource
         self.tableView.dataSource = dataSource
-        self.navView.addBottomShadow()
         isLoader = true
         getRatingReviews(offset: offset)
     }
@@ -44,21 +44,19 @@ class RatingViewController: BaseViewController {
     }
     
     @objc func actionReplayToRating(_ sender: UIButton) {
+        selRating = viewModel.getRatings(at: sender.tag)
         giveRatingView = GiveRatingViewController(nibName: "GiveRatingViewController", bundle: nil)
-        giveRatingView?.index = sender.tag
+        giveRatingView?.rating = Double(selRating.rating ?? 0)
         giveRatingView?.delegateGiveratingViewController = self
         giveRatingView?.showScanView(viewDisplay: self.view)
-       
     }
 }
+
 extension RatingViewController: GiveRatingViewControllerDelegate{
-    func actioncancel(vc: GiveRatingViewController) {
-        vc.hidescanView()
+    func actioncancel() {
     }
     
-    func actionSendReview(vc: GiveRatingViewController) {
-        vc.hidescanView()
-        viewModel.setReplayGiven(value: true, at: vc.index)
-        tableView.reloadData()
+    func actionSendReview(strReply: String) {
+        replyToRatingReview(strReply: strReply, reviewId: selRating.id ?? 0)
     }
 }

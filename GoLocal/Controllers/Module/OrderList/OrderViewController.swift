@@ -145,10 +145,21 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     
     // Order on map Click
     @objc func actionMarkOrderLeft(_ sender : UIButton) {
-        let vc = OrderDetailsViewController(nibName: "OrderDetailsViewController", bundle: .main)
-        vc.objOrder = viewModel.getOrder(at: sender.tag, orderType: selOrder)
-        self.navigationController?.pushViewController(vc, animated: true)
+        if let driver =  viewModel.getOrder(at: sender.tag, orderType: selOrder).driverDetails {
+            let vc = DriverLocationViewController.loadFromNib()
+            vc.driverDetails = driver
+            vc.orderId = viewModel.getOrder(at: sender.tag, orderType: selOrder).id ?? 0
+            vc.driverLat = driver.latitude ?? "21.1205"
+            vc.driverLong = driver.longitude ?? "72.7431"
+            vc.deliveryLatitude = viewModel.getOrder(at: sender.tag, orderType: selOrder).deliveryLatitude ?? ""
+            vc.deliveryLongitude = viewModel.getOrder(at: sender.tag, orderType: selOrder).deliveryLongitude ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
+//        let vc = OrderDetailsViewController(nibName: "OrderDetailsViewController", bundle: .main)
+//        vc.objOrder = viewModel.getOrder(at: sender.tag, orderType: selOrder)
+//        self.navigationController?.pushViewController(vc, animated: true)
+    
     
     func didSelectOption(selValue: String) {
         if selValue == "0"{

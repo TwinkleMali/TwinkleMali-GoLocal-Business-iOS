@@ -11,6 +11,7 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navView: UIView!
+    @IBOutlet weak var lblOrderStatus: UILabel!
     @IBOutlet weak var stackView: UIStackView!
     var dataSource: OrderDetailsDataSource?
     var viewModel = OrderDetailsViewModel()
@@ -18,8 +19,8 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     var objOrderRequest : OrderRequests!
     var objOrder : OrderDetails!
     var orderId : Int!
-    @IBOutlet var btnHeight : NSLayoutConstraint!
-    @IBOutlet var stHeight : NSLayoutConstraint!
+//    @IBOutlet var btnHeight : NSLayoutConstraint!
+//    @IBOutlet var stHeight : NSLayoutConstraint!
     @IBOutlet weak var btnMarkOrderLeft: UIButton!{
         didSet{
             btnMarkOrderLeft.layer.cornerRadius = 8
@@ -40,6 +41,7 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblOrderStatus.isHidden = true
         self.tableView.isHidden = true
         dataSource = OrderDetailsDataSource(tableView: tableView, viewModel: viewModel, viewController: self, isRequest: isOrderRequest)
         self.tableView.delegate = dataSource
@@ -54,6 +56,7 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
         }
         
         if objOrder != nil{
+           
             self.viewModel.setOrderDetail(objOrder: objOrder)
             socketGetOrderDetail(strOrder: "\(objOrder.id ?? 0)")
             setupView()
@@ -66,26 +69,34 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     }
     
     func setupView() {
-        btnHeight.constant = 45
+    
         if isOrderRequest{
             btnMarkOrderLeft.isHidden = true
             btnMarkOrderLeft.isUserInteractionEnabled = false
-            stHeight.constant = 45
+           
             stackView.isHidden = false
         }else {
-            stHeight.constant = 0
+           
             btnMarkOrderLeft.isUserInteractionEnabled = true
             btnMarkOrderLeft.isHidden = false
             stackView.isHidden = true
-            if objOrder.deliveryType == DELIVERY_TYPE_COLLECTION && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
+            if objOrder.deliveryType == DeliveryType.collection.rawValue && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
                 btnMarkOrderLeft.setTitle("Mark Order as Completed", for: .normal)
-            }else if objOrder.deliveryType == DELIVERY_TYPE_DELIVERY && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
+            }else if objOrder.deliveryType == DeliveryType.delivery.rawValue && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
                 btnMarkOrderLeft.setTitle("Mark Order has left", for: .normal)
             }else {
+                lblOrderStatus.isHidden = false
                 btnMarkOrderLeft.isHidden = true
-                btnHeight.constant = 0
+              
+                if objOrder.orderStatus == OrderStatus.OrderLeft.rawValue {
+                    lblOrderStatus.text = "\(objOrder.orderStatus.asStringOrEmpty())"
+                }else if objOrder.orderStatus == OrderStatus.Cancelled.rawValue {
+                    lblOrderStatus.text = "Order \(objOrder.orderStatus.asStringOrEmpty())"
+                }else if objOrder.orderStatus == OrderStatus.AcceptedByShop.rawValue{
+                    lblOrderStatus.text = "Driver Not Assigned yet."
+                }
             }
-        }
+        }       
         self.tableView.reloadData()
         self.tableView.isHidden = false
     }
@@ -148,7 +159,7 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     
     // Accept Order Request Click
     @IBAction func btnAcceptClick(_ sender: UIButton) {
-        if objOrderRequest.orderDetails?.deliveryType == DELIVERY_TYPE_COLLECTION {
+        if objOrderRequest.orderDetails?.deliveryType == DeliveryType.collection.rawValue {
             let vc = TimeSelectionVC(nibName: "TimeSelectionVC", bundle: .main)
             vc.objOrderRequest = objOrderRequest
             self.navigationController?.pushViewController(vc, animated: true)

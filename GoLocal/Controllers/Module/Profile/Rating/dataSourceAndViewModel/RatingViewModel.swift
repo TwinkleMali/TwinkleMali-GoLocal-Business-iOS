@@ -36,8 +36,14 @@ extension RatingViewModel{
         }
     }
 
-    func getNotification(at : Int) -> RatingReviews {
+    func getRatings(at : Int) -> RatingReviews {
         return arrRatings[at]
+    }
+    
+    func removeReview(reviewId : Int){
+        if let index = self.arrRatings.firstIndex(where: {$0.id == reviewId}) {
+            self.arrRatings.remove(at: index)
+        }
     }
 }
 

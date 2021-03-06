@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DriverLocationViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="btnBack" destination="Wcl-lz-HtN" id="ONE-Ef-XP5"/>
+                <outlet property="driverImageView" destination="dQv-UY-PFV" id="bq6-Ch-VT1"/>
+                <outlet property="lblDriverName" destination="PKx-p8-NQc" id="ebj-ar-pIv"/>
+                <outlet property="lblDriverTripDetails" destination="g4Y-n4-6ch" id="0g5-wQ-wtr"/>
+                <outlet property="lblTitle" destination="BuZ-vi-30L" id="Q8v-DX-elu"/>
+                <outlet property="mapView" destination="x7J-jc-tNK" id="83y-RE-3nm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewDriverDetails" destination="Wf5-Cb-nAU" id="WqR-5o-qK0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7J-jc-tNK" customClass="GMSMapView">
+                    <rect key="frame" x="0.0" y="94" width="414" height="802"/>
+                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wf5-Cb-nAU" customClass="CardView" customModule="GoLocal" customModuleProvider="target">
+                    <rect key="frame" x="20" y="762" width="374" height="80"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chat_user_icon" translatesAutoresizingMaskIntoConstraints="NO" id="dQv-UY-PFV">
+                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="dQv-UY-PFV" secondAttribute="height" multiplier="1:1" id="h7D-GP-BJI"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jagjeetsingh Labana" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKx-p8-NQc">
+                            <rect key="frame" x="82" y="16" width="284" height="23.5"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="19"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Runnig Trip : 25Mins(7.5 km)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4Y-n4-6ch">
+                            <rect key="frame" x="82" y="44.5" width="199.5" height="17.5"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="g4Y-n4-6ch" firstAttribute="top" secondItem="PKx-p8-NQc" secondAttribute="bottom" constant="5" id="Iuu-b3-JTM"/>
+                        <constraint firstItem="g4Y-n4-6ch" firstAttribute="leading" secondItem="dQv-UY-PFV" secondAttribute="trailing" constant="10" id="JcN-uq-YKf"/>
+                        <constraint firstItem="dQv-UY-PFV" firstAttribute="top" secondItem="Wf5-Cb-nAU" secondAttribute="top" constant="8" id="QYg-47-esu"/>
+                        <constraint firstAttribute="trailing" secondItem="PKx-p8-NQc" secondAttribute="trailing" constant="8" id="WkW-sV-eJm"/>
+                        <constraint firstItem="dQv-UY-PFV" firstAttribute="leading" secondItem="Wf5-Cb-nAU" secondAttribute="leading" constant="8" id="Xy7-eh-Hyf"/>
+                        <constraint firstAttribute="height" constant="80" id="Y6M-bT-DzD"/>
+                        <constraint firstItem="PKx-p8-NQc" firstAttribute="leading" secondItem="dQv-UY-PFV" secondAttribute="trailing" constant="10" id="f5u-vP-JK4"/>
+                        <constraint firstAttribute="bottom" secondItem="dQv-UY-PFV" secondAttribute="bottom" constant="8" id="lGJ-h6-xxq"/>
+                        <constraint firstItem="PKx-p8-NQc" firstAttribute="top" secondItem="dQv-UY-PFV" secondAttribute="top" constant="8" id="miJ-iW-HOh"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetHeight">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetWidth">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXA-ep-EYW" customClass="CardView" customModule="GoLocal" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcl-lz-HtN">
+                            <rect key="frame" x="0.0" y="44" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Wcl-lz-HtN" secondAttribute="height" multiplier="1:1" id="Np3-v1-y2I"/>
+                            </constraints>
+                            <state key="normal" image="icon_back_b"/>
+                            <connections>
+                                <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="87w-I6-Fyf"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Route" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BuZ-vi-30L">
+                            <rect key="frame" x="142.5" y="47" width="129" height="47"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Wcl-lz-HtN" secondAttribute="bottom" id="V4F-2Z-k4B"/>
+                        <constraint firstItem="BuZ-vi-30L" firstAttribute="centerX" secondItem="WXA-ep-EYW" secondAttribute="centerX" id="nyY-AU-jeE"/>
+                        <constraint firstAttribute="bottom" secondItem="BuZ-vi-30L" secondAttribute="bottom" id="pci-QO-qsr"/>
+                        <constraint firstItem="Wcl-lz-HtN" firstAttribute="leading" secondItem="WXA-ep-EYW" secondAttribute="leading" id="s13-ny-Sw7"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetHeight">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WXA-ep-EYW" secondAttribute="trailing" id="5Jd-MQ-axJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Wf5-Cb-nAU" secondAttribute="bottom" constant="20" id="5Oq-B9-ytk"/>
+                <constraint firstItem="WXA-ep-EYW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="A7s-w1-ZG1"/>
+                <constraint firstItem="Wf5-Cb-nAU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="IFT-0a-DeW"/>
+                <constraint firstItem="BuZ-vi-30L" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="3" id="Mua-3I-InM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="WXA-ep-EYW" secondAttribute="bottom" constant="-50" id="PPy-Rl-zPW"/>
+                <constraint firstItem="WXA-ep-EYW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XNJ-my-aqf"/>
+                <constraint firstItem="Wcl-lz-HtN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="dkN-yz-tIY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wf5-Cb-nAU" secondAttribute="trailing" constant="20" id="gPg-Qq-LQS"/>
+                <constraint firstItem="x7J-jc-tNK" firstAttribute="top" secondItem="WXA-ep-EYW" secondAttribute="bottom" id="iSG-dG-uKl"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="x7J-jc-tNK" secondAttribute="trailing" id="nb6-GX-5ef"/>
+                <constraint firstAttribute="bottom" secondItem="x7J-jc-tNK" secondAttribute="bottom" id="wFi-ca-Y71"/>
+                <constraint firstItem="x7J-jc-tNK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yxI-Gh-c6u"/>
+            </constraints>
+            <point key="canvasLocation" x="-59.420289855072468" y="91.741071428571431"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chat_user_icon" width="64" height="64"/>
+        <image name="icon_back_b" width="25" height="20.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

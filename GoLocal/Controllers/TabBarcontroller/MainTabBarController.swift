@@ -12,7 +12,8 @@ class MainTabBarController: UITabBarController {
     var currentRole : UserRole = .Owner
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()       
+        setupUI()
+        
     }
     
     func setupUI() {

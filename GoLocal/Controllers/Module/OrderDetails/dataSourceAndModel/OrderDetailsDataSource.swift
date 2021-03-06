@@ -270,8 +270,24 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
         case OrderDetailsField.deliveryPerson.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailsTVCell") as? OrderDetailsTVCell{
                 cell.selectionStyle = .none
-                cell.lblTitle.text = "Delivery Person"
-                cell.lblValue.text = "Person name"
+                if let driver =  viewModel.getOrderDetail().driverDetails {
+                    cell.lblTitle.text = "Delivery Person"
+                    var strname : String = ""
+                    if driver.name != nil && driver.name!.length > 0 {
+                        strname = driver.name.asStringOrEmpty()
+                        if driver.lname != nil && driver.lname!.length > 0{
+                            strname = "\(strname) \(driver.lname ?? "")"
+                        }
+                    }else if driver.username != nil && driver.username!.length > 0{
+                        strname = "\(driver.username ?? "")"
+                    }else {
+                        let name = driver.email?.components(separatedBy: "@")
+                        strname = "\(name?[0] ?? "")"
+                    }
+                    
+//                    cell.lblUserName.text = "\(strname)"
+                    cell.lblValue.text = "\(strname)"
+                }                
                 return cell
             }
         

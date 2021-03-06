@@ -36,7 +36,7 @@
                     <color key="textColor" name="DarkGreyColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RQh-yG-qMO">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RQh-yG-qMO">
                     <rect key="frame" x="10" y="126.5" width="394" height="735.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -54,6 +54,13 @@
                         <constraint firstAttribute="height" constant="44" id="CVN-4t-X7v"/>
                         <constraint firstItem="ZjT-pO-ZWE" firstAttribute="centerY" secondItem="rZh-5v-b6h" secondAttribute="centerY" id="Vp7-37-2YO"/>
                         <constraint firstItem="ZjT-pO-ZWE" firstAttribute="centerX" secondItem="rZh-5v-b6h" secondAttribute="centerX" id="ceN-Ie-RMR"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHg-Zg-pEW">
+                    <rect key="frame" x="0.0" y="106.5" width="414" height="1"/>
+                    <color key="backgroundColor" red="0.80000000000000004" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="qdK-PP-kKh"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6rm-4U-gc8">
@@ -97,11 +104,14 @@
                 <constraint firstItem="l86-a9-Ojv" firstAttribute="trailing" secondItem="rZh-5v-b6h" secondAttribute="trailing" constant="15" id="HFX-7Z-zqK"/>
                 <constraint firstItem="6rm-4U-gc8" firstAttribute="top" secondItem="l86-a9-Ojv" secondAttribute="top" id="KuD-sj-KF9"/>
                 <constraint firstItem="BFZ-bz-7tT" firstAttribute="centerY" secondItem="bOG-aS-tgG" secondAttribute="centerY" id="NjL-nM-TCb"/>
+                <constraint firstAttribute="trailing" secondItem="oHg-Zg-pEW" secondAttribute="trailing" id="bKh-BS-LXc"/>
                 <constraint firstItem="RQh-yG-qMO" firstAttribute="top" secondItem="6rm-4U-gc8" secondAttribute="bottom" constant="20" id="c1F-J8-V3k"/>
                 <constraint firstItem="l86-a9-Ojv" firstAttribute="bottom" secondItem="RQh-yG-qMO" secondAttribute="bottom" id="cRm-Cg-loz"/>
                 <constraint firstAttribute="trailing" secondItem="RQh-yG-qMO" secondAttribute="trailing" constant="10" id="dqZ-MT-lae"/>
+                <constraint firstItem="oHg-Zg-pEW" firstAttribute="leading" secondItem="bOG-aS-tgG" secondAttribute="leading" id="gP7-IK-YVd"/>
                 <constraint firstItem="rZh-5v-b6h" firstAttribute="leading" secondItem="l86-a9-Ojv" secondAttribute="leading" constant="15" id="jTw-1B-a9y"/>
                 <constraint firstItem="6rm-4U-gc8" firstAttribute="height" secondItem="bOG-aS-tgG" secondAttribute="height" multiplier="0.07" id="uHW-yi-RKD"/>
+                <constraint firstItem="oHg-Zg-pEW" firstAttribute="top" secondItem="6rm-4U-gc8" secondAttribute="bottom" id="wdo-Gd-2bH"/>
                 <constraint firstItem="l86-a9-Ojv" firstAttribute="bottom" secondItem="rZh-5v-b6h" secondAttribute="bottom" id="xlw-DT-mJI"/>
             </constraints>
             <point key="canvasLocation" x="-1136.231884057971" y="-113.16964285714285"/>

@@ -102,6 +102,42 @@ extension ForgotPasswordViewController {
     }
 }
 
+extension BaseViewController{
+    func getUpdatedUserData(){
+        let  param : Parameters = [
+            "user_id" : USER_DETAILS?.id ?? 0
+        ]
+        APIHelper.shared.postJsonRequest(url: APIGetSingleUserDetail, parameter: param, headers: headers) { (isCompleted, status, response) in
+            
+            if isCompleted {
+                if !(response["status"] as! Bool) {
+                        self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                } else {
+                    let data = response[WSDATA] as! NSDictionary
+                    if let userDict = data[WSUSER] as? NSDictionary {
+                        let user : User =  User(object: JSON(userDict))
+                        saveUserInUserDefaults(user: user)
+                    }
+                    if let arrURL = data["media_urls"] as? NSArray {
+                        for urlData in arrURL {
+                            let urlDict = urlData as! NSDictionary
+                            let urlObj = MediaUrl(object: JSON(urlDict))
+                            //let typeName = urlObj.type ?? ""
+                            //let typeEnum = URLTypes(rawValue: typeName)
+                            
+                            savePathInUserDefaults(mediaUrl: urlObj)
+                            //COUNTRY_LIST.append(Country(object: JSON(country)))
+                        }
+                    }
+                }
+                
+            } else {
+                self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+            }
+        }
+    }
+}
+
 extension ChangePasswordViewController {
     func changePassword(param : Parameters){
         KRProgressHUD.show()
@@ -142,11 +178,9 @@ extension EditProfileViewController {
                     let data = response["data"] as! NSDictionary
                     let userDict = data["user"] as! NSDictionary
                     let user : User =  User(object: JSON(userDict))
-                    print("---User : ",user)
+//                    print("---User : ",user)
                     saveUserInUserDefaults(user: user)
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5 , execute: {
-//                       self.back(withAnimation: true)
-//                   })
+                    self.tableView.reloadData()
                 }
             } else {
                 self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
@@ -154,6 +188,60 @@ extension EditProfileViewController {
         }
     }
 }
+
+extension BusinessDetailsViewController {
+    
+    func editBusinessDetails(param : NSDictionary){
+        KRProgressHUD.show()
+        APIHelper.shared.postMultipartJSONRequest(endpointurl: APIEditBusinessDetails, parameters: param) { (isCompleted, status, response) in
+            KRProgressHUD.dismiss()
+//            if isCompleted {
+//                if !(response["status"] as! Bool) {
+//                    self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+//                } else {
+//                    let msg = response["message"] as? String ?? "Something went wrong."
+//                    let banner = NotificationBanner(title: "Success", subtitle: msg, leftView: nil, rightView: nil, style: .success)
+//                    banner.show()
+//                    let data = response["data"] as! NSDictionary
+//                    let userDict = data["user"] as! NSDictionary
+//                    let user : User =  User(object: JSON(userDict))
+////                    print("---User : ",user)
+//                    saveUserInUserDefaults(user: user)
+//                    self.tableView.reloadData()
+//                }
+//            } else {
+//                self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+//            }
+        }
+    }
+    
+    func getBusinessDetails(){
+        self.view.isUserInteractionEnabled = false
+        KRProgressHUD.show()
+        let  param : Parameters = [
+            "shop_id" : USER_DETAILS?.shopId ?? 0
+        ]
+        APIHelper.shared.postJsonRequest(url: APIGetSingleStoreDetail, parameter: param, headers: headers) { (isCompleted, status, response) in
+            KRProgressHUD.dismiss()
+            self.view.isUserInteractionEnabled = true
+            if isCompleted {
+                if !(response[WSSTATUS] as! Bool) {
+                    
+                } else {
+                    if let data = response[WSDATA] as? NSDictionary {
+                        if let  objShopDetail = data["shop_detail"] as? NSDictionary {
+                           let reqObj = ShopDetail(object: JSON(objShopDetail))
+                           self.viewModel.setBusinessDetail(objBusinessDetail: reqObj)
+                           self.tableView.reloadData()
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
 
 extension OrderRequestViewController {
     func getOrderRequestList(){
@@ -347,7 +435,9 @@ extension NotificationsViewController {
 extension  RatingViewController{
     func getRatingReviews(offset : Int){
         if self.isLoader{
-            KRProgressHUD.show()
+            if !KRProgressHUD.isVisible{
+                KRProgressHUD.show()
+            }
         }
         
         let  param : Parameters = [
@@ -357,8 +447,6 @@ extension  RatingViewController{
             "page_num" : offset,
         ]
         APIHelper.shared.postJsonRequest(url: APIGetRatingReview, parameter: param, headers: headers) { (isCompleted, status, response) in
-            self.view.isUserInteractionEnabled = true
-            self.tableView.isHidden = false
             if self.isLoader{
                 KRProgressHUD.dismiss()
             }
@@ -382,6 +470,27 @@ extension  RatingViewController{
                     self.isLoadMore = false
                     self.indicatorView.isHidden = true
                     self.activityIndicator.stopAnimating()
+                }
+            }
+        }
+        
+    }
+    
+    func replyToRatingReview(strReply : String, reviewId : Int){
+        KRProgressHUD.show()
+        let  param : Parameters = [
+            "user_id" : USER_DETAILS?.id ?? 0,
+            "review_id": reviewId,
+            "reply" : strReply,
+        ]
+        APIHelper.shared.postJsonRequest(url: APIReplyToRatingReview, parameter: param, headers: headers) { (isCompleted, status, response) in
+            if isCompleted {
+                if !(response["status"] as! Bool) {
+                } else {
+                    self.isLoader = true
+                    self.viewModel.removeReview(reviewId: reviewId)
+                    self.getRatingReviews(offset: self.offset)
+//                    self.tableView.reloadData()
                 }
             }
         }

@@ -29,34 +29,83 @@ class RatingDataSource: NSObject {
 }
 extension RatingDataSource: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
+        if viewModel.getRatingCount() > 0{
+            tableView.isHidden = false
+            ratingViewController?.lblNoMsg.isHidden = true
+        }else{
+            ratingViewController?.lblNoMsg.isHidden = false
+            tableView.isHidden = true
+        }
         return viewModel.getRatingCount()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if viewModel.getReplayGiven(at: section){
-            return 2
-        }else
-        {
-            return 1
-        }
+        return (viewModel.getRatings(at: section).replies?.count ?? 0) + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 1 && viewModel.getReplayGiven(at: indexPath.row){
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "RatingReplayTVCell") as? RatingReplayTVCell {
-                cell.selectionStyle = .none
-                return cell
-            }
-        }else{
+        if indexPath.row == 0{
             if let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTVCell") as? RatingTVCell {
-                cell.btnReplayToReview.tag = indexPath.row
+                let obj : RatingReviews = viewModel.getRatings(at: indexPath.section)
+                var strname : String = ""
+                if obj.name != nil && obj.name!.length > 0 {
+                    strname = obj.name.asStringOrEmpty()
+                    if obj.lname != nil && obj.lname!.length > 0{
+                        strname = "\(strname) \(obj.lname ?? "")"
+                    }
+                }else if obj.username != nil && obj.username!.length > 0{
+                    strname = "\(obj.username ?? "")"
+                }else {
+                    let name = obj.email?.components(separatedBy: "@")
+                    strname = "\(name?[0] ?? "")"
+                }
+                
+                cell.lblUserName.text = "\(strname)"
+                
+                cell.lblRatingdescription.text = obj.review
+                
+                cell.lblRatingTime.text = ""
+                if let dateTime = obj.createdAt{
+                    let localDateTime = dateTime.toDate()
+                    let date = localDateTime?.toString(format: "dd/MM/yyyy")
+                    let time = localDateTime?.toString(format: "hh:mm a")
+                    cell.lblRatingTime.text = "\(date ?? "" )\n\(time ?? "")"
+//                    print(localDateTime)
+                }
+                
+                cell.startratingView.rating = Double(obj.rating ?? 0)
+               
+                cell.btnReplayToReview.tag = indexPath.section
                 cell.btnReplayToReview.addTarget(self.ratingViewController, action: #selector(self.ratingViewController?.actionReplayToRating(_:)), for: .touchUpInside)
                 cell.selectionStyle = .none
                 return cell
             }
-    }
+        }else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "RatingReplayTVCell") as? RatingReplayTVCell {
+                let obj : RatingReviews = viewModel.getRatings(at: indexPath.section)
+                var strname : String = ""
+                if obj.name != nil && obj.name!.length > 0 {
+                    strname = obj.name.asStringOrEmpty()
+                    if obj.lname != nil && obj.lname!.length > 0{
+                        strname = "\(strname) \(obj.lname ?? "")"
+                    }
+                }else if obj.username != nil && obj.username!.length > 0{
+                    cell.lblUserName.text = "\(obj.username ?? "")"
+                }else {
+                    let name = obj.email?.components(separatedBy: "@")
+                    cell.lblUserName.text = "\(name?[0] ?? "")"
+                }
+                
+                cell.lblUserName.text = "\(strname)"
+                cell.lblReplayText.text = obj.replies?[indexPath.row - 1].review
+                
+                cell.selectionStyle = .none
+                return cell
+            }
+        }
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.estimatedRowHeight
     }

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyJSON
 
-public struct OrderDetails : Codable{
+public struct OrderDetails {
 
   // MARK: Declaration for string constants to be used to decode and also serialize.
   private struct SerializationKeys {
@@ -45,6 +45,7 @@ public struct OrderDetails : Codable{
     static let userId = "user_id"
     static let orderPickupTime = "order_pickup_time"
     static let deliveryLongitude = "delivery_longitude"
+    static let driverDetails = "driver_details"
   }
 
   // MARK: Properties
@@ -81,6 +82,7 @@ public struct OrderDetails : Codable{
   public var userId: Int?
   public var orderPickupTime: Int?
   public var deliveryLongitude: String?
+  public var driverDetails : Drivers?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -112,6 +114,7 @@ public struct OrderDetails : Codable{
     updatedAt = json[SerializationKeys.updatedAt].string
     tip = json[SerializationKeys.tip].int
     shopDetail = ShopDetail(json: json[SerializationKeys.shopDetail])
+    driverDetails = Drivers(json: json[SerializationKeys.driverDetails])
     rejectReason = json[SerializationKeys.rejectReason].string
     deliveryAddress = json[SerializationKeys.deliveryAddress].string
     orderUniqueId = json[SerializationKeys.orderUniqueId].string
@@ -152,6 +155,7 @@ public struct OrderDetails : Codable{
     if let value = updatedAt { dictionary[SerializationKeys.updatedAt] = value }
     if let value = tip { dictionary[SerializationKeys.tip] = value }
     if let value = shopDetail { dictionary[SerializationKeys.shopDetail] = value.dictionaryRepresentation() }
+    if let value = driverDetails { dictionary[SerializationKeys.driverDetails] = value.dictionaryRepresentation() }
     if let value = rejectReason { dictionary[SerializationKeys.rejectReason] = value }
     if let value = deliveryAddress { dictionary[SerializationKeys.deliveryAddress] = value }
     if let value = orderUniqueId { dictionary[SerializationKeys.orderUniqueId] = value }
