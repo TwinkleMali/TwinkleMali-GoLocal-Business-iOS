@@ -25,7 +25,13 @@ let SERVER_URL = isLive ?  LIVE_SERVER_URL : LOCAL_SERVER_URL
 //let DICTINARY = isLive ? "\(SERVER_URL)campsite" : "\(SERVER_URL)"
 let WEBSERVICE_PATH = "\(SERVER_URL)/GLFService.php?Service="
 
-
+////Header
+//var headers = [
+//    "Content-Type"  : "application/json",
+//    "SecretKey"  : SECRET_KEY,
+//    "userAgent"     : "iOS",
+//    "IsTestdata" : IS_TEST_DATA
+//]
 //Header
 var headers = [
     "Content-Type"  : "application/json",

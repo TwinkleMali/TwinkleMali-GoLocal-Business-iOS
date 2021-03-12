@@ -9,6 +9,7 @@
 import Foundation
 let defaultDateFormat = "0000-00-00 00:00:00"
 let REQUESTED_TIME_FORMATE = "dd MMM HH:mm a"
+let TIME_FORMATE = "HH:mm:ss"
 extension Date {
 	
     init?(jsonDate: String) {

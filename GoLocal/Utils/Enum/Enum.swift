@@ -124,8 +124,8 @@ enum OrderType : Int {
 }
 
 enum DeliveryType : String{
-    case collection = "Collection"
     case delivery = "Delivery"
+    case collection = "Collection"  
     case both = "Both"
 }
 

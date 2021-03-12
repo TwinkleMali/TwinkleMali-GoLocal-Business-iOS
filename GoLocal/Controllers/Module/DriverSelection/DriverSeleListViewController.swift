@@ -86,9 +86,7 @@ class DriverSeleListViewController: BaseViewController{
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func btnClickHere(_ sender: UIButton) {
-        
-        
+    @IBAction func btnClickHere(_ sender: UIButton) {        
         let vc = DriverStatusViewController(nibName: "DriverStatusViewController", bundle: .main)
         vc.viewModel.setDrivers(objDrivers: self.viewModel.getAllDriver())
         self.navigationController?.pushViewController(vc, animated: true)

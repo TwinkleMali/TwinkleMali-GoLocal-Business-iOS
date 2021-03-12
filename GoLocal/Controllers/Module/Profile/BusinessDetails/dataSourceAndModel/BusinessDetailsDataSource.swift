@@ -83,10 +83,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.cvImages.register("BussinessImageCVCell")
                     cell.cvImages.tag = indexPath.section
                     let layout = UICollectionViewFlowLayout()
-    //                cvsizeWidth = (cell.cvImages.frame.size.width - 15 )/2
-    //                let cellSize = CGSize(width:cvsizeWidth  , height:  200)
                     layout.itemSize = UICollectionViewFlowLayout.automaticSize
-    //                layout.itemSize = cellSize
                     layout.scrollDirection = .vertical
                     cell.cvImages.collectionViewLayout.invalidateLayout()
                     cell.cvImages.setCollectionViewLayout(layout, animated: false)
@@ -122,9 +119,9 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                         cell.viewimageSlider.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: .clear, describedTitleColor: .clear, layerColor: .clear)
                             
                         }
+                        return cell
                     }
             }
-            
         
         case BusinessDetailField.StoreName.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextFieldTVCell", for: indexPath) as? CommonTextFieldTVCell{
@@ -208,9 +205,9 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.textField.delegate = self
                 cell.textField.returnKeyType = .next
                 cell.textField.tag = indexPath.row
-                
                 return cell
             }
+            
         case BusinessDetailField.ContactNumber.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextFieldTVCell", for: indexPath) as? CommonTextFieldTVCell{
                 cell.selectionStyle = .none
@@ -263,10 +260,8 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.textField.delegate = self
                 cell.textField.returnKeyType = .next
                 cell.textField.tag = indexPath.row
-                
                 return cell
-            }
-            
+            }            
             
         case BusinessDetailField.DeliveryType.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextFieldTVCell", for: indexPath) as? CommonTextFieldTVCell{
@@ -286,11 +281,11 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.rdb1.setImage(UIImage(named: "icon_radio_unselect"), for: .normal)
                     cell.rdb2.setImage(UIImage(named: "icon_radio_unselect"), for: .normal)
                     cell.rdb3.setImage(UIImage(named: "icon_radio_unselect"), for: .normal)
-                    if viewModel.getBusinessDetail()?.deliveryOption == DeliveryType.delivery.rawValue{
+                    if viewModel.getDeliveryType() == DeliveryType.delivery.rawValue{
                         cell.rdb1.setImage(UIImage(named: "icon_radio_select"), for: .normal)
-                    }else if viewModel.getBusinessDetail()?.deliveryOption == DeliveryType.collection.rawValue{
+                    }else if viewModel.getDeliveryType() == DeliveryType.collection.rawValue{
                         cell.rdb2.setImage(UIImage(named: "icon_radio_select"), for: .normal)
-                    }else if viewModel.getBusinessDetail()?.deliveryOption == DeliveryType.both.rawValue{
+                    }else if viewModel.getDeliveryType() == DeliveryType.both.rawValue{
                         cell.rdb3.setImage(UIImage(named: "icon_radio_select"), for: .normal)
                     }
                     cell.textField.isUserInteractionEnabled = true
@@ -302,6 +297,14 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.textField.isHidden = false
                     cell.textField.text = viewModel.getBusinessDetail()?.deliveryOption
                 }
+                cell.rdb1.tag = 1
+                cell.rdb1.addTarget(self.businessDetailsViewController, action: #selector(self.businessDetailsViewController?.btnRadioClick(_:)), for: .touchUpInside)
+                cell.rdb2.tag = 2
+                cell.rdb2.addTarget(self.businessDetailsViewController, action: #selector(self.businessDetailsViewController?.btnRadioClick(_:)), for: .touchUpInside)
+                cell.rdb3.tag = 3
+                cell.rdb3.addTarget(self.businessDetailsViewController, action: #selector(self.businessDetailsViewController?.btnRadioClick(_:)), for: .touchUpInside)
+                
+              
                 return cell
             }
             
@@ -343,6 +346,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 }else if indexPath.row == 1 {
                     cell.svTitle.isHidden = false
                 }else{
+                    let customIndex : Int = indexPath.row - 2
                     if businessDetailsViewController?.isEditEnable == true{
                         cell.txtOpenTime.isUserInteractionEnabled = true
                         cell.txtCloseTime.isUserInteractionEnabled = true
@@ -358,15 +362,25 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                         cell.txtCloseTime.alpha = 0.5
                         cell.btnSwitch.alpha = 0.5
                     }
-                    if  viewModel.getBusinessDetail()?.schedule?[indexPath.row - 2].isClosed == 0{
+                    if  viewModel.getBusinessDetail()?.schedule?[customIndex].isClosed == 0{
                         cell.btnSwitch.setImage(UIImage(named: "switch_on"), for: .normal)
+                        cell.btnSwitch.accessibilityLabel = "switch_on"                        
                     }else {
                         cell.btnSwitch.setImage(UIImage(named: "switch_off"), for: .normal)
+                        cell.btnSwitch.accessibilityLabel = "switch_off"
                     }
-                    cell.btnSwitch.setTitle(String((viewModel.getBusinessDetail()?.schedule?[indexPath.row - 2].weekday?.prefix(3))!), for: .normal)
-                    cell.txtOpenTime.text = viewModel.getBusinessDetail()?.schedule?[indexPath.row - 2].openingTime
-                    cell.txtCloseTime.text = viewModel.getBusinessDetail()?.schedule?[indexPath.row - 2].closingTime
+                    cell.btnSwitch.tag = customIndex
+                    cell.txtOpenTime.tag = customIndex
+                    cell.txtCloseTime.tag = customIndex
+                    cell.txtOpenTime.accessibilityLabel = "OpenTime"
+                    cell.txtCloseTime.accessibilityLabel = "CloseTime"
+                    cell.btnSwitch.setTitle(String((viewModel.getBusinessDetail()?.schedule?[customIndex].weekday?.prefix(3))!), for: .normal)
+                    cell.txtOpenTime.text = viewModel.getBusinessDetail()?.schedule?[customIndex].openingTime
+                    cell.txtCloseTime.text = viewModel.getBusinessDetail()?.schedule?[customIndex].closingTime
                     cell.svTime.isHidden = false
+                    cell.txtOpenTime.delegate = self
+                    cell.txtCloseTime.delegate = self
+                    cell.btnSwitch.addTarget(businessDetailsViewController, action: #selector(self.businessDetailsViewController?.btnTimeSwitchClick(_:)), for: .touchUpInside)
                 }
                
                 cell.selectionStyle = .none
@@ -383,6 +397,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
 }
 
 extension BusinessDetailsDataSource : UITextFieldDelegate {
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         print(textField.text.asStringOrEmpty())
         switch textField.tag {
@@ -419,6 +434,11 @@ extension BusinessDetailsDataSource : UITextFieldDelegate {
             break
         }
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        businessDetailsViewController?.showDatePicker(textfield: textField)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }

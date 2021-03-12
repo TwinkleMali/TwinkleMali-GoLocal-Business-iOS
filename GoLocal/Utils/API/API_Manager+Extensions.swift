@@ -190,10 +190,27 @@ extension EditProfileViewController {
 }
 
 extension BusinessDetailsViewController {
-    
-    func editBusinessDetails(param : NSDictionary){
+    func editBusinessDetails(){
         KRProgressHUD.show()
-        APIHelper.shared.postMultipartJSONRequest(endpointurl: APIEditBusinessDetails, parameters: param) { (isCompleted, status, response) in
+        let  param : Parameters = [
+            "user_id": USER_DETAILS?.id ?? 0,
+            "shop_id": USER_DETAILS?.shopId ?? 0,
+            "shop_name" : self.viewModel.getStoreName().asStringOrEmpty(),
+            "shop_address" : self.viewModel.getStoreLocation().asStringOrEmpty(),
+            "latitude" : self.viewModel.getLatitude().asStringOrEmpty(),
+            "longitude" : self.viewModel.getLongitude().asStringOrEmpty(),
+            "email":self.viewModel.getEmail().asStringOrEmpty(),
+            "website":self.viewModel.getWebsite().asStringOrEmpty(),
+            "country_id": "",//self.viewModel.getWebsite(),
+            "phone":self.viewModel.getContactNum().asStringOrEmpty(),
+            "delivery_type":self.viewModel.getDeliveryTypeInt().asStringOrEmpty(),
+            "licence_number":self.viewModel.getLicenseNum().asStringOrEmpty(),
+            "shop_schedule":self.viewModel.getShopSchedule(),
+            "delete_slider_image_ids":"", //comma separeted slider image ids you wish to delete.
+            "slider_image":""
+        ]
+        
+        APIHelper.shared.postMultipartJSONRequest(url: APIEditBusinessDetails, parameters: param, headers: headers) { (isCompleted, status, response) in
             KRProgressHUD.dismiss()
 //            if isCompleted {
 //                if !(response["status"] as! Bool) {

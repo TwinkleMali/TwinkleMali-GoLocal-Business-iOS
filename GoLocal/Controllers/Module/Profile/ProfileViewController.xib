@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,9 +43,15 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qac-ul-vVp">
-                            <rect key="frame" x="176.5" y="0.0" width="61.5" height="62.5"/>
+                            <rect key="frame" x="181.5" y="0.0" width="51" height="62.5"/>
                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
                             <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0(3)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jh5-jb-FXq">
+                            <rect key="frame" x="10" y="10" width="34" height="42.5"/>
+                            <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="15"/>
+                            <color key="textColor" name="AppGreenColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -53,6 +60,9 @@
                         <constraint firstAttribute="bottom" secondItem="Qac-ul-vVp" secondAttribute="bottom" id="4CH-oC-0RN"/>
                         <constraint firstItem="Qac-ul-vVp" firstAttribute="centerX" secondItem="oWj-Ok-7Sn" secondAttribute="centerX" id="AMr-bi-hnw"/>
                         <constraint firstItem="Qac-ul-vVp" firstAttribute="top" secondItem="oWj-Ok-7Sn" secondAttribute="top" id="G0k-gA-th4"/>
+                        <constraint firstItem="Jh5-jb-FXq" firstAttribute="top" secondItem="oWj-Ok-7Sn" secondAttribute="top" constant="10" id="HAc-v2-THI"/>
+                        <constraint firstItem="Jh5-jb-FXq" firstAttribute="leading" secondItem="oWj-Ok-7Sn" secondAttribute="leading" constant="10" id="a9Z-0s-PaK"/>
+                        <constraint firstAttribute="bottom" secondItem="Jh5-jb-FXq" secondAttribute="bottom" constant="10" id="pHF-Rz-Xei"/>
                     </constraints>
                 </view>
             </subviews>
@@ -75,6 +85,9 @@
         </view>
     </objects>
     <resources>
+        <namedColor name="AppGreenColor">
+            <color red="0.0" green="0.43900001049041748" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
