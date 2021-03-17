@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BaseViewController {
     
     @IBOutlet weak var vwNav: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
         self.tableView.delegate = dataSource
         self.tableView.dataSource = dataSource
         self.tableView.tableFooterView = UIView()
-       
+        
     }
     
     @objc func actionNavigateToScreens(_ sender: UIButton) {

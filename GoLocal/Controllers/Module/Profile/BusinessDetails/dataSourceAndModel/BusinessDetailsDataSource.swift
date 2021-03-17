@@ -28,6 +28,7 @@ class BusinessDetailsDataSource: NSObject {
         tableView.register("BusinessDetailsTVCell")
         tableView.register("CommonTextFieldTVCell")
         tableView.register("ImageSliderTVCell")
+        tableView.register("MobileNumberTVCell")
     }
 }
 
@@ -57,11 +58,15 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == BusinessDetailField.Images.rawValue{
+            var arraycount : CGFloat = CGFloat(viewModel.getSliderImages().count + viewModel.getImages().count + 1)
             if businessDetailsViewController?.isEditEnable == true{
-                return (2 * (tableView.bounds.width - 20)/3) + 30
-            }else {
-                return 250
+                arraycount = arraycount + 1
             }
+            let num : CGFloat = arraycount / 3
+            let imageheight : CGFloat = (tableView.bounds.width - 20) / 3
+            print("collectionview Height : \((CGFloat(num.rounded(.up)) * imageheight) + 30)")
+            return (CGFloat(num.rounded(.up)) * imageheight) + 15
+
         }else if indexPath.section == BusinessDetailField.OpenCloseTime.rawValue{
             if indexPath.row == 0 {
                 return 30
@@ -76,8 +81,8 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case BusinessDetailField.Images.rawValue:
-            if businessDetailsViewController?.isEditEnable == true{
+            case BusinessDetailField.Images.rawValue:
+//            if businessDetailsViewController?.isEditEnable == true{
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessDetailsTVCell", for: indexPath) as? BusinessDetailsTVCell{
                     cell.selectionStyle = .none
                     cell.cvImages.register("BussinessImageCVCell")
@@ -90,38 +95,39 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.cvImages.delegate = self
                     cell.cvImages.dataSource = self
                     cell.cvImages.reloadData()
-                    cell.cvImages.setNeedsLayout()
+//                    cell.cvImages.setNeedsLayout()
                     return cell
                 }
-            }else {
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "ImageSliderTVCell", for: indexPath) as? BusinessDetailsTVCell{
-                    cell.selectionStyle = .none
-                    if let images: [SliderImages] = viewModel.getBusinessDetail()?.sliderImages {
-                        var arrimg: [String] = []
-                        var image_is_available_count = 0
-                        for image in images {
-                            if let imgName = image.image {
-                                let imgName1 = imgName.components(separatedBy: "/").last ?? ""
-                                var finalPath = PATH_shopGallery.replacingOccurrences(of: "{ImageName}", with: imgName1) // + "/" + imgName
-                                finalPath = finalPath.replacingOccurrences(of: "{Id}", with: "\(USER_DETAILS?.shopId ?? 0)")
-                                //let imgUrl = URL(string: finalPath)
-                                arrimg.append(finalPath)
-                                image_is_available_count  += 1
-                            }
-                        }
-                        cell.pageControl.numberOfPages = arrimg.count
-                        cell.pageControl.currentPage = 0
+//            }else {
+//                if let cell = tableView.dequeueReusableCell(withIdentifier: "ImageSliderTVCell", for: indexPath) as? BusinessDetailsTVCell{
+//                    cell.selectionStyle = .none
+//                    cell.viewimageSlider.contentMode = .scaleAspectFill
+//                    if let images: [SliderImages] = viewModel.getBusinessDetail()?.sliderImages {
+//                        var arrimg: [String] = []
+//                        var image_is_available_count = 0
+//                        for image in images {
+//                            if let imgName = image.image {
+//                                let imgName1 = imgName.components(separatedBy: "/").last ?? ""
+//                                var finalPath = PATH_shopGallery.replacingOccurrences(of: "{ImageName}", with: imgName1) // + "/" + imgName
+//                                finalPath = finalPath.replacingOccurrences(of: "{Id}", with: "\(USER_DETAILS?.shopId ?? 0)")
+//                                //let imgUrl = URL(string: finalPath)
+//                                arrimg.append(finalPath)
+//                                image_is_available_count  += 1
+//                            }
+//                        }
+//                        cell.pageControl.numberOfPages = arrimg.count
+//                        cell.pageControl.currentPage = 0
 //                        cell.viewimageSlider.delegate = self
-                            
-                        cell.viewimageSlider.setCarouselData(paths: arrimg, describedTitle: [], isAutoScroll: true, timer: 2, defaultImage: "product_details_placeholder")
-                            
-                        cell.viewimageSlider.setCarouselOpaque(layer: false, describedTitle: false, pageIndicator: false)
-                        cell.viewimageSlider.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: .clear, describedTitleColor: .clear, layerColor: .clear)
-                            
-                        }
-                        return cell
-                    }
-            }
+//
+//                        cell.viewimageSlider.setCarouselData(paths: arrimg, describedTitle: [], isAutoScroll: true, timer: 2, defaultImage: "product_details_placeholder")
+//
+//                        cell.viewimageSlider.setCarouselOpaque(layer: false, describedTitle: false, pageIndicator: false)
+//                        cell.viewimageSlider.setCarouselLayout(displayStyle: 0, pageIndicatorPositon: 2, pageIndicatorColor: .clear, describedTitleColor: .clear, layerColor: .clear)
+//
+//                        }
+//                        return cell
+//                    }
+//            }
         
         case BusinessDetailField.StoreName.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextFieldTVCell", for: indexPath) as? CommonTextFieldTVCell{
@@ -132,6 +138,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.textField.isSecureTextEntry = false
                 cell.lblTitle.text = "Store Name"
                 cell.imgIcon.isHidden = true
+                cell.textField.isHidden = false
                 if businessDetailsViewController?.isEditEnable == true{
                     cell.lblTitle.alpha = 1
                     cell.textField.alpha = 1
@@ -143,10 +150,10 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.textField.isUserInteractionEnabled = false
                 }
                 cell.imgIconWidthConstraint.constant = 0
-                cell.textField.text = viewModel.getBusinessDetail()?.name
+                cell.textField.text = viewModel.getStoreName()
                 cell.textField.delegate = self
                 cell.textField.returnKeyType = .next
-                cell.textField.tag = indexPath.row
+                cell.textField.tag = indexPath.section
                 
                 return cell
             }
@@ -163,6 +170,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.btnHidePassword.isHidden = false
                 cell.btnHidePassword.setImage(UIImage(named: "placeholder"), for: .normal)
                 cell.btnHidePassword.isUserInteractionEnabled = false
+                cell.textField.isHidden = false
                 if businessDetailsViewController?.isEditEnable == true{
                     cell.lblTitle.alpha = 1
                     cell.textField.alpha = 1
@@ -173,10 +181,10 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.textField.alpha = 0.7
                     cell.imgIcon.alpha = 0.5
                 }
-                cell.textField.text = viewModel.getBusinessDetail()?.address
+                cell.textField.text = viewModel.getStoreLocation()
                 cell.textField.delegate = self
                 cell.textField.returnKeyType = .next
-                cell.textField.tag = indexPath.row
+                cell.textField.tag = indexPath.section
                 
                 return cell
             }
@@ -189,6 +197,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.btnHidePassword.isHidden = true
                 cell.textField.isSecureTextEntry = false
                 cell.lblTitle.text = "Email"
+                cell.textField.isHidden = false
                 cell.imgIconWidthConstraint.constant = 0
                 cell.imgIcon.isHidden = true
                 if businessDetailsViewController?.isEditEnable == true{
@@ -201,41 +210,55 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.textField.alpha = 0.7
                     cell.imgIcon.alpha = 0.5
                 }
-                cell.textField.text = viewModel.getBusinessDetail()?.email
+                cell.textField.text = viewModel.getEmail()
                 cell.textField.delegate = self
                 cell.textField.returnKeyType = .next
-                cell.textField.tag = indexPath.row
+                cell.textField.tag = indexPath.section
                 return cell
             }
             
         case BusinessDetailField.ContactNumber.rawValue:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextFieldTVCell", for: indexPath) as? CommonTextFieldTVCell{
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "MobileNumberTVCell", for: indexPath) as? MobileNumberTVCell{
                 cell.selectionStyle = .none
-                cell.bottomView.isHidden = true
-                cell.stviewRadio.isHidden = true
-                cell.btnHidePassword.isHidden = true
-                cell.textField.isSecureTextEntry = false
-                cell.lblTitle.text = "Contact Number"
-                cell.imgIcon.isHidden = true
-                if businessDetailsViewController?.isEditEnable == true{
-                    cell.lblTitle.alpha = 1
-                    cell.textField.alpha = 1
-                    cell.imgIcon.alpha = 1
-                    cell.textField.isUserInteractionEnabled = true
-                }else {
-                    cell.textField.isUserInteractionEnabled = false
-                    cell.textField.alpha = 0.7
-                    cell.imgIcon.alpha = 0.5
+                if let country = viewModel.getSelectedCountry() {
+                    cell.lblCountryPhoneCode.text = "+\(country.phonecode.asStringOrEmpty())"
+                } else {
+                    cell.lblCountryPhoneCode.text = "+0"
                 }
-                cell.imgIconWidthConstraint.constant = 0
-                cell.textField.text = viewModel.getBusinessDetail()?.phone
-                cell.textField.delegate = self
-                cell.textField.returnKeyType = .next
-                cell.textField.tag = indexPath.row
                 
+                cell.textPhoneNumber.delegate = self
+                cell.textPhoneNumber.keyboardType = .numberPad
+                cell.btnCodePicker.addTarget(self.businessDetailsViewController, action: #selector(self.businessDetailsViewController?.actionShowCodePicker(_:)), for: .touchUpInside)
                 return cell
             }
-            
+//            if let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextFieldTVCell", for: indexPath) as? CommonTextFieldTVCell{
+//                cell.selectionStyle = .none
+//                cell.bottomView.isHidden = true
+//                cell.stviewRadio.isHidden = true
+//                cell.btnHidePassword.isHidden = true
+//                cell.textField.isSecureTextEntry = false
+//                cell.textField.isHidden = false
+//                cell.lblTitle.text = "Contact Number"
+//                cell.imgIcon.isHidden = true
+//                if businessDetailsViewController?.isEditEnable == true{
+//                    cell.lblTitle.alpha = 1
+//                    cell.textField.alpha = 1
+//                    cell.imgIcon.alpha = 1
+//                    cell.textField.isUserInteractionEnabled = true
+//                }else {
+//                    cell.textField.isUserInteractionEnabled = false
+//                    cell.textField.alpha = 0.7
+//                    cell.imgIcon.alpha = 0.5
+//                }
+//                cell.imgIconWidthConstraint.constant = 0
+//                cell.textField.text = viewModel.getContactNum()
+//                cell.textField.delegate = self
+//                cell.textField.returnKeyType = .next
+//                cell.textField.tag = indexPath.section
+//
+//                return cell
+//            }
+
         case BusinessDetailField.Website.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextFieldTVCell", for: indexPath) as? CommonTextFieldTVCell{
                 cell.selectionStyle = .none
@@ -243,6 +266,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.btnHidePassword.isHidden = true
                 cell.stviewRadio.isHidden = true
                 cell.textField.isSecureTextEntry = false
+                cell.textField.isHidden = false
                 cell.lblTitle.text = "Website"
                 cell.imgIcon.isHidden = true
                 if businessDetailsViewController?.isEditEnable == true{
@@ -256,10 +280,10 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.imgIcon.alpha = 0.5
                 }
                 cell.imgIconWidthConstraint.constant = 0
-                cell.textField.text = viewModel.getBusinessDetail()?.website
+                cell.textField.text = viewModel.getWebsite()
                 cell.textField.delegate = self
                 cell.textField.returnKeyType = .next
-                cell.textField.tag = indexPath.row
+                cell.textField.tag = indexPath.section
                 return cell
             }            
             
@@ -295,8 +319,9 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.imgIcon.alpha = 0.5
                     cell.stviewRadio.isHidden = true
                     cell.textField.isHidden = false
-                    cell.textField.text = viewModel.getBusinessDetail()?.deliveryOption
+                    cell.textField.text = viewModel.getDeliveryType()
                 }
+                cell.textField.tag = indexPath.section
                 cell.rdb1.tag = 1
                 cell.rdb1.addTarget(self.businessDetailsViewController, action: #selector(self.businessDetailsViewController?.btnRadioClick(_:)), for: .touchUpInside)
                 cell.rdb2.tag = 2
@@ -314,6 +339,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.bottomView.isHidden = true
                 cell.stviewRadio.isHidden = true
                 cell.btnHidePassword.isHidden = true
+                cell.textField.isHidden = false
                 cell.textField.isSecureTextEntry = false
                 cell.lblTitle.text = "Business License number"
                 cell.imgIcon.isHidden = true
@@ -328,10 +354,10 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.imgIcon.alpha = 0.5
                 }
                 cell.imgIconWidthConstraint.constant = 0
-                cell.textField.text = viewModel.getBusinessDetail()?.businessLicenceNumber
+                cell.textField.text = viewModel.getLicenseNum()
                 cell.textField.delegate = self
                 cell.textField.returnKeyType = .next
-                cell.textField.tag = indexPath.row
+                cell.textField.tag = indexPath.section
                 return cell
             }
             
@@ -362,7 +388,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                         cell.txtCloseTime.alpha = 0.5
                         cell.btnSwitch.alpha = 0.5
                     }
-                    if  viewModel.getBusinessDetail()?.schedule?[customIndex].isClosed == 0{
+                    if  viewModel.getShopSchedule()[customIndex].isClosed == 0{
                         cell.btnSwitch.setImage(UIImage(named: "switch_on"), for: .normal)
                         cell.btnSwitch.accessibilityLabel = "switch_on"                        
                     }else {
@@ -370,13 +396,15 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                         cell.btnSwitch.accessibilityLabel = "switch_off"
                     }
                     cell.btnSwitch.tag = customIndex
-                    cell.txtOpenTime.tag = customIndex
-                    cell.txtCloseTime.tag = customIndex
+                    cell.txtOpenTime.tag = indexPath.section
+                    cell.txtCloseTime.tag = indexPath.section
                     cell.txtOpenTime.accessibilityLabel = "OpenTime"
                     cell.txtCloseTime.accessibilityLabel = "CloseTime"
-                    cell.btnSwitch.setTitle(String((viewModel.getBusinessDetail()?.schedule?[customIndex].weekday?.prefix(3))!), for: .normal)
-                    cell.txtOpenTime.text = viewModel.getBusinessDetail()?.schedule?[customIndex].openingTime
-                    cell.txtCloseTime.text = viewModel.getBusinessDetail()?.schedule?[customIndex].closingTime
+                    cell.txtOpenTime.accessibilityValue = "\(customIndex)"
+                    cell.txtCloseTime.accessibilityValue = "\(customIndex)"
+                    cell.btnSwitch.setTitle(String((viewModel.getShopSchedule()[customIndex].weekday?.prefix(3))!), for: .normal)
+                    cell.txtOpenTime.text = viewModel.getShopSchedule()[customIndex].openingTime
+                    cell.txtCloseTime.text = viewModel.getShopSchedule()[customIndex].closingTime
                     cell.svTime.isHidden = false
                     cell.txtOpenTime.delegate = self
                     cell.txtCloseTime.delegate = self
@@ -397,46 +425,49 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
 }
 
 extension BusinessDetailsDataSource : UITextFieldDelegate {
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print(textField.text.asStringOrEmpty())
-        switch textField.tag {
-        
-        case BusinessDetailField.StoreName.rawValue:
-            self.viewModel.setStoreName(storeName: textField.text.asStringOrEmpty())
-            break
-            
-        case BusinessDetailField.StoreLocation.rawValue:
-            self.viewModel.setStoreLocation(storeLocation: textField.text.asStringOrEmpty())
-            break
-            
-        case BusinessDetailField.StoreName.rawValue:
-            self.viewModel.setStoreName(storeName: textField.text.asStringOrEmpty())
-            break
-            
-        case BusinessDetailField.Email.rawValue:
-            self.viewModel.setEmail(email: textField.text.asStringOrEmpty())
-            break
-            
-        case BusinessDetailField.ContactNumber.rawValue:
-            self.viewModel.setContactNum(contactNum: textField.text.asStringOrEmpty())
-            break
-            
-        case BusinessDetailField.Website.rawValue:
-            self.viewModel.setWebsite(website: textField.text.asStringOrEmpty())
-            break
-            
-        case BusinessDetailField.LicenseNumber.rawValue:
-            self.viewModel.setLicenseNum(licenseNum: textField.text.asStringOrEmpty())
-            break
-            
-        default:
-            break
-        }
+    func textFieldDidEndEditing(_ textField: UITextField) {        
+            print(textField.text.asStringOrEmpty())
+            switch textField.tag {
+            case BusinessDetailField.StoreName.rawValue:
+                self.viewModel.setStoreName(storeName: textField.text.asStringOrEmpty())
+                break
+                
+            case BusinessDetailField.StoreLocation.rawValue:
+                self.viewModel.setStoreLocation(storeLocation: textField.text.asStringOrEmpty())
+                break
+                
+            case BusinessDetailField.Email.rawValue:
+                self.viewModel.setEmail(email: textField.text.asStringOrEmpty())
+                break
+                
+            case BusinessDetailField.ContactNumber.rawValue:
+                self.viewModel.setContactNum(contactNum: textField.text.asStringOrEmpty())
+                break
+                
+            case BusinessDetailField.Website.rawValue:
+                self.viewModel.setWebsite(website: textField.text.asStringOrEmpty())
+                break
+                
+            case BusinessDetailField.LicenseNumber.rawValue:
+                self.viewModel.setLicenseNum(licenseNum: textField.text.asStringOrEmpty())
+                break
+                
+            case BusinessDetailField.OpenCloseTime.rawValue:
+                break
+                
+            case BusinessDetailField.DeliveryType.rawValue:
+                break
+                
+            default:
+                break
+            }
     }
     
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        businessDetailsViewController?.showDatePicker(textfield: textField)
+        if textField.tag == BusinessDetailField.OpenCloseTime.rawValue{
+            businessDetailsViewController?.showDatePicker(textfield: textField)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -446,12 +477,47 @@ extension BusinessDetailsDataSource : UITextFieldDelegate {
 
 extension BusinessDetailsDataSource : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        if businessDetailsViewController?.isEditEnable == true{
+            return viewModel.getSliderImages().count + viewModel.getImages().count + 1
+        }else {
+            return viewModel.getSliderImages().count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BussinessImageCVCell", for: indexPath) as? BussinessImageCVCell{
-            
+            cell.btnCancel.isHidden = true
+            cell.btnAddImage.isHidden = true
+            cell.imgBusiness.isHidden = true
+            if viewModel.getSliderImages().count > 0 && indexPath.row < viewModel.getSliderImages().count{
+                if businessDetailsViewController?.isEditEnable == true{
+                    cell.btnCancel.isHidden = false
+                    cell.btnCancel.addTarget(businessDetailsViewController, action: #selector(self.businessDetailsViewController?.btnRemoveImage(_:)), for: .touchUpInside)
+                }
+                cell.btnCancel.tag = indexPath.row
+                cell.imgBusiness.isHidden = false
+                let imgUrl  = (viewModel.getSliderImages()[indexPath.row]).image
+                let imgName = imgUrl?.components(separatedBy: "/").last ?? ""
+                var finalPath = PATH_shopGallery.replacingOccurrences(of: "{ImageName}", with: imgName) // + "/" + imgName
+                finalPath = finalPath.replacingOccurrences(of: "{Id}", with: "\(USER_DETAILS?.shopId ?? 0)")
+                cell.imgBusiness.sd_setImage(with: URL(string: finalPath), placeholderImage: UIImage(named: "product_details_placeholder"))
+                cell.btnCancel.accessibilityLabel = "OldImage"
+                
+            }else if viewModel.getImages().count > 0 && indexPath.row < (viewModel.getSliderImages().count + viewModel.getImages().count){
+                if businessDetailsViewController?.isEditEnable == true{
+                    cell.btnCancel.isHidden = false
+                    cell.btnCancel.addTarget(businessDetailsViewController, action: #selector(self.businessDetailsViewController?.btnRemoveImage(_:)), for: .touchUpInside)
+                }
+                cell.imgBusiness.isHidden = false
+                cell.btnCancel.tag = indexPath.row - viewModel.getSliderImages().count
+                cell.imgBusiness.image = viewModel.getImages()[indexPath.row - viewModel.getSliderImages().count]
+                cell.btnCancel.accessibilityLabel = "NewImage"
+                
+            }else {
+                cell.btnAddImage.isHidden = false
+                cell.btnAddImage.setImage(UIImage(named: "icon_add_image"), for: .normal)
+                cell.btnAddImage.addTarget(businessDetailsViewController, action: #selector(self.businessDetailsViewController?.btnAddImage(_:)), for: .touchUpInside)
+            }
             return cell
         }
         return UICollectionViewCell()
@@ -473,3 +539,41 @@ extension BusinessDetailsDataSource : UICollectionViewDelegate,UICollectionViewD
         return 7.0
     }
 }
+
+//extension BusinessDetailsDataSource : AACarouselDelegate{
+//    func didSelectCarouselView(_ view: AACarousel, _ index: Int) {
+//        print("Did Press")
+//    }
+//    
+////    func callBackFirstDisplayView(_ imageView: UIImageView, _ url: [String], _ index: Int) {
+////
+////        imageView.sd_setImage(with: URL(string: url[index])!)
+////
+////    }
+//    func updatePageControll(currentIndex: Int) {
+//        self.pageControl.currentPage = currentIndex
+//    }
+//    func downloadImages(_ url: String, _ index: Int) {
+//        let imageURL = URL(string: url)!
+//        downloadImage(from: imageURL, index: index)
+////        imageView.sd_setImage(with: URL(string: url)!) { (image, error, catch, url) in
+////            self.viewimageSlider.images[index] = image!
+////        }
+//    }
+//    
+//    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+//        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+//    }
+//    func downloadImage(from url: URL,index :Int) {
+//        print("Download Started")
+//        getData(from: url) { data, response, error in
+//            guard let data = data, error == nil else { return }
+//            print(response?.suggestedFilename ?? url.lastPathComponent)
+//            print("Download Finished")
+//            DispatchQueue.main.async() { [weak self] in
+//                //self?.imageView.image = UIImage(data: data)
+//                self?.viewimageSlider.images[index] = UIImage(data: data) ?? #imageLiteral(resourceName: "product_details_placeholder")
+//            }
+//        }
+//    }
+//}

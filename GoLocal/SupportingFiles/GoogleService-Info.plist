@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
-    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-    <plist version="1.0">
-    <dict>
-      <key>CLIENT_ID</key>
-      <string>700091628143-6p8sh1c1u1bcsj3qmttj4pvnrf9e7mt9.apps.googleusercontent.com</string>
-      <key>REVERSED_CLIENT_ID</key>
-      <string>com.googleusercontent.apps.700091628143-6p8sh1c1u1bcsj3qmttj4pvnrf9e7mt9</string>
-      <key>PLIST_VERSION</key>
-      <string>1</string>
-      <key>BUNDLE_ID</key>
-      <string>com.golocalfirst.customer</string>
-    </dict>
-    </plist>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1049357683894-recbc32fe678a69p91og2afin7phgoc9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1049357683894-recbc32fe678a69p91og2afin7phgoc9</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>1049357683894-0nfb17pkv6lsdj8gt28pgd3qeibcvahm.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDseIqnKxzkD9wXHeBc_VUXUvNGOswAPTU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1049357683894</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.golocalfirst.customer</string>
+	<key>PROJECT_ID</key>
+	<string>go-local-first</string>
+	<key>STORAGE_BUCKET</key>
+	<string>go-local-first.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1049357683894:ios:e6353f3b55c28fda51ea17</string>
+</dict>
+</plist>

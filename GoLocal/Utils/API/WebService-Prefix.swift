@@ -52,6 +52,7 @@ let APILogout  = "\(WEBSERVICE_PATH)Logout"
 
 let APIForgotPassword = "\(WEBSERVICE_PATH)ForgotPassword"
 let APIChangePassword = "\(WEBSERVICE_PATH)ChangePassword"
+let APIGetAllCountries = "\(WEBSERVICE_PATH)GetAllCountries"
 let APIGetSingleUserDetail = "\(WEBSERVICE_PATH)GetSingleUserDetail"
 let APIEditUserProfile = "\(WEBSERVICE_PATH)EditUserProfile"
 let APIGetNotifications = "\(WEBSERVICE_PATH)GetNotifications"
@@ -67,7 +68,8 @@ let APIGetAllBusinessOrders = "\(WEBSERVICE_PATH)GetAllBusinessOrders"
 let APIGetBusinessDrivers = "\(WEBSERVICE_PATH)GetBusinessDrivers"
 let APIGetAllBusinessDrivers = "\(WEBSERVICE_PATH)GetAllBusinessDrivers"
 
-
+//let APISaveBusinessAccountDetail = "\(WEBSERVICE_PATH)SaveBusinessAccountDetail"
+//let APISaveBusinessAccountDetail = "\(WEBSERVICE_PATH)SaveBusinessAccountDetail"
 
 //MARK:- SOKET API
 

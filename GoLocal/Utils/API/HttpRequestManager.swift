@@ -495,3 +495,5 @@ public func getDataFromUrl(url: URL, completion: @escaping (Data?, URLResponse?,
         }.resume()
 }
 
+
+

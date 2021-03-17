@@ -129,18 +129,19 @@ class APIHelper {
                         imageCount += 1
                     }
                 }
-                else if value is NSArray || value is NSMutableArray {
-                    for childValue in value as! NSArray
-                    {
-                        if childValue is UIImage {
-                            if let imageData:Data = (childValue as? UIImage)?.jpegData(compressionQuality: 0.3)
-                            {
-                                multipartFormData.append(imageData, withName: key , fileName: "swift_file_\(imageCount).jpg", mimeType: "image/*")
-                                imageCount += 1
-                            }
-                        }
-                    }
-                }else if value is [UIImage] {
+//                else if value is NSArray || value is NSMutableArray {
+//                    for childValue in value as! NSArray
+//                    {
+//                        if childValue is UIImage {
+//                            if let imageData:Data = (childValue as? UIImage)?.jpegData(compressionQuality: 0.3)
+//                            {
+//                                multipartFormData.append(imageData, withName: key , fileName: "swift_file_\(imageCount).jpg", mimeType: "image/*")
+//                                imageCount += 1
+//                            }
+//                        }
+//                    }
+//                }
+                else if value is [UIImage] {
                     for childValue in value as! [UIImage]
                     {
                         let imageData:Data = (childValue).jpegData(compressionQuality: 0.3)!

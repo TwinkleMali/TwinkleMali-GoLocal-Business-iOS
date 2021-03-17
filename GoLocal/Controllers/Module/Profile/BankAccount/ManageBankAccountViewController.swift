@@ -1,8 +1,8 @@
 //
 //  ManageBankAccountViewController.swift
-//  GoLocalDriver
+//  GoLocalBusiness
 //
-//  Created by C100-142 on 21/01/21.
+//  Created by C110 on 21/01/21.
 //
 
 import UIKit

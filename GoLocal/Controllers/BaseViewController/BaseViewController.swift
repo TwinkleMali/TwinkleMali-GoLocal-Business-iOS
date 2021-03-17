@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
     var bannerIsVisible = false
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
         if BASEVIEW_CONTROLLER == nil {
             BASEVIEW_CONTROLLER = self
         }
@@ -122,6 +122,19 @@ class BaseViewController: UIViewController {
             //banner.delegate = self
             //banner.show(queuePosition: .front, bannerPosition: .top, queue: .default, on: self, edgeInsets: edge, cornerRadius: 10, shadowColor: .black, shadowOpacity: 1.0, shadowBlurRadius: 10, shadowCornerRadius: 10, shadowOffset: UIOffset(horizontal: 0, vertical: 5), shadowEdgeInsets: nil)
         }
+    }
+    
+    func openSettingApp(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Go to settings", style: .default, handler: {_ in
+          UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
+        })
+        let closeAction = UIAlertAction(title: "Close", style: .destructive, handler: {_ in
+            //self.enableLocation()
+        })
+        alert.addAction(okAction)
+        alert.addAction(closeAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 //MARK:- NOTIFICATION BANNER DELEGATE

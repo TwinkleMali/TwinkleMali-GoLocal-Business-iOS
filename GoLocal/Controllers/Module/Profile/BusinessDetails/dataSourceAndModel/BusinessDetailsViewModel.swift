@@ -19,11 +19,17 @@ class BusinessDetailsViewModel {
     private var licenseNum : String?
     private var latitude : String?
     private var longitude : String?
-    private var shopSchedule : [Schedule]!
+    private var countryCode : String?
+    private var countryId : String?
+    private var shopSchedule : [Schedule] = []
+    private var sliderImages : [SliderImages] = []
+    private var deletedImages : [Int] = []
+    private var arrImages : [UIImage] = []
+    private var country : Country!
+    
 }
 
 extension BusinessDetailsViewModel {
-    
     func setBusinessDetail(objBusinessDetail : ShopDetail){
         self.objBusinessDetail = objBusinessDetail
         self.setStoreName(storeName: objBusinessDetail.name.asStringOrEmpty())
@@ -31,12 +37,18 @@ extension BusinessDetailsViewModel {
         self.setEmail(email: objBusinessDetail.email.asStringOrEmpty())
         self.setContactNum(contactNum: objBusinessDetail.phone.asStringOrEmpty())
         self.setWebsite(website: objBusinessDetail.website.asStringOrEmpty())
+        self.setCountryCode(countryCode: objBusinessDetail.countryCode.asStringOrEmpty())
+        self.setCountryId(countryId: objBusinessDetail.countryId.asStringOrEmpty())
         self.setDeliveryType(deliveryType: objBusinessDetail.deliveryOption.asStringOrEmpty())
         self.setLicenseNum(licenseNum: objBusinessDetail.businessLicenceNumber.asStringOrEmpty())
         self.setLatitude(latitude: objBusinessDetail.latitude.asStringOrEmpty())
         self.setLongitude(longitude: objBusinessDetail.longitude.asStringOrEmpty())
         self.setShopSchedule(shopSchedule: objBusinessDetail
                                 .schedule!)
+        self.setSliderImages(sliderImages: objBusinessDetail.sliderImages!)
+        
+        let obj = COUNTRY_LIST.filter({($0.id ?? 230) == objBusinessDetail.countryId})
+        self.setSelectedCountry(country: obj[0])
     }
     
     func getBusinessDetail() -> ShopDetail? {
@@ -75,6 +87,30 @@ extension BusinessDetailsViewModel {
         return longitude
     }
     
+    func setCountryCode(countryCode : String){
+        self.countryCode = countryCode
+    }
+    
+    func getCountryCode() -> String? {
+        return countryCode
+    }
+    
+    func setCountryId(countryId : String){
+        self.countryId = countryId
+    }
+    
+    func getCountryId() -> String? {
+        return countryId
+    }
+    
+    func setSelectedCountry(country : Country ){
+        self.country = country
+    }
+    
+    func getSelectedCountry() -> Country? {
+        return country
+    }
+    
     func setEmail(email : String){
         self.email = email
     }
@@ -107,8 +143,8 @@ extension BusinessDetailsViewModel {
         return deliveryType
     }
     
-    func getDeliveryTypeInt() -> Int?{
-        switch getDeliveryType() {
+    func getDeliveryTypeInt(str : String) -> Int?{
+        switch str {
         case DeliveryType.delivery.rawValue:
             return 1
             
@@ -122,6 +158,8 @@ extension BusinessDetailsViewModel {
             return 1
         }
     }
+    
+    
     
     
     func setLicenseNum(licenseNum : String){
@@ -138,6 +176,60 @@ extension BusinessDetailsViewModel {
     
     func getShopSchedule() -> [Schedule] {
         return shopSchedule
+    }
+    
+    func removeShopSchedule(){
+         shopSchedule.removeAll()
+    }
+    
+    func setSliderImages(sliderImages : [SliderImages]){
+        self.sliderImages = sliderImages
+    }
+    
+    func getSliderImages() -> [SliderImages] {
+        return sliderImages
+    }
+    
+    func removeSliderImage(at : Int){
+        sliderImages.remove(at: at)
+    }
+    
+    func setDeletedImage(strValue : Int){
+        if !deletedImages.contains(strValue){
+            self.deletedImages.append(strValue)
+        }        
+    }
+    
+    func getDeletedImage() -> [Int] {
+        return deletedImages
+    }
+    
+    
+    func setImage(image : UIImage){
+        self.arrImages.append(image)
+    }
+    
+    func getImages() -> [UIImage] {
+        return arrImages
+    }
+    
+    func removeImages(at : Int) {
+        arrImages.remove(at: at)
+    }
+    
+    func getShopScheduleDic() -> NSMutableArray{
+        let arrDic : NSMutableArray = []
+        for obj in shopSchedule{
+            let dic:[String:Any] =
+                ["id":obj.id ?? 0,
+                 "opening_time":obj.openingTime.asStringOrEmpty(),
+                 "closing_time":obj.closingTime.asStringOrEmpty(),
+                 "weekday":obj.weekday.asStringOrEmpty(),
+                 "is_closed":obj.isClosed ?? 0,
+                 "delivery_type":self.getDeliveryTypeInt(str: obj.deliveryType ?? "") ?? ""]
+            arrDic.add(dic)
+        }
+        return arrDic
     }
 }
 

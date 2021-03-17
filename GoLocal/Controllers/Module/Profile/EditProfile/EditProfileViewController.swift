@@ -22,8 +22,7 @@ class EditProfileViewController: BaseViewController {
         dataSource = EditProfileDataSource(tableView: tableView,viewModel: viewModel, viewController: self)
         self.tableView.delegate = dataSource
         self.tableView.dataSource = dataSource
-        self.tableView.tableFooterView = UIView()
-        self.isEditEnable = false
+        self.tableView.tableFooterView = UIView()        
         self.tableView.isUserInteractionEnabled = false
         self.vwNav.addBottomShadow()
     }

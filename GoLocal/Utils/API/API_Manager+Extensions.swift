@@ -103,6 +103,35 @@ extension ForgotPasswordViewController {
 }
 
 extension BaseViewController{
+    func getCountryList(completion: @escaping (Bool) -> ()){
+        let  param : Parameters = [
+            "user_role" : USER_ROLE
+        ]
+        APIHelper.shared.postJsonRequest(url: APIGetAllCountries, parameter: param, headers: headers) { (isCompleted, status, response) in
+            COUNTRY_LIST.removeAll()
+            if isCompleted {
+                if !(response["status"] as! Bool) {
+                    self.getCountryList { _ in
+                    }
+//                    self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                    completion(false)
+                } else {
+                    let data = response[WSDATA] as! NSDictionary
+                    let arrCountry = data["countries"] as! NSArray
+                    for countryData in arrCountry {
+                        let country = countryData as! NSDictionary
+                        COUNTRY_LIST.append(Country(object: JSON(country)))
+                    }
+                    completion(true)
+                }
+            }
+//            else {
+//                self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+//                completion(false)
+//            }
+        }
+    }
+    
     func getUpdatedUserData(){
         let  param : Parameters = [
             "user_id" : USER_DETAILS?.id ?? 0
@@ -192,6 +221,8 @@ extension EditProfileViewController {
 extension BusinessDetailsViewController {
     func editBusinessDetails(){
         KRProgressHUD.show()
+//        var array = [{"id" : 1, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" : "Sunday", "is_closed" : 0, "delivery_type" : 3}, {"id": 2, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" : "Monday", "is_closed" : 0, "delivery_type": 3}, {"id": 3, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" :"Tuesday", "is_closed": 0, "delivery_type": 3}, {"id": 4, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" :"Wednesday", "is_closed": 0, "delivery_type": 3}, {"id": 5, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" :"Thursday", "is_closed": 0, "delivery_type": 3}, {"id":6, "opening_time" : "020:00:00", "closing_time" : "23:59:59", "weekday" :"Friday", "is_closed": 0, "delivery_type": 3}, {"id": 7, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" :"Saturday", "is_closed": 0, "delivery_type": 3}]
+        
         let  param : Parameters = [
             "user_id": USER_DETAILS?.id ?? 0,
             "shop_id": USER_DETAILS?.shopId ?? 0,
@@ -201,34 +232,31 @@ extension BusinessDetailsViewController {
             "longitude" : self.viewModel.getLongitude().asStringOrEmpty(),
             "email":self.viewModel.getEmail().asStringOrEmpty(),
             "website":self.viewModel.getWebsite().asStringOrEmpty(),
-            "country_id": "",//self.viewModel.getWebsite(),
+            "country_id": self.viewModel.getSelectedCountry()?.id ?? 0,
             "phone":self.viewModel.getContactNum().asStringOrEmpty(),
-            "delivery_type":self.viewModel.getDeliveryTypeInt().asStringOrEmpty(),
+            "delivery_type":self.viewModel.getDeliveryTypeInt(str: self.viewModel.getDeliveryType() ?? "")!,
             "licence_number":self.viewModel.getLicenseNum().asStringOrEmpty(),
-            "shop_schedule":self.viewModel.getShopSchedule(),
-            "delete_slider_image_ids":"", //comma separeted slider image ids you wish to delete.
-            "slider_image":""
+            "shop_schedule": viewModel.getShopScheduleDic(),
+            "delete_slider_image_ids":"\(viewModel.getDeletedImage().map(String.init).joined(separator: ","))",
+            "slider_image[]":self.viewModel.getImages()
         ]
-        
+     
         APIHelper.shared.postMultipartJSONRequest(url: APIEditBusinessDetails, parameters: param, headers: headers) { (isCompleted, status, response) in
             KRProgressHUD.dismiss()
-//            if isCompleted {
-//                if !(response["status"] as! Bool) {
-//                    self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
-//                } else {
-//                    let msg = response["message"] as? String ?? "Something went wrong."
-//                    let banner = NotificationBanner(title: "Success", subtitle: msg, leftView: nil, rightView: nil, style: .success)
-//                    banner.show()
-//                    let data = response["data"] as! NSDictionary
-//                    let userDict = data["user"] as! NSDictionary
-//                    let user : User =  User(object: JSON(userDict))
-////                    print("---User : ",user)
-//                    saveUserInUserDefaults(user: user)
-//                    self.tableView.reloadData()
-//                }
-//            } else {
-//                self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
-//            }
+            if isCompleted {
+                if !(response["status"] as! Bool) {
+                    self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                } else {
+                    let msg = response["message"] as? String ?? "Something went wrong."
+                    let banner = NotificationBanner(title: "Success", subtitle: msg, leftView: nil, rightView: nil, style: .success)
+                    banner.show()
+                    self.isEditEnable = false
+                    self.btnEdit.setTitle("Edit Detail", for: .normal)
+                    self.tableView.reloadData()
+                }
+            } else {
+                self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+            }
         }
     }
     

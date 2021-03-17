@@ -33,9 +33,17 @@
 		0020284C25DE8456008E0E2E /* DriverStatusMap.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0020284A25DE8456008E0E2E /* DriverStatusMap.xib */; };
 		0020284E25DE84A6008E0E2E /* GoLocalDriverTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0020284D25DE84A6008E0E2E /* GoLocalDriverTVCell.xib */; };
 		0020285025DE8B99008E0E2E /* GoLocalDriverTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0020284F25DE8B99008E0E2E /* GoLocalDriverTVCell.swift */; };
+		0022D825260083BD00A246D1 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022D824260083BD00A246D1 /* Country.swift */; };
+		0022D82C260084F200A246D1 /* CountryCodePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022D827260084F100A246D1 /* CountryCodePickerViewController.swift */; };
+		0022D82D260084F200A246D1 /* CountryCodePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0022D828260084F100A246D1 /* CountryCodePickerViewController.xib */; };
+		0022D82E260084F200A246D1 /* CountryCodePickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022D82A260084F100A246D1 /* CountryCodePickerViewDataSource.swift */; };
+		0022D82F260084F200A246D1 /* CountryCodePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022D82B260084F100A246D1 /* CountryCodePickerViewModel.swift */; };
+		0022D8332600869400A246D1 /* MobileNumberTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022D8312600869300A246D1 /* MobileNumberTVCell.swift */; };
+		0022D8342600869400A246D1 /* MobileNumberTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0022D8322600869300A246D1 /* MobileNumberTVCell.xib */; };
 		0025339B25D500B900A21776 /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0025339A25D500B900A21776 /* MZTimerLabel.m */; };
 		0025339F25D50D4D00A21776 /* BusinessDrivers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0025339D25D50D4C00A21776 /* BusinessDrivers.swift */; };
 		002533A025D50D4D00A21776 /* Drivers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0025339E25D50D4D00A21776 /* Drivers.swift */; };
+		002FCAAD25FF9237008E587E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 002FCAAC25FF9237008E587E /* GoogleService-Info.plist */; };
 		0036BB5125BAE87F00FFCC5E /* AddAccountTextFieldTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0036BB1C25BAE87F00FFCC5E /* AddAccountTextFieldTVCell.swift */; };
 		0036BB5225BAE87F00FFCC5E /* AddAccountTextFieldTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0036BB1D25BAE87F00FFCC5E /* AddAccountTextFieldTVCell.xib */; };
 		0036BB5325BAE87F00FFCC5E /* AddBankAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0036BB1E25BAE87F00FFCC5E /* AddBankAccountViewController.swift */; };
@@ -279,11 +287,19 @@
 		0020284A25DE8456008E0E2E /* DriverStatusMap.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DriverStatusMap.xib; sourceTree = "<group>"; };
 		0020284D25DE84A6008E0E2E /* GoLocalDriverTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoLocalDriverTVCell.xib; sourceTree = "<group>"; };
 		0020284F25DE8B99008E0E2E /* GoLocalDriverTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoLocalDriverTVCell.swift; sourceTree = "<group>"; };
+		0022D824260083BD00A246D1 /* Country.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		0022D827260084F100A246D1 /* CountryCodePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodePickerViewController.swift; sourceTree = "<group>"; };
+		0022D828260084F100A246D1 /* CountryCodePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryCodePickerViewController.xib; sourceTree = "<group>"; };
+		0022D82A260084F100A246D1 /* CountryCodePickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodePickerViewDataSource.swift; sourceTree = "<group>"; };
+		0022D82B260084F100A246D1 /* CountryCodePickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryCodePickerViewModel.swift; sourceTree = "<group>"; };
+		0022D8312600869300A246D1 /* MobileNumberTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobileNumberTVCell.swift; sourceTree = "<group>"; };
+		0022D8322600869300A246D1 /* MobileNumberTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileNumberTVCell.xib; sourceTree = "<group>"; };
 		0025339925D500B900A21776 /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
 		0025339A25D500B900A21776 /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
 		0025339C25D503AD00A21776 /* GoLocal-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GoLocal-Bridging-Header.h"; sourceTree = "<group>"; };
 		0025339D25D50D4C00A21776 /* BusinessDrivers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDrivers.swift; sourceTree = "<group>"; };
 		0025339E25D50D4D00A21776 /* Drivers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drivers.swift; sourceTree = "<group>"; };
+		002FCAAC25FF9237008E587E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0036BB1C25BAE87F00FFCC5E /* AddAccountTextFieldTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAccountTextFieldTVCell.swift; sourceTree = "<group>"; };
 		0036BB1D25BAE87F00FFCC5E /* AddAccountTextFieldTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddAccountTextFieldTVCell.xib; sourceTree = "<group>"; };
 		0036BB1E25BAE87F00FFCC5E /* AddBankAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBankAccountViewController.swift; sourceTree = "<group>"; };
@@ -640,6 +656,34 @@
 			path = DriverDetailTVCell;
 			sourceTree = "<group>";
 		};
+		0022D826260084F100A246D1 /* CountryCodePickerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0022D827260084F100A246D1 /* CountryCodePickerViewController.swift */,
+				0022D828260084F100A246D1 /* CountryCodePickerViewController.xib */,
+				0022D829260084F100A246D1 /* ModelAndDataSource */,
+			);
+			path = CountryCodePickerViewController;
+			sourceTree = "<group>";
+		};
+		0022D829260084F100A246D1 /* ModelAndDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				0022D82A260084F100A246D1 /* CountryCodePickerViewDataSource.swift */,
+				0022D82B260084F100A246D1 /* CountryCodePickerViewModel.swift */,
+			);
+			path = ModelAndDataSource;
+			sourceTree = "<group>";
+		};
+		0022D8302600869300A246D1 /* MobileNumberTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				0022D8312600869300A246D1 /* MobileNumberTVCell.swift */,
+				0022D8322600869300A246D1 /* MobileNumberTVCell.xib */,
+			);
+			path = MobileNumberTVCell;
+			sourceTree = "<group>";
+		};
 		0025339825D500B900A21776 /* MZTimerLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -955,6 +999,7 @@
 		0089111A25B1AED600C9125A /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				0022D8302600869300A246D1 /* MobileNumberTVCell */,
 				0089112825B1B02200C9125A /* CommonTextFieldTVCell */,
 				0089112225B1AFDD00C9125A /* CommonButtonTVCell */,
 			);
@@ -1403,6 +1448,7 @@
 		46CDA38D2589BB430089105D /* model */ = {
 			isa = PBXGroup;
 			children = (
+				0022D824260083BD00A246D1 /* Country.swift */,
 				005FE44A25F269760093483B /* MediaUrl.swift */,
 				00C2F47F25F2038B00032EBE /* Categories.swift */,
 				00C2F47E25F2038B00032EBE /* Schedule.swift */,
@@ -1464,6 +1510,7 @@
 		46CDA3972589C1470089105D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0022D826260084F100A246D1 /* CountryCodePickerViewController */,
 				0061590F25CAB70F00F7ED1E /* CalanderViewController */,
 				00F065AA25C42D0E00BAB8E3 /* BottomSheetVC */,
 				0099D93E25C1717700383466 /* OptionView */,
@@ -1515,6 +1562,7 @@
 		46CDA3ED2589D5890089105D /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				002FCAAC25FF9237008E587E /* GoogleService-Info.plist */,
 				0025339C25D503AD00A21776 /* GoLocal-Bridging-Header.h */,
 				00A468F525C91E29008B7671 /* Info.plist */,
 				46CDA3EE2589D5890089105D /* Resorces */,
@@ -1686,6 +1734,7 @@
 				0036BB6C25BAE87F00FFCC5E /* ProfileTVCell.xib in Resources */,
 				0036BB5225BAE87F00FFCC5E /* AddAccountTextFieldTVCell.xib in Resources */,
 				0036BB6825BAE87F00FFCC5E /* EditProfileViewController.xib in Resources */,
+				0022D82D260084F200A246D1 /* CountryCodePickerViewController.xib in Resources */,
 				46CDA3FE2589D5890089105D /* Montserrat-ExtraBold.otf in Resources */,
 				0036BB7225BAE88000FFCC5E /* RatingReplayTVCell.xib in Resources */,
 				0099D97425C1978400383466 /* RequestDetailsMapTVCell.xib in Resources */,
@@ -1726,6 +1775,7 @@
 				46F7DA102598623100923A08 /* MainTabBarController.xib in Resources */,
 				00F0663925C8185600BAB8E3 /* BusinessDetailsTVCell.xib in Resources */,
 				B55E3E9B25946DC500E79631 /* CategoryCVCell.xib in Resources */,
+				002FCAAD25FF9237008E587E /* GoogleService-Info.plist in Resources */,
 				00F065D725C5494F00BAB8E3 /* PaymentOptionViewController.xib in Resources */,
 				46CDA3802589BB0A0089105D /* Main.storyboard in Resources */,
 				0036BB5E25BAE87F00FFCC5E /* ManageBankAccountViewController.xib in Resources */,
@@ -1743,6 +1793,7 @@
 				0019F61E25B9909E005139F4 /* ProductListViewController.xib in Resources */,
 				00F0663425C8185600BAB8E3 /* BusinessDetailsViewController.xib in Resources */,
 				0099D96525C1972300383466 /* OrderButtonTVCell.xib in Resources */,
+				0022D8342600869400A246D1 /* MobileNumberTVCell.xib in Resources */,
 				46CDA3FA2589D5890089105D /* Montserrat-Bold.otf in Resources */,
 				0061593625CACC6E00F7ED1E /* SingleMonthCVCell.xib in Resources */,
 				00F0662725C7F92700BAB8E3 /* OrderDetailsTVCell.xib in Resources */,
@@ -1842,6 +1893,7 @@
 				007B98AB25EFC2B800891839 /* RatingReviews.swift in Sources */,
 				0036BB5325BAE87F00FFCC5E /* AddBankAccountViewController.swift in Sources */,
 				0019F5F225B98DAE005139F4 /* DriverListViewDataSource.swift in Sources */,
+				0022D82C260084F200A246D1 /* CountryCodePickerViewController.swift in Sources */,
 				B58B75F925A5D5F600446FB7 /* Dynamic.swift in Sources */,
 				005DB99125D3B19700B7766D /* Addons.swift in Sources */,
 				005F87F025D1588C000A475A /* SocketIOHandler.swift in Sources */,
@@ -1849,6 +1901,7 @@
 				00A4698325C965D2008B7671 /* SelectDriverTVCell.swift in Sources */,
 				005DB98E25D3B19700B7766D /* BillingDetails.swift in Sources */,
 				006D7F7525B5B8870068C598 /* DriversListViewController.swift in Sources */,
+				0022D825260083BD00A246D1 /* Country.swift in Sources */,
 				0061592C25CAB76F00F7ED1E /* VAWeek.swift in Sources */,
 				005FE44B25F269760093483B /* MediaUrl.swift in Sources */,
 				46CDA3B82589CF380089105D /* UITextField+Extensions.swift in Sources */,
@@ -1901,12 +1954,14 @@
 				00F065D825C5494F00BAB8E3 /* PaymentOptionDataSource.swift in Sources */,
 				0061592925CAB76F00F7ED1E /* VAMonth.swift in Sources */,
 				00F065A525C407B600BAB8E3 /* OrderDetailsViewController.swift in Sources */,
+				0022D8332600869400A246D1 /* MobileNumberTVCell.swift in Sources */,
 				0020284125DE820F008E0E2E /* DriverDetailsDataSource.swift in Sources */,
 				0020284225DE820F008E0E2E /* DriverStatusViewDataSource.swift in Sources */,
 				46595052258B54AB001D8CC0 /* LoginDataSource.swift in Sources */,
 				0036BB6225BAE87F00FFCC5E /* ProfileDataSource.swift in Sources */,
 				46CDA3BD2589CF380089105D /* Double_Extension.swift in Sources */,
 				0025339B25D500B900A21776 /* MZTimerLabel.m in Sources */,
+				0022D82F260084F200A246D1 /* CountryCodePickerViewModel.swift in Sources */,
 				0089111725B1AE6200C9125A /* WebService-Prefix.swift in Sources */,
 				0061593225CAC95000F7ED1E /* MonthSelectionViewController.swift in Sources */,
 				4674E5EF25ACD3B0002839B6 /* CustomSegmentedControl.swift in Sources */,
@@ -1924,6 +1979,7 @@
 				46F7DA0F2598623100923A08 /* MainTabBarController.swift in Sources */,
 				46CDA3B32589CF380089105D /* UIColor + Extension.swift in Sources */,
 				0036BB6B25BAE87F00FFCC5E /* ProfileTVCell.swift in Sources */,
+				0022D82E260084F200A246D1 /* CountryCodePickerViewDataSource.swift in Sources */,
 				0036BB6325BAE87F00FFCC5E /* ProfileViewModel.swift in Sources */,
 				0036BB6125BAE87F00FFCC5E /* ChangePasswordDataSource.swift in Sources */,
 				0089110525B1AE3D00C9125A /* PostNotifications.swift in Sources */,
@@ -2064,7 +2120,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2119,7 +2175,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -2135,19 +2191,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = NUV8D2659N;
 				INFOPLIST_FILE = GoLocal/SupportingFiles/info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.golocalfirst.businessapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dis;
+				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2160,19 +2216,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = NUV8D2659N;
 				INFOPLIST_FILE = GoLocal/SupportingFiles/info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.golocalfirst.businessapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dev;
+				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dis;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

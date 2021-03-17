@@ -33,8 +33,11 @@ let APP_DELEGATE = UIApplication.shared.delegate as? AppDelegate
 let kCHECK_INTERNET_CONNECTION   =  "Check your internet connection"
 let kPROBLEM_FROM_SERVER         =  "Problem Receiving Data From Server"
 let kSOMETHING_WENT_WRONG         =  "Something Went Wrong"
-let kDRIVER_REQUEST_TIME = 60.0
+let kCHECK_CAMERA = "Warning"
+let kCHECK_CAMERA_MSG = "You don't have camera"
 let MESSAGE = "Please try again later."
+let kTITLE_OK = "OK"
+let kDRIVER_REQUEST_TIME = 60.0
 var validationMethod = VALIDATION_METHODS()
 var LoginCredentials = LoginDetials()
 
@@ -59,6 +62,9 @@ var LOGIN_CREDENTIALS: LoginDetials? {
         return nil
     }
 }
+
+//MARK:- CountryList
+var COUNTRY_LIST : [Country] = []
 
 //MARK:- get / set User Data
 var USER_ROLE = 3
