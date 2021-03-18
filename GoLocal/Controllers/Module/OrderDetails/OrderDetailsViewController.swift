@@ -146,6 +146,20 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
         }
     }
     
+    // Order on map Click
+    @objc func actionMarkOrderLeft(_ sender : UIButton) {
+        if let driver =  objOrder.driverDetails {
+            let vc = DriverLocationViewController.loadFromNib()
+            vc.driverDetails = driver
+            vc.orderId = objOrder.id ?? 0
+            vc.driverLat = driver.latitude ?? "21.1205"
+            vc.driverLong = driver.longitude ?? "72.7431"
+            vc.deliveryLatitude = objOrder.deliveryLatitude ?? ""
+            vc.deliveryLongitude = objOrder.deliveryLongitude ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     @IBAction func btnOrderStatusChange(_ sender: UIButton) {
         let dic = ["user_id" : USER_DETAILS?.id ?? 0,
                    "customer_id" : objOrder.customerDetails?.id ?? 0,
@@ -189,6 +203,4 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
         print("reject dic : \(dic)")
         socketRejectOrderRequest(dictionary: dic)
     }
-
-    
 }

@@ -10,13 +10,17 @@ import UIKit
 class ProfileViewController: BaseViewController {
     
     @IBOutlet weak var vwNav: UIView!
+    @IBOutlet weak var lblVersion : UILabel!
     @IBOutlet weak var tableView: UITableView!
     var dataSource: ProfileDataSource?
     var viewModel = ProfileViewModel()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = ProfileDataSource(tableView: tableView, viewModel: viewModel, viewController: self)
+      
+        lblVersion.text = "Version \(appVersion ?? "").\(build ?? "")"
         self.tableView.delegate = dataSource
         self.tableView.dataSource = dataSource
         self.tableView.tableFooterView = UIView()

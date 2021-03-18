@@ -51,6 +51,19 @@
                             <constraint firstAttribute="height" constant="50" id="xtb-zY-9zK"/>
                         </constraints>
                     </stackView>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oO-Zx-cf1">
+                        <rect key="frame" x="10" y="0.0" width="43" height="60"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7N-1I-3Wr">
+                        <rect key="frame" x="140.5" y="5" width="273.5" height="50"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                        <state key="normal" title="CLOSED">
+                            <color key="titleColor" red="0.44705882349999998" green="0.44705882349999998" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="1TO-w0-qOb">
                         <rect key="frame" x="0.0" y="10" width="414" height="40"/>
                         <subviews>
@@ -64,7 +77,7 @@
                             </button>
                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Open Time" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eza-SE-Vzt">
                                 <rect key="frame" x="140.5" y="0.0" width="133" height="40"/>
-                                <color key="textColor" red="0.44795602559999997" green="0.44802260399999999" blue="0.44793504480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.44705882352941173" green="0.44705882352941173" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -79,27 +92,26 @@
                             <constraint firstAttribute="height" constant="40" id="dqa-I7-3cO"/>
                         </constraints>
                     </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oO-Zx-cf1">
-                        <rect key="frame" x="10" y="0.0" width="43" height="60"/>
-                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
-                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="3oO-Zx-cf1" firstAttribute="top" secondItem="Xal-aH-PNn" secondAttribute="top" id="0pu-YP-NqA"/>
                     <constraint firstAttribute="bottom" secondItem="kbT-gJ-kW3" secondAttribute="bottom" constant="5" id="1Ob-ke-50k"/>
                     <constraint firstItem="3oO-Zx-cf1" firstAttribute="leading" secondItem="Xal-aH-PNn" secondAttribute="leading" constant="10" id="BQ6-xu-fbL"/>
+                    <constraint firstItem="b7N-1I-3Wr" firstAttribute="leading" secondItem="ajz-Z6-fyO" secondAttribute="leading" id="DZc-ed-j0j"/>
+                    <constraint firstItem="b7N-1I-3Wr" firstAttribute="trailing" secondItem="iWg-Qy-F1F" secondAttribute="trailing" id="Edn-Qs-CPa"/>
                     <constraint firstItem="kbT-gJ-kW3" firstAttribute="top" secondItem="Xal-aH-PNn" secondAttribute="top" constant="5" id="LxC-Gt-Pfz"/>
                     <constraint firstItem="kbT-gJ-kW3" firstAttribute="leading" secondItem="Xal-aH-PNn" secondAttribute="leading" id="ccN-wB-Pyx"/>
+                    <constraint firstItem="b7N-1I-3Wr" firstAttribute="top" secondItem="ajz-Z6-fyO" secondAttribute="top" id="d2E-73-MaK"/>
                     <constraint firstAttribute="trailing" secondItem="1TO-w0-qOb" secondAttribute="trailing" id="eiM-Ak-g0m"/>
                     <constraint firstAttribute="bottom" secondItem="3oO-Zx-cf1" secondAttribute="bottom" id="eid-Go-RlA"/>
                     <constraint firstItem="1TO-w0-qOb" firstAttribute="top" secondItem="Xal-aH-PNn" secondAttribute="top" constant="10" id="p9o-cP-zAn"/>
                     <constraint firstAttribute="trailing" secondItem="kbT-gJ-kW3" secondAttribute="trailing" id="qQ9-fC-II5"/>
+                    <constraint firstItem="b7N-1I-3Wr" firstAttribute="bottom" secondItem="ajz-Z6-fyO" secondAttribute="bottom" id="sbp-Tr-c6m"/>
                     <constraint firstItem="1TO-w0-qOb" firstAttribute="leading" secondItem="Xal-aH-PNn" secondAttribute="leading" id="uq6-zQ-NNl"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="btnClosed" destination="b7N-1I-3Wr" id="DVk-wH-wiW"/>
                 <outlet property="btnSwitch" destination="jzo-YC-UOB" id="tRL-kv-Wos"/>
                 <outlet property="lblTitle" destination="3oO-Zx-cf1" id="Uyu-bm-xQq"/>
                 <outlet property="svTime" destination="kbT-gJ-kW3" id="fGk-BM-RRC"/>

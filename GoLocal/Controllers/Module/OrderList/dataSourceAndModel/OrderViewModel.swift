@@ -96,7 +96,7 @@ extension OrderViewModel {
                                           "productId" : objproduct.id!,
                                           "productName":objproduct.productName!,
                                           "quantity":objselItem.quantity!,
-                                          "variationName":objselItem.variationName!,
+                                          "variationName":objselItem.variationName.asStringOrEmpty(),
                                           "addons":objselItem.addons ?? []]
                             arrayCurrentProduct.append(productDic)
                         }
@@ -112,10 +112,10 @@ extension OrderViewModel {
                     for objproduct in (objOrder.shopDetail?.products)! {
                         for objselItem in objproduct.selectedProducts! {
                             productDic = ["orderId":objOrder.id ?? 0,
-                                          "productId" : objproduct.id!,
-                                          "productName":objproduct.productName!,
-                                          "quantity":objselItem.quantity!,
-                                          "variationName":objselItem.variationName!,
+                                          "productId" : objproduct.id.asStringOrEmpty(),
+                                          "productName":objproduct.productName.asStringOrEmpty(),
+                                          "quantity":objselItem.quantity.asStringOrEmpty(),
+                                          "variationName":objselItem.variationName.asStringOrEmpty(),
                                           "addons":objselItem.addons ?? []]
                             arrayPastProduct.append(productDic)
                         }

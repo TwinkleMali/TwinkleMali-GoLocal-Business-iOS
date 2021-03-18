@@ -30,6 +30,13 @@ class BusinessDetailsTVCell: UITableViewCell {
         }
     }
     @IBOutlet weak var btnSwitch : UIButton!
+    @IBOutlet weak var btnClosed : UIButton!{
+        didSet{
+            btnClosed.layer.cornerRadius = 7
+            btnClosed.layer.borderWidth = 1
+            btnClosed.layer.borderColor = UIColor.lightGray.cgColor
+    }
+}
     @IBOutlet weak var viewimageSlider: AACarousel!
     @IBOutlet weak var imageSliderHeightConstarint: NSLayoutConstraint!
     @IBOutlet weak var imageSliderContainerView: UIView!

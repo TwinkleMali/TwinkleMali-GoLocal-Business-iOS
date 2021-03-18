@@ -74,11 +74,11 @@ extension DriverListViewDataSource : UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if self.viewModel.getDriver(atPos: indexPath.row).driverStatus == DriverStatus.Busy.rawValue{
+//        if self.viewModel.getDriver(atPos: indexPath.row).driverStatus == DriverStatus.Busy.rawValue{
             let vc = DriverDetailsViewController(nibName: "DriverDetailsViewController", bundle: .main)
             vc.objDriver = self.viewModel.getDriver(atPos: indexPath.row)
             self.viewController.navigationController?.pushViewController(vc, animated: true)
-        }
+//        }
     }
 }
 

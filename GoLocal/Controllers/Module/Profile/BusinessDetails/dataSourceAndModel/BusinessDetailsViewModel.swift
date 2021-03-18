@@ -218,18 +218,21 @@ extension BusinessDetailsViewModel {
     }
     
     func getShopScheduleDic() -> NSMutableArray{
-        let arrDic : NSMutableArray = []
-        for obj in shopSchedule{
-            let dic:[String:Any] =
-                ["id":obj.id ?? 0,
-                 "opening_time":obj.openingTime.asStringOrEmpty(),
-                 "closing_time":obj.closingTime.asStringOrEmpty(),
-                 "weekday":obj.weekday.asStringOrEmpty(),
-                 "is_closed":obj.isClosed ?? 0,
-                 "delivery_type":self.getDeliveryTypeInt(str: obj.deliveryType ?? "") ?? ""]
-            arrDic.add(dic)
+        let jsonArray : NSMutableArray = []
+        if shopSchedule.count > 0{
+            for obj in shopSchedule{
+                var scheduleDic : [String:Any] = [:]
+                scheduleDic["id"] = obj.id ?? 0
+                scheduleDic["opening_time"] = obj.openingTime.asStringOrEmpty()
+                scheduleDic["closing_time"] = obj.closingTime.asStringOrEmpty()
+                scheduleDic["weekday"] = obj.weekday.asStringOrEmpty()
+                scheduleDic["is_closed"] = obj.isClosed ?? 0
+                scheduleDic["delivery_type"] = self.getDeliveryTypeInt(str: obj.deliveryType ?? "") ?? ""
+                jsonArray.add(scheduleDic)
+            }
         }
-        return arrDic
+        print(json(from: jsonArray)!)
+        return jsonArray
     }
 }
 

@@ -18,11 +18,15 @@ class DriverDetailsViewController: BaseViewController{
     var viewModel = DriverSeleListViewModel()
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
-        self.dataSource = DriverDetailsDataSource(tableView: tableView, viewModel: viewModel, viewController: self)
-        self.tableView.delegate = dataSource
-        self.tableView.dataSource = dataSource
-        self.tableView.tableFooterView = UIView()              
+        super.viewDidLoad()
+        getBusyDriverOrderDetails(driver_id: objDriver.id.asStringOrEmpty(),completion: { (completed) in
+            if completed{
+                self.dataSource = DriverDetailsDataSource(tableView: self.tableView, viewModel: self.viewModel, viewController: self)
+                self.tableView.delegate = self.dataSource
+                self.tableView.dataSource = self.dataSource
+                self.tableView.tableFooterView = UIView()
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {

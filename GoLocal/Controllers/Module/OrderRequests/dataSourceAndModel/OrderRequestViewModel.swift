@@ -37,10 +37,10 @@ extension OrderRequestViewModel {
                 for objproduct in (objRequest.orderDetails?.shopDetail?.products)! {
                     for objselItem in objproduct.selectedProducts! {
                         productDic = ["orderId":objRequest.orderDetails?.id ?? 0,
-                                      "productId" : objproduct.id!,
-                                      "productName":objproduct.productName!,
-                                      "quantity":objselItem.quantity!,
-                                      "variationName":objselItem.variationName!,
+                                      "productId" : objproduct.id.asStringOrEmpty(),
+                                      "productName":objproduct.productName.asStringOrEmpty(),
+                                      "quantity":objselItem.quantity.asStringOrEmpty(),
+                                      "variationName":objselItem.variationName.asStringOrEmpty(),
                                       "addons":objselItem.addons ?? []]
                         arrayProducts.append(productDic)
                     }

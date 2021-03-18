@@ -169,15 +169,17 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.imgIconWidthConstraint.constant = 0
                 cell.btnHidePassword.isHidden = false
                 cell.btnHidePassword.setImage(UIImage(named: "placeholder"), for: .normal)
-                cell.btnHidePassword.isUserInteractionEnabled = false
+                
                 cell.textField.isHidden = false
                 if businessDetailsViewController?.isEditEnable == true{
                     cell.lblTitle.alpha = 1
                     cell.textField.alpha = 1
                     cell.imgIcon.alpha = 1
                     cell.textField.isUserInteractionEnabled = true
+                    cell.btnHidePassword.isUserInteractionEnabled = true
                 }else {
                     cell.textField.isUserInteractionEnabled = false
+                    cell.btnHidePassword.isUserInteractionEnabled = false
                     cell.textField.alpha = 0.7
                     cell.imgIcon.alpha = 0.5
                 }
@@ -185,7 +187,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.textField.delegate = self
                 cell.textField.returnKeyType = .next
                 cell.textField.tag = indexPath.section
-                
+                cell.btnHidePassword.addTarget(self.businessDetailsViewController, action: #selector(self.businessDetailsViewController?.showSearchPlaceView(_:)), for: .touchUpInside)
                 return cell
             }
             
@@ -225,10 +227,21 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 } else {
                     cell.lblCountryPhoneCode.text = "+0"
                 }
-                
                 cell.textPhoneNumber.delegate = self
                 cell.textPhoneNumber.keyboardType = .numberPad
+                cell.textPhoneNumber.text = viewModel.getContactNum()
                 cell.btnCodePicker.addTarget(self.businessDetailsViewController, action: #selector(self.businessDetailsViewController?.actionShowCodePicker(_:)), for: .touchUpInside)
+                if businessDetailsViewController?.isEditEnable == true{
+                    cell.textPhoneNumber.alpha = 1
+                    cell.lblCountryPhoneCode.alpha = 1
+                    cell.textPhoneNumber.isUserInteractionEnabled = true
+                    cell.btnCodePicker.isUserInteractionEnabled = true
+                }else {
+                    cell.textPhoneNumber.isUserInteractionEnabled = false
+                    cell.btnCodePicker.isUserInteractionEnabled = false
+                    cell.textPhoneNumber.alpha = 0.7
+                    cell.lblCountryPhoneCode.alpha = 0.7
+                }
                 return cell
             }
 //            if let cell = tableView.dequeueReusableCell(withIdentifier: "CommonTextFieldTVCell", for: indexPath) as? CommonTextFieldTVCell{
@@ -372,6 +385,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 }else if indexPath.row == 1 {
                     cell.svTitle.isHidden = false
                 }else{
+                    
                     let customIndex : Int = indexPath.row - 2
                     if businessDetailsViewController?.isEditEnable == true{
                         cell.txtOpenTime.isUserInteractionEnabled = true
@@ -388,12 +402,29 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                         cell.txtCloseTime.alpha = 0.5
                         cell.btnSwitch.alpha = 0.5
                     }
+                    
                     if  viewModel.getShopSchedule()[customIndex].isClosed == 0{
                         cell.btnSwitch.setImage(UIImage(named: "switch_on"), for: .normal)
-                        cell.btnSwitch.accessibilityLabel = "switch_on"                        
+                        cell.btnSwitch.accessibilityLabel = "switch_on"
+                        cell.btnClosed.isHidden = true
+                        cell.txtOpenTime.isUserInteractionEnabled = true
+                        cell.txtCloseTime.isUserInteractionEnabled = true
+                        cell.txtOpenTime.text = viewModel.getShopSchedule()[customIndex].openingTime
+                        cell.txtCloseTime.text = viewModel.getShopSchedule()[customIndex].closingTime
+                        cell.txtOpenTime.layer.borderWidth = 1
+                        cell.txtCloseTime.layer.borderWidth = 1
+                        
                     }else {
                         cell.btnSwitch.setImage(UIImage(named: "switch_off"), for: .normal)
                         cell.btnSwitch.accessibilityLabel = "switch_off"
+                        cell.btnClosed.isHidden = false
+                        cell.txtOpenTime.isUserInteractionEnabled = false
+                        cell.txtCloseTime.isUserInteractionEnabled = false
+                        cell.txtOpenTime.text = ""
+                        cell.txtCloseTime.text = ""
+                        cell.txtOpenTime.layer.borderWidth = 0
+                        cell.txtCloseTime.layer.borderWidth = 0
+                        
                     }
                     cell.btnSwitch.tag = customIndex
                     cell.txtOpenTime.tag = indexPath.section
@@ -403,8 +434,6 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.txtOpenTime.accessibilityValue = "\(customIndex)"
                     cell.txtCloseTime.accessibilityValue = "\(customIndex)"
                     cell.btnSwitch.setTitle(String((viewModel.getShopSchedule()[customIndex].weekday?.prefix(3))!), for: .normal)
-                    cell.txtOpenTime.text = viewModel.getShopSchedule()[customIndex].openingTime
-                    cell.txtCloseTime.text = viewModel.getShopSchedule()[customIndex].closingTime
                     cell.svTime.isHidden = false
                     cell.txtOpenTime.delegate = self
                     cell.txtCloseTime.delegate = self

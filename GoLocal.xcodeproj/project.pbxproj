@@ -80,6 +80,7 @@
 		0036BB7425BAE88000FFCC5E /* RatingTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0036BB4E25BAE87F00FFCC5E /* RatingTVCell.xib */; };
 		0036BB7525BAE88000FFCC5E /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0036BB4F25BAE87F00FFCC5E /* RatingViewController.swift */; };
 		0036BB7625BAE88000FFCC5E /* RatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0036BB5025BAE87F00FFCC5E /* RatingViewController.xib */; };
+		003DAD432603743E00B3CF40 /* OrderDetailDriverTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003DAD422603743E00B3CF40 /* OrderDetailDriverTVCell.xib */; };
 		0043A2FD25E0D3BD00A74E08 /* OrderDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043A2FC25E0D3BD00A74E08 /* OrderDetails.swift */; };
 		005DB98B25D3B19700B7766D /* ShopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005DB98325D3B19700B7766D /* ShopDetail.swift */; };
 		005DB98C25D3B19700B7766D /* SelectedProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005DB98425D3B19700B7766D /* SelectedProducts.swift */; };
@@ -336,6 +337,7 @@
 		0036BB4E25BAE87F00FFCC5E /* RatingTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingTVCell.xib; sourceTree = "<group>"; };
 		0036BB4F25BAE87F00FFCC5E /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		0036BB5025BAE87F00FFCC5E /* RatingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingViewController.xib; sourceTree = "<group>"; };
+		003DAD422603743E00B3CF40 /* OrderDetailDriverTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailDriverTVCell.xib; sourceTree = "<group>"; };
 		0043A2FC25E0D3BD00A74E08 /* OrderDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetails.swift; sourceTree = "<group>"; };
 		005DB98325D3B19700B7766D /* ShopDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetail.swift; sourceTree = "<group>"; };
 		005DB98425D3B19700B7766D /* SelectedProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedProducts.swift; sourceTree = "<group>"; };
@@ -1302,6 +1304,7 @@
 				00F0662425C7F92600BAB8E3 /* OrderDetailsTVCell.swift */,
 				00F0662525C7F92600BAB8E3 /* OrderDetailsTVCell.xib */,
 				00F0662925C7FF7E00BAB8E3 /* OrderBillDetailsTVCell.xib */,
+				003DAD422603743E00B3CF40 /* OrderDetailDriverTVCell.xib */,
 			);
 			path = OrderDetailsTVCell;
 			sourceTree = "<group>";
@@ -1782,6 +1785,7 @@
 				0019F5F525B98DAE005139F4 /* SingleDriverTVCell.xib in Resources */,
 				0036BB6025BAE87F00FFCC5E /* ChangePasswordViewController.xib in Resources */,
 				46595045258B3237001D8CC0 /* LoginViewController.xib in Resources */,
+				003DAD432603743E00B3CF40 /* OrderDetailDriverTVCell.xib in Resources */,
 				0061591325CAB71000F7ED1E /* CalanderViewController.xib in Resources */,
 				00A4698025C965D2008B7671 /* DriverSeleListViewController.xib in Resources */,
 				0099D97625C1978400383466 /* RequestDetailsOrderTVCell.xib in Resources */,

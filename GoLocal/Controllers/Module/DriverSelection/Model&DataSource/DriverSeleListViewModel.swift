@@ -10,6 +10,7 @@ class DriverSeleListViewModel {
     private var objDrivers : BusinessDrivers!
     private var driverList : [Drivers] = []
     private var objDriver : Drivers!
+    private var objDriverOrder : OrderDetails!
 }
 //Getter Setter
 extension DriverSeleListViewModel{
@@ -39,5 +40,13 @@ extension DriverSeleListViewModel{
     
     func setDriver(objDriver: Drivers) {
         self.objDriver = objDriver
+    }
+    
+    func getDriverOrder() -> OrderDetails{
+        return objDriverOrder
+    }
+    
+    func setDriverOrder(objDriverOrder: OrderDetails) {
+        self.objDriverOrder = objDriverOrder
     }
 }

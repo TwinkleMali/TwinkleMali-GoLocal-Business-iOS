@@ -32,6 +32,7 @@ class OrderDetailsDataSource: NSObject {
         tableView.register("OrderButtonTVCell")
         tableView.register("OrderDetailsTVCell")
         tableView.register("OrderBillDetailsTVCell")
+        tableView.register("OrderDetailDriverTVCell")
     }
 }
 
@@ -187,9 +188,13 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 if isRequest {
                     return 0
                 }else {
-//                    if viewModel.getOrderDetail().
-                    return 0
-//                    return UITableView.automaticDimension
+                    if viewModel.getOrderDetail().orderStatus == OrderStatus.Confirmed.rawValue ||
+                        viewModel.getOrderDetail().orderStatus == OrderStatus.OrderLeft.rawValue ||
+                        viewModel.getOrderDetail().orderStatus == OrderStatus.Delivered.rawValue {
+                        return UITableView.automaticDimension
+                    }else {
+                        return 0
+                    }
                 }
             
             default:
@@ -268,8 +273,9 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
             }
             
         case OrderDetailsField.deliveryPerson.rawValue:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailsTVCell") as? OrderDetailsTVCell{
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailDriverTVCell") as? BusinessDriverTVCell{
                 cell.selectionStyle = .none
+//                if let driver =  objOrder.driverDetails {
                 if let driver =  viewModel.getOrderDetail().driverDetails {
                     cell.lblTitle.text = "Delivery Person"
                     var strname : String = ""
@@ -286,7 +292,14 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     }
                     
 //                    cell.lblUserName.text = "\(strname)"
-                    cell.lblValue.text = "\(strname)"
+                    cell.lblDriverName.text = "\(strname)"
+                    cell.lblDriverNumber.text = "+\(viewModel.getOrderDetail().driverDetails?.phonecode ?? 0) \(viewModel.getOrderDetail().driverDetails?.phone ?? "")"
+                    cell.btnEdit.setImage(UIImage(named: ""), for: .normal)
+                    cell.btnEdit.setTitle("View on Map", for: .normal)
+                    cell.btnEdit.layer.cornerRadius = 7
+                    cell.btnEdit.layer.borderWidth = 1
+                    cell.btnEdit.layer.borderColor = GreenCGColor
+                    cell.btnEdit.addTarget(self.orderDetailsViewController, action: #selector(self.orderDetailsViewController?.actionMarkOrderLeft(_:)),for: .touchUpInside)
                 }                
                 return cell
             }

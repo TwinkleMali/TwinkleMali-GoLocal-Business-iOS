@@ -9,6 +9,7 @@ import UIKit
 import Photos
 import AVFoundation
 import SDWebImage
+import GooglePlaces
 
 class BusinessDetailsViewController: BaseViewController {
 
@@ -65,6 +66,23 @@ class BusinessDetailsViewController: BaseViewController {
         }
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func  showSearchPlaceView(_ sender: UIButton){
+        let acController = GMSAutocompleteViewController()
+        acController.delegate = self
+        // Specify the place data types to return.
+        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt(GMSPlaceField.name.rawValue) |
+                                                    UInt(GMSPlaceField.placeID.rawValue) |
+                                                    UInt(GMSPlaceField.coordinate.rawValue) |
+                                                    UInt(GMSPlaceField.formattedAddress.rawValue) )
+        acController.placeFields = fields
+        
+        // Specify a filter.
+        let filter = GMSAutocompleteFilter()
+        filter.type = .address
+        acController.autocompleteFilter = filter
+        present(acController, animated: true, completion: nil)
     }
     
     //MARK: -   DatePicker Methods
@@ -146,7 +164,7 @@ class BusinessDetailsViewController: BaseViewController {
             viewModel.removeImages(at: sender.tag)
         }
         tableView.reloadSections([BusinessDetailField.Images.rawValue], with: .none)
-    }
+    }   
     
     @objc func btnAddImage(_ sender: UIButton) {
         optionView = OptionViewController(nibName: "OptionViewController", bundle: nil)
@@ -278,5 +296,43 @@ extension BusinessDetailsViewController: OptionViewControllerDelegate{
         }
     }
     
+    
+}
+
+//MARK:- Auto completionView
+extension BusinessDetailsViewController: GMSAutocompleteViewControllerDelegate {
+  // Handle the user's selection.
+  func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+    print("Place name: ",place.name ?? "")
+    print("Place formated address: ",place.formattedAddress ?? "")
+    print("Place ID: \(place.placeID ?? "")" )
+    print("Place attributions: \(String(describing: place.attributions))" )
+    print("Place Coordinate: \(place.coordinate)" )
+    viewModel.setLatitude(latitude: String(place.coordinate.latitude))
+    viewModel.setLongitude(longitude: String(place.coordinate.longitude))
+    viewModel.setStoreLocation(storeLocation: place.formattedAddress.asStringOrEmpty())
+    viewController.dismiss(animated: true) {
+        self.tableView.reloadSections([BusinessDetailField.StoreLocation.rawValue], with: .none)
+    }
+  }
+
+  func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+    // TODO: handle the error.
+    print("Error: ", error.localizedDescription)
+  }
+
+  // User canceled the operation.
+  func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+    dismiss(animated: true, completion: nil)
+  }
+
+  // Turn the network activity indicator on and off again.
+  func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+  }
+
+  func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+  }
     
 }

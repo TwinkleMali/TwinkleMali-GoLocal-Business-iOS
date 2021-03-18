@@ -221,8 +221,6 @@ extension EditProfileViewController {
 extension BusinessDetailsViewController {
     func editBusinessDetails(){
         KRProgressHUD.show()
-//        var array = [{"id" : 1, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" : "Sunday", "is_closed" : 0, "delivery_type" : 3}, {"id": 2, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" : "Monday", "is_closed" : 0, "delivery_type": 3}, {"id": 3, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" :"Tuesday", "is_closed": 0, "delivery_type": 3}, {"id": 4, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" :"Wednesday", "is_closed": 0, "delivery_type": 3}, {"id": 5, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" :"Thursday", "is_closed": 0, "delivery_type": 3}, {"id":6, "opening_time" : "020:00:00", "closing_time" : "23:59:59", "weekday" :"Friday", "is_closed": 0, "delivery_type": 3}, {"id": 7, "opening_time" : "10:00:00", "closing_time" : "23:59:59", "weekday" :"Saturday", "is_closed": 0, "delivery_type": 3}]
-        
         let  param : Parameters = [
             "user_id": USER_DETAILS?.id ?? 0,
             "shop_id": USER_DETAILS?.shopId ?? 0,
@@ -236,7 +234,7 @@ extension BusinessDetailsViewController {
             "phone":self.viewModel.getContactNum().asStringOrEmpty(),
             "delivery_type":self.viewModel.getDeliveryTypeInt(str: self.viewModel.getDeliveryType() ?? "")!,
             "licence_number":self.viewModel.getLicenseNum().asStringOrEmpty(),
-            "shop_schedule": viewModel.getShopScheduleDic(),
+            "shop_schedule": json(from: self.viewModel.getShopScheduleDic())!,
             "delete_slider_image_ids":"\(viewModel.getDeletedImage().map(String.init).joined(separator: ","))",
             "slider_image[]":self.viewModel.getImages()
         ]
@@ -389,6 +387,36 @@ extension DriversListViewController {
     }
 }
 
+extension DriverDetailsViewController {
+    
+    func getBusyDriverOrderDetails(driver_id : String, completion: @escaping (Bool) -> ()){
+//    func getBusyDriverOrderDetails(){
+        let  param : Parameters = [
+            "user_id" : USER_DETAILS?.id ?? 0,
+            "shop_id" : USER_DETAILS?.shopId ?? 0,
+            "driver_id" : driver_id
+        ]
+        KRProgressHUD.show()
+        APIHelper.shared.postJsonRequest(url: APIGetBusyDriverOrderDetails, parameter: param, headers: headers) { (isCompleted, status, response) in
+            self.view.isUserInteractionEnabled = true
+            self.tableView.isHidden = false
+            KRProgressHUD.dismiss()
+            if isCompleted {
+                if !(response["status"] as! Bool) {
+                    completion(false)
+                } else {
+                    if let data = response[WSDATA] as? NSDictionary {
+                        if let objDriverOrder = data["order_details"] as? NSDictionary {
+                            self.viewModel.setDriverOrder(objDriverOrder: OrderDetails(object: JSON(objDriverOrder)))
+                            self.tableView.reloadData()                        
+                        }
+                    }
+                    completion(true)
+                }
+            }
+        }
+    }
+}
 
 extension OrderViewController {
     func getListOfOrders(param : Parameters){

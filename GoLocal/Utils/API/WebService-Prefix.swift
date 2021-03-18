@@ -67,6 +67,7 @@ let APIGetAllBusinessOrders = "\(WEBSERVICE_PATH)GetAllBusinessOrders"
 
 let APIGetBusinessDrivers = "\(WEBSERVICE_PATH)GetBusinessDrivers"
 let APIGetAllBusinessDrivers = "\(WEBSERVICE_PATH)GetAllBusinessDrivers"
+let APIGetBusyDriverOrderDetails = "\(WEBSERVICE_PATH)GetBusyDriverOrderDetails"
 
 //let APISaveBusinessAccountDetail = "\(WEBSERVICE_PATH)SaveBusinessAccountDetail"
 //let APISaveBusinessAccountDetail = "\(WEBSERVICE_PATH)SaveBusinessAccountDetail"

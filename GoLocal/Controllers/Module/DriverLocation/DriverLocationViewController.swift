@@ -16,9 +16,9 @@ class DriverLocationViewController: BaseViewController {
     @IBOutlet weak var viewDriverDetails: CardView!
     @IBOutlet weak var driverImageView: UIImageView!
     @IBOutlet weak var lblDriverName: UILabel!
-    @IBOutlet weak var lblDriverTripDetails: UILabel!    
-    
-    var driverDetails : Drivers!
+    @IBOutlet weak var lblDriverTripDetails: UILabel!
+
+    var driverDetails : Drivers? = nil
     var orderId = 0
     var driverId : Int {
         get{
@@ -122,7 +122,7 @@ class DriverLocationViewController: BaseViewController {
                                               viewingAngle:  0)
         mapView.camera = camera
         marker.position = newLocation!
-        marker.icon = #imageLiteral(resourceName: "motorcycle_delivery_man_icon")
+//        marker.icon = #imageLiteral(resourceName: "motorcycle_delivery_man_icon")
         marker.appearAnimation = .pop
         marker.isDraggable = false
         mapView.delegate = self

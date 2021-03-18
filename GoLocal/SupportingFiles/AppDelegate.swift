@@ -25,10 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK:- Socket Handler Obj
     var socketIOHandler:SocketIOHandler?
     var socketHandlersAdded = false
+    
+    //MARK:- Comman Obj
     var arrOrderRequestMain : [OrderRequests] = []
+    
+    //MARK:- Notification Obj
     let notificationCenter = UNUserNotificationCenter.current()
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+       
         // IQKEYBOARD
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
@@ -43,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Messaging.messaging().delegate = self
         
         //GOOGLE MAPS CONFIG
+        GMSPlacesClient.provideAPIKey(GOOGLE_KEY)
         GMSServices.provideAPIKey(GOOGLE_KEY)
         
         
