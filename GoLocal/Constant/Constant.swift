@@ -177,7 +177,7 @@ let fFONT_MEDIUM    =   "Montserrat-Medium"
 //MARK: - COLORS
 let GreenColor = UIColor(red: 0/255, green: 112/255, blue: 50/255, alpha: 1.0)
 let LightGreenColor = UIColor(red: 0/255, green: 112/255, blue: 50/255, alpha: 0.5)
-
+let LightGray = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
 let GreenCGColor = UIColor(red: 6/255, green: 77/255, blue: 89/255, alpha: 1.0).cgColor
 let strokeColor = UIColor(red: 35/255, green: 138/255, blue: 254/255, alpha: 1.0)
 let THEME_COLOR = UIColor(red: 6/255, green: 77/255, blue: 89/255, alpha: 1.0)

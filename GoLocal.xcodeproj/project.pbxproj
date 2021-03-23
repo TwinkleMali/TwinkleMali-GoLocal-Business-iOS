@@ -106,8 +106,6 @@
 		0061592C25CAB76F00F7ED1E /* VAWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061591F25CAB76F00F7ED1E /* VAWeek.swift */; };
 		0061592D25CAB76F00F7ED1E /* VAWeekDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061592025CAB76F00F7ED1E /* VAWeekDaysView.swift */; };
 		0061592E25CAB76F00F7ED1E /* VAWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061592125CAB76F00F7ED1E /* VAWeekView.swift */; };
-		0061593025CAC91A00F7ED1E /* MonthSelectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0061592F25CAC91A00F7ED1E /* MonthSelectionViewController.xib */; };
-		0061593225CAC95000F7ED1E /* MonthSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061593125CAC95000F7ED1E /* MonthSelectionViewController.swift */; };
 		0061593425CACC5000F7ED1E /* SingleMonthCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061593325CACC5000F7ED1E /* SingleMonthCVCell.swift */; };
 		0061593625CACC6E00F7ED1E /* SingleMonthCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0061593525CACC6E00F7ED1E /* SingleMonthCVCell.xib */; };
 		006D7F7425B5B8870068C598 /* DriversListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006D7F7225B5B8870068C598 /* DriversListViewController.xib */; };
@@ -208,6 +206,8 @@
 		46595052258B54AB001D8CC0 /* LoginDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46595051258B54AB001D8CC0 /* LoginDataSource.swift */; };
 		46595056258B54BA001D8CC0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46595055258B54BA001D8CC0 /* LoginViewModel.swift */; };
 		4674E5EF25ACD3B0002839B6 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4674E5EE25ACD3B0002839B6 /* CustomSegmentedControl.swift */; };
+		468AB19C2603B221006832A8 /* PaymentConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468AB19A2603B221006832A8 /* PaymentConfirmationViewController.swift */; };
+		468AB19D2603B221006832A8 /* PaymentConfirmationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 468AB19B2603B221006832A8 /* PaymentConfirmationViewController.xib */; };
 		46BBFE77258BA2DC0088CBB9 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BBFE72258BA2DC0088CBB9 /* ForgotPasswordViewController.swift */; };
 		46BBFE78258BA2DC0088CBB9 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46BBFE73258BA2DC0088CBB9 /* ForgotPasswordViewController.xib */; };
 		46BBFE79258BA2DC0088CBB9 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BBFE75258BA2DC0088CBB9 /* ForgotPasswordViewModel.swift */; };
@@ -248,14 +248,32 @@
 		46F7DA102598623100923A08 /* MainTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46F7DA0E2598623100923A08 /* MainTabBarController.xib */; };
 		46F7DA73259A3B5900923A08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F7DA72259A3B5900923A08 /* User.swift */; };
 		52DB1DDC86F9D4DF1E4B7CA6 /* Pods_GoLocal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69F4C6BC4724471482859377 /* Pods_GoLocal.framework */; };
+		B504F015260303BF0041A85B /* MonthCalanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504F013260303BF0041A85B /* MonthCalanderViewController.swift */; };
+		B504F016260303BF0041A85B /* MonthCalanderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B504F014260303BF0041A85B /* MonthCalanderViewController.xib */; };
+		B504F01A260307850041A85B /* CalenderMonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B504F018260307850041A85B /* CalenderMonthCell.swift */; };
+		B504F01B260307850041A85B /* CalenderMonthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B504F019260307850041A85B /* CalenderMonthCell.xib */; };
+		B51365932605AFF900CEF664 /* CommonLeftRightLabelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51365912605AFF900CEF664 /* CommonLeftRightLabelTVCell.swift */; };
+		B51365942605AFF900CEF664 /* CommonLeftRightLabelTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51365922605AFF900CEF664 /* CommonLeftRightLabelTVCell.xib */; };
+		B51EBF68260330BD008FDBA5 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51EBF66260330BD008FDBA5 /* ScannerViewController.swift */; };
+		B51EBF69260330BD008FDBA5 /* ScannerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51EBF67260330BD008FDBA5 /* ScannerViewController.xib */; };
 		B55E3E8B2594679900E79631 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E3E8A2594679900E79631 /* BaseViewController.swift */; };
 		B55E3E9A25946DC500E79631 /* CategoryCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E3E9825946DC500E79631 /* CategoryCVCell.swift */; };
 		B55E3E9B25946DC500E79631 /* CategoryCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55E3E9925946DC500E79631 /* CategoryCVCell.xib */; };
 		B55E3EA12595FC5000E79631 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E3EA02595FC5000E79631 /* CardView.swift */; };
+		B56C3F7B2604A668003B0F6E /* LocalBusinessHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56C3F792604A668003B0F6E /* LocalBusinessHomeViewController.swift */; };
+		B56C3F7C2604A668003B0F6E /* LocalBusinessHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B56C3F7A2604A668003B0F6E /* LocalBusinessHomeViewController.xib */; };
+		B56C3F802604B5DB003B0F6E /* EarningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56C3F7E2604B5DB003B0F6E /* EarningViewController.swift */; };
+		B56C3F812604B5DB003B0F6E /* EarningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B56C3F7F2604B5DB003B0F6E /* EarningViewController.xib */; };
+		B571EE272604C26500305603 /* EarningViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571EE262604C26500305603 /* EarningViewDataSource.swift */; };
+		B571EE292604C27100305603 /* EarningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B571EE282604C27100305603 /* EarningViewModel.swift */; };
 		B58B75F925A5D5F600446FB7 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58B75F525A5D5F600446FB7 /* Dynamic.swift */; };
 		B58B75FA25A5D5F600446FB7 /* DynamicArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58B75F625A5D5F600446FB7 /* DynamicArray.swift */; };
 		B58B75FB25A5D5F600446FB7 /* DynamicAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58B75F725A5D5F600446FB7 /* DynamicAsync.swift */; };
 		B58B75FC25A5D5F600446FB7 /* GenericUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58B75F825A5D5F600446FB7 /* GenericUtils.swift */; };
+		B5A6C6CA2603475D007204ED /* CopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6C6C82603475C007204ED /* CopyLabel.swift */; };
+		B5A6C6CB2603475D007204ED /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6C6C92603475D007204ED /* QRScannerView.swift */; };
+		B5A6C6CD260347FC007204ED /* QRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6C6CC260347FC007204ED /* QRData.swift */; };
+		B5A6C6CF26034D2A007204ED /* scan.gif in Resources */ = {isa = PBXBuildFile; fileRef = B5A6C6CE26034D2A007204ED /* scan.gif */; };
 		B5D307DE2599BC2A00858439 /* ModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D307DC2599BC2A00858439 /* ModelViewController.swift */; };
 		B5D307DF2599BC2A00858439 /* ModelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D307DD2599BC2A00858439 /* ModelViewController.xib */; };
 /* End PBXBuildFile section */
@@ -362,8 +380,6 @@
 		0061591F25CAB76F00F7ED1E /* VAWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VAWeek.swift; sourceTree = "<group>"; };
 		0061592025CAB76F00F7ED1E /* VAWeekDaysView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VAWeekDaysView.swift; sourceTree = "<group>"; };
 		0061592125CAB76F00F7ED1E /* VAWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VAWeekView.swift; sourceTree = "<group>"; };
-		0061592F25CAC91A00F7ED1E /* MonthSelectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthSelectionViewController.xib; sourceTree = "<group>"; };
-		0061593125CAC95000F7ED1E /* MonthSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSelectionViewController.swift; sourceTree = "<group>"; };
 		0061593325CACC5000F7ED1E /* SingleMonthCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMonthCVCell.swift; sourceTree = "<group>"; };
 		0061593525CACC6E00F7ED1E /* SingleMonthCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleMonthCVCell.xib; sourceTree = "<group>"; };
 		006D7F7225B5B8870068C598 /* DriversListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DriversListViewController.xib; sourceTree = "<group>"; };
@@ -465,6 +481,8 @@
 		46595051258B54AB001D8CC0 /* LoginDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDataSource.swift; sourceTree = "<group>"; };
 		46595055258B54BA001D8CC0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4674E5EE25ACD3B0002839B6 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		468AB19A2603B221006832A8 /* PaymentConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationViewController.swift; sourceTree = "<group>"; };
+		468AB19B2603B221006832A8 /* PaymentConfirmationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentConfirmationViewController.xib; sourceTree = "<group>"; };
 		46BBFE72258BA2DC0088CBB9 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		46BBFE73258BA2DC0088CBB9 /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotPasswordViewController.xib; sourceTree = "<group>"; };
 		46BBFE75258BA2DC0088CBB9 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
@@ -507,14 +525,32 @@
 		46F7DA72259A3B5900923A08 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		559D753E2ACDA2416DD5DE48 /* Pods-GoLocal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoLocal.debug.xcconfig"; path = "Target Support Files/Pods-GoLocal/Pods-GoLocal.debug.xcconfig"; sourceTree = "<group>"; };
 		69F4C6BC4724471482859377 /* Pods_GoLocal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoLocal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B504F013260303BF0041A85B /* MonthCalanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCalanderViewController.swift; sourceTree = "<group>"; };
+		B504F014260303BF0041A85B /* MonthCalanderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MonthCalanderViewController.xib; sourceTree = "<group>"; };
+		B504F018260307850041A85B /* CalenderMonthCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderMonthCell.swift; sourceTree = "<group>"; };
+		B504F019260307850041A85B /* CalenderMonthCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalenderMonthCell.xib; sourceTree = "<group>"; };
+		B51365912605AFF900CEF664 /* CommonLeftRightLabelTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonLeftRightLabelTVCell.swift; sourceTree = "<group>"; };
+		B51365922605AFF900CEF664 /* CommonLeftRightLabelTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommonLeftRightLabelTVCell.xib; sourceTree = "<group>"; };
+		B51EBF66260330BD008FDBA5 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		B51EBF67260330BD008FDBA5 /* ScannerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScannerViewController.xib; sourceTree = "<group>"; };
 		B55E3E8A2594679900E79631 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		B55E3E9825946DC500E79631 /* CategoryCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCVCell.swift; sourceTree = "<group>"; };
 		B55E3E9925946DC500E79631 /* CategoryCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCVCell.xib; sourceTree = "<group>"; };
 		B55E3EA02595FC5000E79631 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		B56C3F792604A668003B0F6E /* LocalBusinessHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBusinessHomeViewController.swift; sourceTree = "<group>"; };
+		B56C3F7A2604A668003B0F6E /* LocalBusinessHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocalBusinessHomeViewController.xib; sourceTree = "<group>"; };
+		B56C3F7E2604B5DB003B0F6E /* EarningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningViewController.swift; sourceTree = "<group>"; };
+		B56C3F7F2604B5DB003B0F6E /* EarningViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningViewController.xib; sourceTree = "<group>"; };
+		B571EE262604C26500305603 /* EarningViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningViewDataSource.swift; sourceTree = "<group>"; };
+		B571EE282604C27100305603 /* EarningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningViewModel.swift; sourceTree = "<group>"; };
 		B58B75F525A5D5F600446FB7 /* Dynamic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		B58B75F625A5D5F600446FB7 /* DynamicArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicArray.swift; sourceTree = "<group>"; };
 		B58B75F725A5D5F600446FB7 /* DynamicAsync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicAsync.swift; sourceTree = "<group>"; };
 		B58B75F825A5D5F600446FB7 /* GenericUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUtils.swift; sourceTree = "<group>"; };
+		B5A6C6C82603475C007204ED /* CopyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyLabel.swift; sourceTree = "<group>"; };
+		B5A6C6C92603475D007204ED /* QRScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
+		B5A6C6CC260347FC007204ED /* QRData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRData.swift; sourceTree = "<group>"; };
+		B5A6C6CE26034D2A007204ED /* scan.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = scan.gif; sourceTree = "<group>"; };
 		B5D307DC2599BC2A00858439 /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
 		B5D307DD2599BC2A00858439 /* ModelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModelViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -889,8 +925,6 @@
 			children = (
 				0061591025CAB70F00F7ED1E /* CalanderViewController.swift */,
 				0061591125CAB70F00F7ED1E /* CalanderViewController.xib */,
-				0061592F25CAC91A00F7ED1E /* MonthSelectionViewController.xib */,
-				0061593125CAC95000F7ED1E /* MonthSelectionViewController.swift */,
 				0061593325CACC5000F7ED1E /* SingleMonthCVCell.swift */,
 				0061593525CACC6E00F7ED1E /* SingleMonthCVCell.xib */,
 			);
@@ -999,6 +1033,7 @@
 		0089111A25B1AED600C9125A /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				B51365902605AFB700CEF664 /* CommonLeftRightLabelTVCell */,
 				0022D8302600869300A246D1 /* MobileNumberTVCell */,
 				0089112825B1B02200C9125A /* CommonTextFieldTVCell */,
 				0089112225B1AFDD00C9125A /* CommonButtonTVCell */,
@@ -1356,6 +1391,7 @@
 		46595040258B3217001D8CC0 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				B56C3F782604A641003B0F6E /* LocalBusinessHomeViewController */,
 				00CB992725F0F02A00161590 /* DriverLocation */,
 				00F16F2325E7ADA00078C2F1 /* DeliveryRoute */,
 				0020282E25DE820F008E0E2E /* DriversStatus */,
@@ -1391,6 +1427,15 @@
 				46595055258B54BA001D8CC0 /* LoginViewModel.swift */,
 			);
 			path = dataSourceAndModel;
+			sourceTree = "<group>";
+		};
+		468AB1992603B1F6006832A8 /* PaymentConfirmationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				468AB19A2603B221006832A8 /* PaymentConfirmationViewController.swift */,
+				468AB19B2603B221006832A8 /* PaymentConfirmationViewController.xib */,
+			);
+			path = PaymentConfirmationViewController;
 			sourceTree = "<group>";
 		};
 		46BBFE71258BA2DC0088CBB9 /* ForgotPassword */ = {
@@ -1483,6 +1528,7 @@
 		46CDA3902589BB700089105D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B5A6C6C72603474C007204ED /* QRScanner */,
 				005F87EE25D1588C000A475A /* SocketHandler */,
 				0061591425CAB76F00F7ED1E /* VACalendar */,
 				0089110325B1AC9F00C9125A /* PostNotifications */,
@@ -1510,6 +1556,10 @@
 		46CDA3972589C1470089105D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B56C3F7D2604B562003B0F6E /* EarningViewController */,
+				468AB1992603B1F6006832A8 /* PaymentConfirmationViewController */,
+				B51EBF652603309C008FDBA5 /* ScannerViewController */,
+				B504F012260303BF0041A85B /* MonthCalanderViewController */,
 				0022D826260084F100A246D1 /* CountryCodePickerViewController */,
 				0061590F25CAB70F00F7ED1E /* CalanderViewController */,
 				00F065AA25C42D0E00BAB8E3 /* BottomSheetVC */,
@@ -1620,6 +1670,43 @@
 			path = TabBarcontroller;
 			sourceTree = "<group>";
 		};
+		B504F012260303BF0041A85B /* MonthCalanderViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B504F017260307850041A85B /* CalenderMonthCell */,
+				B504F013260303BF0041A85B /* MonthCalanderViewController.swift */,
+				B504F014260303BF0041A85B /* MonthCalanderViewController.xib */,
+			);
+			path = MonthCalanderViewController;
+			sourceTree = "<group>";
+		};
+		B504F017260307850041A85B /* CalenderMonthCell */ = {
+			isa = PBXGroup;
+			children = (
+				B504F018260307850041A85B /* CalenderMonthCell.swift */,
+				B504F019260307850041A85B /* CalenderMonthCell.xib */,
+			);
+			path = CalenderMonthCell;
+			sourceTree = "<group>";
+		};
+		B51365902605AFB700CEF664 /* CommonLeftRightLabelTVCell */ = {
+			isa = PBXGroup;
+			children = (
+				B51365912605AFF900CEF664 /* CommonLeftRightLabelTVCell.swift */,
+				B51365922605AFF900CEF664 /* CommonLeftRightLabelTVCell.xib */,
+			);
+			path = CommonLeftRightLabelTVCell;
+			sourceTree = "<group>";
+		};
+		B51EBF652603309C008FDBA5 /* ScannerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B51EBF66260330BD008FDBA5 /* ScannerViewController.swift */,
+				B51EBF67260330BD008FDBA5 /* ScannerViewController.xib */,
+			);
+			path = ScannerViewController;
+			sourceTree = "<group>";
+		};
 		B55E3E882594676D00E79631 /* BaseViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1637,6 +1724,34 @@
 			path = CategoryCVCell;
 			sourceTree = "<group>";
 		};
+		B56C3F782604A641003B0F6E /* LocalBusinessHomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B56C3F792604A668003B0F6E /* LocalBusinessHomeViewController.swift */,
+				B56C3F7A2604A668003B0F6E /* LocalBusinessHomeViewController.xib */,
+			);
+			path = LocalBusinessHomeViewController;
+			sourceTree = "<group>";
+		};
+		B56C3F7D2604B562003B0F6E /* EarningViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B571EE252604C23300305603 /* DataSource&Model */,
+				B56C3F7E2604B5DB003B0F6E /* EarningViewController.swift */,
+				B56C3F7F2604B5DB003B0F6E /* EarningViewController.xib */,
+			);
+			path = EarningViewController;
+			sourceTree = "<group>";
+		};
+		B571EE252604C23300305603 /* DataSource&Model */ = {
+			isa = PBXGroup;
+			children = (
+				B571EE262604C26500305603 /* EarningViewDataSource.swift */,
+				B571EE282604C27100305603 /* EarningViewModel.swift */,
+			);
+			path = "DataSource&Model";
+			sourceTree = "<group>";
+		};
 		B58B75F425A5D5F500446FB7 /* Dynamics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1646,6 +1761,17 @@
 				B58B75F825A5D5F600446FB7 /* GenericUtils.swift */,
 			);
 			path = Dynamics;
+			sourceTree = "<group>";
+		};
+		B5A6C6C72603474C007204ED /* QRScanner */ = {
+			isa = PBXGroup;
+			children = (
+				B5A6C6CE26034D2A007204ED /* scan.gif */,
+				B5A6C6CC260347FC007204ED /* QRData.swift */,
+				B5A6C6C82603475C007204ED /* CopyLabel.swift */,
+				B5A6C6C92603475D007204ED /* QRScannerView.swift */,
+			);
+			path = QRScanner;
 			sourceTree = "<group>";
 		};
 		B5D307DB2599BBD400858439 /* ModelViewController */ = {
@@ -1730,6 +1856,7 @@
 				0036BB5C25BAE87F00FFCC5E /* ManageBankAccountTVCell.xib in Resources */,
 				00B98D3A25BEF2C300538651 /* GiveRatingViewController.xib in Resources */,
 				B5D307DF2599BC2A00858439 /* ModelViewController.xib in Resources */,
+				B56C3F812604B5DB003B0F6E /* EarningViewController.xib in Resources */,
 				0036BB5825BAE87F00FFCC5E /* CommonAddTVCell.xib in Resources */,
 				0036BB6C25BAE87F00FFCC5E /* ProfileTVCell.xib in Resources */,
 				0036BB5225BAE87F00FFCC5E /* AddAccountTextFieldTVCell.xib in Resources */,
@@ -1744,6 +1871,7 @@
 				46CDA4012589D5890089105D /* Assets.xcassets in Resources */,
 				00F0661425C7DE4D00BAB8E3 /* ConfirmAmountAlert.xib in Resources */,
 				0036BB5425BAE87F00FFCC5E /* AddBankAccountViewController.xib in Resources */,
+				B51EBF69260330BD008FDBA5 /* ScannerViewController.xib in Resources */,
 				0020284B25DE8456008E0E2E /* DriverSectionTVCell.xib in Resources */,
 				0036BB7425BAE88000FFCC5E /* RatingTVCell.xib in Resources */,
 				46CDA3FC2589D5890089105D /* Montserrat-Medium.otf in Resources */,
@@ -1755,6 +1883,7 @@
 				00F065AE25C42D0E00BAB8E3 /* BottomSheetVC.xib in Resources */,
 				0099D94425C1717700383466 /* BlurVC.xib in Resources */,
 				00F0662A25C7FF7E00BAB8E3 /* OrderBillDetailsTVCell.xib in Resources */,
+				B51365942605AFF900CEF664 /* CommonLeftRightLabelTVCell.xib in Resources */,
 				0089112525B1AFF200C9125A /* CommonButtonTVCell.xib in Resources */,
 				00B98D3325BEDF5C00538651 /* NotificationTVCell.xib in Resources */,
 				006D7F7425B5B8870068C598 /* DriversListViewController.xib in Resources */,
@@ -1768,11 +1897,14 @@
 				00A4698425C965D2008B7671 /* SelectDriverTVCell.xib in Resources */,
 				00A4697525C950BD008B7671 /* OpenCloseTimeTVCell.xib in Resources */,
 				006D7F7E25B5B9F80068C598 /* OrderRequestViewController.xib in Resources */,
+				B504F01B260307850041A85B /* CalenderMonthCell.xib in Resources */,
 				0019F61525B9904E005139F4 /* SingleCategoryTVCell.xib in Resources */,
 				00CB992B25F0F02A00161590 /* DriverLocationViewController.xib in Resources */,
 				0036BB6A25BAE87F00FFCC5E /* NotificationsViewController.xib in Resources */,
 				00084C8F25C2B46100758ADA /* PastOrdersTVCell.xib in Resources */,
+				B504F016260303BF0041A85B /* MonthCalanderViewController.xib in Resources */,
 				46F7DA102598623100923A08 /* MainTabBarController.xib in Resources */,
+				B5A6C6CF26034D2A007204ED /* scan.gif in Resources */,
 				00F0663925C8185600BAB8E3 /* BusinessDetailsTVCell.xib in Resources */,
 				B55E3E9B25946DC500E79631 /* CategoryCVCell.xib in Resources */,
 				002FCAAD25FF9237008E587E /* GoogleService-Info.plist in Resources */,
@@ -1799,8 +1931,9 @@
 				00F0662725C7F92700BAB8E3 /* OrderDetailsTVCell.xib in Resources */,
 				0099D96725C1972300383466 /* OrderListTVCell.xib in Resources */,
 				0019F60B25B9904E005139F4 /* CategoryListViewController.xib in Resources */,
-				0061593025CAC91A00F7ED1E /* MonthSelectionViewController.xib in Resources */,
+				468AB19D2603B221006832A8 /* PaymentConfirmationViewController.xib in Resources */,
 				46CDA4002589D5890089105D /* Montserrat-SemiBold.otf in Resources */,
+				B56C3F7C2604A668003B0F6E /* LocalBusinessHomeViewController.xib in Resources */,
 				00D1FB0425DBD08500EA63DC /* TimeSelectionVC.xib in Resources */,
 				00F065A425C407B600BAB8E3 /* OrderDetailsViewController.xib in Resources */,
 			);
@@ -1882,6 +2015,7 @@
 				0036BB5525BAE87F00FFCC5E /* AddBankAccountDataSource.swift in Sources */,
 				00B0922A25F0BC10008DAC82 /* ReviewReplies.swift in Sources */,
 				0061592625CAB76F00F7ED1E /* VADayView.swift in Sources */,
+				B51365932605AFF900CEF664 /* CommonLeftRightLabelTVCell.swift in Sources */,
 				B58B75FC25A5D5F600446FB7 /* GenericUtils.swift in Sources */,
 				00A4698225C965D2008B7671 /* DriverSeleListViewModel.swift in Sources */,
 				0036BB6D25BAE87F00FFCC5E /* ProfileViewController.swift in Sources */,
@@ -1909,6 +2043,7 @@
 				005DB98C25D3B19700B7766D /* SelectedProducts.swift in Sources */,
 				0099D97325C1978400383466 /* RequestDetailsMapTVCell.swift in Sources */,
 				0099D97725C1978400383466 /* RequestProductDetailsTVCell.swift in Sources */,
+				B51EBF68260330BD008FDBA5 /* ScannerViewController.swift in Sources */,
 				0089110F25B1AE5900C9125A /* Enum.swift in Sources */,
 				0099D96425C1972300383466 /* OrderButtonTVCell.swift in Sources */,
 				0036BB5B25BAE87F00FFCC5E /* ManageBankAccountTVCell.swift in Sources */,
@@ -1917,8 +2052,10 @@
 				0020283F25DE820F008E0E2E /* DriverStatusViewController.swift in Sources */,
 				0061592525CAB76F00F7ED1E /* VADay.swift in Sources */,
 				0061592A25CAB76F00F7ED1E /* VAMonthHeaderView.swift in Sources */,
+				B56C3F7B2604A668003B0F6E /* LocalBusinessHomeViewController.swift in Sources */,
 				007B98A925EF998100891839 /* Notifications.swift in Sources */,
 				0036BB6925BAE87F00FFCC5E /* NotificationsViewController.swift in Sources */,
+				B571EE292604C27100305603 /* EarningViewModel.swift in Sources */,
 				00A4698525C965D2008B7671 /* DriverSeleListViewController.swift in Sources */,
 				00B98D3925BEF2C300538651 /* GiveRatingViewController.swift in Sources */,
 				46CDA3B52589CF380089105D /* UICollectionView_Extension.swift in Sources */,
@@ -1963,7 +2100,6 @@
 				0025339B25D500B900A21776 /* MZTimerLabel.m in Sources */,
 				0022D82F260084F200A246D1 /* CountryCodePickerViewModel.swift in Sources */,
 				0089111725B1AE6200C9125A /* WebService-Prefix.swift in Sources */,
-				0061593225CAC95000F7ED1E /* MonthSelectionViewController.swift in Sources */,
 				4674E5EF25ACD3B0002839B6 /* CustomSegmentedControl.swift in Sources */,
 				0061592325CAB76F00F7ED1E /* VACalendarMonthDelegate.swift in Sources */,
 				00F065DA25C5494F00BAB8E3 /* PaymentOptionViewController.swift in Sources */,
@@ -1990,11 +2126,13 @@
 				0036BB5D25BAE87F00FFCC5E /* ManageBankAccountViewController.swift in Sources */,
 				46BBFE7A258BA2DC0088CBB9 /* ForgotPasswordDataSource.swift in Sources */,
 				0036BB6625BAE87F00FFCC5E /* EditProfileDataSource.swift in Sources */,
+				B5A6C6CD260347FC007204ED /* QRData.swift in Sources */,
 				0036BB5125BAE87F00FFCC5E /* AddAccountTextFieldTVCell.swift in Sources */,
 				002533A025D50D4D00A21776 /* Drivers.swift in Sources */,
 				0020284625DE820F008E0E2E /* BusinessDriverTVCell.swift in Sources */,
 				B55E3EA12595FC5000E79631 /* CardView.swift in Sources */,
 				00F0663825C8185600BAB8E3 /* BusinessDetailsTVCell.swift in Sources */,
+				B56C3F802604B5DB003B0F6E /* EarningViewController.swift in Sources */,
 				0061592825CAB76F00F7ED1E /* VAFormatters.swift in Sources */,
 				0019F61025B9904E005139F4 /* CategoryListViewDataSource.swift in Sources */,
 				46CDA3D42589D0330089105D /* CustomDesignSegment + Helper.swift in Sources */,
@@ -2003,8 +2141,10 @@
 				0019F61425B9904E005139F4 /* SingleCategoryTVCell.swift in Sources */,
 				0089110925B1AE4800C9125A /* FAShimmerView.swift in Sources */,
 				00C2F48125F2038B00032EBE /* Schedule.swift in Sources */,
+				B504F01A260307850041A85B /* CalenderMonthCell.swift in Sources */,
 				46BBFE79258BA2DC0088CBB9 /* ForgotPasswordViewModel.swift in Sources */,
 				46595044258B3237001D8CC0 /* LoginViewController.swift in Sources */,
+				B5A6C6CB2603475D007204ED /* QRScannerView.swift in Sources */,
 				00A58FE425EE61E200F31118 /* ChangePasswordViewModel.swift in Sources */,
 				0099D96625C1972300383466 /* OrderListTVCell.swift in Sources */,
 				46CDA3B72589CF380089105D /* UIImage+Extension.swift in Sources */,
@@ -2013,6 +2153,7 @@
 				0089111625B1AE6200C9125A /* API_Manager+Extensions.swift in Sources */,
 				46595056258B54BA001D8CC0 /* LoginViewModel.swift in Sources */,
 				00F0663525C8185600BAB8E3 /* BusinessDetailsViewController.swift in Sources */,
+				468AB19C2603B221006832A8 /* PaymentConfirmationViewController.swift in Sources */,
 				46CDA3BF2589CF380089105D /* UITableViewAnimationExtension.swift in Sources */,
 				0036BB5F25BAE87F00FFCC5E /* ChangePasswordViewController.swift in Sources */,
 				4659503E258B232A001D8CC0 /* ParallaxCollectionViewLayout.swift in Sources */,
@@ -2026,6 +2167,7 @@
 				0089112C25B1B04000C9125A /* CommonTextFieldTVCell.swift in Sources */,
 				0061592E25CAB76F00F7ED1E /* VAWeekView.swift in Sources */,
 				0036BB5A25BAE87F00FFCC5E /* ManageBankAccountViewModel.swift in Sources */,
+				B504F015260303BF0041A85B /* MonthCalanderViewController.swift in Sources */,
 				0099D95125C194C900383466 /* OrderDataSource.swift in Sources */,
 				00F16F7525E8C9350078C2F1 /* DeliveryRouteVC.swift in Sources */,
 				005DB98F25D3B19700B7766D /* CustomerDetails.swift in Sources */,
@@ -2033,10 +2175,12 @@
 				0099D95525C194C900383466 /* OrderViewController.swift in Sources */,
 				0036BB6F25BAE87F00FFCC5E /* RatingDataSource.swift in Sources */,
 				0061592225CAB76F00F7ED1E /* VACalendar.swift in Sources */,
+				B571EE272604C26500305603 /* EarningViewDataSource.swift in Sources */,
 				00DE283E25DA90AC00B1EC94 /* RejectReasons.swift in Sources */,
 				46F7DA73259A3B5900923A08 /* User.swift in Sources */,
 				46CDA3D52589D0330089105D /* AnimationManager.swift in Sources */,
 				00F0659A25C3CE5B00BAB8E3 /* OrderRequestViewModel.swift in Sources */,
+				B5A6C6CA2603475D007204ED /* CopyLabel.swift in Sources */,
 				0089111825B1AE6200C9125A /* APIHelper.swift in Sources */,
 				00C2F48025F2038B00032EBE /* SliderImages.swift in Sources */,
 				0025339F25D50D4D00A21776 /* BusinessDrivers.swift in Sources */,
@@ -2204,7 +2348,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.golocalfirst.businessapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dev;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA SSD/Project/Go_Local/Business/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2229,7 +2373,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.golocalfirst.businessapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dis;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA SSD/Project/Go_Local/Business/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

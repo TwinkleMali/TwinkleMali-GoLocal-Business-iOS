@@ -22,7 +22,6 @@ extension LoginViewController {
         
         let  param : Parameters = [
             "email": email,
-            "user_role" : USER_ROLE,
             "password": password,
             "device_type": DEVICE_TYPE,
             "device_token": DEVICE_TOKEN,
@@ -404,7 +403,9 @@ extension OrderViewController {
             
             if isCompleted {
                 if !(response["status"] as! Bool) {
-                    
+                    //self.showBanner(bannerTitle: .alert, message: "No Orders Found", type: .danger)
+                    self.viewModel.removeAllCurrentOrder(orderType: param["order_option"] as! Int)
+                    self.tableView.reloadData()
                 } else {
                     if let data = response[WSDATA] as? NSDictionary {
                         if let arrTempOrders = data["orders"] as? NSArray {
@@ -414,7 +415,7 @@ extension OrderViewController {
                                     arrOrders.append(OrderDetails(object: JSON(order)))
                                 }
                             }
-                            self.viewModel.setOrders(arrOrder: arrOrders, orderType:param["order_option"] as! Int)
+                            self.viewModel.setOrders(arrOrder: arrOrders, orderType:self.selOrder)
                             self.tableView.reloadData()
                         }
                     }
@@ -425,6 +426,9 @@ extension OrderViewController {
                     self.activityIndicator.stopAnimating()
                 }
             }
+            self.tableView.isHidden = self.viewModel.getOrderRowCount(orderType: self.selOrder) < 0
+                
+            
         }
         
     }
@@ -539,6 +543,37 @@ extension  RatingViewController{
                 }
             }
         }
+        
+    }
+}
+extension PaymentOptionViewController {
+    func getCustomerDetails(code : String){
+        KRProgressHUD.show()
+        let  param : Parameters = [
+            "qrcode" : code
+        ]
+        APIHelper.shared.postJsonRequest(url: APIGetCustomerInfo, parameter: param, headers: headers) { (isCompleted, status, response) in
+            KRProgressHUD.dismiss()
+            if isCompleted {
+                if !(response["status"] as! Bool) {
+                    self.back(withAnimation: true)
+                    self.showBanner(bannerTitle: .none, message: "Customer not found in system", type: .danger)
+                } else {
+                    if let data = response[WSDATA] as? NSDictionary {
+                        if let user = data[WSUSER.lowercased()] as? NSDictionary {
+                            let customer = User(json: JSON(user))
+                            print("@ Customer found : ",customer.name)
+                            self.customerDetails = customer
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+extension EarningViewController {
+    func getAllEarnings(){
         
     }
 }

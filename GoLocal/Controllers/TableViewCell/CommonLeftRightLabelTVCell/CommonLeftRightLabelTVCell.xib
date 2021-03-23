@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.otf">
+            <string>Montserrat-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="125" id="KGk-i7-Jjw" customClass="CommonLeftRightLabelTVCell" customModule="GoLocal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="389" height="125"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="389" height="125"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lcd-Gc-2Xh" customClass="CardView" customModule="GoLocal" customModuleProvider="target">
+                        <rect key="frame" x="15" y="10" width="359" height="105"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jagjeetsingh Labana paymentType : Credit Card User redeemed Points : 100 Total bill amount : $100" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kR-HA-jAR">
+                                <rect key="frame" x="15" y="8" width="244" height="89"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/12/2021" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yhc-K6-X1b">
+                                <rect key="frame" x="264" y="11" width="80" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Qq1-OT-xqM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="13"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4kR-HA-jAR" firstAttribute="top" secondItem="Lcd-Gc-2Xh" secondAttribute="top" constant="8" id="3JE-2z-A6M"/>
+                            <constraint firstAttribute="bottom" secondItem="4kR-HA-jAR" secondAttribute="bottom" constant="8" id="5Uw-4N-dvc"/>
+                            <constraint firstItem="4kR-HA-jAR" firstAttribute="leading" secondItem="Lcd-Gc-2Xh" secondAttribute="leading" constant="15" id="Kqz-cE-JTG"/>
+                            <constraint firstItem="Yhc-K6-X1b" firstAttribute="top" secondItem="4kR-HA-jAR" secondAttribute="top" constant="3" id="PmT-MU-Se2"/>
+                            <constraint firstItem="Yhc-K6-X1b" firstAttribute="leading" secondItem="4kR-HA-jAR" secondAttribute="trailing" constant="5" id="ecC-o5-ylc"/>
+                            <constraint firstAttribute="trailing" secondItem="Yhc-K6-X1b" secondAttribute="trailing" constant="15" id="ias-fX-e7L"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetWidth">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetHeight">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" name="LightGreyColor"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Lcd-Gc-2Xh" secondAttribute="trailing" constant="15" id="JeW-9q-iBl"/>
+                    <constraint firstItem="Lcd-Gc-2Xh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="QPS-LG-99W"/>
+                    <constraint firstItem="Lcd-Gc-2Xh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ebs-MU-T0a"/>
+                    <constraint firstAttribute="bottom" secondItem="Lcd-Gc-2Xh" secondAttribute="bottom" constant="10" id="qMy-tR-hUH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblLeftValue" destination="4kR-HA-jAR" id="daZ-b1-tXt"/>
+                <outlet property="lblRightValue" destination="Yhc-K6-X1b" id="9Ov-Ad-CXa"/>
+            </connections>
+            <point key="canvasLocation" x="190.57971014492756" y="106.80803571428571"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="LightGreyColor">
+            <color red="0.80000001192092896" green="0.79600000381469727" blue="0.79600000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

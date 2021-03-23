@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScannerViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="imgGIF" destination="J35-L6-odD" id="fiy-fF-aW4"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewScanner" destination="g0n-yj-bLc" id="pXM-Mk-wCG"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g0n-yj-bLc" customClass="QRScannerView" customModule="GoLocal" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qnn-bC-7Sw">
+                    <rect key="frame" x="20" y="64" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="qnn-bC-7Sw" secondAttribute="height" multiplier="1:1" id="AlG-R2-FFF"/>
+                        <constraint firstAttribute="width" constant="44" id="Vfg-R6-N25"/>
+                    </constraints>
+                    <state key="normal" image="close_white"/>
+                    <connections>
+                        <action selector="actionClose:" destination="-1" eventType="touchUpInside" id="xpN-W5-0Ru"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J35-L6-odD" customClass="SDAnimatedImageView">
+                    <rect key="frame" x="0.0" y="241" width="414" height="414"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="J35-L6-odD" secondAttribute="height" multiplier="1:1" id="o8R-r2-gxu"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="J35-L6-odD" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="24i-95-4Kh"/>
+                <constraint firstItem="g0n-yj-bLc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2oq-NQ-RV2"/>
+                <constraint firstAttribute="bottom" secondItem="g0n-yj-bLc" secondAttribute="bottom" id="7pk-9s-1N8"/>
+                <constraint firstItem="J35-L6-odD" firstAttribute="centerX" secondItem="g0n-yj-bLc" secondAttribute="centerX" id="Cu6-iT-Mkw"/>
+                <constraint firstItem="qnn-bC-7Sw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Fda-JF-Mls"/>
+                <constraint firstItem="J35-L6-odD" firstAttribute="centerY" secondItem="g0n-yj-bLc" secondAttribute="centerY" id="I6i-ld-v8Q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="g0n-yj-bLc" secondAttribute="trailing" id="QKo-X7-nCF"/>
+                <constraint firstItem="g0n-yj-bLc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZlQ-fL-SSR"/>
+                <constraint firstItem="qnn-bC-7Sw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="dfU-fE-Wsy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="J35-L6-odD" secondAttribute="trailing" id="iPr-xX-qx1"/>
+            </constraints>
+            <point key="canvasLocation" x="-59.420289855072468" y="88.392857142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="close_white" width="32" height="32"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
