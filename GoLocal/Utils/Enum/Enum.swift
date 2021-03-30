@@ -123,6 +123,11 @@ enum OrderType : Int {
     case PastOrder
 }
 
+enum OrderDetailTab : Int {
+    case FirstOrder = 1
+    case SecondOrder
+}
+
 enum DeliveryType : String{
     case delivery = "Delivery"
     case collection = "Collection"  

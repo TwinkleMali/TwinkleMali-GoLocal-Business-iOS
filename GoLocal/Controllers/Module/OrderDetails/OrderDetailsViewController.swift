@@ -13,20 +13,25 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     @IBOutlet weak var navView: UIView!
     @IBOutlet weak var lblOrderStatus: UILabel!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var switchView: UIView!
+    @IBOutlet weak var switchStackView: UIStackView!
+    @IBOutlet weak var btnFirstOrder: UIButton!
+    @IBOutlet weak var btnSecondOrder: UIButton!
     var dataSource: OrderDetailsDataSource?
     var viewModel = OrderDetailsViewModel()
     var isOrderRequest : Bool = false
     var objOrderRequest : OrderRequests!
     var objOrder : OrderDetails!
     var orderId : Int!
+    var selOrder = OrderDetailTab.FirstOrder.rawValue
+    var isMultipleOrder : Bool = false
 //    @IBOutlet var btnHeight : NSLayoutConstraint!
-//    @IBOutlet var stHeight : NSLayoutConstraint!
+    @IBOutlet var stHeight : NSLayoutConstraint!
     @IBOutlet weak var btnMarkOrderLeft: UIButton!{
         didSet{
             btnMarkOrderLeft.layer.cornerRadius = 8
         }
     }
-    
     @IBOutlet weak var btnAccept: UIButton!{
         didSet{
             btnAccept.layer.cornerRadius = 8
@@ -56,7 +61,6 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
         }
         
         if objOrder != nil{
-           
             self.viewModel.setOrderDetail(objOrder: objOrder)
             socketGetOrderDetail(strOrder: "\(objOrder.id ?? 0)")
             setupView()
@@ -65,43 +69,63 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
         if orderId != nil{
             socketGetOrderDetail(strOrder: "\(orderId ?? 0)")
         }
-        
     }
     
     func setupView() {
-    
-        if isOrderRequest{
-            btnMarkOrderLeft.isHidden = true
-            btnMarkOrderLeft.isUserInteractionEnabled = false
-           
-            stackView.isHidden = false
-        }else {
-           
-            btnMarkOrderLeft.isUserInteractionEnabled = true
-            btnMarkOrderLeft.isHidden = false
-            stackView.isHidden = true
-            if objOrder.deliveryType == DeliveryType.collection.rawValue && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
-                btnMarkOrderLeft.setTitle("Mark Order as Completed", for: .normal)
-            }else if objOrder.deliveryType == DeliveryType.delivery.rawValue && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
-                btnMarkOrderLeft.setTitle("Mark Order has left", for: .normal)
-            }else {
-                lblOrderStatus.isHidden = false
+//        if isMultipleOrder {
+        switchStackView.isHidden = false
+        stHeight.constant = 45
+        switchView.backgroundColor = .lightGray
+        drawBorder(view: switchView, color: .lightGray, width: 1.0, radius: 5.0)
+        drawBorder(view: switchStackView, color: .lightGray, width: 1.0, radius: 5.0)
+        btnFirstOrder.backgroundColor = GreenColor
+        btnSecondOrder.backgroundColor = .white
+        btnFirstOrder.setTitle("First Order", for: .normal)
+        btnSecondOrder.setTitle("Second Order", for: .normal)
+        btnFirstOrder.titleLabel?.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 16.0))
+        btnSecondOrder.titleLabel?.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 16.0))
+        
+        btnFirstOrder.setTitleColor(.white, for: .selected)
+        btnFirstOrder.setTitleColor(.lightGray, for: .normal)
+        
+        btnSecondOrder.setTitleColor(.white, for: .selected)
+        btnSecondOrder.setTitleColor(.lightGray, for: .normal)
+
+
+//        }else {
+//            switchStackView.isHidden = true
+//            stHeight.constant = 0
+            if isOrderRequest{
                 btnMarkOrderLeft.isHidden = true
-              
-                if objOrder.orderStatus == OrderStatus.OrderLeft.rawValue {
-                    lblOrderStatus.text = "\(objOrder.orderStatus.asStringOrEmpty())"
-                }else if objOrder.orderStatus == OrderStatus.Cancelled.rawValue {
-                    lblOrderStatus.text = "Order \(objOrder.orderStatus.asStringOrEmpty())"
-                }else if objOrder.orderStatus == OrderStatus.AcceptedByShop.rawValue{
-                    lblOrderStatus.text = "Driver Not Assigned yet."
+                btnMarkOrderLeft.isUserInteractionEnabled = false
+               
+                stackView.isHidden = false
+            }else {
+               
+                btnMarkOrderLeft.isUserInteractionEnabled = true
+                btnMarkOrderLeft.isHidden = false
+                stackView.isHidden = true
+                if objOrder.deliveryType == DeliveryType.collection.rawValue && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
+                    btnMarkOrderLeft.setTitle("Mark Order as Completed", for: .normal)
+                }else if objOrder.deliveryType == DeliveryType.delivery.rawValue && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
+                    btnMarkOrderLeft.setTitle("Mark Order has left", for: .normal)
+                }else {
+                    lblOrderStatus.isHidden = false
+                    btnMarkOrderLeft.isHidden = true
+                  
+                    if objOrder.orderStatus == OrderStatus.OrderLeft.rawValue {
+                        lblOrderStatus.text = "\(objOrder.orderStatus.asStringOrEmpty())"
+                    }else if objOrder.orderStatus == OrderStatus.Cancelled.rawValue {
+                        lblOrderStatus.text = "Order \(objOrder.orderStatus.asStringOrEmpty())"
+                    }else if objOrder.orderStatus == OrderStatus.AcceptedByShop.rawValue{
+                        lblOrderStatus.text = "Driver Not Assigned yet."
+                    }
                 }
-            }
-        }       
+//            }
+        }
         self.tableView.reloadData()
         self.tableView.isHidden = false
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -114,6 +138,24 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     @IBAction func btnBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func actionTabValueChange(_ sender: UIButton) {
+        if sender == btnFirstOrder{
+            selOrder = OrderDetailTab.FirstOrder.rawValue
+            sender.backgroundColor = GreenColor
+            sender.isSelected = true
+            btnSecondOrder.backgroundColor = .white
+            btnSecondOrder.isSelected = false
+        }else {
+            selOrder = OrderDetailTab.SecondOrder.rawValue
+            sender.backgroundColor = GreenColor
+            sender.isSelected = true
+            btnFirstOrder.backgroundColor = .white
+            btnFirstOrder.isSelected = false
+        }
+        tableView.reloadData()
+    }
+    
     
     func allNotificationCenterObservers() {        
         NotificationCenter.default.addObserver(self, selector: #selector(OrderStatusChanged(notification:)), name: NSNotification.Name(rawValue: notificationCenterKeys.changeTakeawayOrderStatus.rawValue), object: nil)

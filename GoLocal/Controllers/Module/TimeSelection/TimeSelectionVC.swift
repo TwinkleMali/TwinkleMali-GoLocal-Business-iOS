@@ -62,7 +62,10 @@ class TimeSelectionVC: BaseViewController {
                        "order_id" : objOrderRequest.orderId ?? 0,
                        "driver_id" : 0,
                        "pickup_time" : pickupTimeSec,
-                       "delivery_time" : 0] as [String : Any]
+                       "delivery_time" : 0,
+                       "need_to_merge" : 0,
+                       "merge_request_id":0,
+                       "merge_with_order_id":0] as [String : Any]
             print("accept dic : \(dic)")
             socketAcceptOrderRequest(dictionary: dic)
         }

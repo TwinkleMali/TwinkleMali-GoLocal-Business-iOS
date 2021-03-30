@@ -23,6 +23,7 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
         self.tableView.delegate = dataSource
         self.tableView.dataSource = dataSource
         self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 5, right: 0)
+//        openConfirmationPopup()
         DispatchQueue.global().async {
             self.getUpdatedUserData()
         }
@@ -43,6 +44,12 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
         allNotificationCenterObservers()
     }
     
+    func openConfirmationPopup(){
+        let confirmationView = ConfirmationDialogVC(nibName: "ConfirmationDialogVC", bundle: nil)
+        confirmationView.delegateConfirmationDialogVC = self
+        confirmationView.showView(viewDisplay: self.view)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         getOrderRequestList()
     }
@@ -59,15 +66,23 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
     func allNotificationCenterObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(OrderRequestReceived(notification:)), name: NSNotification.Name(rawValue: notificationCenterKeys.shopOrderRequest.rawValue), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(OrderRequestRejected(notification:)), name: NSNotification.Name(rawValue: notificationCenterKeys.shopRejectOrder.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(OrderMergeRequestReceived(notification:)), name: NSNotification.Name(rawValue: notificationCenterKeys.shopOrderMergeRequest.rawValue), object: nil)
     }
     
     @objc func OrderRequestReceived(notification : Notification) {
         let obj  = notification.userInfo  as? [String : Any]
         let objOrderRequest = OrderRequests(object: obj!)
-        var arrOrderRequest : [OrderRequests] = []
-        arrOrderRequest.append(objOrderRequest)
-        self.viewModel.setOrderRequests(arrOrderRequest: arrOrderRequest)
-        self.tableView.reloadData()
+        if objOrderRequest.orderDetails?.mergeRequestId != nil && (objOrderRequest.orderDetails?.mergeRequestId?.count ?? 0) > 0{
+            openConfirmationPopup()
+        }else {
+            if APP_DELEGATE?.arrOrderRequestMain.contains(where: { $0.orderDetails?.id == objOrderRequest.orderDetails?.id }) == false{
+                APP_DELEGATE?.arrOrderRequestMain.append(objOrderRequest)
+            }
+            var arrOrderRequest : [OrderRequests] = []
+            arrOrderRequest.append(objOrderRequest)
+            self.viewModel.setOrderRequests(arrOrderRequest: arrOrderRequest)
+            self.tableView.reloadData()
+        }
     }
     
     @objc func OrderRequestRejected(notification : Notification) {
@@ -82,6 +97,15 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
         }
         tableView.reloadData()
     }
+    
+        @objc func OrderMergeRequestReceived(notification : Notification) {
+            let obj  = notification.userInfo  as? [String : Any]
+            objOrderReq = OrderRequests(object: obj!)
+    //        var arrOrderRequest : [OrderRequests] = []
+    //        arrOrderRequest.append(objOrderRequest)
+    //        self.viewModel.setOrderRequests(arrOrderRequest: arrOrderRequest)
+    //        openConfirmationPopup(view: self.view)
+        }
     
     //MARK:- Button Click Methods
     // QRCode Scan icon Click
@@ -141,3 +165,26 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
     }
 }
 
+extension BaseViewController: ConfirmationDialogVCDelegate{
+    
+    func actionNo() {
+        if APP_DELEGATE?.arrOrderRequestMain.contains(where: { $0.orderDetails?.id == objOrderReq.orderDetails?.id }) == false{
+            APP_DELEGATE?.arrOrderRequestMain.append(objOrderReq)
+        }
+    }
+    
+    func actionOk() {
+            let dic = ["user_id" : USER_DETAILS?.id ?? 0,
+                       "customer_id" : objOrderReq.customerId ?? 0 ,
+                       "order_id" : objOrderReq.orderId ?? 0,
+                       "driver_id" : 0,
+                       "pickup_time" : 0,
+                       "delivery_time" : 0,
+                       "need_to_merge" : 1,
+                       "merge_request_id":0,
+                       "merge_with_order_id":0] as [String : Any]
+            print("accept dic : \(dic)")
+            socketAcceptOrderRequest(dictionary: dic)
+    }
+    
+}

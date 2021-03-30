@@ -46,6 +46,7 @@ public struct OrderDetails {
     static let orderPickupTime = "order_pickup_time"
     static let deliveryLongitude = "delivery_longitude"
     static let driverDetails = "driver_details"
+    static let mergeRequestId = "merge_request_id"
   }
 
   // MARK: Properties
@@ -82,8 +83,9 @@ public struct OrderDetails {
   public var userId: Int?
   public var orderPickupTime: Int?
   public var deliveryLongitude: String?
+  public var mergeRequestId: String?
   public var driverDetails : Drivers?
-
+    
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
   ///
@@ -126,6 +128,7 @@ public struct OrderDetails {
     offerApplied = json[SerializationKeys.offerApplied].int
     orderTotalAmount = json[SerializationKeys.orderTotalAmount].float
     createdAt = json[SerializationKeys.createdAt].string
+    mergeRequestId = json[SerializationKeys.mergeRequestId].string
     appliedPartnerCode = json[SerializationKeys.appliedPartnerCode].string
     serviceCharge = json[SerializationKeys.serviceCharge].int
     userId = json[SerializationKeys.userId].int
@@ -153,6 +156,7 @@ public struct OrderDetails {
     if let value = shopOrderTimerValue { dictionary[SerializationKeys.shopOrderTimerValue] = value }
     if let value = customerDetails { dictionary[SerializationKeys.customerDetails] = value.dictionaryRepresentation() }
     if let value = updatedAt { dictionary[SerializationKeys.updatedAt] = value }
+    if let value = mergeRequestId { dictionary[SerializationKeys.mergeRequestId] = value }
     if let value = tip { dictionary[SerializationKeys.tip] = value }
     if let value = shopDetail { dictionary[SerializationKeys.shopDetail] = value.dictionaryRepresentation() }
     if let value = driverDetails { dictionary[SerializationKeys.driverDetails] = value.dictionaryRepresentation() }

@@ -62,8 +62,8 @@
             filePath = "GoLocal/Controllers/Module/DriverSelection/DriverSeleListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "timerLabel(_:finshedCountDownTimerWithTime:)"
             landmarkType = "7">
             <Locations>
@@ -104,7 +104,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "EB3E3774-D872-4BE7-B44D-5AEDBCAA9865"
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
@@ -314,10 +314,10 @@
             filePath = "GoLocal/Controllers/Module/OrderList/dataSourceAndModel/OrderDataSource.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -334,54 +334,6 @@
             endingLineNumber = "108"
             landmarkName = "btnSelectDriver(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CE72585A-8890-437C-8049-25A83F56A4F9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "AcceptOrderRequest(dictionary:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "CE72585A-8890-437C-8049-25A83F56A4F9 - edae7c0db6560686"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "GoLocal.SocketIOHandler.AcceptOrderRequest(dictionary: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
-                  moduleName = "GoLocal"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "95">
-               </Location>
-               <Location
-                  uuid = "CE72585A-8890-437C-8049-25A83F56A4F9 - 87652185d4729a8e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;Any&gt;) -&gt; () in GoLocal.SocketIOHandler.AcceptOrderRequest(dictionary: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
-                  moduleName = "GoLocal"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "171"
-                  endingLineNumber = "171"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -410,8 +362,8 @@
             filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "addHandlers()"
             landmarkType = "7">
          </BreakpointContent>
@@ -426,8 +378,8 @@
             filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "311"
-            endingLineNumber = "311"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
             landmarkName = "addHandlers()"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,8 +394,8 @@
             filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
             landmarkName = "addHandlers()"
             landmarkType = "7">
          </BreakpointContent>
@@ -506,8 +458,8 @@
             filePath = "GoLocal/Controllers/Module/OrderDetails/OrderDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "getSingleOrderDetails(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,8 +474,8 @@
             filePath = "GoLocal/Controllers/Module/OrderDetails/OrderDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "setupView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -554,8 +506,8 @@
             filePath = "GoLocal/Utils/API/API_Manager+Extensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "526"
-            endingLineNumber = "526"
+            startingLineNumber = "536"
+            endingLineNumber = "536"
             landmarkName = "getRatingReviews(offset:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -570,8 +522,8 @@
             filePath = "GoLocal/Utils/API/API_Manager+Extensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "510"
-            endingLineNumber = "510"
+            startingLineNumber = "520"
+            endingLineNumber = "520"
             landmarkName = "getRatingReviews(offset:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -586,13 +538,13 @@
             filePath = "GoLocal/Utils/API/API_Manager+Extensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "522"
-            endingLineNumber = "522"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
             landmarkName = "getRatingReviews(offset:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "4523FBE2-C307-4F09-8A2E-2A8031C7C2A3 - 72000a09c27d93f0"
+                  uuid = "4523FBE2-C307-4F09-8A2E-2A8031C7C2A3 - 72000a09c27d928a"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -602,12 +554,12 @@
                   urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Utils/API/API_Manager+Extensions.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "522"
-                  endingLineNumber = "522"
+                  startingLineNumber = "532"
+                  endingLineNumber = "532"
                   offsetFromSymbolStart = "1335">
                </Location>
                <Location
-                  uuid = "4523FBE2-C307-4F09-8A2E-2A8031C7C2A3 - 351c71fcb9c8eb71"
+                  uuid = "4523FBE2-C307-4F09-8A2E-2A8031C7C2A3 - 351c71fcb9c8e9c7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -617,8 +569,8 @@
                   urlString = "file:///Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS%202/GoLocal/Utils/API/API_Manager+Extensions.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "523"
-                  endingLineNumber = "523"
+                  startingLineNumber = "533"
+                  endingLineNumber = "533"
                   offsetFromSymbolStart = "287">
                </Location>
             </Locations>
@@ -634,8 +586,8 @@
             filePath = "GoLocal/Utils/API/API_Manager+Extensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "565"
-            endingLineNumber = "565"
+            startingLineNumber = "575"
+            endingLineNumber = "575"
             landmarkName = "replyToRatingReview(strReply:reviewId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -650,8 +602,8 @@
             filePath = "GoLocal/Utils/API/API_Manager+Extensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "537"
-            endingLineNumber = "537"
+            startingLineNumber = "547"
+            endingLineNumber = "547"
             landmarkName = "getRatingReviews(offset:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -730,8 +682,8 @@
             filePath = "GoLocal/Controllers/Module/OrderList/OrderViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "actionMarkOrderLeft(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1289,9 +1241,249 @@
             filePath = "GoLocal/Controllers/Module/OrderDetails/OrderDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "actionMarkOrderLeft(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D2FA223-39BD-48C3-ADD3-3415F13FEA25"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/API/API_Manager+Extensions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "429"
+            endingLineNumber = "429"
+            landmarkName = "getListOfOrders(param:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DC2A8C7E-F23C-4C83-90D1-19743CBAD332"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/API/API_Manager+Extensions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "437"
+            endingLineNumber = "437"
+            landmarkName = "getListOfOrders(param:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C6C18272-5B5E-478E-B7B7-BA2EB0950724"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/API/API_Manager+Extensions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "445"
+            endingLineNumber = "445"
+            landmarkName = "getListOfOrders(param:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F67B3B83-9D09-46B6-967B-F20A4F5E251D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/SocketHandler/SocketIOHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "addHandlers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4341C3E4-DA69-49A6-AF7A-D85CD5662A0B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/OrderList/dataSourceAndModel/OrderViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "setOrderList(arrOrderList:orderType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B095E672-2A24-4EC2-9B90-F3EA7340AC96"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Utils/API/API_Manager+Extensions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
+            landmarkName = "getListOfOrders(param:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "407680B3-2E1A-4D63-A0BC-831D9019D4B2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/OrderList/dataSourceAndModel/OrderDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "18A73F75-884D-40B5-AF48-DB0A9DBB9F5C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/OrderList/dataSourceAndModel/OrderDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE964B75-A6CB-494A-B927-5901DE4348D8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/OrderList/dataSourceAndModel/OrderViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "getOrderListCount(orderType:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DA91CE52-D448-412D-9469-D1B10697E311"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/OrderList/dataSourceAndModel/OrderDataSource.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F0D9EA3C-2E57-4D5D-9C52-CF17AA426CBD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/ConfirmationDialog/ConfirmationDialogVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "btnYes(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9349F3D7-57B1-4AAC-9E5A-012C1E7C0054"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/ConfirmationDialog/ConfirmationDialogVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "btnNo(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58EA7C38-B481-4EA3-A35B-1D79ADB1F2FE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/ConfirmationDialog/ConfirmationDialogVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "hideView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9559AAA2-2B2E-405B-AA33-ACF3F169738A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/ConfirmationDialog/ConfirmationDialogVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "showView(viewDisplay:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED84FDC4-0CB1-4D00-BA0B-B72F51B37B35"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GoLocal/Controllers/Module/OrderRequests/OrderRequestViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "OrderRequestReceived(notification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

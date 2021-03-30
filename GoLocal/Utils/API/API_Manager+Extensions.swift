@@ -426,23 +426,33 @@ extension OrderViewController {
         APIHelper.shared.postJsonRequest(url: APIGetAllBusinessOrders, parameter: param, headers: headers) { (isCompleted, status, response) in
             self.view.isUserInteractionEnabled = true
             self.tableView.isHidden = false
+
             if self.isLoader{
                 KRProgressHUD.dismiss()
             }
             
             if isCompleted {
                 if !(response["status"] as! Bool) {
-                    
                 } else {
+//                    if let data = response[WSDATA] as? NSDictionary {
+//                        if let arrTempOrders = data["order_list"] as? NSArray {
+//                            var arrOrders : [OrderDetails] = []
+//                            for objOrder in arrTempOrders{
+//                                if let order = objOrder as? NSDictionary {
+//                                    arrOrders.append(OrderDetails(object: JSON(order)))
+//                                }
+//                            }
+//                            self.viewModel.setOrders(arrOrder: arrOrders, orderType:param["order_option"] as! Int)
+//                            self.tableView.reloadData()
+//                        }
+//                    }
                     if let data = response[WSDATA] as? NSDictionary {
-                        if let arrTempOrders = data["orders"] as? NSArray {
-                            var arrOrders : [OrderDetails] = []
+                        if let arrTempOrders = data["order_list"] as? NSArray {
+                            var arrOrders : [OrderList] = []
                             for objOrder in arrTempOrders{
-                                if let order = objOrder as? NSDictionary {
-                                    arrOrders.append(OrderDetails(object: JSON(order)))
-                                }
+                                arrOrders.append(OrderList(object: JSON(objOrder)))
                             }
-                            self.viewModel.setOrders(arrOrder: arrOrders, orderType:param["order_option"] as! Int)
+                            self.viewModel.setOrderList(arrOrderList: arrOrders, orderType: param["order_option"] as! Int)
                             self.tableView.reloadData()
                         }
                     }

@@ -24,31 +24,26 @@ class OrderDataSource: NSObject {
         self.tableView = tableView
         self.viewModel = viewModel
         self.viewController = viewController
-        tableView.register("OrderListTVCell")
+        tableView.register("PastOrdersTVCell")
+        tableView.register("RequestDetailsOrderTVCell")
+        tableView.register("OrderButtonTVCell")
     }
 }
 
 extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView == self.tableView{
-            return 1
+        if viewModel.getOrderRowCount(orderType: orderViewController?.selOrder ?? 0) > 0{
+            tableView.isHidden = false           
+            orderViewController?.lblNoMsg.isHidden = true
         }else {
-            if viewModel.getOrderList(listAt: tableView.tag, orderType: orderViewController?.selOrder ?? 0).count > 0{
-                tableView.isHidden = false
-                orderViewController?.lblNoMsg.isHidden = true
-            }else {
-                tableView.isHidden = true
-                orderViewController?.lblNoMsg.isHidden = false
-            }
-            return viewModel.getOrderList(listAt: tableView.tag, orderType: orderViewController?.selOrder ?? 0).count
+            tableView.isHidden = true
+            orderViewController?.lblNoMsg.isHidden = false
         }
+        return viewModel.getOrderRowCount(orderType: orderViewController?.selOrder ?? 0)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
-        if tableView == self.tableView{
-            return UITableViewCell()
-        }else {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PastOrdersTVCell") as? PastOrdersTVCell{
             if orderViewController?.selOrder == OrderType.CurrentOrder.rawValue{
                 //current
@@ -66,14 +61,12 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
             }
             addDashedBorder(withColor: .gray, view: cell.imgDottedLine)
             cell.layoutIfNeeded()
-//            cell.mainView.topRoundCorner()
+            cell.mainView.topRoundCorner()
 //            cell.mainView.addLeftBorder(with:#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), andWidth: 1)
 //            cell.mainView.addRightBorder(with:#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), andWidth: 1)
 //            cell.mainView.addTopBorder(with: #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), andWidth: 1)
-            let objOrderDetail = self.viewModel.getOrder(listAt: tableView.tag, orderAt: section, orderType: orderViewController?.selOrder ?? 0)
-            let objCustomerDetail = self.viewModel.getCustomerDetails(listAt: tableView.tag, orderAt: section, orderType: orderViewController?.selOrder ?? 0)
-//            let objOrderDetail = self.viewModel.getOrder(at: section, orderType: orderViewController?.selOrder ?? 0)
-//            let objCustomerDetail : CustomerDetails = self.viewModel.getCustomerDetails(at: section,orderType: orderViewController?.selOrder ?? 0)
+            let objOrderDetail = self.viewModel.getOrder(at: section, orderType: orderViewController?.selOrder ?? 0)
+            let objCustomerDetail : CustomerDetails = self.viewModel.getCustomerDetails(at: section,orderType: orderViewController?.selOrder ?? 0)
             
                 if objCustomerDetail.name != nil && objCustomerDetail.name != ""{
                     cell.lblUserName.text = "\(objCustomerDetail.name ?? "") \(objCustomerDetail.lname ?? "")"
@@ -94,21 +87,15 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.lblTime.addTimeCounted(byTime: TimeInterval(cell.orderRequestTime))
                 cell.lblTime.start()
                 print("timer value : \(cell.orderRequestTime)")
-                cell.btnView.tag = section
-                cell.btnView.accessibilityValue = "\(tableView.tag)"
                 cell.btnView.addTarget(self.orderViewController, action: #selector(self.orderViewController?.actionOrderDetail(_:)),for: .touchUpInside)
                 
                 return cell
-            }
         }
         return UITableView()
             
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if tableView == self.tableView{
-            return UIView()
-        }else {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderButtonTVCell") as? OrderButtonTVCell{
             cell.stView.isHidden = true
             cell.subView.isHidden = false
@@ -117,16 +104,13 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
             cell.widhtDetailButton.constant = 0
             cell.btnOrderDetail.isHidden = true
             cell.btnOrderStatus.tag = section
-            cell.btnOrderStatus.accessibilityValue = "\(tableView.tag)"
             cell.btnView.tag = section
-            cell.btnView.accessibilityValue = "\(tableView.tag)"
-//            cell.mainView.bottonRoundCorner()
-            cell.lblOrderTotal.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrder(listAt: tableView.tag, orderAt: section, orderType:orderViewController?.selOrder ?? 0).orderTotalAmount ?? 0)"
-//            let date : String = self.viewModel.getOrder(at: section, orderType: orderViewController?.selOrder ?? 0).sentShopRequestAt ?? ""
-            let date : String = self.viewModel.getOrder(listAt: tableView.tag, orderAt: section, orderType:orderViewController?.selOrder ?? 0).sentShopRequestAt ?? ""
+            cell.mainView.bottonRoundCorner()
+            cell.lblOrderTotal.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrder(at: section, orderType: orderViewController?.selOrder ?? 0).orderTotalAmount ?? 0)"
+            let date : String = self.viewModel.getOrder(at: section, orderType: orderViewController?.selOrder ?? 0).sentShopRequestAt ?? ""
             cell.lblRequestedTime.text = "Requested Time : \(date.toDateString(outputFormat: REQUESTED_TIME_FORMATE) ?? "-")"
-            cell.lblOrderId.text = "Order ID : #\(self.viewModel.getOrder(listAt: tableView.tag, orderAt: section, orderType:orderViewController?.selOrder ?? 0).orderUniqueId ?? "")"
-            let date1 : String = self.viewModel.getOrder(listAt: tableView.tag, orderAt: section, orderType:orderViewController?.selOrder ?? 0).sentShopRequestAt ?? ""
+            cell.lblOrderId.text = "Order ID : #\(self.viewModel.getOrder(at: section, orderType: orderViewController?.selOrder ?? 0).orderUniqueId ?? "")"
+            let date1 : String = self.viewModel.getOrder(at: section, orderType: orderViewController?.selOrder ?? 0).sentShopRequestAt ?? ""
             cell.btnView.addTarget(self.orderViewController, action: #selector(self.orderViewController?.actionOrderDetail(_:)),for: .touchUpInside)
            
             cell.btnOrderStatus.isHidden = true
@@ -135,7 +119,7 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
             if orderViewController?.selOrder == OrderType.PastOrder.rawValue{              
                 cell.lblOrderDescription.isHidden = false
                 cell.vwDot.isHidden = false
-                let strStatus = self.viewModel.getOrder(listAt: tableView.tag, orderAt: section, orderType:orderViewController?.selOrder ?? 0).orderStatus.asStringOrEmpty()
+                let strStatus = self.viewModel.getOrder(at: section, orderType: orderViewController?.selOrder ?? 0).orderStatus.asStringOrEmpty()
                 if strStatus == OrderStatus.OrderLeft.rawValue {
                     cell.btnOrderStatus.isHidden = false
                     cell.btnOrderStatus.setTitle("Order has Left Restaurant", for: .normal)
@@ -146,111 +130,66 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
            
             return cell
         }
-        }
         return UIView()
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if tableView == self.tableView{
-            return 0
-        }else {
-            return  UITableView.automaticDimension
-        }
-        
+        return  UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == self.tableView{
-            return UITableView.automaticDimension
-        }else {
-            return UITableView.automaticDimension
-        }
+        return  UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if tableView == self.tableView{
-            return 0
-        }else {
-            if orderViewController?.selOrder == OrderType.CurrentOrder.rawValue{
-                return 180
-            }else if orderViewController?.selOrder == OrderType.PastOrder.rawValue{
-                return 200
-            }
+        if orderViewController?.selOrder == OrderType.CurrentOrder.rawValue{
+            return 180
+        }else if orderViewController?.selOrder == OrderType.PastOrder.rawValue{
+            return 200
         }
         return 0
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat{
-        if tableView == self.tableView{
-            return 0
-        }else {
-            if orderViewController?.selOrder == OrderType.CurrentOrder.rawValue{
-                return 90
-            }else if orderViewController?.selOrder == OrderType.PastOrder.rawValue{
-                return 90
-            }
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        if orderViewController?.selOrder == OrderType.CurrentOrder.rawValue{
+            return 90
+        }else if orderViewController?.selOrder == OrderType.PastOrder.rawValue{
+            return 90
         }
         return 0
     }    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.tableView{
-            return self.viewModel.getOrderListCount(orderType: orderViewController?.selOrder ?? 0)
-        }else {
-            return self.viewModel.getProductArray(orderId: (self.viewModel.getOrder(listAt: tableView.tag, orderAt: section, orderType:orderViewController?.selOrder ?? 0).id ?? 0), orderType: orderViewController?.selOrder ?? 0).count
-        }
+        return self.viewModel.getProductArray(orderId: (self.viewModel.getOrder(at: section,orderType: orderViewController!.selOrder).id ?? 0), orderType: orderViewController?.selOrder ?? 0).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        if tableView == self.tableView{
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderListTVCell") as? OrderListTVCell{
-                cell.selectionStyle = .none
-                cell.tblView.register("PastOrdersTVCell")
-                cell.tblView.register("RequestDetailsOrderTVCell")
-                cell.tblView.register("OrderButtonTVCell")
-                cell.tblView.tag = indexPath.row
-                cell.tblView.delegate = self
-                cell.tblView.dataSource = self
-                cell.tblView.reloadData()
-                cell.tblViewHeight.constant = cell.tblView.contentSize.height + 50
-//                cell.tblView.invalidateIntrinsicContentSize()
-                cell.layoutIfNeeded()
-                return cell
-            }
-        }else {
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "RequestDetailsOrderTVCell") as? RequestDetailsOrderTVCell{
-                cell.selectionStyle = .none
-                let objProduct : [String:Any] = self.viewModel.getProductArray(orderId: (self.viewModel.getOrder(listAt: tableView.tag, orderAt: indexPath.section, orderType:orderViewController?.selOrder ?? 0).id ?? 0), orderType: orderViewController?.selOrder ?? 0)[indexPath.row]
-                cell.lblOrderName.text = "\(objProduct["productName"].asStringOrEmpty())"
-                cell.lblQty.text = "Qty : \(objProduct["quantity"].asStringOrEmpty())"
-                let addons = objProduct["addons"] as! [Addons]
-                if addons.count > 0{
-                    var strAddOns : String = ""
-                    for objAddons in addons {
-                        strAddOns.append(",\(objAddons.addonName ?? "")")
-                    }
-                    cell.lblOrderDescription.text = "\(objProduct["variationName"].asStringOrEmpty()) - \(strAddOns))"
-                }else {
-                    cell.lblOrderDescription.text = "\(objProduct["variationName"].asStringOrEmpty())"
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "RequestDetailsOrderTVCell") as? RequestDetailsOrderTVCell{
+            cell.selectionStyle = .none
+            let objProduct : [String:Any] = self.viewModel.getProductArray(orderId: (self.viewModel.getOrder(at: indexPath.section,orderType: orderViewController!.selOrder).id ?? 0), orderType: orderViewController?.selOrder ?? 0)[indexPath.row]
+            cell.lblOrderName.text = "\(objProduct["productName"].asStringOrEmpty())"
+            cell.lblQty.text = "Qty : \(objProduct["quantity"].asStringOrEmpty())"
+            let addons = objProduct["addons"] as! [Addons]
+            if addons.count > 0{
+                var strAddOns : String = ""
+                for objAddons in addons {
+                    strAddOns.append(",\(objAddons.addonName ?? "")")
                 }
-                cell.btnView.tag = indexPath.section
-                cell.btnView.accessibilityValue = "\(tableView.tag)"
-                cell.btnView.addTarget(self.orderViewController, action: #selector(self.orderViewController?.actionOrderDetail(_:)),for: .touchUpInside)
-                return cell
+                cell.lblOrderDescription.text = "\(objProduct["variationName"].asStringOrEmpty()) - \(strAddOns))"
+            }else {
+                cell.lblOrderDescription.text = "\(objProduct["variationName"].asStringOrEmpty())"
             }
+           
+            cell.btnView.addTarget(self.orderViewController, action: #selector(self.orderViewController?.actionOrderDetail(_:)),for: .touchUpInside)
+            return cell
         }
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == self.tableView{
-            
-        }else {
-            let vc = OrderDetailsViewController(nibName: "OrderDetailsViewController", bundle: .main)
-            vc.isOrderRequest = false
-            vc.isMultipleOrder = true
-            self.orderViewController?.navigationController?.pushViewController(vc, animated: true)
-        }
+        let vc = OrderDetailsViewController(nibName: "OrderDetailsViewController", bundle: .main)
+        vc.isOrderRequest = false
+        self.orderViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView : UIScrollView) {

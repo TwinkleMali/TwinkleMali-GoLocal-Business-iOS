@@ -21,6 +21,14 @@ class OrderViewModel {
     
 extension OrderViewModel {
     
+//    func getOrderListCount() -> Int {
+//        arrOrdersList.count
+//    }
+//
+    func setOrderList(arrOrderList : [OrderList],orderType : Int){
+        arrCurrentOrderList.append(contentsOf: arrOrderList)
+    }
+    
     func getOrderListCount(orderType : Int) -> Int{
         if orderType == OrderType.CurrentOrder.rawValue{
             return arrCurrentOrderList.count
@@ -29,55 +37,70 @@ extension OrderViewModel {
         }
         return 0
     }
-    
-    func getOrderRowCount(at :Int, orderType : Int) -> Int {
+       
+    func getOrderRowCount(orderType : Int) -> Int {
         if orderType == OrderType.CurrentOrder.rawValue{
-            return arrCurrentOrderList[at].orders?.count ?? 0
+            return arrCurrentOrders.count
         }else if orderType == OrderType.PastOrder.rawValue{
-            return arrPastOrdersList[at].orders?.count ?? 0
+            return arrPastOrders.count
         }
         return 0
     }
     
-    func setOrderList(arrOrderList : [OrderList],orderType : Int){
+    func getOrder(at :Int,orderType : Int) -> OrderDetails {
         if orderType == OrderType.CurrentOrder.rawValue{
-            arrCurrentOrderList.append(contentsOf: arrOrderList)
-            var productDic : [String : Any]
-                for Orders  in arrOrderList as [OrderList]{
-                    for objOrder in Orders.orders! as [OrderDetails]{
-                        for objproduct in (objOrder.shopDetail?.products)! {
-                            for objselItem in objproduct.selectedProducts! {
-                                productDic = ["orderId":objOrder.id ?? 0,
-                                              "productId" : objproduct.id!,
-                                              "productName":objproduct.productName!,
-                                              "quantity":objselItem.quantity!,
-                                              "variationName":objselItem.variationName.asStringOrEmpty(),
-                                              "addons":objselItem.addons ?? []]
-                                arrayCurrentProduct.append(productDic)
-                            }
-                        }
-                    }
-                }
-        }else{
-            arrPastOrdersList.append(contentsOf: arrOrderList)
-            var productDic : [String : Any]
-                for Orders  in arrOrderList as [OrderList]{
-                    for objOrder in Orders.orders! as [OrderDetails]{
-                        for objproduct in (objOrder.shopDetail?.products)! {
-                            for objselItem in objproduct.selectedProducts! {
-                                productDic = ["orderId":objOrder.id ?? 0,
-                                              "productId" : objproduct.id!,
-                                              "productName":objproduct.productName!,
-                                              "quantity":objselItem.quantity!,
-                                              "variationName":objselItem.variationName.asStringOrEmpty(),
-                                              "addons":objselItem.addons ?? []]
-                                arrayPastProduct.append(productDic)
-                            }
-                        }
-                    }
-                }
+            return arrCurrentOrders[at]
+        }else {
+            return arrPastOrders[at]
         }
     }
+    
+    func setSelectedOrder(objOrder : OrderDetails) {
+        self.objOrder = objOrder
+    }
+    
+    
+    func getShopDetails(at :Int,orderType : Int) -> ShopDetail {
+        if orderType == OrderType.CurrentOrder.rawValue{
+            return (arrCurrentOrders[at].shopDetail)!
+        }else {
+            return (arrPastOrders[at].shopDetail)!
+        }
+    }
+    
+    func getCustomerDetails(at :Int,orderType : Int) -> CustomerDetails {
+        if orderType == OrderType.CurrentOrder.rawValue{
+            return (arrCurrentOrders[at].customerDetails)!
+        }else {
+            return (arrPastOrders[at].customerDetails)!
+        }
+    }
+    
+    func getBillingDetails(at :Int,orderType : Int) -> BillingDetails {
+        if orderType == OrderType.CurrentOrder.rawValue{
+            return (arrCurrentOrders[at].billingDetails)!
+        }else {
+            return (arrPastOrders[at].billingDetails)!
+        }
+    }
+    
+//    func getProductCount(at :Int, orderType : Int ) -> Int {
+//        if orderType == OrderType.CurrentOrder.rawValue{
+//            return arrCurrentOrders[at].shopDetail?.products?.count ?? 0
+//        }else {
+//            return arrPastOrders[at].shopDetail?.products?.count ?? 0
+//        }
+//      
+//    }
+    
+    func getProductDetails(at :Int,productAt: Int,orderType : Int) -> Products? {
+        if orderType == OrderType.CurrentOrder.rawValue{
+            return arrCurrentOrders[at].shopDetail?.products?[productAt]
+        }else {
+            return arrPastOrders[at].shopDetail?.products?[productAt]
+        }
+    }
+    
     
     func setOrders(arrOrder : [OrderDetails],orderType : Int){
         if orderType == OrderType.CurrentOrder.rawValue{
@@ -121,82 +144,36 @@ extension OrderViewModel {
         }
     }
     
-    func getOrderList(listAt :Int,orderType : Int) -> [OrderDetails]{
+    func getOrders(orderType : Int) -> [OrderDetails]{
         if orderType == OrderType.CurrentOrder.rawValue{
-            return arrCurrentOrderList[listAt].orders!
+           return arrCurrentOrders
         }else if orderType == OrderType.PastOrder.rawValue{
-            return arrPastOrdersList[listAt].orders!
+            return arrPastOrders
         }
         return [OrderDetails]()
     }
     
-    func getOrder(listAt :Int, orderAt : Int,orderType : Int) -> OrderDetails {
-        if orderType == OrderType.CurrentOrder.rawValue{
-            return (arrCurrentOrderList[listAt].orders?[orderAt])!
-        }else {
-            return (arrPastOrdersList[listAt].orders?[orderAt])!
-        }
-    }
-    
-    func setSelectedOrder(objOrder : OrderDetails) {
-        self.objOrder = objOrder
-    }
-    
-    
-    func getShopDetails(listAt :Int, orderAt : Int,orderType : Int) -> ShopDetail {
-        if orderType == OrderType.CurrentOrder.rawValue{
-            return (arrCurrentOrderList[listAt].orders?[orderAt].shopDetail)!
-        }else {
-            return (arrPastOrdersList[listAt].orders?[orderAt].shopDetail)!
-        }
-    }
-    
-    func getCustomerDetails(listAt :Int, orderAt : Int,orderType : Int) -> CustomerDetails {
-        if orderType == OrderType.CurrentOrder.rawValue{
-            return (arrCurrentOrderList[listAt].orders?[orderAt].customerDetails)!
-        }else {
-            return (arrPastOrdersList[listAt].orders?[orderAt].customerDetails)!
-        }
-    }
-    
-    func getBillingDetails(listAt :Int, orderAt : Int,orderType : Int) -> BillingDetails {
-        if orderType == OrderType.CurrentOrder.rawValue{
-            return (arrCurrentOrderList[listAt].orders?[orderAt].billingDetails)!
-        }else {
-            return (arrPastOrdersList[listAt].orders?[orderAt].billingDetails)!
-        }
-    }
-    
-    func getProductDetails(listAt :Int, orderAt : Int,productAt: Int,orderType : Int) -> Products? {
-        if orderType == OrderType.CurrentOrder.rawValue{
-            return arrCurrentOrderList[listAt].orders?[orderAt].shopDetail?.products?[productAt]
-        }else {
-            return arrPastOrdersList[listAt].orders?[orderAt].shopDetail?.products?[productAt]
-        }
-    }
-    
     func removeAllCurrentOrder(orderType : Int){
         if orderType == OrderType.CurrentOrder.rawValue{
-            self.arrCurrentOrderList.removeAll()
+            self.arrCurrentOrders.removeAll()
         }else if orderType == OrderType.PastOrder.rawValue{
-            self.arrPastOrdersList.removeAll()
+            self.arrPastOrders.removeAll()
         }
     }    
     
-   
-    func removeOrder(listAt :Int, orderAt : Int,objOrder : OrderDetails,orderType : Int){
+    func removeOrder(objOrder : OrderDetails,orderType : Int){
         if orderType == OrderType.CurrentOrder.rawValue{
-            if let index = self.arrCurrentOrderList[listAt].orders!.firstIndex(where: {$0.id == objOrder.id}) {
-                self.arrCurrentOrderList.remove(at: index)
+            if let index = self.arrCurrentOrders.firstIndex(where: {$0.id == objOrder.id}) {
+                self.arrCurrentOrders.remove(at: index)
             }
         }else if orderType == OrderType.PastOrder.rawValue{
-            if let index = self.arrPastOrdersList[listAt].orders!.firstIndex(where: {$0.id == objOrder.id}) {
-                self.arrPastOrdersList.remove(at: index)
+            if let index = self.arrPastOrders.firstIndex(where: {$0.id == objOrder.id}) {
+                self.arrPastOrders.remove(at: index)
             }
         }
     }
     
-    //Left to Modify
+
     func getProductArray(orderId :Int, orderType : Int) -> [[String:Any]] {
         if orderType == OrderType.CurrentOrder.rawValue{
             let newArray =  arrayCurrentProduct.filter{$0["orderId"] as! Int == orderId}

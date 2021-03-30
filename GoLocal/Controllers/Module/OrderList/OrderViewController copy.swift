@@ -27,8 +27,8 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var offset = 0
     var isLoadMore:Bool = false
+   
     var selOrder = OrderType.CurrentOrder.rawValue
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGUI()
@@ -64,8 +64,8 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     
     func callAPIToGetOrder(){
         let  param : [String : Any] = [
-            "user_id" : 30,// USER_DETAILS?.id ?? 0,
-            "shop_id" : 1, //USER_DETAILS?.shopId ?? 0,
+            "user_id" : USER_DETAILS?.id ?? 0,
+            "shop_id" : USER_DETAILS?.shopId ?? 0,
             "order_option" : selOrder,
             "filter_type" : 0,
             "filter_date" : "",
@@ -138,22 +138,21 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     @objc func actionOrderDetail(_ sender : UIButton) {
         let vc = OrderDetailsViewController(nibName: "OrderDetailsViewController", bundle: .main)
         vc.isOrderRequest = false
-        let index : Int = sender.accessibilityValue.aIntOrEmpty()
-        vc.objOrder = viewModel.getOrder(listAt: index, orderAt: sender.tag, orderType: selOrder)
-        vc.viewModel.setOrderDetail(objOrder: viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder))
+        vc.objOrder = viewModel.getOrder(at: sender.tag, orderType: selOrder)
+        vc.viewModel.setOrderDetail(objOrder: viewModel.getOrder(at: sender.tag, orderType: selOrder))
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // Order on map Click
     @objc func actionMarkOrderLeft(_ sender : UIButton) {
-        if let driver =  viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder).driverDetails {
+        if let driver =  viewModel.getOrder(at: sender.tag, orderType: selOrder).driverDetails {
             let vc = DriverLocationViewController.loadFromNib()
             vc.driverDetails = driver
-            vc.orderId = viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder).id ?? 0
+            vc.orderId = viewModel.getOrder(at: sender.tag, orderType: selOrder).id ?? 0
             vc.driverLat = driver.latitude ?? "21.1205"
             vc.driverLong = driver.longitude ?? "72.7431"
-            vc.deliveryLatitude = viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder).deliveryLatitude ?? ""
-            vc.deliveryLongitude = viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder).deliveryLongitude ?? ""
+            vc.deliveryLatitude = viewModel.getOrder(at: sender.tag, orderType: selOrder).deliveryLatitude ?? ""
+            vc.deliveryLongitude = viewModel.getOrder(at: sender.tag, orderType: selOrder).deliveryLongitude ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

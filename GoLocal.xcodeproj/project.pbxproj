@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000751912608741400B05BFC /* OrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000751902608741300B05BFC /* OrderList.swift */; };
 		00084C8F25C2B46100758ADA /* PastOrdersTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00084C8E25C2B46100758ADA /* PastOrdersTVCell.xib */; };
 		0019F5F225B98DAE005139F4 /* DriverListViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0019F5EC25B98DAE005139F4 /* DriverListViewDataSource.swift */; };
 		0019F5F325B98DAE005139F4 /* DriverListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0019F5ED25B98DAE005139F4 /* DriverListViewModel.swift */; };
@@ -92,6 +93,8 @@
 		005F87F025D1588C000A475A /* SocketIOHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F87EF25D1588C000A475A /* SocketIOHandler.swift */; };
 		005FE44925F2656E0093483B /* ImageSliderTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005FE44825F2656E0093483B /* ImageSliderTVCell.xib */; };
 		005FE44B25F269760093483B /* MediaUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FE44A25F269760093483B /* MediaUrl.swift */; };
+		006012552604C8C60093C096 /* ConfirmationDialogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006012532604C8C40093C096 /* ConfirmationDialogVC.swift */; };
+		006012562604C8C60093C096 /* ConfirmationDialogVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006012542604C8C50093C096 /* ConfirmationDialogVC.xib */; };
 		0061591225CAB71000F7ED1E /* CalanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061591025CAB70F00F7ED1E /* CalanderViewController.swift */; };
 		0061591325CAB71000F7ED1E /* CalanderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0061591125CAB70F00F7ED1E /* CalanderViewController.xib */; };
 		0061592225CAB76F00F7ED1E /* VACalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061591525CAB76F00F7ED1E /* VACalendar.swift */; };
@@ -262,6 +265,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000751902608741300B05BFC /* OrderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderList.swift; sourceTree = "<group>"; };
 		00084C8E25C2B46100758ADA /* PastOrdersTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PastOrdersTVCell.xib; sourceTree = "<group>"; };
 		0019F5EC25B98DAE005139F4 /* DriverListViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverListViewDataSource.swift; sourceTree = "<group>"; };
 		0019F5ED25B98DAE005139F4 /* DriverListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverListViewModel.swift; sourceTree = "<group>"; };
@@ -349,6 +353,8 @@
 		005F87EF25D1588C000A475A /* SocketIOHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOHandler.swift; sourceTree = "<group>"; };
 		005FE44825F2656E0093483B /* ImageSliderTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSliderTVCell.xib; sourceTree = "<group>"; };
 		005FE44A25F269760093483B /* MediaUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaUrl.swift; sourceTree = "<group>"; };
+		006012532604C8C40093C096 /* ConfirmationDialogVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationDialogVC.swift; sourceTree = "<group>"; };
+		006012542604C8C50093C096 /* ConfirmationDialogVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmationDialogVC.xib; sourceTree = "<group>"; };
 		0061591025CAB70F00F7ED1E /* CalanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalanderViewController.swift; sourceTree = "<group>"; };
 		0061591125CAB70F00F7ED1E /* CalanderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalanderViewController.xib; sourceTree = "<group>"; };
 		0061591525CAB76F00F7ED1E /* VACalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VACalendar.swift; sourceTree = "<group>"; };
@@ -884,6 +890,15 @@
 				005F87EF25D1588C000A475A /* SocketIOHandler.swift */,
 			);
 			path = SocketHandler;
+			sourceTree = "<group>";
+		};
+		006012522604C86E0093C096 /* ConfirmationDialog */ = {
+			isa = PBXGroup;
+			children = (
+				006012532604C8C40093C096 /* ConfirmationDialogVC.swift */,
+				006012542604C8C50093C096 /* ConfirmationDialogVC.xib */,
+			);
+			path = ConfirmationDialog;
 			sourceTree = "<group>";
 		};
 		0061590F25CAB70F00F7ED1E /* CalanderViewController */ = {
@@ -1451,6 +1466,7 @@
 		46CDA38D2589BB430089105D /* model */ = {
 			isa = PBXGroup;
 			children = (
+				000751902608741300B05BFC /* OrderList.swift */,
 				0022D824260083BD00A246D1 /* Country.swift */,
 				005FE44A25F269760093483B /* MediaUrl.swift */,
 				00C2F47F25F2038B00032EBE /* Categories.swift */,
@@ -1513,6 +1529,7 @@
 		46CDA3972589C1470089105D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				006012522604C86E0093C096 /* ConfirmationDialog */,
 				0022D826260084F100A246D1 /* CountryCodePickerViewController */,
 				0061590F25CAB70F00F7ED1E /* CalanderViewController */,
 				00F065AA25C42D0E00BAB8E3 /* BottomSheetVC */,
@@ -1772,6 +1789,7 @@
 				00A4697525C950BD008B7671 /* OpenCloseTimeTVCell.xib in Resources */,
 				006D7F7E25B5B9F80068C598 /* OrderRequestViewController.xib in Resources */,
 				0019F61525B9904E005139F4 /* SingleCategoryTVCell.xib in Resources */,
+				006012562604C8C60093C096 /* ConfirmationDialogVC.xib in Resources */,
 				00CB992B25F0F02A00161590 /* DriverLocationViewController.xib in Resources */,
 				0036BB6A25BAE87F00FFCC5E /* NotificationsViewController.xib in Resources */,
 				00084C8F25C2B46100758ADA /* PastOrdersTVCell.xib in Resources */,
@@ -1919,6 +1937,7 @@
 				0099D96225C1972300383466 /* PastOrdersTVCell.swift in Sources */,
 				005DB99025D3B19700B7766D /* OrderRequests.swift in Sources */,
 				0020283F25DE820F008E0E2E /* DriverStatusViewController.swift in Sources */,
+				006012552604C8C60093C096 /* ConfirmationDialogVC.swift in Sources */,
 				0061592525CAB76F00F7ED1E /* VADay.swift in Sources */,
 				0061592A25CAB76F00F7ED1E /* VAMonthHeaderView.swift in Sources */,
 				007B98A925EF998100891839 /* Notifications.swift in Sources */,
@@ -1949,6 +1968,7 @@
 				0099D94325C1717700383466 /* BlurVC.swift in Sources */,
 				0020283D25DE820F008E0E2E /* DriverDetailsViewController.swift in Sources */,
 				00F065AD25C42D0E00BAB8E3 /* BottomSheetVC.swift in Sources */,
+				000751912608741400B05BFC /* OrderList.swift in Sources */,
 				46BBFE77258BA2DC0088CBB9 /* ForgotPasswordViewController.swift in Sources */,
 				0089111525B1AE6200C9125A /* HttpRequestManager.swift in Sources */,
 				0036BB6725BAE87F00FFCC5E /* EditProfileViewController.swift in Sources */,
@@ -2197,7 +2217,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = NUV8D2659N;
 				INFOPLIST_FILE = GoLocal/SupportingFiles/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -2222,7 +2242,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = NUV8D2659N;
 				INFOPLIST_FILE = GoLocal/SupportingFiles/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

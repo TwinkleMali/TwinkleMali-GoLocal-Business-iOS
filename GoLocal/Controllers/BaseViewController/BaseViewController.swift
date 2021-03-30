@@ -12,11 +12,11 @@ var BASEVIEW_CONTROLLER : BaseViewController?
 var CURRENT_NAVIGATION : UINavigationController?
 
 class BaseViewController: UIViewController {
-
     //MARK:- VARIABLES
     
     var reachability : Reachability?
     var bannerIsVisible = false
+    var objOrderReq : OrderRequests!
     
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -31,22 +31,27 @@ class BaseViewController: UIViewController {
         {
             print(error.localizedDescription)
         }
-        
+//        notificationCenterObservers()
         checkRechabiliy()
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.barStyle = .default
-    }
+    } 
+
+    
     func back(withAnimation : Bool)  {
         self.navigationController?.popViewController(animated: withAnimation)
     }
+    
     func isTabbarHidden(_ isHidden:Bool) {
         self.tabBarController?.tabBar.isHidden = isHidden
     }
+    
     func UpdateTabBar(index : Int)
     {
         self.tabBarController?.selectedIndex = index
     }
+    
     func hideTabBar() {
         let tabFrame = self.tabBarController?.tabBar.frame
         //tabFrame?.origin.y = self.view.frame.size.height + (tabFrame?.size.height)!
@@ -92,15 +97,7 @@ class BaseViewController: UIViewController {
                print("Unable to start notifier")
            }
        }
-   
- 
-//    func navigateToCategorySelection(from: UIViewController?,isFromLogin : Bool = false){
-//
-//        let vc = CategorySelectionViewController(nibName: "CategorySelectionViewController", bundle: .main)
-//        vc.isFromLogin = isFromLogin
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
-    
+        
     func navigateToHome(){
         let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
         let navVC = UINavigationController(rootViewController: tabBar)
@@ -155,3 +152,5 @@ extension BaseViewController : NotificationBannerDelegate {
         
     }
 }
+
+
