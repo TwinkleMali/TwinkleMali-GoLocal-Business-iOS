@@ -90,7 +90,6 @@ class PaymentConfirmationViewController: BaseViewController {
                 print("failed to get status")
             }
         }
-        
     }
     @objc func handleChangeBusinessPaymentRequestStatus(notification : Notification) {
         if let obj  = notification.userInfo  as? NSDictionary {

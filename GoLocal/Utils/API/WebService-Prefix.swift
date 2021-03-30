@@ -13,7 +13,7 @@ let POST = "POST"
 let MEDIA = "MEDIA"
 let PRIVATE_KEY = "kashfk=1gdj1123_asdq283y059==="
 
-let isLive = false
+let isLive = true
 let IS_TESTDATA = 1
 
 let LOCAL_SERVER_URL = "https://apps.narola.online:444/pma/hde/data/459815/API"

@@ -45,8 +45,8 @@ class ScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsD
             viewScanner.startScanning()
         }
         //viewScanner.isRunning ? viewScanner.stopScanning() : viewScanner.startScanning()
-        dismiss(animated: true, completion: nil)
-        completionHandler("4J548_697d60I1069")
+//        dismiss(animated: true, completion: nil)
+//        completionHandler("4J548_697d60I1069")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
