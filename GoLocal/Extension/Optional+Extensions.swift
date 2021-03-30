@@ -20,7 +20,7 @@ extension Optional {
         switch self {
         case .some(let value):
             print(value)
-            return value as! Int
+            return Int((value as? String) ?? "") ?? 0
         case _:
             return 0
         }

@@ -25,6 +25,8 @@ class OrderButtonTVCell: UITableViewCell {
     @IBOutlet weak var widhtDetailButton: NSLayoutConstraint!
     @IBOutlet weak var btnView: UIButton!
     @IBOutlet weak var lblOrderId: UILabel!
+    @IBOutlet weak var buttonConstaints: NSLayoutConstraint!
+    
 //    {
 //            didSet{
 //                mainView.layer.borderWidth = 1

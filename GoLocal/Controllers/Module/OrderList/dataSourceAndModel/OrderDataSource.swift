@@ -152,7 +152,7 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if tableView == self.tableView{
-            return 0
+            return 1
         }else {
             return  UITableView.automaticDimension
         }
@@ -169,15 +169,15 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if tableView == self.tableView{
-            return 0
+            return 1
         }else {
             if orderViewController?.selOrder == OrderType.CurrentOrder.rawValue{
-                return 180
+                return 150
             }else if orderViewController?.selOrder == OrderType.PastOrder.rawValue{
                 return 200
             }
         }
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat{
@@ -190,8 +190,8 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
                 return 90
             }
         }
-        return 0
-    }    
+        return 1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.tableView{
@@ -211,9 +211,12 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.tblView.tag = indexPath.row
                 cell.tblView.delegate = self
                 cell.tblView.dataSource = self
+        
                 cell.tblView.reloadData()
                 cell.tblViewHeight.constant = cell.tblView.contentSize.height + 50
 //                cell.tblView.invalidateIntrinsicContentSize()
+                
+                cell.updateConstraints()
                 cell.layoutIfNeeded()
                 return cell
             }

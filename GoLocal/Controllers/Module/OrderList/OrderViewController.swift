@@ -140,7 +140,7 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
         vc.isOrderRequest = false
         let index : Int = sender.accessibilityValue.aIntOrEmpty()
         vc.objOrder = viewModel.getOrder(listAt: index, orderAt: sender.tag, orderType: selOrder)
-        vc.viewModel.setOrderDetail(objOrder: viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder))
+        //vc.viewModel.setOrderDetail(objOrder: viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder))
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

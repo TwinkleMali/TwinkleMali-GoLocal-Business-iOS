@@ -2228,7 +2228,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.golocalfirst.businessapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dev;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA SSD/Project/Go_Local/Business/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2253,7 +2253,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.golocalfirst.businessapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dis;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA/ML/PanwalaMital/GoLocalApp/BussinessApp/Code/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/DATA SSD/Project/Go_Local/Business/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
