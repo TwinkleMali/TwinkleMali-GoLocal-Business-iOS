@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -30,20 +29,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="359" height="115"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYi-J2-i73">
-                                <rect key="frame" x="10" y="5" width="44" height="20.5"/>
+                                <rect key="frame" x="10" y="5" width="44" height="22"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_email" translatesAutoresizingMaskIntoConstraints="NO" id="oUy-Ci-Jev">
-                                <rect key="frame" x="10" y="36" width="18" height="17"/>
+                                <rect key="frame" x="10" y="38.5" width="18" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="18" id="Jyc-La-nUP"/>
                                     <constraint firstAttribute="height" constant="17" id="SGv-f8-qDN"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OSY-bz-mcN">
-                                <rect key="frame" x="38" y="27.5" width="311" height="34"/>
+                                <rect key="frame" x="38" y="32" width="271.5" height="29.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OSY-bz-mcN" secondAttribute="height" multiplier="311:34" id="7xn-7j-vCP"/>
                                 </constraints>
@@ -58,7 +57,7 @@
                                 </constraints>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXR-LJ-yl2">
-                                <rect key="frame" x="315" y="27.5" width="34" height="34"/>
+                                <rect key="frame" x="319.5" y="32" width="29.5" height="29.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="sXR-LJ-yl2" secondAttribute="height" multiplier="1:1" id="oys-hG-fIy"/>
                                 </constraints>
@@ -116,10 +115,10 @@
                                 </constraints>
                             </stackView>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="mN3-bM-YiE">
-                                <rect key="frame" x="10" y="27.5" width="339" height="34"/>
+                                <rect key="frame" x="10" y="32" width="339" height="29.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKg-cK-HmQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="118" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="118" height="29.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Delivery" image="icon_radio_select">
@@ -127,7 +126,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PZW-7q-Oug">
-                                        <rect key="frame" x="118" y="0.0" width="137" height="34"/>
+                                        <rect key="frame" x="118" y="0.0" width="137" height="29.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Collection" image="icon_radio_select">
@@ -135,7 +134,7 @@
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoO-pO-DVl">
-                                        <rect key="frame" x="255" y="0.0" width="84" height="34"/>
+                                        <rect key="frame" x="255" y="0.0" width="84" height="29.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="Both" image="icon_radio_select">
@@ -150,15 +149,15 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="w29-Td-pcv" secondAttribute="bottom" id="6rY-9p-sfd"/>
                             <constraint firstItem="oUy-Ci-Jev" firstAttribute="leading" secondItem="fYi-J2-i73" secondAttribute="leading" id="74Q-vc-QAw"/>
+                            <constraint firstAttribute="trailing" secondItem="VNL-ki-5Bp" secondAttribute="trailing" constant="10" id="8qK-MB-xcI"/>
                             <constraint firstAttribute="trailing" secondItem="w29-Td-pcv" secondAttribute="trailing" constant="10" id="9jg-NE-lLt"/>
                             <constraint firstItem="w29-Td-pcv" firstAttribute="top" secondItem="VNL-ki-5Bp" secondAttribute="bottom" multiplier="68:60" id="BcO-b0-qDV"/>
-                            <constraint firstItem="VNL-ki-5Bp" firstAttribute="trailing" secondItem="OSY-bz-mcN" secondAttribute="trailing" id="Gzd-vG-1vc"/>
+                            <constraint firstItem="sXR-LJ-yl2" firstAttribute="leading" secondItem="OSY-bz-mcN" secondAttribute="trailing" constant="10" id="Cn5-3M-0YX"/>
                             <constraint firstItem="OSY-bz-mcN" firstAttribute="leading" secondItem="oUy-Ci-Jev" secondAttribute="trailing" constant="10" id="Lxv-lS-SCE"/>
-                            <constraint firstAttribute="trailing" secondItem="OSY-bz-mcN" secondAttribute="trailing" constant="10" id="Ogx-6F-okZ"/>
                             <constraint firstItem="fYi-J2-i73" firstAttribute="top" secondItem="hoR-Sq-oea" secondAttribute="top" constant="5" id="PUl-Su-ufm"/>
-                            <constraint firstItem="mN3-bM-YiE" firstAttribute="trailing" secondItem="OSY-bz-mcN" secondAttribute="trailing" id="QNR-ue-4UB"/>
                             <constraint firstItem="mN3-bM-YiE" firstAttribute="bottom" secondItem="OSY-bz-mcN" secondAttribute="bottom" id="R0q-tj-CMV"/>
                             <constraint firstItem="mN3-bM-YiE" firstAttribute="leading" secondItem="hoR-Sq-oea" secondAttribute="leading" constant="10" id="RM0-Hj-oap"/>
+                            <constraint firstAttribute="trailing" secondItem="mN3-bM-YiE" secondAttribute="trailing" constant="10" id="Uqa-fF-0G3"/>
                             <constraint firstItem="VNL-ki-5Bp" firstAttribute="leading" secondItem="oUy-Ci-Jev" secondAttribute="leading" id="Vib-H2-KdZ"/>
                             <constraint firstItem="sXR-LJ-yl2" firstAttribute="bottom" secondItem="OSY-bz-mcN" secondAttribute="bottom" id="ZpG-rV-UjH"/>
                             <constraint firstItem="oUy-Ci-Jev" firstAttribute="top" secondItem="fYi-J2-i73" secondAttribute="bottom" multiplier="33.5:23.5" id="bGU-v3-c6d"/>

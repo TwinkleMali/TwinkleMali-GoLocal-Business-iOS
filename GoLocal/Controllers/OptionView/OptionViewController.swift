@@ -29,9 +29,11 @@ class OptionViewController: UIViewController {
         mainView.layer.cornerRadius = 10
         imgCamera.image = #imageLiteral(resourceName: "icon_cemera_select")
     }
+    
     @objc func dismissKeyboard() {
         hidescanView()
     }
+    
     @IBAction func btnPhoto(_ sender: UIButton) {
         imgPhoto.image = #imageLiteral(resourceName: "icon_photo_select")
         imgCamera.image = #imageLiteral(resourceName: "icon_camera_unselect")

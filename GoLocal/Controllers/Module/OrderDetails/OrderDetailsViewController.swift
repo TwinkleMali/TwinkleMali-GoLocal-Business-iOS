@@ -13,20 +13,27 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     @IBOutlet weak var navView: UIView!
     @IBOutlet weak var lblOrderStatus: UILabel!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var switchView: UIView!
+    @IBOutlet weak var switchStackView: UIStackView!
+    @IBOutlet weak var btnFirstOrder: UIButton!
+    @IBOutlet weak var btnSecondOrder: UIButton!
     var dataSource: OrderDetailsDataSource?
     var viewModel = OrderDetailsViewModel()
     var isOrderRequest : Bool = false
     var objOrderRequest : OrderRequests!
-    var objOrder : OrderDetails!
+    //var objOrder : OrderDetails!
+    var arrOrders : [OrderDetails] = []
     var orderId : Int!
+    var selOrder = OrderDetailTab.FirstOrder.rawValue
+    var isMultipleOrder : Bool = false
+    var deliverdOrderNo = 0
 //    @IBOutlet var btnHeight : NSLayoutConstraint!
-//    @IBOutlet var stHeight : NSLayoutConstraint!
+    @IBOutlet var stHeight : NSLayoutConstraint!
     @IBOutlet weak var btnMarkOrderLeft: UIButton!{
         didSet{
             btnMarkOrderLeft.layer.cornerRadius = 8
         }
     }
-    
     @IBOutlet weak var btnAccept: UIButton!{
         didSet{
             btnAccept.layer.cornerRadius = 8
@@ -50,58 +57,78 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
         
         if objOrderRequest != nil {
             self.viewModel.setOrderRequests(objOrderReqeust: objOrderRequest)
-            self.viewModel.setOrderDetail(objOrder: objOrderRequest.orderDetails!)
-            objOrder = objOrderRequest.orderDetails!
+            self.viewModel.setOrderArr(arrOrders: [objOrderRequest.orderDetails!])
+            arrOrders.append(contentsOf: [objOrderRequest.orderDetails!])
             setupView()
         }
         
-        if objOrder != nil{
-           
-            self.viewModel.setOrderDetail(objOrder: objOrder)
-            socketGetOrderDetail(strOrder: "\(objOrder.id ?? 0)")
+        if arrOrders.count > 0{
+            self.viewModel.setOrderArr(arrOrders: arrOrders)
+            //socketGetOrderDetail(strOrder: "\(objOrder.id ?? 0)")
             setupView()
         }
         
         if orderId != nil{
             socketGetOrderDetail(strOrder: "\(orderId ?? 0)")
         }
-        
     }
     
     func setupView() {
-    
-        if isOrderRequest{
-            btnMarkOrderLeft.isHidden = true
-            btnMarkOrderLeft.isUserInteractionEnabled = false
-           
-            stackView.isHidden = false
-        }else {
-           
-            btnMarkOrderLeft.isUserInteractionEnabled = true
-            btnMarkOrderLeft.isHidden = false
-            stackView.isHidden = true
-            if objOrder.deliveryType == DeliveryType.collection.rawValue && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
-                btnMarkOrderLeft.setTitle("Mark Order as Completed", for: .normal)
-            }else if objOrder.deliveryType == DeliveryType.delivery.rawValue && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
-                btnMarkOrderLeft.setTitle("Mark Order has left", for: .normal)
-            }else {
-                lblOrderStatus.isHidden = false
+//        if isMultipleOrder {
+        let objOrder = viewModel.getOrderDetail()
+        stHeight.constant = viewModel.isMerged() ? 60 : 0
+        switchStackView.isHidden = false
+        switchView.backgroundColor = .lightGray
+        drawBorder(view: switchView, color: .lightGray, width: 1.0, radius: 5.0)
+        drawBorder(view: switchStackView, color: .lightGray, width: 1.0, radius: 5.0)
+        btnFirstOrder.backgroundColor = GreenColor
+        btnSecondOrder.backgroundColor = .white
+        btnFirstOrder.setTitle("First Order", for: .normal)
+        btnSecondOrder.setTitle("Second Order", for: .normal)
+        btnFirstOrder.titleLabel?.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 16.0))
+        btnSecondOrder.titleLabel?.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 16.0))
+        
+        btnFirstOrder.setTitleColor(.white, for: .selected)
+        btnFirstOrder.setTitleColor(.lightGray, for: .normal)
+        
+        btnSecondOrder.setTitleColor(.white, for: .selected)
+        btnSecondOrder.setTitleColor(.lightGray, for: .normal)
+
+
+//        }else {
+//            switchStackView.isHidden = true
+//            stHeight.constant = 0
+            if isOrderRequest{
                 btnMarkOrderLeft.isHidden = true
-              
-                if objOrder.orderStatus == OrderStatus.OrderLeft.rawValue {
-                    lblOrderStatus.text = "\(objOrder.orderStatus.asStringOrEmpty())"
-                }else if objOrder.orderStatus == OrderStatus.Cancelled.rawValue {
-                    lblOrderStatus.text = "Order \(objOrder.orderStatus.asStringOrEmpty())"
-                }else if objOrder.orderStatus == OrderStatus.AcceptedByShop.rawValue{
-                    lblOrderStatus.text = "Driver Not Assigned yet."
+                btnMarkOrderLeft.isUserInteractionEnabled = false
+               
+                stackView.isHidden = false
+            }else {
+               
+                btnMarkOrderLeft.isUserInteractionEnabled = true
+                btnMarkOrderLeft.isHidden = false
+                stackView.isHidden = true
+                if objOrder.deliveryType == DeliveryType.collection.rawValue && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
+                    btnMarkOrderLeft.setTitle("Mark Order as Completed", for: .normal)
+                }else if objOrder.deliveryType == DeliveryType.delivery.rawValue && objOrder.orderStatus == OrderStatus.Confirmed.rawValue {
+                    btnMarkOrderLeft.setTitle("Mark Order has left", for: .normal)
+                }else {
+                    lblOrderStatus.isHidden = false
+                    btnMarkOrderLeft.isHidden = true
+                  
+                    if objOrder.orderStatus == OrderStatus.OrderLeft.rawValue {
+                        lblOrderStatus.text = "\(objOrder.orderStatus.asStringOrEmpty())"
+                    }else if objOrder.orderStatus == OrderStatus.Cancelled.rawValue {
+                        lblOrderStatus.text = "Order \(objOrder.orderStatus.asStringOrEmpty())"
+                    }else if objOrder.orderStatus == OrderStatus.AcceptedByShop.rawValue{
+                        lblOrderStatus.text = "Driver Not Assigned yet."
+                    }
                 }
-            }
-        }       
+//            }
+        }
         self.tableView.reloadData()
         self.tableView.isHidden = false
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -114,6 +141,26 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     @IBAction func btnBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func actionTabValueChange(_ sender: UIButton) {
+        if sender == btnFirstOrder{
+            selOrder = OrderDetailTab.FirstOrder.rawValue
+            sender.backgroundColor = GreenColor
+            sender.isSelected = true
+            viewModel.updateTab(value: 0)
+            btnSecondOrder.backgroundColor = .white
+            btnSecondOrder.isSelected = false
+        }else {
+            selOrder = OrderDetailTab.SecondOrder.rawValue
+            sender.backgroundColor = GreenColor
+            sender.isSelected = true
+            viewModel.updateTab(value: 1)
+            btnFirstOrder.backgroundColor = .white
+            btnFirstOrder.isSelected = false
+        }
+        tableView.reloadData()
+    }
+    
     
     func allNotificationCenterObservers() {        
         NotificationCenter.default.addObserver(self, selector: #selector(OrderStatusChanged(notification:)), name: NSNotification.Name(rawValue: notificationCenterKeys.changeTakeawayOrderStatus.rawValue), object: nil)
@@ -130,7 +177,11 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
         let obj  = notification.userInfo  as? [String : Any]
         if (obj?["status"] as! Bool){
             self.view.makeToast("Order is left.",duration: 2.0, position: .center)
-            APP_DELEGATE?.setupRootTabBarViewController(tabIndex: 1)
+            if deliverdOrderNo == 0 && self.viewModel.isMerged() {
+                mergeOrder(orderNo: 1)
+            } else {
+                APP_DELEGATE?.setupRootTabBarViewController(tabIndex: 1)
+            }
         } else {
             self.showBanner(bannerTitle: .none, message: obj?["message"] as! String, type: .danger)
         }
@@ -139,14 +190,50 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     @objc func getSingleOrderDetails(notification : Notification) {
         let obj  = notification.userInfo  as? [String : Any]        
         if (obj?["status"] as! Bool){
-            objOrder = OrderDetails(object: obj![WSDATA]!)
-            viewModel.setOrderDetail(objOrder: objOrder)
+            let objOrder = OrderDetails(object: obj![WSDATA]!)
+            viewModel.setOrderArr(arrOrders: [objOrder])
             setupView()
             loadViewIfNeeded()
         }
     }
     
+    // Order on map Click
+    @objc func actionMarkOrderLeft(_ sender : UIButton) {
+        let objOrder = viewModel.getOrderDetail(no: 0)
+        if let driver =  objOrder.driverDetails {
+            let vc = DriverLocationViewController.loadFromNib()
+            vc.driverDetails = driver
+            vc.orderId = objOrder.id ?? 0
+            
+            vc.driverLat = driver.latitude ?? "21.1205"
+            vc.driverLong = driver.longitude ?? "72.7431"
+            
+            vc.deliveryLatitude = objOrder.deliveryLatitude ?? ""
+            vc.deliveryLongitude = objOrder.deliveryLongitude ?? ""
+            
+            
+            
+            if viewModel.isMerged() {
+                vc.isMergedOrder = true
+                let objOrder2 = viewModel.getOrderDetail(no: 1)
+                vc.deliveryLatitude2 = objOrder2.deliveryLatitude ?? ""
+                vc.deliveryLongitude2 = objOrder2.deliveryLongitude ?? ""
+            }
+            vc.shopLat = objOrder.shopDetail?.latitude ?? ""
+            vc.shopLong = objOrder.shopDetail?.longitude ?? ""
+            
+            let isOrderPicked = objOrder.orderStatus == OrderStatus.OrderLeft.rawValue
+            vc.orderNotPickedUp = !isOrderPicked
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     @IBAction func btnOrderStatusChange(_ sender: UIButton) {
+        mergeOrder()
+    }
+    func mergeOrder(orderNo : Int = 0 ){
+        deliverdOrderNo = orderNo
+        let objOrder = viewModel.getOrderDetail(no: orderNo)
         let dic = ["user_id" : USER_DETAILS?.id ?? 0,
                    "customer_id" : objOrder.customerDetails?.id ?? 0,
                    "order_id" : objOrder.id ?? 0,
@@ -154,9 +241,9 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
                    "business_owner_id" : objOrder.shopDetail?.userId ?? 0,
                    "order_status" : TAKEAWAY_ORDER_STATUS.ORDER_LEFT.rawValue] as [String : Any]
         print("order status change dic : \(dic)")
+        
         socketOrderStatusChanged(dictionary: dic)
     }
-    
     // Accept Order Request Click
     @IBAction func btnAcceptClick(_ sender: UIButton) {
         if objOrderRequest.orderDetails?.deliveryType == DeliveryType.collection.rawValue {
@@ -189,6 +276,4 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
         print("reject dic : \(dic)")
         socketRejectOrderRequest(dictionary: dic)
     }
-
-    
 }

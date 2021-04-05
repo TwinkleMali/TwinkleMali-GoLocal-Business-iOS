@@ -11,17 +11,17 @@ class MobileNumberTVCell: UITableViewCell {
 
     @IBOutlet weak var lblTitle: UILabel!{
         didSet{
-            lblTitle.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 14.0))
+            lblTitle.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 15.0))
         }
     }
     @IBOutlet weak var lblCountryPhoneCode: UILabel!{
         didSet{
-            lblCountryPhoneCode.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 14.0))
+            lblCountryPhoneCode.font = UIFont(name: fFONT_SEMIBOLD, size: calculateFontForWidth(size: 16.0))
         }
     }
     @IBOutlet weak var textPhoneNumber: UITextField!{
         didSet{
-            textPhoneNumber.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 14.0))
+            textPhoneNumber.font = UIFont(name: fFONT_SEMIBOLD, size: calculateFontForWidth(size: 16.0))
         }
     }
     @IBOutlet weak var imgDownArrow: UIImageView!{

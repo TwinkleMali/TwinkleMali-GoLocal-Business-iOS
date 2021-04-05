@@ -22,6 +22,7 @@ enum notificationCenterKeys : String {
 	case leaveFeedbackRoom = "Leave_Feedback_Chat_Room"
     case joinFeedbackRoom = "Join_Feedback_Room"
     case shopOrderRequest = "shop_order_request"
+    case shopOrderMergeRequest = "shop_order_merge_request"
     case shopRequestTimeout = "shop_request_timeout"
     case shopRejectOrder = "shop_reject_order"
     case shopAcceptOrder = "shop_accept_order"

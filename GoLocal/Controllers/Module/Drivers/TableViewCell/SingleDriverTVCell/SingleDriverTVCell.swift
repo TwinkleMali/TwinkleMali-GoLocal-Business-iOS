@@ -21,6 +21,7 @@ class SingleDriverTVCell: UITableViewCell {
             vwDriverStatus.layer.cornerRadius = vwDriverStatus.frame.height/2
         }
     }
+    @IBOutlet var viewWidth : NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -104,12 +104,13 @@ extension DriverSeleListViewDataSource : UITableViewDataSource,UITableViewDelega
                 cell.selectionStyle = .none
                 cell.vwInput.isHidden = true
                 cell.vwDisable.isHidden = true
+                //cell.txtDeliveryTime.text = "\(driverSeleListViewController?.selectedMin ?? 0) Minutes"
                 if selectedIndex != nil{
                     if self.selectedIndex.section == indexPath.section && self.selectedIndex.row  == indexPath.row{
                         cell.vwInput.isHidden = false
                         cell.btnEdit.setImage(UIImage(named:"driver_select_icon"), for: .normal)
 //                        cell.txtDeliveryTime.text = "\(selectedMin.aIntOrEmpty()) Minutes"
-                        cell.txtDeliveryTime.text = "\(driverSeleListViewController?.selectedMin.aIntOrEmpty() ?? 0) Minutes"
+                        cell.txtDeliveryTime.text = "\(driverSeleListViewController?.selectedMin ?? 0) Minutes"
                     }else {
                         cell.btnEdit.setImage(UIImage(named:"driver_unselect_icon"), for: .normal)
                     }

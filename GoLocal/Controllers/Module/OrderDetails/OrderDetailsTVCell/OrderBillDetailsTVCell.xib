@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -165,26 +164,20 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xci-MK-mtj">
-                                <rect key="frame" x="0.0" y="255" width="404" height="30"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="CgV-KK-tP1"/>
-                                </constraints>
-                                <state key="normal" image="footer_image"/>
-                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="footer_image" translatesAutoresizingMaskIntoConstraints="NO" id="JRS-eh-iRW">
+                                <rect key="frame" x="15" y="255" width="374" height="30"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Xci-MK-mtj" secondAttribute="bottom" constant="10" id="1S9-js-XYh"/>
                             <constraint firstItem="O20-wI-Kzj" firstAttribute="centerY" secondItem="R9V-6l-SIP" secondAttribute="centerY" id="1cV-B6-jFP"/>
                             <constraint firstAttribute="trailing" secondItem="7f5-io-iY8" secondAttribute="trailing" constant="20" id="2sI-Yq-6Uy"/>
-                            <constraint firstItem="Xci-MK-mtj" firstAttribute="top" secondItem="Ga2-ae-mx2" secondAttribute="bottom" constant="20" id="2wU-5k-l5g"/>
                             <constraint firstItem="MlN-fb-oWP" firstAttribute="leading" secondItem="UIZ-2D-COt" secondAttribute="leading" constant="15" id="4n6-jN-qVW"/>
                             <constraint firstItem="TdG-y2-YPh" firstAttribute="centerY" secondItem="S3M-4d-5td" secondAttribute="centerY" id="5Gq-tj-44l"/>
                             <constraint firstItem="68L-vI-ADd" firstAttribute="leading" secondItem="UIZ-2D-COt" secondAttribute="leading" constant="15" id="6kb-sw-N3b"/>
                             <constraint firstItem="bG5-M5-sIZ" firstAttribute="centerY" secondItem="68L-vI-ADd" secondAttribute="centerY" id="8Da-zv-ibk"/>
+                            <constraint firstItem="JRS-eh-iRW" firstAttribute="leading" secondItem="UIZ-2D-COt" secondAttribute="leading" constant="15" id="8VH-e7-xi0"/>
                             <constraint firstAttribute="trailing" secondItem="bG5-M5-sIZ" secondAttribute="trailing" constant="15" id="9NU-Qr-ln2"/>
+                            <constraint firstItem="JRS-eh-iRW" firstAttribute="top" secondItem="Ga2-ae-mx2" secondAttribute="bottom" constant="20" id="Aj9-S9-nO9"/>
                             <constraint firstItem="7f5-io-iY8" firstAttribute="top" secondItem="UIZ-2D-COt" secondAttribute="top" constant="10" id="ETB-Wg-Rzg"/>
                             <constraint firstItem="Jna-OH-0eU" firstAttribute="centerY" secondItem="hrT-N7-7DM" secondAttribute="centerY" id="Egj-dI-TMj"/>
                             <constraint firstItem="ZcN-Kz-arK" firstAttribute="leading" secondItem="UIZ-2D-COt" secondAttribute="leading" constant="15" id="Ejn-8f-o9k"/>
@@ -200,8 +193,6 @@
                             <constraint firstItem="ZcN-Kz-arK" firstAttribute="top" secondItem="R9V-6l-SIP" secondAttribute="bottom" constant="10" id="fms-u6-01D"/>
                             <constraint firstAttribute="trailing" secondItem="Qji-3I-HqH" secondAttribute="trailing" constant="15" id="gRL-se-Tsx"/>
                             <constraint firstItem="hrT-N7-7DM" firstAttribute="top" secondItem="68L-vI-ADd" secondAttribute="bottom" constant="5" id="k3q-NB-Tw1"/>
-                            <constraint firstItem="Xci-MK-mtj" firstAttribute="leading" secondItem="UIZ-2D-COt" secondAttribute="leading" id="kEU-PM-Jk6"/>
-                            <constraint firstAttribute="trailing" secondItem="Xci-MK-mtj" secondAttribute="trailing" id="lEb-5R-TsW"/>
                             <constraint firstItem="S3M-4d-5td" firstAttribute="top" secondItem="hrT-N7-7DM" secondAttribute="bottom" constant="5" id="lId-PI-0GG"/>
                             <constraint firstItem="R9V-6l-SIP" firstAttribute="leading" secondItem="UIZ-2D-COt" secondAttribute="leading" constant="15" id="nGz-9z-K3w"/>
                             <constraint firstItem="68L-vI-ADd" firstAttribute="top" secondItem="7f5-io-iY8" secondAttribute="bottom" constant="10" id="oyn-KR-VYN"/>
@@ -210,11 +201,12 @@
                             <constraint firstAttribute="trailing" secondItem="Ga2-ae-mx2" secondAttribute="trailing" constant="15" id="pPe-pc-FDg"/>
                             <constraint firstAttribute="trailing" secondItem="TdG-y2-YPh" secondAttribute="trailing" constant="15" id="rY6-7h-ueF"/>
                             <constraint firstAttribute="trailing" secondItem="Jna-OH-0eU" secondAttribute="trailing" constant="15" id="s9g-XS-Qhs"/>
+                            <constraint firstAttribute="trailing" secondItem="JRS-eh-iRW" secondAttribute="trailing" constant="15" id="x8M-l9-zg5"/>
                             <constraint firstItem="MlN-fb-oWP" firstAttribute="top" secondItem="I0k-uK-DpI" secondAttribute="bottom" constant="15" id="yNs-2P-ft1"/>
+                            <constraint firstAttribute="bottom" secondItem="JRS-eh-iRW" secondAttribute="bottom" constant="10" id="zmV-Bd-Pbd"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="UIZ-2D-COt" secondAttribute="trailing" constant="5" id="H97-Sb-uJq"/>
                     <constraint firstItem="UIZ-2D-COt" firstAttribute="top" secondItem="Jvj-Tu-kWO" secondAttribute="top" id="ohH-bF-vlM"/>

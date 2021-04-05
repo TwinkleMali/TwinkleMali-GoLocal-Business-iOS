@@ -22,6 +22,9 @@ var HAS_TOP_NOTCH: Bool {
     return false
 }
 
+let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String
+let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+
 //MARK: - SCREEN WIDTH FOR ORIGINAL FONTS
 let SCREEN_WIDTH_FOR_ORIGINAL_FONT = IS_IPAD ? 768 : 414 as CGFloat
 let SCREEN_HEIGHT_FOR_ORIGINAL_FONT = IS_IPAD ? 1024 : 896 as CGFloat

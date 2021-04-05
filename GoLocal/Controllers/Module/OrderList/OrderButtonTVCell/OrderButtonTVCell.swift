@@ -18,14 +18,20 @@ class OrderButtonTVCell: UITableViewCell {
     @IBOutlet weak var lblOrderDescription: UILabel!
     @IBOutlet weak var lblRequestedTime: UILabel!
     @IBOutlet weak var lblUserComment: UILabel!    
-    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var mainView: CardView!
     @IBOutlet weak var subView: UIView!
     @IBOutlet weak var stView: UIStackView!
     @IBOutlet weak var heightvw: NSLayoutConstraint!
     @IBOutlet weak var widhtDetailButton: NSLayoutConstraint!
     @IBOutlet weak var btnView: UIButton!
     @IBOutlet weak var lblOrderId: UILabel!
-//    {
+    @IBOutlet weak var buttonConstaints: NSLayoutConstraint!
+    @IBOutlet weak var buttonBottomConstraints: NSLayoutConstraint!
+    @IBOutlet weak var leftPadding: NSLayoutConstraint!
+    @IBOutlet weak var rightPadding: NSLayoutConstraint!
+    
+    @IBOutlet weak var viewBottomConstraints: NSLayoutConstraint!
+    //    {
 //            didSet{
 //                mainView.layer.borderWidth = 1
 //                mainView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)

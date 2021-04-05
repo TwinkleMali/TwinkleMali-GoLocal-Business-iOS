@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StripeConnectViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="activityInd" destination="yIG-br-CWF" id="fLl-PX-mPv"/>
+                <outlet property="btnBack" destination="DLC-Mw-dlp" id="8qD-RH-9gK"/>
+                <outlet property="lblTitle" destination="3Tf-xv-WRy" id="22f-hf-z6p"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="mnS-xV-VrY" id="Vlo-4b-eN0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnS-xV-VrY">
+                    <rect key="frame" x="0.0" y="94" width="414" height="802"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <wkWebViewConfiguration key="configuration" applicationNameForUserAgent="Go Local First">
+                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                        <wkPreferences key="preferences"/>
+                    </wkWebViewConfiguration>
+                </wkWebView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xPC-Kn-MV7" customClass="CardView" customModule="GoLocal" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Paid By Go Local First" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Tf-xv-WRy">
+                            <rect key="frame" x="88" y="44" width="238.5" height="50"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLC-Mw-dlp">
+                            <rect key="frame" x="0.0" y="44" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="DLC-Mw-dlp" secondAttribute="height" multiplier="1:1" id="BGw-jr-9Ua"/>
+                            </constraints>
+                            <state key="normal" image="icon_back_b"/>
+                            <connections>
+                                <action selector="btnBackClicked:" destination="-1" eventType="touchUpInside" id="9PH-wG-6kf"/>
+                            </connections>
+                        </button>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="yIG-br-CWF">
+                            <rect key="frame" x="382" y="44" width="20" height="50"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="yIG-br-CWF" firstAttribute="bottom" secondItem="DLC-Mw-dlp" secondAttribute="bottom" id="8QB-FL-qOW"/>
+                        <constraint firstAttribute="bottom" secondItem="DLC-Mw-dlp" secondAttribute="bottom" id="9Mw-gC-aeF"/>
+                        <constraint firstItem="yIG-br-CWF" firstAttribute="top" secondItem="DLC-Mw-dlp" secondAttribute="top" id="Da0-HE-lUH"/>
+                        <constraint firstItem="DLC-Mw-dlp" firstAttribute="leading" secondItem="xPC-Kn-MV7" secondAttribute="leading" id="EbT-DY-18v"/>
+                        <constraint firstAttribute="trailing" secondItem="yIG-br-CWF" secondAttribute="trailing" constant="12" id="Xvu-OL-ywY"/>
+                        <constraint firstItem="yIG-br-CWF" firstAttribute="width" secondItem="DLC-Mw-dlp" secondAttribute="width" multiplier="0.4" id="a3N-yp-aIM"/>
+                        <constraint firstItem="3Tf-xv-WRy" firstAttribute="centerX" secondItem="xPC-Kn-MV7" secondAttribute="centerX" id="tk2-Fw-s2E"/>
+                        <constraint firstAttribute="bottom" secondItem="3Tf-xv-WRy" secondAttribute="bottom" id="tom-2T-ted"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetHeight">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="DLC-Mw-dlp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Ald-Ow-gII"/>
+                <constraint firstItem="mnS-xV-VrY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="E7P-eJ-F23"/>
+                <constraint firstItem="mnS-xV-VrY" firstAttribute="top" secondItem="xPC-Kn-MV7" secondAttribute="bottom" id="MN0-6F-Vyk"/>
+                <constraint firstItem="xPC-Kn-MV7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="URz-Au-QKe"/>
+                <constraint firstAttribute="bottom" secondItem="mnS-xV-VrY" secondAttribute="bottom" id="Ugr-Ha-w1Z"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="xPC-Kn-MV7" secondAttribute="bottom" constant="-50" id="VnU-vT-VhE"/>
+                <constraint firstItem="mnS-xV-VrY" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="aor-1D-Jc8"/>
+                <constraint firstItem="xPC-Kn-MV7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pX9-6y-8Vm"/>
+                <constraint firstItem="3Tf-xv-WRy" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="pjY-qm-cow"/>
+                <constraint firstItem="xPC-Kn-MV7" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="sNu-9M-ZSI"/>
+            </constraints>
+            <point key="canvasLocation" x="-30" y="80"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_back_b" width="25" height="20.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

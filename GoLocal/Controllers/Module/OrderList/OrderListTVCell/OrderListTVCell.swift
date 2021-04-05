@@ -8,7 +8,11 @@
 import UIKit
 
 class OrderListTVCell: UITableViewCell {
-
+    
+    @IBOutlet weak var mainView: CardView!
+    @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var tblViewHeight: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

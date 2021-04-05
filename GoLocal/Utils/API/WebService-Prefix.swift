@@ -17,9 +17,9 @@ let isLive = false
 let IS_TESTDATA = 1
 //http://clientapp.narola.online/sv/GoLocalFirst/API
 //GLFService.php?Service=Register
-let LOCAL_SERVER_URL = "http://18.223.15.96/src/API"
-//https://apps.narola.online:444/pma/hde/data/459815/API"
-let LIVE_SERVER_URL = ""
+let LOCAL_SERVER_URL = "https://apps.narola.online:444/pma/hde/data/459815/API"
+
+let LIVE_SERVER_URL = "http://18.223.15.96/src/API"
 
 let SERVER_URL = isLive ?  LIVE_SERVER_URL : LOCAL_SERVER_URL
 //let DICTINARY = isLive ? "\(SERVER_URL)campsite" : "\(SERVER_URL)"
@@ -44,7 +44,7 @@ let TERMS_LOCATION = "\(SERVER_URL)/Terms/"
 let PATH_PP = "\(TERMS_LOCATION)privacy_policy.pdf"
 let PATH_TC = "\(TERMS_LOCATION)terms_conditions.pdf"
 let PATH_disclaimer = "\(TERMS_LOCATION)disclaimer.pdf"
-
+let PATH_OAUTH = "\(SERVER_URL)/s_oauth.php"
 //Services
 let APIRefreshToken = "\(WEBSERVICE_PATH)RefreshToken"
 let APILogin = "\(WEBSERVICE_PATH)Login"
@@ -60,22 +60,26 @@ let APIGetRatingReview = "\(WEBSERVICE_PATH)GetRatingReview"
 let APIReplyToRatingReview = "\(WEBSERVICE_PATH)ReplyToRatingReview"
 let APIEditBusinessDetails = "\(WEBSERVICE_PATH)EditBusinessDetails"
 let APIGetSingleStoreDetail = "\(WEBSERVICE_PATH)GetSingleStoreDetail"
-
+let APIGetMultiOrderDetail = "\(WEBSERVICE_PATH)GetMultiOrderDetail"
 
 let APIGetBusinessOrderRequests = "\(WEBSERVICE_PATH)GetBusinessOrderRequests"
 let APIGetAllBusinessOrders = "\(WEBSERVICE_PATH)GetAllBusinessOrders"
 
 let APIGetBusinessDrivers = "\(WEBSERVICE_PATH)GetBusinessDrivers"
 let APIGetAllBusinessDrivers = "\(WEBSERVICE_PATH)GetAllBusinessDrivers"
+let APIGetBusyDriverOrderDetails = "\(WEBSERVICE_PATH)GetBusyDriverOrderDetails"
 
-//let APISaveBusinessAccountDetail = "\(WEBSERVICE_PATH)SaveBusinessAccountDetail"
+
 //let APISaveBusinessAccountDetail = "\(WEBSERVICE_PATH)SaveBusinessAccountDetail"
 
 //MARK:- SOKET API
 
 //Socket Path
-let SOCKET_SERVER_PATH = "http://18.223.15.96:3080" //http://192.168.100.174:8055" //"https://apps.narola.online:5002"
+//let SOCKET_SERVER_PATH = "http://18.223.15.96:3080" //http://192.168.100.174:8055" //"https://apps.narola.online:5002"
 
+let LOCAL_SOCKET_SERVER_URL = "http://192.168.100.174:8055"
+let LIVE_SOCKET_SERVER_URL = "http://18.223.15.96:3080"
+let SOCKET_SERVER_PATH = isLive ?  LIVE_SOCKET_SERVER_URL : LOCAL_SOCKET_SERVER_URL
 
 let API_SOCKET_JOIN = "join_socket"
 let API_SOCKET_DISCONNECT = "disconnect_manually"
@@ -96,7 +100,7 @@ let API_GET_DRIVER_RUNNNING_ORDER_DETAIL = "getDriverRunningOrderDetail"
 let API_CHANGE_TAKEAWAY_ORDER_STATUS = "changeTakeawayOrderStatus"
 let API_ORDER_STATUS_CHANGE_ACK = "order_status_change_ack"
 let API_GET_SINGLE_ORDER_DETAILS = "getSingleOrderDetails"
-
+let API_SAVE_BUSINESS_ACCOUNT_DETAIL = "\(WEBSERVICE_PATH)SaveBusinessAccountDetail"
 
 
 //Paths

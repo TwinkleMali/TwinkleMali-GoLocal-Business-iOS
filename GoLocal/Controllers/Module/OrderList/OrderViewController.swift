@@ -10,7 +10,12 @@ import UIKit
 class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderViewDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var lblNoMsg : UILabel!
-    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var tableView : UITableView!{
+        didSet{
+            tableView.tag = 100
+            self.tableView.backgroundColor = .white
+        }
+    }
     @IBOutlet weak var navView: UIView!
     @IBOutlet weak var btnFilter: UIButton!
     @IBOutlet weak var switchView: UIView!
@@ -27,15 +32,15 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var offset = 0
     var isLoadMore:Bool = false
-   
     var selOrder = OrderType.CurrentOrder.rawValue
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGUI()
         dataSource = OrderDataSource(tableView: tableView, viewModel: viewModel, viewController: self)
         self.tableView.delegate = dataSource
         self.tableView.dataSource = dataSource
-        self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 5, right: 0)
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
         self.tableView.tableFooterView = UIView()
         isLoader = true
         callAPIToGetOrder()
@@ -64,8 +69,8 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     
     func callAPIToGetOrder(){
         let  param : [String : Any] = [
-            "user_id" : USER_DETAILS?.id ?? 0,
-            "shop_id" : USER_DETAILS?.shopId ?? 0,
+            "user_id" : 30,// USER_DETAILS?.id ?? 0,
+            "shop_id" : 1, //USER_DETAILS?.shopId ?? 0,
             "order_option" : selOrder,
             "filter_type" : 0,
             "filter_date" : "",
@@ -138,21 +143,28 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     @objc func actionOrderDetail(_ sender : UIButton) {
         let vc = OrderDetailsViewController(nibName: "OrderDetailsViewController", bundle: .main)
         vc.isOrderRequest = false
-        vc.objOrder = viewModel.getOrder(at: sender.tag, orderType: selOrder)
-        vc.viewModel.setOrderDetail(objOrder: viewModel.getOrder(at: sender.tag, orderType: selOrder))
+        let tag = sender.tag
+        let section = tag/100
+         let row = tag % 100
+        //let index : Int = sender.accessibilityValue.aIntOrEmpty()
+        vc.arrOrders = viewModel.getArrOrder(listAt: section,orderType: selOrder) ?? []
+        //vc.viewModel.setOrderDetail(objOrder: viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder))
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // Order on map Click
     @objc func actionMarkOrderLeft(_ sender : UIButton) {
-        if let driver =  viewModel.getOrder(at: sender.tag, orderType: selOrder).driverDetails {
+        if let driver =  viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder).driverDetails {
+            let tag = sender.tag
+            let section = tag/100
+             let row = tag % 100
             let vc = DriverLocationViewController.loadFromNib()
             vc.driverDetails = driver
-            vc.orderId = viewModel.getOrder(at: sender.tag, orderType: selOrder).id ?? 0
+            vc.orderId = viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder).id ?? 0
             vc.driverLat = driver.latitude ?? "21.1205"
             vc.driverLong = driver.longitude ?? "72.7431"
-            vc.deliveryLatitude = viewModel.getOrder(at: sender.tag, orderType: selOrder).deliveryLatitude ?? ""
-            vc.deliveryLongitude = viewModel.getOrder(at: sender.tag, orderType: selOrder).deliveryLongitude ?? ""
+            vc.deliveryLatitude = viewModel.getOrder(listAt: section, orderAt: row, orderType: selOrder).deliveryLatitude ?? ""
+            vc.deliveryLongitude = viewModel.getOrder(listAt: section, orderAt: row, orderType: selOrder).deliveryLongitude ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

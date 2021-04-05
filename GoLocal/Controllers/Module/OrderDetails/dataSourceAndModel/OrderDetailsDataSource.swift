@@ -32,136 +32,160 @@ class OrderDetailsDataSource: NSObject {
         tableView.register("OrderButtonTVCell")
         tableView.register("OrderDetailsTVCell")
         tableView.register("OrderBillDetailsTVCell")
+        tableView.register("OrderDetailDriverTVCell")
     }
 }
 
 extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return OrderDetailsField.total.rawValue
+        return viewModel.isOrderAvailabe() ? OrderDetailsField.total.rawValue : 0
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
-    {
-        switch section {
-        case OrderDetailsField.requestDetail.rawValue:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "PastOrdersTVCell") as? PastOrdersTVCell{
-                cell.vwTimer.isHidden = false
-                cell.lbltimerDec.isHidden = false
-                cell.mainView.topRoundCorner()
-                addDashedBorder(withColor: .gray, view: cell.imgDottedLine)
-                cell.layoutIfNeeded()
-              
-                let objCustomerDetail : CustomerDetails = (self.viewModel.getOrderDetail().customerDetails)!
-                if objCustomerDetail.name != ""{
-                    cell.lblUserName.text = "\(objCustomerDetail.name ?? "") \(objCustomerDetail.lname ?? "")"
-                }else if objCustomerDetail.username != ""{
-                    cell.lblUserName.text = "\(objCustomerDetail.username ?? "")"
-                }else {
-                    let name = objCustomerDetail.email?.components(separatedBy: "@")
-                    cell.lblUserName.text = "\(name?[0] ?? "")"
-                }
-                cell.lblUserName.text = "\(objCustomerDetail.name ?? "") \(objCustomerDetail.lname ?? "")"
-                cell.lblDeliveryAddress.text = self.viewModel.getOrderDetail().deliveryAddress
-                cell.ratingView.rating = Double(objCustomerDetail.rating ?? 0)
-                cell.lblTime.timeFormat = "mm:ss"
-                cell.lblTime.timerType = MZTimerLabelTypeTimer
-                cell.lblTime.delegate =  self
-                if isRequest{
-                    cell.orderRequestTime = getSecondsBetweenDates(date1: Date(), date2: serverToLocal(date: (self.viewModel.getOrderDetails().orderDetails?.sentShopRequestAt!)!)!, orderTimerValue: Double(self.viewModel.getOrderDetails().orderTimerValue!))
-                    cell.lblTime.addTimeCounted(byTime: TimeInterval(cell.orderRequestTime))
-                }else {
-                    if self.viewModel.getOrderDetail().orderStatus == OrderStatus.Confirmed.rawValue{
-                        cell.lblTime.isHidden = true
-                        cell.lbltimerDec.isHidden = true
-                        cell.vwTimer.isHidden = true
-                    }else{
-                        cell.lblTime.isHidden = false
-                        cell.lbltimerDec.isHidden = false
-                        cell.vwTimer.isHidden = false
-                        if  self.viewModel.getOrderDetail().shopOrderTimerValue != nil &&  self.viewModel.getOrderDetail().sentShopRequestAt != nil {
-                            cell.orderRequestTime = getSecondsBetweenDates(date1: Date(), date2: serverToLocal(date: self.viewModel.getOrderDetail().sentShopRequestAt!)!, orderTimerValue: Double(self.viewModel.getOrderDetail().shopOrderTimerValue!))
-                            cell.lblTime.addTimeCounted(byTime: TimeInterval(cell.orderRequestTime))
-                        }
-                    
-                    }
-                }
-                cell.lblTime.start()
-                return cell
-            }
-            break
-            
-        case OrderDetailsField.deliveryType.rawValue:
-            return nil
-            
-        case OrderDetailsField.note.rawValue:
-            return nil
-            
-        case OrderDetailsField.billDetails.rawValue:
-            return nil
-            
-        case OrderDetailsField.deliveryPerson.rawValue:
-            return nil
-            
-        default:
-            return nil
-        }
-        return nil
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
-        switch section {
-        case OrderDetailsField.requestDetail.rawValue:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderButtonTVCell") as? OrderButtonTVCell{
-                cell.lblOrderDescription.isHidden = true
-                cell.vwDot.isHidden = true
-                cell.btnOrderStatus.isHidden = true
-                cell.stView.isHidden = true
-                cell.heightvw.constant = 0
-                cell.subView.isHidden = true
-                cell.lblOrderTotal.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetail().orderTotalAmount ?? 0)"
-                return cell
-            }
-            
-        case OrderDetailsField.deliveryType.rawValue:
-            return nil
-            
-        case OrderDetailsField.note.rawValue:
-            return nil
-            
-        case OrderDetailsField.billDetails.rawValue:
-            return nil
-            
-        case OrderDetailsField.deliveryPerson.rawValue:
-            return nil
-            
-        default:
-            return nil
-        }
-        return nil
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if !viewModel.isOrderAvailabe() {
+            return 0
+        }
         if section == OrderDetailsField.requestDetail.rawValue{
             return viewModel.getOrderDetail().shopDetail?.products?.count ?? 0
         }else{
             return 1
         }
     }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+    switch section {
+    case OrderDetailsField.requestDetail.rawValue:
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "PastOrdersTVCell") as? PastOrdersTVCell{
+            cell.vwTimer.isHidden = false
+            cell.lbltimerDec.isHidden = false
+            cell.mainView.topRoundCorner()
+            cell.leftPadding.constant = 5
+            cell.rightPadding.constant = 5
+            cell.mainView.clipsToBounds = true
+            cell.mainView.shadowColor = .clear
+            cell.mainView.shadowOpacity = 0.0
+                
+            addDashedBorder(withColor: .gray, view: cell.imgDottedLine)
+            cell.layoutIfNeeded()
+            
+            let objCustomerDetail : CustomerDetails = (self.viewModel.getOrderDetail().customerDetails)!
+            if let orderId = self.viewModel.getOrderDetail().orderUniqueId {
+                cell.lblOrderId.text = "Order ID : #\(orderId)"
+                cell.heightLabelOrderId.constant = 20
+            }
+            if objCustomerDetail.name != ""{
+                cell.lblUserName.text = "\(objCustomerDetail.name ?? "") \(objCustomerDetail.lname ?? "")"
+            }else if objCustomerDetail.username != ""{
+                cell.lblUserName.text = "\(objCustomerDetail.username ?? "")"
+            }else {
+                let name = objCustomerDetail.email?.components(separatedBy: "@")
+                cell.lblUserName.text = "\(name?[0] ?? "")"
+            }
+            cell.lblUserName.text = "\(objCustomerDetail.name ?? "") \(objCustomerDetail.lname ?? "")"
+            cell.lblDeliveryAddress.text = self.viewModel.getOrderDetail().deliveryAddress
+            cell.ratingView.rating = Double(objCustomerDetail.rating ?? 0)
+            cell.lblTime.timeFormat = "mm:ss"
+            cell.lblTime.timerType = MZTimerLabelTypeTimer
+            cell.lblTime.delegate =  self
+            if isRequest{
+                cell.orderRequestTime = getSecondsBetweenDates(date1: Date(), date2: serverToLocal(date: (self.viewModel.getOrderDetails().orderDetails?.sentShopRequestAt!)!)!, orderTimerValue: Double(self.viewModel.getOrderDetails().orderTimerValue!))
+                cell.lblTime.addTimeCounted(byTime: TimeInterval(cell.orderRequestTime))
+            }else {
+                if self.viewModel.getOrderDetail().orderStatus == OrderStatus.Confirmed.rawValue{
+                    cell.lblTime.isHidden = true
+                    cell.lbltimerDec.isHidden = true
+                    cell.vwTimer.isHidden = true
+                }else{
+                    cell.lblTime.isHidden = false
+                    cell.lbltimerDec.isHidden = false
+                    cell.vwTimer.isHidden = false
+                    if  self.viewModel.getOrderDetail().shopOrderTimerValue != nil &&  self.viewModel.getOrderDetail().sentShopRequestAt != nil {
+                        cell.orderRequestTime = getSecondsBetweenDates(date1: Date(), date2: serverToLocal(date: self.viewModel.getOrderDetail().sentShopRequestAt!)!, orderTimerValue: Double(self.viewModel.getOrderDetail().shopOrderTimerValue!))
+                        cell.lblTime.addTimeCounted(byTime: TimeInterval(cell.orderRequestTime))
+                    }
+                
+                }
+            }
+            cell.lblTime.start()
+            return cell
+        }
+        break
+        
+    case OrderDetailsField.deliveryType.rawValue,
+         OrderDetailsField.note.rawValue,
+         OrderDetailsField.billDetails.rawValue:
+        let saprater = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 1))
+        saprater.backgroundColor = UIColor.lightGray.withAlphaComponent(0.6)
+        return saprater
+    case OrderDetailsField.deliveryPerson.rawValue:
+        return nil
+        
+    default:
+        return nil
+    }
+    return nil
+}
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        switch section {
+        case OrderDetailsField.requestDetail.rawValue:
+            return nil
+//            if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderButtonTVCell") as? OrderButtonTVCell{
+//                cell.lblOrderDescription.isHidden = true
+//                cell.vwDot.isHidden = true
+//                cell.btnOrderStatus.isHidden = true
+//                cell.stView.isHidden = true
+//                cell.heightvw.constant = 0
+//                cell.subView.isHidden = true
+//                cell.lblOrderId.text = ""
+//                cell.lblOrderTotal.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetail().orderTotalAmount ?? 0)"
+//                cell.leftPadding.constant = 5
+//                cell.rightPadding.constant = 5
+//                cell.buttonBottomConstraints.priority = UILayoutPriority(rawValue: 1)
+//                cell.mainView.clipsToBounds = true
+//                cell.mainView.shadowColor = .clear
+//                cell.mainView.shadowOpacity = 0.0
+//                return cell
+//            }
+            
+        case OrderDetailsField.deliveryType.rawValue:
+            return nil
+            
+        case OrderDetailsField.note.rawValue:
+            return nil
+            
+        case OrderDetailsField.billDetails.rawValue:
+            return nil
+            
+        case OrderDetailsField.deliveryPerson.rawValue:
+            return nil
+            
+        default:
+            return nil
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+            case OrderDetailsField.requestDetail.rawValue:
+                return 120
+            default:
+                return 1
+        }
+    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == OrderDetailsField.requestDetail.rawValue{
             return UITableView.automaticDimension
         }else{
-            return 0.01
+            return 1
         }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == OrderDetailsField.requestDetail.rawValue{
-            return 100
+            return 1
         }else{
-            return 0.01
+            return 1
         }
     }
     
@@ -170,7 +194,10 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
             case OrderDetailsField.requestDetail.rawValue:
                 return UITableView.automaticDimension
             
-            case OrderDetailsField.deliveryType.rawValue:
+        case OrderDetailsField.orderAmount.rawValue:
+            return UITableView.automaticDimension
+        
+        case OrderDetailsField.deliveryType.rawValue:
                 return UITableView.automaticDimension
             
             case OrderDetailsField.note.rawValue:
@@ -187,9 +214,13 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 if isRequest {
                     return 0
                 }else {
-//                    if viewModel.getOrderDetail().
-                    return 0
-//                    return UITableView.automaticDimension
+                    if viewModel.getOrderDetail().orderStatus == OrderStatus.Confirmed.rawValue ||
+                        viewModel.getOrderDetail().orderStatus == OrderStatus.OrderLeft.rawValue ||
+                        viewModel.getOrderDetail().orderStatus == OrderStatus.Delivered.rawValue {
+                        return UITableView.automaticDimension
+                    }else {
+                        return 0
+                    }
                 }
             
             default:
@@ -197,15 +228,7 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
         }
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        switch section {
-            case OrderDetailsField.requestDetail.rawValue:
-                return 100
-                
-            default:
-                return 0
-        }
-    }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
@@ -214,8 +237,20 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.selectionStyle = .none
                     cell.lblOrderName.text = self.viewModel.getProductDetails(productAt: indexPath.row)?.productName
                     cell.lblOrderDescription.text = self.viewModel.getProductDetails(productAt: indexPath.row)?.productDescription
+                    cell.leftPaddingConst.constant = 5
+                    cell.rightPaddingConst.constant = 5
+                    cell.mainView.clipsToBounds = true
+                    cell.mainView.shadowColor = .clear
+                    cell.mainView.shadowOpacity = 0.0
                     return cell
                 }
+        case OrderDetailsField.orderAmount.rawValue:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailsTVCell") as? OrderDetailsTVCell{
+                cell.selectionStyle = .none
+                cell.lblTitle.text = "Amount"
+                cell.lblValue.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetail().orderTotalAmount ?? 0)"
+                return cell
+            }
             
         case OrderDetailsField.deliveryType.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailsTVCell") as? OrderDetailsTVCell{
@@ -268,8 +303,9 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
             }
             
         case OrderDetailsField.deliveryPerson.rawValue:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailsTVCell") as? OrderDetailsTVCell{
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailDriverTVCell") as? BusinessDriverTVCell{
                 cell.selectionStyle = .none
+//                if let driver =  objOrder.driverDetails {
                 if let driver =  viewModel.getOrderDetail().driverDetails {
                     cell.lblTitle.text = "Delivery Person"
                     var strname : String = ""
@@ -286,7 +322,14 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     }
                     
 //                    cell.lblUserName.text = "\(strname)"
-                    cell.lblValue.text = "\(strname)"
+                    cell.lblDriverName.text = "\(strname)"
+                    cell.lblDriverNumber.text = "+\(viewModel.getOrderDetail().driverDetails?.phonecode ?? 0) \(viewModel.getOrderDetail().driverDetails?.phone ?? "")"
+                    cell.btnEdit.setImage(UIImage(named: ""), for: .normal)
+                    cell.btnEdit.setTitle("View on Map", for: .normal)
+                    cell.btnEdit.layer.cornerRadius = 7
+                    cell.btnEdit.layer.borderWidth = 1
+                    cell.btnEdit.layer.borderColor = GreenCGColor
+                    cell.btnEdit.addTarget(self.orderDetailsViewController, action: #selector(self.orderDetailsViewController?.actionMarkOrderLeft(_:)),for: .touchUpInside)
                 }                
                 return cell
             }

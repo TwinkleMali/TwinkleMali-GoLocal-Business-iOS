@@ -54,7 +54,10 @@ class DriverStatusViewController: BaseViewController{
                        "order_id" : objOrderRequest.orderId ?? 0,
                        "driver_id" : selectedDriverId ?? 0,
                        "pickup_time" : pickupTime,
-                       "delivery_time" : deliveryTimes] as [String : Any]
+                       "delivery_time" : deliveryTimes,
+                       "need_to_merge" : 0,
+                       "merge_request_id":0,
+                       "merge_with_order_id":0] as [String : Any]
             print("accept dic : \(dic)")
             socketAcceptOrderRequest(dictionary: dic)
         }

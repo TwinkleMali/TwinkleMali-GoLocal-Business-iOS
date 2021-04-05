@@ -10,19 +10,25 @@ import UIKit
 class ProfileViewController: BaseViewController {
     
     @IBOutlet weak var vwNav: UIView!
+    @IBOutlet weak var lblVersion : UILabel!
     @IBOutlet weak var tableView: UITableView!
     var dataSource: ProfileDataSource?
     var viewModel = ProfileViewModel()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = ProfileDataSource(tableView: tableView, viewModel: viewModel, viewController: self)
+      
+        lblVersion.text = "Version \(appVersion ?? "").\(build ?? "")"
         self.tableView.delegate = dataSource
         self.tableView.dataSource = dataSource
         self.tableView.tableFooterView = UIView()
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
     @objc func actionNavigateToScreens(_ sender: UIButton) {
         switch sender.tag {
         case PROFILE.PersonalInfo.rawValue:
@@ -50,7 +56,9 @@ class ProfileViewController: BaseViewController {
             break
             
         case PROFILE.ManageBankAccount.rawValue:
-            let vc = ManageBankAccountViewController(nibName: "ManageBankAccountViewController", bundle: .main)
+//            let vc = ManageBankAccountViewController(nibName: "ManageBankAccountViewController", bundle: .main)
+//            self.navigationController?.pushViewController(vc, animated: true)
+            let vc = StripeConnectViewController(nibName: "StripeConnectViewController", bundle: .main)
             self.navigationController?.pushViewController(vc, animated: true)
             break
             

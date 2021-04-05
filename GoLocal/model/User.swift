@@ -46,6 +46,7 @@ public struct User : Codable{
     static let loginType = "login_type"
     static let qrcode = "qrcode"
     static let country = "country"
+    static let connectedUserId = "connected_user_id"
   }
 
   // MARK: Properties
@@ -83,6 +84,7 @@ public struct User : Codable{
   public var loginType: String?
   public var qrcode: String?
   public var country: Int?
+    public var connectedUserId: String?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -131,6 +133,7 @@ public struct User : Codable{
     loginType = json[SerializationKeys.loginType].string
     qrcode = json[SerializationKeys.qrcode].string
     country = json[SerializationKeys.country].int
+    connectedUserId = json[SerializationKeys.connectedUserId].string
   }
 
   /// Generates description of the object in the form of a NSDictionary.
@@ -172,6 +175,7 @@ public struct User : Codable{
     if let value = loginType { dictionary[SerializationKeys.loginType] = value }
     if let value = qrcode { dictionary[SerializationKeys.qrcode] = value }
     if let value = country { dictionary[SerializationKeys.country] = value }
+    if let value = connectedUserId { dictionary[SerializationKeys.connectedUserId] = value }
     return dictionary
   }
 

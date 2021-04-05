@@ -69,10 +69,12 @@ class GiveRatingViewController: UIViewController {
         viewDisplay.addSubview(blurview)
         
     }
+    
     func hidescanView()
     {
         blurview.removeFromSuperview()
     }
+    
     @IBAction func btnSendReview(_ sender: UIButton) {
         hidescanView()
         delegateGiveratingViewController?.actionSendReview(strReply: ratingTextView.text)       

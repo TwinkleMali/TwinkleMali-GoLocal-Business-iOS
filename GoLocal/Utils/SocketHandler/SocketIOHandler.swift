@@ -282,10 +282,18 @@ class SocketIOHandler: NSObject {
             if let dic = data[0] as? [String : Any] {
                 let d = dic
                 let objOrderRequest = OrderRequests(object: d)
-                if APP_DELEGATE?.arrOrderRequestMain.contains(where: { $0.orderDetails?.id == objOrderRequest.orderDetails?.id }) == false{
-                    APP_DELEGATE?.arrOrderRequestMain.append(objOrderRequest)
-                }
-                postNotification(withName: notificationCenterKeys.shopOrderRequest.rawValue, userInfo: d)
+//                if objOrderRequest.orderDetails?.mergeRequestId != nil && (objOrderRequest.orderDetails?.mergeRequestId?.count ?? 0) > 0{                    
+//                    postNotification(withName: notificationCenterKeys.shopOrderMergeRequest.rawValue, userInfo: d)
+//                }else {
+                    if APP_DELEGATE?.arrOrderRequestMain.contains(where: { $0.orderDetails?.id == objOrderRequest.orderDetails?.id }) == false{
+                        APP_DELEGATE?.arrOrderRequestMain.append(objOrderRequest)
+                    }
+                    postNotification(withName: notificationCenterKeys.shopOrderRequest.rawValue, userInfo: d)
+//                }
+//                let confirmationView = ConfirmationDialogVC(nibName: "ConfirmationDialogVC", bundle: nil)
+////                confirmationView.delegateConfirmationDialogVC = self
+//                confirmationView.showView(viewDisplay: (APP_DELEGATE?.window?.rootViewController?.view)!)
+               
             }
         })
 

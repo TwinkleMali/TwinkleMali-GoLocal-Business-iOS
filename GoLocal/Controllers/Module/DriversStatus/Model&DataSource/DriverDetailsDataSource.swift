@@ -24,7 +24,7 @@ class DriverDetailsDataSource: NSObject {
         self.viewController = viewController
         self.tableView.register("DriverStatusMap")
         self.tableView.register("OrderDetailsTVCell")
-        self.tableView.register("RequestDetailsOrderTVCell")
+        self.tableView.register("SingleDriverTVCell")
     }
 }
 
@@ -43,19 +43,24 @@ extension DriverDetailsDataSource : UITableViewDataSource,UITableViewDelegate {
                     }
                     
             case DriverDetailsField.Details.rawValue:
-                if let cell = tableView.dequeueReusableCell(withIdentifier: "RequestDetailsOrderTVCell", for: indexPath) as? RequestDetailsOrderTVCell {
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "SingleDriverTVCell", for: indexPath) as? SingleDriverTVCell {
                     cell.selectionStyle = .none
-                    cell.lblOrderName.text = "Chobani@ Non-fat Greek Yogurt"
-                    cell.lblOrderDescription.text = "Serving Size 1 cup, Servings per Container 4"
-//                    cell.lblOrderIdValue.text = "Order ID: #GF42568FV"
-                    cell.imgWidht.constant = 0
+                    cell.viewWidth.constant = 0
+                    cell.lblDriverName.text = viewModel.getDriverOrder().shopDetail?.name.asStringOrEmpty()
+                    cell.lblDriverNumber.text = viewModel.getDriverOrder().shopDetail?.shopDesc.asStringOrEmpty()
+                    cell.lblOwnerTime.text = "Order ID :  \(viewModel.getDriverOrder().orderUniqueId.asStringOrEmpty())"
+                    cell.lblOwnerTime.font = UIFont(name: fFONT_SEMIBOLD, size: calculateFontForWidth(size: 15.0))
+                     
+                    cell.lblDriverTime.isHidden = true
+                    cell.vwDriverStatus.isHidden = true
+                    
                     return cell
                 }
                 
             case DriverDetailsField.EstimatedReturnTime.rawValue:
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailsTVCell", for: indexPath) as? OrderDetailsTVCell {
                     cell.lblTitle.text = "Estimated Return Time"
-                    cell.lblValue.text = "12:47 PM"
+                    cell.lblValue.text = "\(viewModel.getDriverOrder().estimatedDeliveryTime.asStringOrEmpty()) Minute"
                     cell.selectionStyle = .none
                     return cell
                 }
@@ -77,6 +82,9 @@ extension DriverDetailsDataSource : UITableViewDataSource,UITableViewDelegate {
         
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == DriverDetailsField.PostalCode.rawValue{
+            return 0
+        }
         return UITableView.automaticDimension
     }
     

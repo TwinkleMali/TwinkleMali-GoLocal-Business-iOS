@@ -16,9 +16,9 @@ class DriverLocationViewController: BaseViewController {
     @IBOutlet weak var viewDriverDetails: CardView!
     @IBOutlet weak var driverImageView: UIImageView!
     @IBOutlet weak var lblDriverName: UILabel!
-    @IBOutlet weak var lblDriverTripDetails: UILabel!    
-    
-    var driverDetails : Drivers!
+    @IBOutlet weak var lblDriverTripDetails: UILabel!
+
+    var driverDetails : Drivers? = nil
     var orderId = 0
     var driverId : Int {
         get{
@@ -29,16 +29,23 @@ class DriverLocationViewController: BaseViewController {
     var newLocation : CLLocationCoordinate2D?
     var driverLat = ""
     var driverLong = ""
+    var shopLat = ""
+    var shopLong = ""
     var deliveryLatitude = ""
     var deliveryLongitude = ""
+    var deliveryLatitude2 = ""
+    var deliveryLongitude2 = ""
     var isPathDrawwn : Bool = false
     // Map Variables
+    var isMergedOrder = false
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
-    
+    var orderNotPickedUp = false
     var zoomLevel: Float = 15.0
-    var marker = GMSMarker()
-    var Homemarker = GMSMarker()
+    var driverMarker = GMSMarker()
+    var shopMarker = GMSMarker()
+    var deliveryMarker = GMSMarker()
+    var deliveryMarker2 = GMSMarker()
     var tmproutedist = ""
     var tmproutetime = ""
     override func viewDidLoad() {
@@ -71,7 +78,7 @@ class DriverLocationViewController: BaseViewController {
        self.locationManager.startUpdatingLocation()
        self.locationManager.requestWhenInUseAuthorization()
         KRProgressHUD.show()
-        setUpMap()
+        setUpMarker()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1 , execute: {
             
              self.drawRouteOnMap(lat: self.driverLat, long: self.driverLong)
@@ -109,37 +116,93 @@ class DriverLocationViewController: BaseViewController {
     
     
     //MARK:- Manage Map
-    func setUpMap()
+    func setUpMarker()
     {
         self.mapView.isMyLocationEnabled = true
-        deliveryLongitude = "21.1205"
-        deliveryLongitude = "72.7431"
-        //let pos = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: Double(latitude) ?? 0)!, longitude: CLLocationDegrees(exactly: Double(longitude) ?? 0)!)
+        let bounds = GMSCoordinateBounds()
+        
+        //Driver Location
         let camera = GMSCameraPosition.camera(withLatitude: newLocation?.latitude ?? CLLocationDegrees(exactly: 0)!,
                                               longitude: newLocation?.longitude ?? CLLocationDegrees(exactly: 0)!,
                                               zoom:  15.0,
                                               bearing: 0,
                                               viewingAngle:  0)
         mapView.camera = camera
-        marker.position = newLocation!
-        marker.icon = #imageLiteral(resourceName: "motorcycle_delivery_man_icon")
-        marker.appearAnimation = .pop
-        marker.isDraggable = false
+        bounds.includingCoordinate(newLocation!)
+        driverMarker.position = newLocation!
+        driverMarker.icon = #imageLiteral(resourceName: "motorcycle_delivery_man_icon")
+        driverMarker.appearAnimation = .pop
+        driverMarker.isDraggable = false
         mapView.delegate = self
         
-        DispatchQueue.main.async
+        //Shop Location
+        let shop_lat = CLLocationDegrees(exactly: Float(shopLat) ?? 0.0)!
+        let shop_long = CLLocationDegrees(exactly: Float(shopLong) ?? 0.0)!
+        let shop_camera = GMSCameraPosition.camera(withLatitude: newLocation?.latitude ?? CLLocationDegrees(exactly: 0)!,
+                                              longitude: newLocation?.longitude ?? CLLocationDegrees(exactly: 0)!,
+                                              zoom:  15.0,
+                                              bearing: 0,
+                                              viewingAngle:  0)
+        mapView.camera = shop_camera
+        shopMarker.position = CLLocationCoordinate2D(latitude: shop_lat, longitude: shop_long)
+        bounds.includingCoordinate(shopMarker.position)
+        shopMarker.icon = #imageLiteral(resourceName: "icon_shop_pin")
+        shopMarker.appearAnimation = .pop
+        shopMarker.isDraggable = false
+        
+        //Delivery 1
+        let del_lat = CLLocationDegrees(exactly: Float(deliveryLatitude) ?? 0.0)!
+        let del_long = CLLocationDegrees(exactly: Float(deliveryLongitude) ?? 0.0)!
+        let camera1 = GMSCameraPosition.camera(withLatitude: del_lat,
+                                              longitude: del_long,
+                                              zoom:  15.0,
+                                              bearing: 0,
+                                              viewingAngle:  0)
+        mapView.camera = camera1
+        deliveryMarker.position = CLLocationCoordinate2D(latitude: del_lat, longitude: del_long)
+        deliveryMarker.icon = #imageLiteral(resourceName: "icon_order1_pin")
+        deliveryMarker.appearAnimation = .pop
+        deliveryMarker.isDraggable = false
+        bounds.includingCoordinate(deliveryMarker.position)
+        if isMergedOrder { //Delivery 2
+            let del_lat2 = CLLocationDegrees(exactly: Float(deliveryLatitude2) ?? 0.0)!
+            let del_long2 = CLLocationDegrees(exactly: Float(deliveryLongitude2) ?? 0.0)!
+            let camera2 = GMSCameraPosition.camera(withLatitude: del_lat2,
+                                                   longitude: del_long2,
+                                                   zoom:  15.0,
+                                                   bearing: 0,
+                                                   viewingAngle:  0)
+            mapView.camera = camera2
+            deliveryMarker2.position = CLLocationCoordinate2D(latitude: del_lat2, longitude: del_long2)
+            deliveryMarker2.icon = #imageLiteral(resourceName: "icon_order2_pin")
+            deliveryMarker2.appearAnimation = .pop
+            deliveryMarker2.isDraggable = false
+            bounds.includingCoordinate(deliveryMarker2.position)
+            DispatchQueue.main.async
             {
-                self.marker.map = self.mapView
+                self.driverMarker.map = self.mapView
+                self.deliveryMarker.map = self.mapView
+                self.shopMarker.map = self.mapView
+                self.deliveryMarker2.map = self.mapView
+            }
+        } else {
+            DispatchQueue.main.async
+            {
+                self.shopMarker.map = self.mapView
+                self.driverMarker.map = self.mapView
+                self.deliveryMarker.map = self.mapView
+            }
         }
-       
-        self.mapView?.animate(to: camera)
+        
+        let updates = GMSCameraUpdate.fit(bounds, withPadding: 20.0)
+        self.mapView?.moveCamera(updates)
     }
     func refreshLocation()
     {
         CATransaction.begin()
         CATransaction.setAnimationDuration(2.0)
         
-        marker.position = newLocation! //CLLocationCoordinate2DMake([[d valueForKey:@"currentLat"] doubleValue], [[d valueForKey:@"currentLong"] doubleValue]);
+        driverMarker.position = newLocation! //CLLocationCoordinate2DMake([[d valueForKey:@"currentLat"] doubleValue], [[d valueForKey:@"currentLong"] doubleValue]);
         /*
         let getAngle = angle(fromCoordinate: oldLocation!, toCoordinate: newLocation!)
         let startLocation = CLLocation(latitude: oldLocation?.latitude  ?? CLLocationDegrees(), longitude: oldLocation?.longitude ?? CLLocationDegrees())
@@ -152,7 +215,7 @@ class DriverLocationViewController: BaseViewController {
         */
         CATransaction.commit()
 
-        mapView.animate(toLocation: marker.position)
+        mapView.animate(toLocation: driverMarker.position)
         
     }
     func angle(fromCoordinate first: CLLocationCoordinate2D, toCoordinate second: CLLocationCoordinate2D) -> Float {
@@ -175,8 +238,17 @@ class DriverLocationViewController: BaseViewController {
     func fetchRoute() {
 
         let session = URLSession.shared
-
-        let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(deliveryLatitude),\(deliveryLongitude)&destination=\(driverLat),\(driverLong)&sensor=false&mode=driving&key=\(GOOGLE_KEY)")!
+        var urlStr = ""
+        if self.orderNotPickedUp {
+            urlStr = "https://maps.googleapis.com/maps/api/directions/json?origin=\(driverLat),\(driverLong)&destination=\(shopLat),\(shopLong)&waypoints=\(deliveryLatitude),\(deliveryLongitude)&sensor=false&mode=driving&key=\(GOOGLE_KEY)"
+            
+        } else if isMergedOrder {
+            urlStr = "https://maps.googleapis.com/maps/api/directions/json?origin=\(driverLat),\(driverLong)&destination=\(deliveryLatitude2),\(deliveryLongitude2)&waypoints=\(deliveryLatitude),\(deliveryLongitude)&sensor=false&mode=driving&key=\(GOOGLE_KEY)"
+            
+        } else {
+          urlStr = "https://maps.googleapis.com/maps/api/directions/json?origin=\(driverLat),\(driverLong)&destination=\(deliveryLatitude),\(deliveryLongitude)&sensor=false&mode=driving&key=\(GOOGLE_KEY)"
+        }
+        let url = URL(string: urlStr)!
 
         let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) in
@@ -222,8 +294,18 @@ class DriverLocationViewController: BaseViewController {
     func fetchRoute(to_lat : String , to_long : String, from_lat:String, from_long : String) {
 
         let session = URLSession.shared
-        
-        let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(from_lat ),\(from_long)&destination=\(to_lat),\(to_long)&sensor=false&mode=driving&key=\(GOOGLE_KEY)")!
+        var urlStr = ""
+        if self.orderNotPickedUp {
+            urlStr = "https://maps.googleapis.com/maps/api/directions/json?origin=\(driverLat),\(driverLong)&destination=\(shopLat),\(shopLong)&waypoints=\(deliveryLatitude),\(deliveryLongitude)&sensor=false&mode=driving&key=\(GOOGLE_KEY)"
+            
+        } else if isMergedOrder {
+            urlStr = "https://maps.googleapis.com/maps/api/directions/json?origin=\(driverLat),\(driverLong)&destination=\(deliveryLatitude2),\(deliveryLongitude2)&waypoints=\(deliveryLatitude),\(deliveryLongitude)&sensor=false&mode=driving&key=\(GOOGLE_KEY)"
+            
+        } else {
+          urlStr = "https://maps.googleapis.com/maps/api/directions/json?origin=\(driverLat),\(driverLong)&destination=\(deliveryLatitude),\(deliveryLongitude)&sensor=false&mode=driving&key=\(GOOGLE_KEY)"
+        }
+        //let url = URL(string: "https://maps.googleapis.com/maps/api/directions/json?origin=\(from_lat ),\(from_long)&destination=\(to_lat),\(to_long)&sensor=false&mode=driving&key=\(GOOGLE_KEY)")!
+        let url = URL(string: urlStr)!
         print("URL :: ",url)
         let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) in
@@ -291,7 +373,7 @@ class DriverLocationViewController: BaseViewController {
     }
     
     func drawRouteOnMap( lat : String, long : String) {
-        self.fetchRoute(to_lat: deliveryLatitude , to_long: deliveryLongitude, from_lat: "\(lat)", from_long: "\(long)")
+        self.fetchRoute(to_lat: "\(lat)" , to_long: "\(long)", from_lat: deliveryLatitude, from_long: deliveryLongitude)
       /*  var arrSortedStores = [[String:Any]]()
         for objStore in orderDetails!.stores! {
             var d = [String : Any]()
