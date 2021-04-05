@@ -22,7 +22,7 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var offset = 0
     var isLoadMore:Bool = false
-    
+    var isFromProfile = false
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = NotificationDataSource(tableView: tableView, viewModel: viewModel, viewController: self)
@@ -30,6 +30,7 @@ class NotificationsViewController: UIViewController {
         self.tableView.dataSource = dataSource
         self.tableView.tableFooterView = UIView()
         self.vwNav.addBottomShadow()
+        self.btnBack.isHidden = !isFromProfile
         isLoader = true
         getNotification(offset: offset)
         refresher.addTarget(self, action: #selector(initialRequest(_:)), for: .valueChanged)

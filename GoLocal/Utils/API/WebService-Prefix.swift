@@ -13,8 +13,9 @@ let POST = "POST"
 let MEDIA = "MEDIA"
 let PRIVATE_KEY = "kashfk=1gdj1123_asdq283y059==="
 
-let isLive = false
+let isLive = true
 let IS_TESTDATA = 1
+
 //http://clientapp.narola.online/sv/GoLocalFirst/API
 //GLFService.php?Service=Register
 let LOCAL_SERVER_URL = "https://apps.narola.online:444/pma/hde/data/459815/API"
@@ -22,8 +23,8 @@ let LOCAL_SERVER_URL = "https://apps.narola.online:444/pma/hde/data/459815/API"
 let LIVE_SERVER_URL = "http://18.223.15.96/src/API"
 
 let SERVER_URL = isLive ?  LIVE_SERVER_URL : LOCAL_SERVER_URL
-//let DICTINARY = isLive ? "\(SERVER_URL)campsite" : "\(SERVER_URL)"
 let WEBSERVICE_PATH = "\(SERVER_URL)/GLFService.php?Service="
+
 
 ////Header
 //var headers = [
@@ -60,7 +61,10 @@ let APIGetRatingReview = "\(WEBSERVICE_PATH)GetRatingReview"
 let APIReplyToRatingReview = "\(WEBSERVICE_PATH)ReplyToRatingReview"
 let APIEditBusinessDetails = "\(WEBSERVICE_PATH)EditBusinessDetails"
 let APIGetSingleStoreDetail = "\(WEBSERVICE_PATH)GetSingleStoreDetail"
+
 let APIGetMultiOrderDetail = "\(WEBSERVICE_PATH)GetMultiOrderDetail"
+
+let APIGetCustomerInfo = "\(WEBSERVICE_PATH)GetCustomerInfo"
 
 let APIGetBusinessOrderRequests = "\(WEBSERVICE_PATH)GetBusinessOrderRequests"
 let APIGetAllBusinessOrders = "\(WEBSERVICE_PATH)GetAllBusinessOrders"
@@ -75,7 +79,10 @@ let APIGetBusyDriverOrderDetails = "\(WEBSERVICE_PATH)GetBusyDriverOrderDetails"
 //MARK:- SOKET API
 
 //Socket Path
+
 //let SOCKET_SERVER_PATH = "http://18.223.15.96:3080" //http://192.168.100.174:8055" //"https://apps.narola.online:5002"
+
+
 
 let LOCAL_SOCKET_SERVER_URL = "http://192.168.100.174:8055"
 let LIVE_SOCKET_SERVER_URL = "http://18.223.15.96:3080"
@@ -85,6 +92,9 @@ let API_SOCKET_JOIN = "join_socket"
 let API_SOCKET_DISCONNECT = "disconnect_manually"
 let API_SOCKET_JOIN_BUSINESS_ROOM = "JoinBusinessRoom"
 let API_SOCKET_LEAVE_BUSINESS_ROOM = "LeaveBusinessRoom"
+let API_SOCKET_SEND_BUSINESS_PAYMENT_REQUEST = "sendBusinessPaymentRequest"
+let API_SOCKET_CHANGE_PAYMENT_REQUEST_STATUS = "changePaymentRequestStatus"
+let API_SOCKET_PAYMENT_REQUEST_STATUS_CHANGE_ACK = "payment_request_status_change_ack"
 let API_SHOP_ORDER_REQUEST = "shop_order_request"
 let API_SHOP_ORDER_REQUEST_TIMEOUT = "shop_order_request_timeout"
 let API_GET_REJECT_REASONS = "getRejectReasons" //getRejectReasons

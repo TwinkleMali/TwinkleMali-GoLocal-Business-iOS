@@ -51,7 +51,7 @@ extension EditProfileDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.btnHidePassword.isHidden = true
                 cell.textField.isSecureTextEntry = false
                 cell.lblTitle.text = "First name"
-                cell.imgIcon.image = #imageLiteral(resourceName: "profile_icon")
+                cell.imgIcon.image = #imageLiteral(resourceName: "profile_icon_g")
                 cell.textField.text = viewModel.getFirstname()
                 cell.textField.delegate = self
                 cell.textField.returnKeyType = .next
@@ -75,7 +75,7 @@ extension EditProfileDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.btnHidePassword.isHidden = true
                 cell.textField.isSecureTextEntry = false
                 cell.lblTitle.text = "Last name"
-                cell.imgIcon.image = #imageLiteral(resourceName: "profile_icon")
+                cell.imgIcon.image = #imageLiteral(resourceName: "profile_icon_g")
                 cell.textField.text = viewModel.getLastname()
                 cell.textField.delegate = self
                 cell.textField.returnKeyType = .next

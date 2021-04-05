@@ -34,5 +34,8 @@ enum notificationCenterKeys : String {
     case changeTakeawayOrderStatus = "changeTakeawayOrderStatus"
     case getSingleOrderDetails = "getSingleOrderDetails"
     case updateDriverLocation = "updateDriverLocation"
+    case sendBusinessPaymentRequest = "sendBusinessPaymentRequest"
+    case changeBusinessPaymentRequestStatus = "changeBusinessPaymentRequestStatus"
+    case paymentRequestStatusChangeAck = "payment_request_status_change_ack"
   
 }

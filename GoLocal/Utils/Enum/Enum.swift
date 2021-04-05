@@ -168,9 +168,10 @@ enum URLTypes : String {
 }
 
 
-enum UserRole {
-    case Owner
-    case Employee
+enum UserRole : Int{
+    case Owner = 3
+    case Employee = 1
+    case LocalBusiness = 7
 }
 
 //MARK:- Custom Alert
@@ -188,6 +189,9 @@ enum BannerTitle : String {
     case registered = "Registered successfully."
     case none = ""
     case alert = "Alert"
+    case success = "Success"
+    case failed = "Failed"
+    case transection = "Transection"
 }
 
 enum OrderStatus : String {
@@ -235,3 +239,9 @@ enum VALIDATION_MESSAGE : String {
 }
 
 
+//MARK:- PAYMENT REQUEST STATUS
+enum PAYMENT_REQUEST_STATUS : String{
+    case ACCEPT = "Accept"
+    case CANCELLED = "Cancelled"
+    case PAID = "Paid"
+}

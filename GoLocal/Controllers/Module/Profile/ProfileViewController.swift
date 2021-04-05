@@ -47,6 +47,7 @@ class ProfileViewController: BaseViewController {
             
         case PROFILE.Notifications.rawValue:
             let vc = NotificationsViewController(nibName: "NotificationsViewController", bundle: .main)
+            vc.isFromProfile = true
             self.navigationController?.pushViewController(vc, animated: true)
             break
             
@@ -56,8 +57,7 @@ class ProfileViewController: BaseViewController {
             break
             
         case PROFILE.ManageBankAccount.rawValue:
-//            let vc = ManageBankAccountViewController(nibName: "ManageBankAccountViewController", bundle: .main)
-//            self.navigationController?.pushViewController(vc, animated: true)
+
             let vc = StripeConnectViewController(nibName: "StripeConnectViewController", bundle: .main)
             self.navigationController?.pushViewController(vc, animated: true)
             break

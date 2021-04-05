@@ -24,7 +24,6 @@ class BottomSheetVC: UIViewController {
     var delegate : BottomSheetDelegate?
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var lblTitle : UILabel!
-    @IBOutlet weak var HeightView : NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     var strTitle : String = ""
     var arrOptions : [String]!
@@ -50,7 +49,12 @@ class BottomSheetVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
     }
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        if(touch?.view?.tag == -786) {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     @IBAction func actionSelection(_ sender: UIButton) {
         if selectedOption != nil{
             self.delegate?.didSelectOption(selValue: arrRejectOptions[selectedOption].reason ?? "")
@@ -119,8 +123,9 @@ extension BottomSheetVC : UITableViewDelegate, UITableViewDataSource
             selectedOption = indexPath.row
             tableView.reloadData()
         }else {
+            let str = arrOptions[indexPath.row]
             self.dismiss(animated: true, completion: nil)
-            self.delegate?.didSelectOption(selValue: "")
+            self.delegate?.didSelectOption(selValue: str)
         }
     }
 }

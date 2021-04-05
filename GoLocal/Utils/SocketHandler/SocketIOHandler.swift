@@ -274,6 +274,22 @@ class SocketIOHandler: NSObject {
                  })
       }
         
+    //MARK:- SEND BUSINESS PAYMENT REQUEST
+    func sendBusinessPaymentRequest(dic : [String : Any]) {
+        socket?.emitWithAck(API_SOCKET_SEND_BUSINESS_PAYMENT_REQUEST, dic).timingOut(after: 0, callback: { (result) in
+            postNotification(withName: notificationCenterKeys.sendBusinessPaymentRequest.rawValue, userInfo: result[0] as! [String : Any])
+            print("SEND BUSINESS PAYMENT REQUEST : \(result)")
+        })
+    }
+    
+    //MARK:- CHANGE  BUSINESS PAYMENT REQUEST STATUS
+    func changeBusinessPaymentRequestStatus(dic : [String : Any]) {
+        socket?.emitWithAck(API_SOCKET_CHANGE_PAYMENT_REQUEST_STATUS, dic).timingOut(after: 0, callback: { (result) in
+            postNotification(withName: notificationCenterKeys.changeBusinessPaymentRequestStatus.rawValue, userInfo: result[0] as! [String : Any])
+            print("CHANGE BUSINESS PAYMENT REQUEST STATUS : \(result)")
+        })
+    }
+    
     //MARK:- EVENTS
     func addHandlers() {
         //EVENT FOR RECEIVE ORDER REQUEST
@@ -342,23 +358,13 @@ class SocketIOHandler: NSObject {
                 postNotification(withName: notificationCenterKeys.updateDriverLocation.rawValue, userInfo: dict)
             }
         })
-        
-        //        //EVENT FOR DRIVER AVAIALBLITY CHANGE ACK
-        //        socket?.on(API_DRIVER_AVAILABILITY_CHANGE_ACK, callback: { (data, ack) in
-        //            print("Driver Availability Changed")
-        //            if let dic = data[0] as? [String : Any] {
-        //                let d = dic
-        //                 postNotification(withName: notificationCenterKeys.driver_availibility_change_ack.rawValue, userInfo: d)
-        //            }
-        //        })
-
-        //        //EVENT FOR DRIVER AVAIALBLITY CHANGE ACK
-        //        socket?.on(API_DRIVER_AVAILABILITY_CHANGE_ACK, callback: { (data, ack) in
-        //            print("Driver Availability Changed")
-        //            if let dic = data[0] as? [String : Any] {
-        //                let d = dic
-        //                 postNotification(withName: notificationCenterKeys.driver_availibility_change_ack.rawValue, userInfo: d)
-        //            }
-        //        })
+        //MARK:- HANDLE PAYMENT REQUEST STATUS
+        socket?.on(API_SOCKET_PAYMENT_REQUEST_STATUS_CHANGE_ACK, callback: { (data, ack) in
+            if let dict = data[0] as? [String : Any] {
+                //POST NOTIFICATION
+                //APP_DELEGATE.scheduleNotification(notificationType: .driverLocationUpdated)
+                postNotification(withName: notificationCenterKeys.paymentRequestStatusChangeAck.rawValue, userInfo: dict)
+            }
+        })
     }
 }

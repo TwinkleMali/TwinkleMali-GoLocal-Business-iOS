@@ -89,10 +89,10 @@ extension OrderViewModel {
                     for objproduct in (objOrder.shopDetail?.products)! {
                         for objselItem in objproduct.selectedProducts! {
                             productDic = ["orderId":objOrder.id ?? 0,
-                                          "productId" : objproduct.id!,
-                                          "productName":objproduct.productName!,
-                                          "quantity":objselItem.quantity!,
-                                          "variationName":objselItem.variationName.asStringOrEmpty(),
+                                          "productId" : objproduct.id ?? 0,
+                                          "productName":objproduct.productName ?? "",
+                                          "quantity":objselItem.quantity ?? 0,
+                                          "variationName":objselItem.variationName ?? "",
                                           "addons":objselItem.addons ?? []]
                             arrayCurrentProduct.append(productDic)
                         }
@@ -108,10 +108,10 @@ extension OrderViewModel {
                     for objproduct in (objOrder.shopDetail?.products)! {
                         for objselItem in objproduct.selectedProducts! {
                             productDic = ["orderId":objOrder.id ?? 0,
-                                          "productId" : objproduct.id.asStringOrEmpty(),
-                                          "productName":objproduct.productName.asStringOrEmpty(),
-                                          "quantity":objselItem.quantity.asStringOrEmpty(),
-                                          "variationName":objselItem.variationName.asStringOrEmpty(),
+                                          "productId" : objproduct.id ?? 0,
+                                          "productName":objproduct.productName ?? "",
+                                          "quantity":objselItem.quantity ?? 0,
+                                          "variationName":objselItem.variationName ?? "",
                                           "addons":objselItem.addons ?? []]
                             arrayPastProduct.append(productDic)
                         }
@@ -195,10 +195,10 @@ extension OrderViewModel {
     
     func removeAllCurrentOrder(orderType : Int){
         if orderType == OrderType.CurrentOrder.rawValue{
-            self.arrCurrentOrderList.removeAll()
+            self.arrCurrentOrders.removeAll()
             self.arrayCurrentProduct.removeAll()
         }else if orderType == OrderType.PastOrder.rawValue{
-            self.arrPastOrdersList.removeAll()
+            self.arrPastOrders.removeAll()
             self.arrayPastProduct.removeAll()
         }
     }    

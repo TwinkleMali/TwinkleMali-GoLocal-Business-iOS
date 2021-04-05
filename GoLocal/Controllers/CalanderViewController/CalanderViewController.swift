@@ -11,7 +11,7 @@ protocol CalenderViewDelegate {
 }
 class CalanderViewController: UIViewController {
 
-    @IBOutlet weak var monthHeaderView: VAMonthHeaderView!{
+    @IBOutlet var monthHeaderView: VAMonthHeaderView! {
         didSet {
             let appereance = VAMonthHeaderViewAppearance(
                 monthFont: UIFont(name: fFONT_BOLD, size: 17.0)!,
@@ -24,7 +24,7 @@ class CalanderViewController: UIViewController {
             monthHeaderView.appearance = appereance
         }
     }
-    @IBOutlet weak var weekDaysView: VAWeekDaysView!{
+    @IBOutlet var weekDaysView: VAWeekDaysView!{
         didSet {
             if usedFor != .advanced {
                 defaultCalendar.firstWeekday = 4
@@ -35,9 +35,8 @@ class CalanderViewController: UIViewController {
             weekDaysView.appearance = appereance
         }
     }
-    @IBOutlet weak var viewBG: UIView!
-    @IBOutlet weak var calendarView: UIView!
-    
+    @IBOutlet var calendarView: UIView!
+    @IBOutlet var viewBG: UIView!
     var calendarViewNew: VACalendarView!
    
     var selectedDates : [Date] = []
@@ -46,7 +45,7 @@ class CalanderViewController: UIViewController {
     var currDate = Date()
     var delegate : CalenderViewDelegate?
     var isForFutureOrder : Bool = false
-    //var arrFutureDates : [FutureOrderDates] = []
+    var arrFutureDates : [String] = []
     var isForMonthly : Bool = false
     var arrMonthlyDates : [String] = []
     
@@ -64,7 +63,6 @@ class CalanderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setUp()
         if usedFor != .advanced {
             currentlyUsingVACalenderFor = usedFor == .multi ? .EarningDate : .SingleStore
@@ -72,14 +70,20 @@ class CalanderViewController: UIViewController {
             currentlyUsingVACalenderFor = .AdvancedOrder
         }
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        if(touch?.view?.tag == -786) {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     func setUp()
     {
 //        self.updateViewConstraints()
 //        self.view.layoutIfNeeded()
         if usedFor != .advanced {
-            defaultCalendar.firstWeekday = 4
+            defaultCalendar.firstWeekday = 2
         } else {
-            defaultCalendar.firstWeekday = 1
+            defaultCalendar.firstWeekday = 2
         }
         
         let calendar = VACalendar(startDate: nil, endDate: nil, selectedDate: nil, calendar: defaultCalendar)
@@ -98,13 +102,14 @@ class CalanderViewController: UIViewController {
         let dt = usedFor == .multi ? dates : [currDate]
        
         calendarViewNew.selectDates(dt)
+        
         if isForFutureOrder {
             var dt : [(Date, [VADaySupplementary])] = []
            let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd"
-//            for futureDt in arrFutureDates {
-//                dt.append((df.date(from: futureDt.futureOrderDate!)!, [VADaySupplementary.bottomDots([THEME_COLOR])]))
-//            }
+            for futureDt in arrFutureDates {
+                dt.append((df.date(from: futureDt)!, [VADaySupplementary.bottomDots([THEME_COLOR])]))
+            }
             calendarViewNew.setSupplementaries(dt)
         }
         
@@ -113,12 +118,14 @@ class CalanderViewController: UIViewController {
            let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd"
             for str in arrMonthlyDates {
-                dt.append((df.date(from: str)!, [VADaySupplementary.bottomDots([GreenColor])]))
+                dt.append((df.date(from: str)!, [VADaySupplementary.bottomDots([THEME_COLOR])]))
             }
             calendarViewNew.setSupplementaries(dt)
         }
         
+        
         calendarView.addSubview(calendarViewNew)
+        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(dismissVC))
         gesture.numberOfTapsRequired = 1
         viewBG.addGestureRecognizer(gesture)
@@ -126,7 +133,7 @@ class CalanderViewController: UIViewController {
     }
     
     @objc func dismissVC() {
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 }
 extension CalanderViewController : VAMonthHeaderViewDelegate , VACalendarViewDelegate
@@ -298,4 +305,3 @@ extension CalanderViewController: VADayViewAppearanceDelegate {
     
     
 }
-
