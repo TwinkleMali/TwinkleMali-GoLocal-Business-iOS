@@ -260,3 +260,16 @@ func json(from object:Any) -> String? {
 }
 
 
+func convertStringToDictionary(text: String) -> [String:Any]? {
+    let data = Data(text.utf8)
+
+    do {
+        // make sure this JSON is in the format we expect
+        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+            return json
+        }
+    } catch let error as NSError {
+        print("Failed to load: \(error.localizedDescription)")
+    }
+    return nil
+}

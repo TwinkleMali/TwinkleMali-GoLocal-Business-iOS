@@ -581,3 +581,43 @@ extension  RatingViewController{
         
     }
 }
+extension StripeConnectViewController {
+    func updateConnectedAccountId(strId : String) {
+        self.view.isUserInteractionEnabled = false
+        
+        let  param : Parameters = [
+            "user_id" : USER_DETAILS?.id ?? 0,
+            "connected_user_id" : strId
+        ]
+        APIHelper.shared.postJsonRequest(url: API_SAVE_BUSINESS_ACCOUNT_DETAIL, parameter: param, headers: headers) { (isCompleted, status, response) in
+            self.view.isUserInteractionEnabled = true
+            if isCompleted {
+                if !(response["status"] as! Bool) {
+                    //self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .info)
+                    let banner = NotificationBanner(title: .none, subtitle: response["message"] as? String ?? "Something went wrong.", leftView: nil, rightView: nil, style: .info)
+                    //banner.delegate = self
+                    banner.show()
+                } else {
+                    let data = response["data"] as! NSDictionary
+                    let userDict = data["user"] as! NSDictionary
+                    
+                    let bannerTitle = "Business Account linked"
+                    let banner = NotificationBanner(title: bannerTitle, subtitle: response["message"] as? String ?? "Something went wrong.", leftView: nil, rightView: nil, style: .success)
+                    banner.autoDismiss = true
+                    banner.dismissOnTap = true
+                    //banner.delegate = self
+                    banner.show()
+                    let user : User =  User(object: JSON(userDict))
+                    saveUserInUserDefaults(user: user)
+                }
+                self.navigationController?.popViewController(animated: true)
+            } else {
+                //self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .info)
+                let banner = NotificationBanner(title: .none, subtitle: response["message"] as? String ?? "Something went wrong.", leftView: nil, rightView: nil, style: .info)
+                //banner.delegate = self
+                banner.show()
+            }
+        }
+        
+    }
+}

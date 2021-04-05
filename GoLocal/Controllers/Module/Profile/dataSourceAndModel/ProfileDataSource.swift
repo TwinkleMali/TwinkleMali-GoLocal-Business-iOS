@@ -38,8 +38,23 @@ extension ProfileDataSource: UITableViewDelegate,UITableViewDataSource{
             cell.imgItemImage.image = UIImage(named: self.viewModel.getItemImages(at: indexPath.row))
             cell.btnNavigateToScreens.tag = indexPath.row
             cell.btnNavigateToScreens.addTarget(self.profileViewController, action: #selector(self.profileViewController?.actionNavigateToScreens(_:)), for: .touchUpInside)
+            if self.viewModel.getItemName(at: indexPath.row) == "Link Bank Account" {
+                if USER_DETAILS?.connectedUserId?.count ?? 0 > 0 {
+                    cell.isHidden = true
+                }
+            }
             return cell
         }
         return UITableViewCell()
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.viewModel.getItemName(at: indexPath.row) == "Link Bank Account" {
+            if USER_DETAILS?.connectedUserId?.count ?? 0 > 0 {
+                return 0
+            } else {
+                return UITableView.automaticDimension
+            }
+        }
+        return UITableView.automaticDimension
     }
 }

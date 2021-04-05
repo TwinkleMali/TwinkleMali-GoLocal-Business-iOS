@@ -263,6 +263,10 @@
 		B594B9022615858A0058D98B /* MergerRequestDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594B901261585890058D98B /* MergerRequestDetail.swift */; };
 		B5D307DE2599BC2A00858439 /* ModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D307DC2599BC2A00858439 /* ModelViewController.swift */; };
 		B5D307DF2599BC2A00858439 /* ModelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D307DD2599BC2A00858439 /* ModelViewController.xib */; };
+		B5D4D64D261AE61E00476AF3 /* StripeConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D64B261AE61E00476AF3 /* StripeConnectViewController.swift */; };
+		B5D4D64E261AE61E00476AF3 /* StripeConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D4D64C261AE61E00476AF3 /* StripeConnectViewController.xib */; };
+		B5D4D651261AE73100476AF3 /* StripeConnectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D64F261AE73000476AF3 /* StripeConnectViewModel.swift */; };
+		B5D4D652261AE73100476AF3 /* StripeConnectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D650261AE73000476AF3 /* StripeConnectDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -527,6 +531,10 @@
 		B594B901261585890058D98B /* MergerRequestDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergerRequestDetail.swift; sourceTree = "<group>"; };
 		B5D307DC2599BC2A00858439 /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
 		B5D307DD2599BC2A00858439 /* ModelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModelViewController.xib; sourceTree = "<group>"; };
+		B5D4D64B261AE61E00476AF3 /* StripeConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeConnectViewController.swift; sourceTree = "<group>"; };
+		B5D4D64C261AE61E00476AF3 /* StripeConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StripeConnectViewController.xib; sourceTree = "<group>"; };
+		B5D4D64F261AE73000476AF3 /* StripeConnectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeConnectViewModel.swift; sourceTree = "<group>"; };
+		B5D4D650261AE73000476AF3 /* StripeConnectDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeConnectDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -729,6 +737,8 @@
 				0036BB2925BAE87F00FFCC5E /* ManageBankAccountTVCell */,
 				0036BB2C25BAE87F00FFCC5E /* ManageBankAccountViewController.swift */,
 				0036BB2D25BAE87F00FFCC5E /* ManageBankAccountViewController.xib */,
+				B5D4D64B261AE61E00476AF3 /* StripeConnectViewController.swift */,
+				B5D4D64C261AE61E00476AF3 /* StripeConnectViewController.xib */,
 			);
 			path = BankAccount;
 			sourceTree = "<group>";
@@ -774,6 +784,8 @@
 		0036BB2625BAE87F00FFCC5E /* dataSourceAndViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B5D4D650261AE73000476AF3 /* StripeConnectDataSource.swift */,
+				B5D4D64F261AE73000476AF3 /* StripeConnectViewModel.swift */,
 				0036BB2725BAE87F00FFCC5E /* ManageBankAccountDataSource.swift */,
 				0036BB2825BAE87F00FFCC5E /* ManageBankAccountViewModel.swift */,
 			);
@@ -1787,6 +1799,7 @@
 				00F065DC25C5494F00BAB8E3 /* PaymentOptionTVCell.xib in Resources */,
 				005FE44925F2656E0093483B /* ImageSliderTVCell.xib in Resources */,
 				0099D94625C1717700383466 /* OptionViewController.xib in Resources */,
+				B5D4D64E261AE61E00476AF3 /* StripeConnectViewController.xib in Resources */,
 				46BBFE78258BA2DC0088CBB9 /* ForgotPasswordViewController.xib in Resources */,
 				00A4698425C965D2008B7671 /* SelectDriverTVCell.xib in Resources */,
 				00A4697525C950BD008B7671 /* OpenCloseTimeTVCell.xib in Resources */,
@@ -1901,6 +1914,7 @@
 				46CDA3B92589CF380089105D /* StringExtensions.swift in Sources */,
 				00B98D2D25BEDEA500538651 /* NotificationViewModel.swift in Sources */,
 				0036BB7525BAE88000FFCC5E /* RatingViewController.swift in Sources */,
+				B5D4D652261AE73100476AF3 /* StripeConnectDataSource.swift in Sources */,
 				46CDA3BC2589CF380089105D /* Optional+Extensions.swift in Sources */,
 				46CDA3BB2589CF380089105D /* JSON+Extensions.swift in Sources */,
 				0089110C25B1AE4F00C9125A /* Struct.swift in Sources */,
@@ -1949,6 +1963,7 @@
 				00A4698525C965D2008B7671 /* DriverSeleListViewController.swift in Sources */,
 				00B98D3925BEF2C300538651 /* GiveRatingViewController.swift in Sources */,
 				46CDA3B52589CF380089105D /* UICollectionView_Extension.swift in Sources */,
+				B5D4D64D261AE61E00476AF3 /* StripeConnectViewController.swift in Sources */,
 				00F0664525C82CE900BAB8E3 /* BussinessImageCVCell.swift in Sources */,
 				0036BB5625BAE87F00FFCC5E /* AddBankAccountViewModel.swift in Sources */,
 				00F0663625C8185600BAB8E3 /* BusinessDetailsDataSource.swift in Sources */,
@@ -2065,6 +2080,7 @@
 				46F7DA73259A3B5900923A08 /* User.swift in Sources */,
 				46CDA3D52589D0330089105D /* AnimationManager.swift in Sources */,
 				00F0659A25C3CE5B00BAB8E3 /* OrderRequestViewModel.swift in Sources */,
+				B5D4D651261AE73100476AF3 /* StripeConnectViewModel.swift in Sources */,
 				0089111825B1AE6200C9125A /* APIHelper.swift in Sources */,
 				00C2F48025F2038B00032EBE /* SliderImages.swift in Sources */,
 				0025339F25D50D4D00A21776 /* BusinessDrivers.swift in Sources */,

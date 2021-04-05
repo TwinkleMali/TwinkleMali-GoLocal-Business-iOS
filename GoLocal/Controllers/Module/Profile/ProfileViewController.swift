@@ -26,7 +26,9 @@ class ProfileViewController: BaseViewController {
         self.tableView.tableFooterView = UIView()
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
     @objc func actionNavigateToScreens(_ sender: UIButton) {
         switch sender.tag {
         case PROFILE.PersonalInfo.rawValue:
@@ -54,7 +56,9 @@ class ProfileViewController: BaseViewController {
             break
             
         case PROFILE.ManageBankAccount.rawValue:
-            let vc = ManageBankAccountViewController(nibName: "ManageBankAccountViewController", bundle: .main)
+//            let vc = ManageBankAccountViewController(nibName: "ManageBankAccountViewController", bundle: .main)
+//            self.navigationController?.pushViewController(vc, animated: true)
+            let vc = StripeConnectViewController(nibName: "StripeConnectViewController", bundle: .main)
             self.navigationController?.pushViewController(vc, animated: true)
             break
             

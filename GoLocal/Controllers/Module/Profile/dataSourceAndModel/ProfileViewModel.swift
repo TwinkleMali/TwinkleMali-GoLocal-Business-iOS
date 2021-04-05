@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewModel {
     
-    private let arrProfileItems = ["Personal Information","Business Details","Notifications","Change Password","Manage Bank Account","Rating And Reviews","Log out"]
+    private let arrProfileItems = ["Personal Information","Business Details","Notifications","Change Password","Link Bank Account","Rating And Reviews","Log out"]
     private let arrProfileItemsImage = ["profile_icon","business_details_icon","notification_icon","change_password_icon","manage_bank_account_icon","rating_review_icon","logout_icon"]
 }
 extension ProfileViewModel{

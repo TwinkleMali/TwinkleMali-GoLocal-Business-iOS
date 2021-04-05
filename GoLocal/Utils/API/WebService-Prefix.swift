@@ -44,7 +44,7 @@ let TERMS_LOCATION = "\(SERVER_URL)/Terms/"
 let PATH_PP = "\(TERMS_LOCATION)privacy_policy.pdf"
 let PATH_TC = "\(TERMS_LOCATION)terms_conditions.pdf"
 let PATH_disclaimer = "\(TERMS_LOCATION)disclaimer.pdf"
-
+let PATH_OAUTH = "\(SERVER_URL)/s_oauth.php"
 //Services
 let APIRefreshToken = "\(WEBSERVICE_PATH)RefreshToken"
 let APILogin = "\(WEBSERVICE_PATH)Login"
@@ -100,7 +100,7 @@ let API_GET_DRIVER_RUNNNING_ORDER_DETAIL = "getDriverRunningOrderDetail"
 let API_CHANGE_TAKEAWAY_ORDER_STATUS = "changeTakeawayOrderStatus"
 let API_ORDER_STATUS_CHANGE_ACK = "order_status_change_ack"
 let API_GET_SINGLE_ORDER_DETAILS = "getSingleOrderDetails"
-
+let API_SAVE_BUSINESS_ACCOUNT_DETAIL = "\(WEBSERVICE_PATH)SaveBusinessAccountDetail"
 
 
 //Paths
