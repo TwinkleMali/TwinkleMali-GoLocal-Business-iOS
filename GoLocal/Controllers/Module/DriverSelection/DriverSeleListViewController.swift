@@ -65,7 +65,7 @@ class DriverSeleListViewController: BaseViewController{
         lblTime.start()
     }
     
-    //MARK: -   Notifiation Methods
+    //MARK: -  Notifiation Methods
     func allNotificationCenterObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(OrderRequestAccepted(notification:)), name: NSNotification.Name(rawValue: notificationCenterKeys.shopAcceptOrder.rawValue), object: nil)
     }
@@ -113,13 +113,13 @@ class DriverSeleListViewController: BaseViewController{
             self.showBanner(bannerTitle: .none, message: "Please select Delivery time for driver.", type: .danger)
         }else {
             let dic = ["user_id" : USER_DETAILS?.id ?? 0,
-                       "customer_id" : objOrderRequest.customerId ?? 0 ,
-                       "order_id" : objOrderRequest.orderId ?? 0,
+                       "customer_id" : objOrderRequest.orderDetails?.customerDetails?.id ?? 0 ,
+                       "order_id" : objOrderRequest.orderDetails?.id ?? 0,
                        "driver_id" : selectedDriverId ?? 0,
                        "pickup_time" : pickupTime,
                        "delivery_time" : deliveryTimes,
                        "need_to_merge" : 0,
-                       "merge_request_id":0,
+                       "merge_request_id":"",
                        "merge_with_order_id":0] as [String : Any]
             print("accept dic : \(dic)")
             socketAcceptOrderRequest(dictionary: dic)

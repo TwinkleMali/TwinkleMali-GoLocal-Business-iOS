@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -26,7 +26,7 @@
                 <outlet property="btnSecondOrder" destination="vYu-lU-j8Z" id="FrD-AT-Ou7"/>
                 <outlet property="lblOrderStatus" destination="cQX-89-YFh" id="oSh-Mb-Rpt"/>
                 <outlet property="navView" destination="YxL-v9-IyS" id="tkp-vF-MwM"/>
-                <outlet property="stHeight" destination="rX4-tp-ctG" id="qKX-T5-t7R"/>
+                <outlet property="stHeight" destination="UWI-jf-y73" id="CJH-C3-xtv"/>
                 <outlet property="stackView" destination="oIl-LC-hki" id="5lD-LL-bXJ"/>
                 <outlet property="switchStackView" destination="qhR-81-mBs" id="eOr-Iz-NnY"/>
                 <outlet property="switchView" destination="vtm-NW-DTn" id="JNw-KW-Ao3"/>
@@ -39,47 +39,66 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="GQ2-Dd-b3l">
-                    <rect key="frame" x="0.0" y="172.5" width="414" height="623.5"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtm-NW-DTn" userLabel="switchView">
-                    <rect key="frame" x="20" y="117.5" width="374" height="45"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2y-OZ-B9u">
+                    <rect key="frame" x="10" y="106.5" width="394" height="60"/>
                     <subviews>
-                        <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qhR-81-mBs">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtm-NW-DTn" userLabel="switchView">
+                            <rect key="frame" x="10" y="8" width="374" height="44"/>
                             <subviews>
-                                <button opaque="NO" clearsContextBeforeDrawing="NO" tag="10" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SxR-X3-kAY">
-                                    <rect key="frame" x="0.0" y="0.0" width="187" height="45"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
-                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="First Order">
-                                        <color key="titleColor" name="AppGreenColor"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYu-lU-j8Z">
-                                    <rect key="frame" x="187" y="0.0" width="187" height="45"/>
+                                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qhR-81-mBs">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                    <subviews>
+                                        <button opaque="NO" clearsContextBeforeDrawing="NO" tag="10" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SxR-X3-kAY">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="44"/>
+                                            <color key="backgroundColor" name="AppGreenColor"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="First Order">
+                                                <color key="titleColor" name="AppGreenColor"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionTabValueChange:" destination="-1" eventType="touchUpInside" id="2om-IU-crK"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="30" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vYu-lU-j8Z">
+                                            <rect key="frame" x="187" y="0.0" width="187" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="Second Order">
+                                                <color key="titleColor" name="AppGreenColor"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="actionTabValueChange:" destination="-1" eventType="touchUpInside" id="BnN-R4-uwP"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
-                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="Second Order">
-                                        <color key="titleColor" name="AppGreenColor"/>
-                                    </state>
-                                </button>
+                                </stackView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </stackView>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="qhR-81-mBs" firstAttribute="top" secondItem="vtm-NW-DTn" secondAttribute="top" id="0kL-So-PTH"/>
+                                <constraint firstAttribute="trailing" secondItem="qhR-81-mBs" secondAttribute="trailing" id="E26-29-rFP"/>
+                                <constraint firstItem="qhR-81-mBs" firstAttribute="leading" secondItem="vtm-NW-DTn" secondAttribute="leading" id="fg0-6x-Tfa"/>
+                                <constraint firstAttribute="bottom" secondItem="qhR-81-mBs" secondAttribute="bottom" id="gg2-3q-KNF"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="qhR-81-mBs" firstAttribute="top" secondItem="vtm-NW-DTn" secondAttribute="top" id="0kL-So-PTH"/>
-                        <constraint firstAttribute="trailing" secondItem="qhR-81-mBs" secondAttribute="trailing" id="E26-29-rFP"/>
-                        <constraint firstItem="qhR-81-mBs" firstAttribute="leading" secondItem="vtm-NW-DTn" secondAttribute="leading" id="fg0-6x-Tfa"/>
-                        <constraint firstAttribute="bottom" secondItem="qhR-81-mBs" secondAttribute="bottom" id="gg2-3q-KNF"/>
-                        <constraint firstAttribute="height" constant="45" id="rX4-tp-ctG"/>
+                        <constraint firstAttribute="bottom" secondItem="vtm-NW-DTn" secondAttribute="bottom" constant="8" id="A0u-x9-tAJ"/>
+                        <constraint firstItem="vtm-NW-DTn" firstAttribute="top" secondItem="a2y-OZ-B9u" secondAttribute="top" constant="8" id="CdX-ND-eA7"/>
+                        <constraint firstAttribute="height" constant="60" id="UWI-jf-y73"/>
+                        <constraint firstItem="vtm-NW-DTn" firstAttribute="leading" secondItem="a2y-OZ-B9u" secondAttribute="leading" constant="10" id="Z94-s7-b9d"/>
+                        <constraint firstAttribute="trailing" secondItem="vtm-NW-DTn" secondAttribute="trailing" constant="10" id="g9K-Fx-epb"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="GQ2-Dd-b3l">
+                    <rect key="frame" x="0.0" y="166.5" width="414" height="629.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uac-u5-ra7" userLabel="bottomview">
                     <rect key="frame" x="0.0" y="811" width="414" height="45"/>
                     <subviews>
@@ -192,19 +211,19 @@
                 <constraint firstItem="371-rb-gJV" firstAttribute="leading" secondItem="Rxe-5I-ha8" secondAttribute="leading" id="6Sm-Jo-f1Y"/>
                 <constraint firstItem="YxL-v9-IyS" firstAttribute="height" secondItem="Rxe-5I-ha8" secondAttribute="height" multiplier="0.07" id="88o-U9-vXa"/>
                 <constraint firstItem="kst-Nq-xyz" firstAttribute="trailing" secondItem="uac-u5-ra7" secondAttribute="trailing" id="9ZN-cs-Y0S"/>
-                <constraint firstItem="kst-Nq-xyz" firstAttribute="trailing" secondItem="vtm-NW-DTn" secondAttribute="trailing" constant="20" id="AQs-NT-X3F"/>
                 <constraint firstItem="uac-u5-ra7" firstAttribute="top" secondItem="GQ2-Dd-b3l" secondAttribute="bottom" constant="15" id="EBb-ih-d49"/>
-                <constraint firstItem="GQ2-Dd-b3l" firstAttribute="top" secondItem="vtm-NW-DTn" secondAttribute="bottom" constant="10" id="ELi-GD-hai"/>
                 <constraint firstAttribute="bottom" secondItem="uac-u5-ra7" secondAttribute="bottom" constant="40" id="F36-zE-Nqg"/>
+                <constraint firstItem="a2y-OZ-B9u" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="bottom" id="GFG-Oy-FpT"/>
                 <constraint firstItem="GQ2-Dd-b3l" firstAttribute="leading" secondItem="Rxe-5I-ha8" secondAttribute="leading" id="GXd-Xv-fvE"/>
+                <constraint firstItem="kst-Nq-xyz" firstAttribute="trailing" secondItem="a2y-OZ-B9u" secondAttribute="trailing" constant="10" id="KYZ-ne-CNT"/>
                 <constraint firstItem="kst-Nq-xyz" firstAttribute="trailing" secondItem="YxL-v9-IyS" secondAttribute="trailing" id="MKb-iM-aOu"/>
                 <constraint firstAttribute="trailing" secondItem="371-rb-gJV" secondAttribute="trailing" id="NFc-7Z-xup"/>
                 <constraint firstItem="uac-u5-ra7" firstAttribute="leading" secondItem="kst-Nq-xyz" secondAttribute="leading" id="URE-xG-IaZ"/>
-                <constraint firstItem="vtm-NW-DTn" firstAttribute="top" secondItem="371-rb-gJV" secondAttribute="bottom" constant="10" id="dfX-9M-N7H"/>
-                <constraint firstItem="vtm-NW-DTn" firstAttribute="leading" secondItem="kst-Nq-xyz" secondAttribute="leading" constant="20" id="fX7-q7-UEz"/>
+                <constraint firstItem="a2y-OZ-B9u" firstAttribute="leading" secondItem="kst-Nq-xyz" secondAttribute="leading" constant="10" id="WQ9-Yk-FP0"/>
                 <constraint firstItem="YxL-v9-IyS" firstAttribute="leading" secondItem="kst-Nq-xyz" secondAttribute="leading" id="hja-lK-p8l"/>
                 <constraint firstItem="371-rb-gJV" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="bottom" id="l0o-vV-fvH"/>
                 <constraint firstItem="YxL-v9-IyS" firstAttribute="top" secondItem="kst-Nq-xyz" secondAttribute="top" id="qIa-O2-rb9"/>
+                <constraint firstItem="GQ2-Dd-b3l" firstAttribute="top" secondItem="a2y-OZ-B9u" secondAttribute="bottom" id="xLb-wG-4rM"/>
             </constraints>
             <point key="canvasLocation" x="-1520.289855072464" y="-219.64285714285714"/>
         </view>

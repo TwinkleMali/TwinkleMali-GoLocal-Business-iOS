@@ -77,7 +77,7 @@ let APIGetBusyDriverOrderDetails = "\(WEBSERVICE_PATH)GetBusyDriverOrderDetails"
 //Socket Path
 //let SOCKET_SERVER_PATH = "http://18.223.15.96:3080" //http://192.168.100.174:8055" //"https://apps.narola.online:5002"
 
-let LOCAL_SOCKET_SERVER_URL = "https://apps.narola.online:5002"
+let LOCAL_SOCKET_SERVER_URL = "http://192.168.100.174:8055"
 let LIVE_SOCKET_SERVER_URL = "http://18.223.15.96:3080"
 let SOCKET_SERVER_PATH = isLive ?  LIVE_SOCKET_SERVER_URL : LOCAL_SOCKET_SERVER_URL
 

@@ -44,10 +44,13 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
         allNotificationCenterObservers()
     }
     
-    func openConfirmationPopup(){
+    func openConfirmationPopup(orderUniqId : String ){
         let confirmationView = ConfirmationDialogVC(nibName: "ConfirmationDialogVC", bundle: nil)
         confirmationView.delegateConfirmationDialogVC = self
-        confirmationView.showView(viewDisplay: self.view)
+        confirmationView.orderUniqId = orderUniqId
+        confirmationView.modalPresentationStyle = .overFullScreen
+        //confirmationView.showView(viewDisplay: self.view)
+        self.present(confirmationView, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,9 +75,9 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
     @objc func OrderRequestReceived(notification : Notification) {
         let obj  = notification.userInfo  as? [String : Any]
         let objOrderRequest = OrderRequests(object: obj!)
-        if objOrderRequest.orderDetails?.mergeRequestId != nil && (objOrderRequest.orderDetails?.mergeRequestId?.count ?? 0) > 0{
-            openConfirmationPopup()
-        }else {
+//        if objOrderRequest.orderDetails?.mergeRequestId != nil && (objOrderRequest.orderDetails?.mergeRequestId?.count ?? 0) > 0{
+//            openConfirmationPopup()
+//        }else {
             if APP_DELEGATE?.arrOrderRequestMain.contains(where: { $0.orderDetails?.id == objOrderRequest.orderDetails?.id }) == false{
                 APP_DELEGATE?.arrOrderRequestMain.append(objOrderRequest)
             }
@@ -82,7 +85,7 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
             arrOrderRequest.append(objOrderRequest)
             self.viewModel.setOrderRequests(arrOrderRequest: arrOrderRequest)
             self.tableView.reloadData()
-        }
+//        }
     }
     
     @objc func OrderRequestRejected(notification : Notification) {
@@ -128,15 +131,20 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
     
     // Accept Order Request Click
     @objc func actionAcceptRequest(_ sender : UIButton) {
-           viewModel.setSelectedOrderIndex(index: sender.tag)
-        if viewModel.getOrderRequest(at: sender.tag).orderDetails?.deliveryType == DeliveryType.collection.rawValue {
-            let vc = TimeSelectionVC(nibName: "TimeSelectionVC", bundle: .main)
-            vc.objOrderRequest = viewModel.getOrderRequest(at: sender.tag)
-            self.navigationController?.pushViewController(vc, animated: true)
-        }else {
-            let vc = DriverSeleListViewController(nibName: "DriverSeleListViewController", bundle: .main)
-            vc.objOrderRequest = viewModel.getOrderRequest(at: sender.tag)
-            self.navigationController?.pushViewController(vc, animated: true)
+        viewModel.setSelectedOrderIndex(index: sender.tag)
+        let objRequest = viewModel.getOrderRequest(at: sender.tag)
+        if let mergerRequestDetail = objRequest.orderDetails?.mergerRequestDetail{
+            openConfirmationPopup(orderUniqId: mergerRequestDetail.orderUniqueId ?? "")
+        } else {
+            if viewModel.getOrderRequest(at: sender.tag).orderDetails?.deliveryType == DeliveryType.collection.rawValue {
+                let vc = TimeSelectionVC(nibName: "TimeSelectionVC", bundle: .main)
+                vc.objOrderRequest = viewModel.getOrderRequest(at: sender.tag)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }else {
+                let vc = DriverSeleListViewController(nibName: "DriverSeleListViewController", bundle: .main)
+                vc.objOrderRequest = viewModel.getOrderRequest(at: sender.tag)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
  
@@ -165,24 +173,34 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
     }
 }
 
-extension BaseViewController: ConfirmationDialogVCDelegate{
+extension OrderRequestViewController: ConfirmationDialogVCDelegate{
     
     func actionNo() {
-        if APP_DELEGATE?.arrOrderRequestMain.contains(where: { $0.orderDetails?.id == objOrderReq.orderDetails?.id }) == false{
-            APP_DELEGATE?.arrOrderRequestMain.append(objOrderReq)
+//        if APP_DELEGATE?.arrOrderRequestMain.contains(where: { $0.orderDetails?.id == objOrderReq.orderDetails?.id }) == false{
+//            APP_DELEGATE?.arrOrderRequestMain.append(objOrderReq)
+//        }
+        if viewModel.getOrderRequest(at: viewModel.getSelectedOrderIndex()).orderDetails?.deliveryType == DeliveryType.collection.rawValue {
+            let vc = TimeSelectionVC(nibName: "TimeSelectionVC", bundle: .main)
+            vc.objOrderRequest = viewModel.getOrderRequest(at: viewModel.getSelectedOrderIndex())
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else {
+            let vc = DriverSeleListViewController(nibName: "DriverSeleListViewController", bundle: .main)
+            vc.objOrderRequest = viewModel.getOrderRequest(at: viewModel.getSelectedOrderIndex())
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     func actionOk() {
+         let objOrder = viewModel.getOrderRequest(at: viewModel.getSelectedOrderIndex())
             let dic = ["user_id" : USER_DETAILS?.id ?? 0,
-                       "customer_id" : objOrderReq.customerId ?? 0 ,
-                       "order_id" : objOrderReq.orderId ?? 0,
+                       "customer_id" : objOrder.orderDetails?.customerDetails?.id ?? 0 ,
+                       "order_id" : objOrder.orderDetails?.id ?? 0,
                        "driver_id" : 0,
                        "pickup_time" : 0,
                        "delivery_time" : 0,
                        "need_to_merge" : 1,
-                       "merge_request_id":0,
-                       "merge_with_order_id":0] as [String : Any]
+                       "merge_request_id":objOrder.orderDetails?.mergerRequestDetail?.mergeRequestId ?? "",
+                       "merge_with_order_id":objOrder.orderDetails?.mergerRequestDetail?.id ?? 0] as [String : Any]
             print("accept dic : \(dic)")
             socketAcceptOrderRequest(dictionary: dic)
     }

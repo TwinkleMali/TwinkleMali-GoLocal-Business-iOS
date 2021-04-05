@@ -290,9 +290,9 @@ class SocketIOHandler: NSObject {
                     }
                     postNotification(withName: notificationCenterKeys.shopOrderRequest.rawValue, userInfo: d)
 //                }
-                let confirmationView = ConfirmationDialogVC(nibName: "ConfirmationDialogVC", bundle: nil)
-//                confirmationView.delegateConfirmationDialogVC = self
-                confirmationView.showView(viewDisplay: (APP_DELEGATE?.window?.rootViewController?.view)!)
+//                let confirmationView = ConfirmationDialogVC(nibName: "ConfirmationDialogVC", bundle: nil)
+////                confirmationView.delegateConfirmationDialogVC = self
+//                confirmationView.showView(viewDisplay: (APP_DELEGATE?.window?.rootViewController?.view)!)
                
             }
         })

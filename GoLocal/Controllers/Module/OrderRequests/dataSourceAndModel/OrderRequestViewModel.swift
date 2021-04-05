@@ -48,7 +48,10 @@ extension OrderRequestViewModel {
             }
         }
     }
-    
+    func removeExistingRequests() {
+        self.arrOrderRequest.removeAll()
+        self.arrayProducts.removeAll()
+    }
     func getOrderRequest(at : Int) -> OrderRequests{
         return arrOrderRequest[at]
     }

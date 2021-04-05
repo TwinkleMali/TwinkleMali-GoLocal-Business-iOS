@@ -38,7 +38,7 @@ extension OrderViewModel {
         }
         return 0
     }
-    
+   
     func setOrderList(arrOrderList : [OrderList],orderType : Int){
         if orderType == OrderType.CurrentOrder.rawValue{
             arrCurrentOrderList.append(contentsOf: arrOrderList)
@@ -121,6 +121,24 @@ extension OrderViewModel {
         }
     }
     
+    func getArrOrder(listAt :Int,orderType : Int) -> [OrderDetails]? {
+        if orderType == OrderType.CurrentOrder.rawValue{
+            return arrCurrentOrderList[listAt].orders
+        }else {
+            return arrPastOrdersList[listAt].orders
+        }
+    }
+    func isOrderMerged(listAt :Int,orderType : Int) -> Bool{
+        if orderType == OrderType.CurrentOrder.rawValue{
+            return arrCurrentOrderList[listAt].orders?.count ?? 0 > 1
+        }else if orderType == OrderType.PastOrder.rawValue{
+            return arrPastOrdersList[listAt].orders?.count ?? 0 > 1
+        }
+        return false
+    }
+    func getOrderProductCount(orderId :Int,orderType : Int) -> Int{
+        self.getProductArray(orderId: orderId, orderType: orderType).count
+    }
     func getOrderList(listAt :Int,orderType : Int) -> [OrderDetails]{
         if orderType == OrderType.CurrentOrder.rawValue{
             return arrCurrentOrderList[listAt].orders!
@@ -178,8 +196,10 @@ extension OrderViewModel {
     func removeAllCurrentOrder(orderType : Int){
         if orderType == OrderType.CurrentOrder.rawValue{
             self.arrCurrentOrderList.removeAll()
+            self.arrayCurrentProduct.removeAll()
         }else if orderType == OrderType.PastOrder.rawValue{
             self.arrPastOrdersList.removeAll()
+            self.arrayPastProduct.removeAll()
         }
     }    
     

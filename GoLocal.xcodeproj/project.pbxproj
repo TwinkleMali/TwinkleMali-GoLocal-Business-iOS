@@ -260,6 +260,7 @@
 		B58B75FA25A5D5F600446FB7 /* DynamicArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58B75F625A5D5F600446FB7 /* DynamicArray.swift */; };
 		B58B75FB25A5D5F600446FB7 /* DynamicAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58B75F725A5D5F600446FB7 /* DynamicAsync.swift */; };
 		B58B75FC25A5D5F600446FB7 /* GenericUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58B75F825A5D5F600446FB7 /* GenericUtils.swift */; };
+		B594B9022615858A0058D98B /* MergerRequestDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594B901261585890058D98B /* MergerRequestDetail.swift */; };
 		B5D307DE2599BC2A00858439 /* ModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D307DC2599BC2A00858439 /* ModelViewController.swift */; };
 		B5D307DF2599BC2A00858439 /* ModelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D307DD2599BC2A00858439 /* ModelViewController.xib */; };
 /* End PBXBuildFile section */
@@ -523,6 +524,7 @@
 		B58B75F625A5D5F600446FB7 /* DynamicArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicArray.swift; sourceTree = "<group>"; };
 		B58B75F725A5D5F600446FB7 /* DynamicAsync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicAsync.swift; sourceTree = "<group>"; };
 		B58B75F825A5D5F600446FB7 /* GenericUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUtils.swift; sourceTree = "<group>"; };
+		B594B901261585890058D98B /* MergerRequestDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergerRequestDetail.swift; sourceTree = "<group>"; };
 		B5D307DC2599BC2A00858439 /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
 		B5D307DD2599BC2A00858439 /* ModelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModelViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1466,6 +1468,7 @@
 		46CDA38D2589BB430089105D /* model */ = {
 			isa = PBXGroup;
 			children = (
+				B594B901261585890058D98B /* MergerRequestDetail.swift */,
 				000751902608741300B05BFC /* OrderList.swift */,
 				0022D824260083BD00A246D1 /* Country.swift */,
 				005FE44A25F269760093483B /* MediaUrl.swift */,
@@ -1921,6 +1924,7 @@
 				005F87F025D1588C000A475A /* SocketIOHandler.swift in Sources */,
 				00F065DB25C5494F00BAB8E3 /* PaymentOptionTVCell.swift in Sources */,
 				00A4698325C965D2008B7671 /* SelectDriverTVCell.swift in Sources */,
+				B594B9022615858A0058D98B /* MergerRequestDetail.swift in Sources */,
 				005DB98E25D3B19700B7766D /* BillingDetails.swift in Sources */,
 				006D7F7525B5B8870068C598 /* DriversListViewController.swift in Sources */,
 				0022D825260083BD00A246D1 /* Country.swift in Sources */,

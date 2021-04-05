@@ -10,7 +10,12 @@ import UIKit
 class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderViewDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var lblNoMsg : UILabel!
-    @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var tableView : UITableView!{
+        didSet{
+            tableView.tag = 100
+            self.tableView.backgroundColor = .white
+        }
+    }
     @IBOutlet weak var navView: UIView!
     @IBOutlet weak var btnFilter: UIButton!
     @IBOutlet weak var switchView: UIView!
@@ -35,7 +40,7 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
         dataSource = OrderDataSource(tableView: tableView, viewModel: viewModel, viewController: self)
         self.tableView.delegate = dataSource
         self.tableView.dataSource = dataSource
-        self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 5, right: 0)
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
         self.tableView.tableFooterView = UIView()
         isLoader = true
         callAPIToGetOrder()
@@ -138,8 +143,11 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     @objc func actionOrderDetail(_ sender : UIButton) {
         let vc = OrderDetailsViewController(nibName: "OrderDetailsViewController", bundle: .main)
         vc.isOrderRequest = false
-        let index : Int = sender.accessibilityValue.aIntOrEmpty()
-        vc.objOrder = viewModel.getOrder(listAt: index, orderAt: sender.tag, orderType: selOrder)
+        let tag = sender.tag
+        let section = tag/100
+         let row = tag % 100
+        //let index : Int = sender.accessibilityValue.aIntOrEmpty()
+        vc.arrOrders = viewModel.getArrOrder(listAt: section,orderType: selOrder) ?? []
         //vc.viewModel.setOrderDetail(objOrder: viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder))
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -147,13 +155,16 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     // Order on map Click
     @objc func actionMarkOrderLeft(_ sender : UIButton) {
         if let driver =  viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder).driverDetails {
+            let tag = sender.tag
+            let section = tag/100
+             let row = tag % 100
             let vc = DriverLocationViewController.loadFromNib()
             vc.driverDetails = driver
             vc.orderId = viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder).id ?? 0
             vc.driverLat = driver.latitude ?? "21.1205"
             vc.driverLong = driver.longitude ?? "72.7431"
-            vc.deliveryLatitude = viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder).deliveryLatitude ?? ""
-            vc.deliveryLongitude = viewModel.getOrder(listAt: 0, orderAt: sender.tag, orderType: selOrder).deliveryLongitude ?? ""
+            vc.deliveryLatitude = viewModel.getOrder(listAt: section, orderAt: row, orderType: selOrder).deliveryLatitude ?? ""
+            vc.deliveryLongitude = viewModel.getOrder(listAt: section, orderAt: row, orderType: selOrder).deliveryLongitude ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

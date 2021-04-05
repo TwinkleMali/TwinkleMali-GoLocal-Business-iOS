@@ -16,8 +16,10 @@ class RequestDetailsOrderTVCell: UITableViewCell {
     @IBOutlet weak var lblOrderName: UILabel!
     @IBOutlet weak var imgVegImage: UIImageView!
     @IBOutlet weak var imgWidht : NSLayoutConstraint!
-    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var mainView: CardView!
     @IBOutlet weak var btnView: UIButton!
+    @IBOutlet weak var leftPaddingConst: NSLayoutConstraint!
+    @IBOutlet weak var rightPaddingConst: NSLayoutConstraint!
     var subProductIndex : Int = 0
     var productId : Int = 0
 //    {

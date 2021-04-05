@@ -21,10 +21,12 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     var viewModel = OrderDetailsViewModel()
     var isOrderRequest : Bool = false
     var objOrderRequest : OrderRequests!
-    var objOrder : OrderDetails!
+    //var objOrder : OrderDetails!
+    var arrOrders : [OrderDetails] = []
     var orderId : Int!
     var selOrder = OrderDetailTab.FirstOrder.rawValue
     var isMultipleOrder : Bool = false
+    var deliverdOrderNo = 0
 //    @IBOutlet var btnHeight : NSLayoutConstraint!
     @IBOutlet var stHeight : NSLayoutConstraint!
     @IBOutlet weak var btnMarkOrderLeft: UIButton!{
@@ -55,14 +57,14 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
         
         if objOrderRequest != nil {
             self.viewModel.setOrderRequests(objOrderReqeust: objOrderRequest)
-            self.viewModel.setOrderDetail(objOrder: objOrderRequest.orderDetails!)
-            objOrder = objOrderRequest.orderDetails!
+            self.viewModel.setOrderArr(arrOrders: [objOrderRequest.orderDetails!])
+            arrOrders.append(contentsOf: [objOrderRequest.orderDetails!])
             setupView()
         }
         
-        if objOrder != nil{
-            self.viewModel.setOrderDetail(objOrder: objOrder)
-            socketGetOrderDetail(strOrder: "\(objOrder.id ?? 0)")
+        if arrOrders.count > 0{
+            self.viewModel.setOrderArr(arrOrders: arrOrders)
+            //socketGetOrderDetail(strOrder: "\(objOrder.id ?? 0)")
             setupView()
         }
         
@@ -73,8 +75,9 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     
     func setupView() {
 //        if isMultipleOrder {
+        let objOrder = viewModel.getOrderDetail()
+        stHeight.constant = viewModel.isMerged() ? 60 : 0
         switchStackView.isHidden = false
-        stHeight.constant = 45
         switchView.backgroundColor = .lightGray
         drawBorder(view: switchView, color: .lightGray, width: 1.0, radius: 5.0)
         drawBorder(view: switchStackView, color: .lightGray, width: 1.0, radius: 5.0)
@@ -144,12 +147,14 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
             selOrder = OrderDetailTab.FirstOrder.rawValue
             sender.backgroundColor = GreenColor
             sender.isSelected = true
+            viewModel.updateTab(value: 0)
             btnSecondOrder.backgroundColor = .white
             btnSecondOrder.isSelected = false
         }else {
             selOrder = OrderDetailTab.SecondOrder.rawValue
             sender.backgroundColor = GreenColor
             sender.isSelected = true
+            viewModel.updateTab(value: 1)
             btnFirstOrder.backgroundColor = .white
             btnFirstOrder.isSelected = false
         }
@@ -172,7 +177,11 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
         let obj  = notification.userInfo  as? [String : Any]
         if (obj?["status"] as! Bool){
             self.view.makeToast("Order is left.",duration: 2.0, position: .center)
-            APP_DELEGATE?.setupRootTabBarViewController(tabIndex: 1)
+            if deliverdOrderNo == 0 && self.viewModel.isMerged() {
+                mergeOrder(orderNo: 1)
+            } else {
+                APP_DELEGATE?.setupRootTabBarViewController(tabIndex: 1)
+            }
         } else {
             self.showBanner(bannerTitle: .none, message: obj?["message"] as! String, type: .danger)
         }
@@ -181,8 +190,8 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     @objc func getSingleOrderDetails(notification : Notification) {
         let obj  = notification.userInfo  as? [String : Any]        
         if (obj?["status"] as! Bool){
-            objOrder = OrderDetails(object: obj![WSDATA]!)
-            viewModel.setOrderDetail(objOrder: objOrder)
+            let objOrder = OrderDetails(object: obj![WSDATA]!)
+            viewModel.setOrderArr(arrOrders: [objOrder])
             setupView()
             loadViewIfNeeded()
         }
@@ -190,19 +199,41 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     
     // Order on map Click
     @objc func actionMarkOrderLeft(_ sender : UIButton) {
+        let objOrder = viewModel.getOrderDetail(no: 0)
         if let driver =  objOrder.driverDetails {
             let vc = DriverLocationViewController.loadFromNib()
             vc.driverDetails = driver
             vc.orderId = objOrder.id ?? 0
+            
             vc.driverLat = driver.latitude ?? "21.1205"
             vc.driverLong = driver.longitude ?? "72.7431"
+            
             vc.deliveryLatitude = objOrder.deliveryLatitude ?? ""
             vc.deliveryLongitude = objOrder.deliveryLongitude ?? ""
+            
+            
+            
+            if viewModel.isMerged() {
+                vc.isMergedOrder = true
+                let objOrder2 = viewModel.getOrderDetail(no: 1)
+                vc.deliveryLatitude2 = objOrder2.deliveryLatitude ?? ""
+                vc.deliveryLongitude2 = objOrder2.deliveryLongitude ?? ""
+            }
+            vc.shopLat = objOrder.shopDetail?.latitude ?? ""
+            vc.shopLong = objOrder.shopDetail?.longitude ?? ""
+            
+            let isOrderPicked = objOrder.orderStatus == OrderStatus.OrderLeft.rawValue
+            vc.orderNotPickedUp = !isOrderPicked
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     @IBAction func btnOrderStatusChange(_ sender: UIButton) {
+        mergeOrder()
+    }
+    func mergeOrder(orderNo : Int = 0 ){
+        deliverdOrderNo = orderNo
+        let objOrder = viewModel.getOrderDetail(no: orderNo)
         let dic = ["user_id" : USER_DETAILS?.id ?? 0,
                    "customer_id" : objOrder.customerDetails?.id ?? 0,
                    "order_id" : objOrder.id ?? 0,
@@ -210,9 +241,9 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
                    "business_owner_id" : objOrder.shopDetail?.userId ?? 0,
                    "order_status" : TAKEAWAY_ORDER_STATUS.ORDER_LEFT.rawValue] as [String : Any]
         print("order status change dic : \(dic)")
+        
         socketOrderStatusChanged(dictionary: dic)
     }
-    
     // Accept Order Request Click
     @IBAction func btnAcceptClick(_ sender: UIButton) {
         if objOrderRequest.orderDetails?.deliveryType == DeliveryType.collection.rawValue {

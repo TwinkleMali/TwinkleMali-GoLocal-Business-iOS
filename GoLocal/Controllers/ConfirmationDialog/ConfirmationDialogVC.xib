@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -27,6 +27,7 @@
                 <outlet property="lblTitle" destination="Ty6-Gx-Lsf" id="JjK-gF-YWI"/>
                 <outlet property="mainView" destination="q1h-ja-Nc3" id="NHp-gH-774"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewBackground" destination="o6Y-Be-sH6" id="eeo-Bh-0yy"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -34,6 +35,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6Y-Be-sH6">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1h-ja-Nc3">
                     <rect key="frame" x="20.5" y="303" width="373" height="300"/>
                     <subviews>
@@ -134,7 +139,11 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="o6Y-Be-sH6" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0Oa-0r-1xd"/>
                 <constraint firstItem="q1h-ja-Nc3" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="0h1-i4-QoQ"/>
+                <constraint firstAttribute="bottom" secondItem="o6Y-Be-sH6" secondAttribute="bottom" id="4zv-Fc-1UA"/>
+                <constraint firstItem="o6Y-Be-sH6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ap9-cQ-Wlh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="o6Y-Be-sH6" secondAttribute="trailing" id="bVP-Pe-l9z"/>
                 <constraint firstItem="q1h-ja-Nc3" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="fU8-Ww-wNM"/>
                 <constraint firstItem="q1h-ja-Nc3" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.9" id="t6r-bF-VNI"/>
             </constraints>

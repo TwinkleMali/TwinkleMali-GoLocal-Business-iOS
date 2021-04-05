@@ -14,6 +14,7 @@ protocol ConfirmationDialogVCDelegate {
 }
 class ConfirmationDialogVC: UIViewController {
 
+    @IBOutlet weak var viewBackground: UIView!
     @IBOutlet weak var lblSubTitle: UILabel!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var mainView: UIView!
@@ -43,10 +44,16 @@ class ConfirmationDialogVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lblSubTitle.text = "This order delivery location is near to order #\(orderUniqId). Would you like to merge these two orders ?"
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            self.viewBackground.alpha = 1.0
+        }
+    }
     var vc = UIViewController()
     var blurview = UIView()
+    var orderUniqId = ""
     
     func showView(viewDisplay: UIView)
     {
@@ -67,12 +74,26 @@ class ConfirmationDialogVC: UIViewController {
     }
     
     @IBAction func btnYes(_ sender: UIButton) {
-        hideView()
-        delegateConfirmationDialogVC?.actionOk()
+        UIView.animate(withDuration: 0.2) {
+            self.viewBackground.alpha = 1.0
+        } completion: { (_) in
+            self.dismiss(animated: true, completion: nil)
+            self.delegateConfirmationDialogVC?.actionOk()
+        }
+        
+        //hideView()
+        
     }
     
     @IBAction func btnNo(_ sender: UIButton) {
-        hideView()
+        //hideView()
+        
+        UIView.animate(withDuration: 0.2) {
+            self.viewBackground.alpha = 1.0
+        } completion: { (_) in
+            self.dismiss(animated: true, completion: nil)
+            self.delegateConfirmationDialogVC?.actionNo()
+        }
     }
     
 }

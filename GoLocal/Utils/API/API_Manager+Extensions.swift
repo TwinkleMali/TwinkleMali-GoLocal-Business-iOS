@@ -318,7 +318,7 @@ extension OrderRequestViewController {
                         }
                     }
                 }
-                
+                self.viewModel.removeExistingRequests()
                 self.viewModel.setOrderRequests(arrOrderRequest: arrOrderRequest)
                 self.tableView.reloadData()
             }
@@ -424,6 +424,7 @@ extension OrderViewController {
             KRProgressHUD.show()
         }
         APIHelper.shared.postJsonRequest(url: APIGetAllBusinessOrders, parameter: param, headers: headers) { (isCompleted, status, response) in
+            self.viewModel.removeAllCurrentOrder(orderType: self.selOrder)
             self.view.isUserInteractionEnabled = true
             self.tableView.isHidden = false
 

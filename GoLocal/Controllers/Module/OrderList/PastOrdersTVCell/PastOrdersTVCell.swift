@@ -10,7 +10,7 @@ import Cosmos
 
 class PastOrdersTVCell: UITableViewCell {
 
-    @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var mainView: CardView!
 //    {
 //            didSet{
 //                mainView.layer.borderWidth = 1
@@ -34,8 +34,15 @@ class PastOrdersTVCell: UITableViewCell {
             
         }
     }
+    @IBOutlet weak var viewSecondOrder: UIView!
+    @IBOutlet weak var heightSecondOrderView: NSLayoutConstraint!
+    @IBOutlet weak var viewTopConstraints: NSLayoutConstraint!
     @IBOutlet weak var ratingViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var lblOrderId: UILabel!
+    @IBOutlet weak var heightLabelOrderId: NSLayoutConstraint!
+    @IBOutlet weak var leftPadding: NSLayoutConstraint!
+    @IBOutlet weak var rightPadding: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

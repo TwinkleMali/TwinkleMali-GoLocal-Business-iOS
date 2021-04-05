@@ -137,6 +137,8 @@ extension OrderRequestDataSource: UITableViewDelegate,UITableViewDataSource{
         if let cell = tableView.dequeueReusableCell(withIdentifier: "RequestDetailsOrderTVCell") as? RequestDetailsOrderTVCell{
             cell.selectionStyle = .none
             let objProduct : [String:Any] = self.viewModel.getProductArray(orderId: self.viewModel.getOrderDetails(at: indexPath.section).id ?? 0)[indexPath.row]
+            cell.leftPaddingConst.constant = 20
+            cell.rightPaddingConst.constant = 20
             cell.lblOrderName.text = "\(objProduct["productName"].asStringOrEmpty())"
             cell.lblQty.text = "Qty : \(objProduct["quantity"].asStringOrEmpty())"
             let addons = objProduct["addons"] as! [Addons]

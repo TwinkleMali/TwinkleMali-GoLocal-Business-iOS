@@ -81,11 +81,12 @@ enum AddAccountField : Int {
 
 enum OrderDetailsField : Int {
     case requestDetail = 0
+    case orderAmount
     case deliveryType
     case note
     case billDetails
     case deliveryPerson
-    case total = 5
+    case total 
 }
 
 //MARK:- Business Home Table Fields
