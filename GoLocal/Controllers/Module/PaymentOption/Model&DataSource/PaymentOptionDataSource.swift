@@ -66,7 +66,7 @@ extension PaymentOptionDataSource : UITableViewDataSource,UITableViewDelegate {
                 return cell
                 
             case PaymentOption.GoLocalFirst.rawValue:
-                cell.lblTitle.text = "Pay using Go Local First"
+                cell.lblTitle.text = "Confirm amount for customer to pay"
                 cell.btnIcon.setImage(UIImage(named: "payment_golocal_first_icon"), for: .normal)
                 return cell
                 

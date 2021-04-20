@@ -202,12 +202,17 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
 
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "RequestDetailsOrderTVCell") as? RequestDetailsOrderTVCell{
                     cell.selectionStyle = .none
-                    
+                    var productRow = 0
+                    if currCellType == 1 {
+                       productRow = row - 1
+                    } else {
+                        productRow = row - (firstOrderProductCount + 3)
+                    }
                     let selType = orderViewController?.selOrder ?? 0
                     let objOrderDetail = self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType: orderViewController?.selOrder ?? 0)
                     
                     let objProduct : [String:Any] = self.viewModel.getProductArray(orderId: objOrderDetail.id ?? 0,
-                                                                                   orderType: selType)[0]
+                                                                                   orderType: selType)[productRow]
                     cell.leftPaddingConst.constant = 20
                     cell.rightPaddingConst.constant = 20
                     cell.lblOrderName.text = "\(objProduct["productName"].asStringOrEmpty())"
@@ -252,7 +257,7 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
                     let date : String = self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType:orderViewController?.selOrder ?? 0).sentShopRequestAt ?? ""
                     cell.lblRequestedTime.text = "Requested Time : \(date.toDateString(outputFormat: REQUESTED_TIME_FORMATE) ?? "-")"
                     cell.lblOrderId.text = "Order ID : #\(self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType:orderViewController?.selOrder ?? 0).orderUniqueId ?? "")"
-                    let date1 : String = self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType:orderViewController?.selOrder ?? 0).sentShopRequestAt ?? ""
+                    let date1 : String = self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType:orderViewController?.selOrder ?? 0).updatedAt ?? ""
                     cell.btnView.addTarget(self.orderViewController, action: #selector(self.orderViewController?.actionOrderDetail(_:)),for: .touchUpInside)
                     
                     cell.btnOrderStatus.isHidden = true
@@ -281,14 +286,12 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == self.tableView{
-            
-        }else {
-//            let vc = OrderDetailsViewController(nibName: "OrderDetailsViewController", bundle: .main)
-//            vc.isOrderRequest = false
-//            vc.isMultipleOrder = true
-//            self.orderViewController?.navigationController?.pushViewController(vc, animated: true)
-        }
+        let vc = OrderDetailsViewController(nibName: "OrderDetailsViewController", bundle: .main)
+        vc.isOrderRequest = false
+        let section = indexPath.section
+        let orderType = orderViewController?.selOrder ?? 1
+        vc.arrOrders = viewModel.getArrOrder(listAt: section,orderType:orderType) ?? []
+        self.orderViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView : UIScrollView) {

@@ -13,7 +13,12 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
     @IBOutlet weak var navView: UIView!
     @IBOutlet weak var lblOrderStatus: UILabel!
     @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var switchView: UIView!
+    @IBOutlet weak var switchView: UIView!{
+        didSet{
+            switchView.backgroundColor = .lightGray
+            drawBorder(view: switchView, color: .lightGray, width: 1.0, radius: 5.0)
+        }
+    }
     @IBOutlet weak var switchStackView: UIStackView!
     @IBOutlet weak var btnFirstOrder: UIButton!
     @IBOutlet weak var btnSecondOrder: UIButton!
@@ -78,21 +83,21 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
         let objOrder = viewModel.getOrderDetail()
         stHeight.constant = viewModel.isMerged() ? 60 : 0
         switchStackView.isHidden = false
-        switchView.backgroundColor = .lightGray
-        drawBorder(view: switchView, color: .lightGray, width: 1.0, radius: 5.0)
+        
         drawBorder(view: switchStackView, color: .lightGray, width: 1.0, radius: 5.0)
-        btnFirstOrder.backgroundColor = GreenColor
-        btnSecondOrder.backgroundColor = .white
-        btnFirstOrder.setTitle("First Order", for: .normal)
-        btnSecondOrder.setTitle("Second Order", for: .normal)
-        btnFirstOrder.titleLabel?.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 16.0))
-        btnSecondOrder.titleLabel?.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 16.0))
         
-        btnFirstOrder.setTitleColor(.white, for: .selected)
-        btnFirstOrder.setTitleColor(.lightGray, for: .normal)
-        
-        btnSecondOrder.setTitleColor(.white, for: .selected)
-        btnSecondOrder.setTitleColor(.lightGray, for: .normal)
+//        btnFirstOrder.backgroundColor = GreenColor
+//        btnSecondOrder.backgroundColor = .white
+//        btnFirstOrder.setTitle("First Order", for: .normal)
+//        btnSecondOrder.setTitle("Second Order", for: .normal)
+//        btnFirstOrder.titleLabel?.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 16.0))
+//        btnSecondOrder.titleLabel?.font = UIFont(name: fFONT_MEDIUM, size: calculateFontForWidth(size: 16.0))
+//        
+//        btnFirstOrder.setTitleColor(.white, for: .selected)
+//        btnFirstOrder.setTitleColor(.lightGray, for: .normal)
+//        
+//        btnSecondOrder.setTitleColor(.white, for: .selected)
+//        btnSecondOrder.setTitleColor(.lightGray, for: .normal)
 
 
 //        }else {
@@ -122,7 +127,11 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
                         lblOrderStatus.text = "Order \(objOrder.orderStatus.asStringOrEmpty())"
                     }else if objOrder.orderStatus == OrderStatus.AcceptedByShop.rawValue{
                         lblOrderStatus.text = "Driver Not Assigned yet."
+                    } else if objOrder.orderStatus == OrderStatus.Delivered.rawValue {
+                        let date = objOrder.updatedAt ?? ""
+                        lblOrderStatus.text = "\(OrderStatus.Delivered.rawValue) on \(date.toDateString(outputFormat: REQUESTED_TIME_FORMATE) ?? "")"
                     }
+                    
                 }
 //            }
         }
@@ -158,6 +167,7 @@ class OrderDetailsViewController: BaseViewController, BottomSheetDelegate {
             btnFirstOrder.backgroundColor = .white
             btnFirstOrder.isSelected = false
         }
+        setupView()
         tableView.reloadData()
     }
     

@@ -19,8 +19,8 @@ class BusinessDriverTVCell: UITableViewCell {
     @IBOutlet var txtDeliveryTime: UITextField!
     @IBOutlet var btnEdit: UIButton!
     @IBOutlet  var vwInput: UIView!
-    @IBOutlet  var vwDriverStatus : UIView!{
-        didSet{
+    @IBOutlet  var vwDriverStatus : UIView! {
+        didSet {
             vwDriverStatus.clipsToBounds = true
             vwDriverStatus.layer.cornerRadius = vwDriverStatus.frame.height/2
         }

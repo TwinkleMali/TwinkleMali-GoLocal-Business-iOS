@@ -23,6 +23,7 @@ extension LoginViewController {
         let  param : Parameters = [
             "email": email,
             "password": password,
+            "user_role" : USER_ROLE,
             "device_type": DEVICE_TYPE,
             "device_token": DEVICE_TOKEN,
             "latitude" : "",
@@ -61,7 +62,9 @@ extension LoginViewController {
                     self.navigateToHome()
                 }
             } else {
-                self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                if status != "ConnectionLost" {
+                    self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                }
             }
         }
     }
@@ -94,7 +97,9 @@ extension ForgotPasswordViewController {
                      //self.navigateNext()
                  }
              } else {
-                 self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                if status != "ConnectionLost" {
+                    self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                }
              }
          }
          
@@ -160,7 +165,9 @@ extension BaseViewController{
                 }
                 
             } else {
-                self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                if status != "ConnectionLost" {
+                    self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                }
             }
         }
     }
@@ -184,12 +191,42 @@ extension ChangePasswordViewController {
                    })
                 }
             } else {
-                self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                if status != "ConnectionLost" {
+                    self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                }
             }
         }
     }
 }
-
+extension ProfileViewController {
+    func doLogout(completion: @escaping (Bool) -> ()){
+        let param : Parameters = [
+            "user_id" : USER_DETAILS?.id ?? 0,
+            "user_role" : USER_DETAILS?.roleId ?? 0,
+            "device_type": DEVICE_TYPE,
+            "device_token": FCM_TOKEN,
+        ]
+        KRProgressHUD.show()
+        APIHelper.shared.postJsonRequest(url: APILogout, parameter: param, headers: headers) { (isCompleted, status, response) in
+            KRProgressHUD.dismiss()
+             if isCompleted {
+                 if !(response["status"] as! Bool) {
+                     self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                    completion(false)
+                 } else {
+                     let msg = response["message"] as? String ?? "User Logged out successfully."
+                    self.showBanner(bannerTitle: .none, message: msg, type: .success)
+                    completion(true)
+                 }
+             } else {
+                if status != "ConnectionLost" {
+                    self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                }
+                completion(false)
+             }
+         }
+    }
+}
 extension EditProfileViewController {
     func editProfileInfo(param : Parameters){
         KRProgressHUD.show()
@@ -211,7 +248,9 @@ extension EditProfileViewController {
                     self.tableView.reloadData()
                 }
             } else {
-                self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                if status != "ConnectionLost" {
+                    self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                }
             }
         }
     }
@@ -252,7 +291,9 @@ extension BusinessDetailsViewController {
                     self.tableView.reloadData()
                 }
             } else {
-                self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                if status != "ConnectionLost" {
+                    self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .danger)
+                }
             }
         }
     }
@@ -419,60 +460,53 @@ extension DriverDetailsViewController {
 
 extension OrderViewController {
     func getListOfOrders(param : Parameters){
-        if self.isLoader{
-            KRProgressHUD.show()
-        }
-        APIHelper.shared.postJsonRequest(url: APIGetAllBusinessOrders, parameter: param, headers: headers) { (isCompleted, status, response) in
-            self.viewModel.removeAllCurrentOrder(orderType: self.selOrder)
-            self.view.isUserInteractionEnabled = true
-            self.tableView.isHidden = false
+           if self.isLoader{
+               KRProgressHUD.show()
+           }
+           APIHelper.shared.postJsonRequest(url: APIGetAllBusinessOrders, parameter: param, headers: headers) { (isCompleted, status, response) in
+               self.viewModel.removeAllCurrentOrder(orderType: self.selOrder)
+               self.view.isUserInteractionEnabled = true
+               self.tableView.isHidden = false
 
-            if self.isLoader{
-                KRProgressHUD.dismiss()
-            }
-            
-            if isCompleted {
-                if !(response["status"] as! Bool) {
-
-                    //self.showBanner(bannerTitle: .alert, message: "No Orders Found", type: .danger)
-                    self.viewModel.removeAllCurrentOrder(orderType: param["order_option"] as! Int)
-                    self.tableView.reloadData()
-
-                } else {
-//                    if let data = response[WSDATA] as? NSDictionary {
-//                        if let arrTempOrders = data["order_list"] as? NSArray {
-//                            var arrOrders : [OrderDetails] = []
-//                            for objOrder in arrTempOrders{
-//                                if let order = objOrder as? NSDictionary {
-//                                    arrOrders.append(OrderDetails(object: JSON(order)))
-//                                }
-//                            }
-//                            self.viewModel.setOrders(arrOrder: arrOrders, orderType:param["order_option"] as! Int)
-//                            self.tableView.reloadData()
-//                        }
-//                    }
-                    if let data = response[WSDATA] as? NSDictionary {
-                        if let arrTempOrders = data["order_list"] as? NSArray {
-                            var arrOrders : [OrderList] = []
-                            for objOrder in arrTempOrders{
-                                arrOrders.append(OrderList(object: JSON(objOrder)))
-                            }
-
-                            self.viewModel.setOrderList(arrOrderList: arrOrders, orderType: param["order_option"] as! Int)
-                            self.tableView.reloadData()
-                        }
-                    }
-                }
-                if self.isLoadMore{
-                    self.isLoadMore = false
-                    self.indicatorView.isHidden = true
-                    self.activityIndicator.stopAnimating()
-                }
-            }
-            self.tableView.isHidden = self.viewModel.getOrderRowCount(orderType: self.selOrder) < 0
-        }
-        
-    }
+               if self.isLoader{
+                   KRProgressHUD.dismiss()
+               }
+               
+               if isCompleted {
+                   if !(response["status"] as! Bool) {
+                   } else {
+   //                    if let data = response[WSDATA] as? NSDictionary {
+   //                        if let arrTempOrders = data["order_list"] as? NSArray {
+   //                            var arrOrders : [OrderDetails] = []
+   //                            for objOrder in arrTempOrders{
+   //                                if let order = objOrder as? NSDictionary {
+   //                                    arrOrders.append(OrderDetails(object: JSON(order)))
+   //                                }
+   //                            }
+   //                            self.viewModel.setOrders(arrOrder: arrOrders, orderType:param["order_option"] as! Int)
+   //                            self.tableView.reloadData()
+   //                        }
+   //                    }
+                       if let data = response[WSDATA] as? NSDictionary {
+                           if let arrTempOrders = data["order_list"] as? NSArray {
+                               var arrOrders : [OrderList] = []
+                               for objOrder in arrTempOrders{
+                                   arrOrders.append(OrderList(object: JSON(objOrder)))
+                               }
+                               self.viewModel.setOrderList(arrOrderList: arrOrders, orderType: param["order_option"] as! Int)
+                               self.tableView.reloadData()
+                           }
+                       }
+                   }
+                   if self.isLoadMore{
+                       self.isLoadMore = false
+                       self.indicatorView.isHidden = true
+                       self.activityIndicator.stopAnimating()
+                   }
+               }
+           }
+           
+       }
 }
 
 
@@ -620,12 +654,17 @@ extension StripeConnectViewController {
                 self.navigationController?.popViewController(animated: true)
             } else {
                 //self.showBanner(bannerTitle: .none, message: response["message"] as? String ?? "Something went wrong.", type: .info)
-                let banner = NotificationBanner(title: .none, subtitle: response["message"] as? String ?? "Something went wrong.", leftView: nil, rightView: nil, style: .info)
-                //banner.delegate = self
-                banner.show()
+
+                if status != "ConnectionLost" {
+                    let banner = NotificationBanner(title: .none, subtitle: response["message"] as? String ?? "Something went wrong.", leftView: nil, rightView: nil, style: .info)
+                    //banner.delegate = self
+                    banner.show()
+                }
             }
         }
-
+    }
+    
+}
 extension PaymentOptionViewController {
     func getCustomerDetails(code : String){
         KRProgressHUD.show()
@@ -650,11 +689,5 @@ extension PaymentOptionViewController {
                 }
             }
         }
-    }
-}
-extension EarningViewController {
-    func getAllEarnings(){
-
-        
     }
 }

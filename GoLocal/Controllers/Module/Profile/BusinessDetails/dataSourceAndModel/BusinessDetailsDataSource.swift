@@ -43,7 +43,13 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if section == BusinessDetailField.OpenCloseTime.rawValue{
             return 9
-        }else {
+        } else if section == BusinessDetailField.Images.rawValue {
+            if viewModel.getSliderImages().count > 0 {
+                return 1
+            } else {
+                return  businessDetailsViewController?.isEditEnable ?? false ? 1 : 0
+            }
+        } else {
             return 1
         }
     }
@@ -90,11 +96,14 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     let layout = UICollectionViewFlowLayout()
                     layout.itemSize = UICollectionViewFlowLayout.automaticSize
                     layout.scrollDirection = .vertical
-                    cell.cvImages.collectionViewLayout.invalidateLayout()
-                    cell.cvImages.setCollectionViewLayout(layout, animated: false)
-                    cell.cvImages.delegate = self
+                    if viewModel.getSliderImages().count > 0 {
+                        cell.cvImages.collectionViewLayout.invalidateLayout()
+                        cell.cvImages.setCollectionViewLayout(layout, animated: false)
+                        cell.cvImages.delegate = self
+                    }
                     cell.cvImages.dataSource = self
                     cell.cvImages.reloadData()
+                    
 //                    cell.cvImages.setNeedsLayout()
                     return cell
                 }
@@ -402,8 +411,9 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                         cell.txtCloseTime.alpha = 0.5
                         cell.btnSwitch.alpha = 0.5
                     }
-                    
-                    if  viewModel.getShopSchedule()[customIndex].isClosed == 0{
+                    let days = ["","","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+                    cell.btnSwitch.setTitle(days[indexPath.row], for: .normal)
+                    if  viewModel.getShopSchedule().count > 0 && viewModel.getShopSchedule()[customIndex].isClosed == 0{
                         cell.btnSwitch.setImage(UIImage(named: "switch_on"), for: .normal)
                         cell.btnSwitch.accessibilityLabel = "switch_on"
                         cell.btnClosed.isHidden = true
@@ -413,7 +423,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                         cell.txtCloseTime.text = viewModel.getShopSchedule()[customIndex].closingTime
                         cell.txtOpenTime.layer.borderWidth = 1
                         cell.txtCloseTime.layer.borderWidth = 1
-                        
+                        cell.btnSwitch.setTitle(String((viewModel.getShopSchedule()[customIndex].weekday?.prefix(3))!), for: .normal)
                     }else {
                         cell.btnSwitch.setImage(UIImage(named: "switch_off"), for: .normal)
                         cell.btnSwitch.accessibilityLabel = "switch_off"
@@ -433,7 +443,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.txtCloseTime.accessibilityLabel = "CloseTime"
                     cell.txtOpenTime.accessibilityValue = "\(customIndex)"
                     cell.txtCloseTime.accessibilityValue = "\(customIndex)"
-                    cell.btnSwitch.setTitle(String((viewModel.getShopSchedule()[customIndex].weekday?.prefix(3))!), for: .normal)
+                    //cell.btnSwitch.setTitle(String((viewModel.getShopSchedule()[customIndex].weekday?.prefix(3))!), for: .normal)
                     cell.svTime.isHidden = false
                     cell.txtOpenTime.delegate = self
                     cell.txtCloseTime.delegate = self

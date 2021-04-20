@@ -8,6 +8,7 @@
 import UIKit
 import Reachability
 import NotificationBannerSwift
+import AVFoundation
 var BASEVIEW_CONTROLLER : BaseViewController?
 var CURRENT_NAVIGATION : UINavigationController?
 
@@ -59,7 +60,43 @@ class BaseViewController: UIViewController {
             self.tabBarController?.tabBar.frame.origin.y = self.view.frame.size.height + (tabFrame?.size.height)!
         })
     }
+    func requestCameraPermission() -> Bool {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .authorized: // The user has previously granted access to the camera.
+                //self.setupCaptureSession()
+                return true
+            case .notDetermined: // The user has not yet been asked for camera access.
+                var isGranted  = false
+                AVCaptureDevice.requestAccess(for: .video) { granted in
+                    isGranted = granted
+                }
+                return isGranted
+            case .denied: // The user has previously denied access.
+                return false
 
+            case .restricted: // The user can't grant access due to restrictions.
+                return false
+        }
+    }
+    func alertPromptToAllowCameraAccessViaSetting() {
+
+        
+            let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+         
+             let alert = UIAlertController(
+                 title: "Need Camera Access",
+                 message: "Camera access is required to make full use of this app.",
+                preferredStyle: UIAlertController.Style.alert
+             )
+         
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Allow Camera", style: .cancel, handler: { (alert) -> Void in
+                UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+            }))
+        
+            present(alert, animated: true, completion: nil)
+       
+    }
     func showTabBar() {
         let frame = self.tabBarController?.tabBar.frame
         //frame?.origin.y = self.view.frame.size.height - (frame?.size.height)!
@@ -88,7 +125,7 @@ class BaseViewController: UIViewController {
                 NotificationCenter.default.addObserver(alert, selector: Selector(("hideAlertController")), name: NSNotification.Name(rawValue: "DismissAllAlertsNotification"), object: nil)
                 self.present(alert, animated: true, completion:nil)*/
                //self.showAlert(title: "Alert", message: "Please check your internet connection.")
-               
+            self.showBanner(bannerTitle: .alert, message: "Please check your internet connection.", type: .warning)
            }
            
            do {

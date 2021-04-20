@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogoutViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="MainView" destination="pH9-NF-s9u" id="fof-J6-O88"/>
+                <outlet property="activityIndecator" destination="fv5-WU-0zn" id="xpq-RP-C4o"/>
+                <outlet property="btnCancel" destination="sHe-bI-YGZ" id="9ri-Hr-FE3"/>
+                <outlet property="btnLogout" destination="dEs-be-eBg" id="uZ2-I4-WCd"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFv-VI-Sdk" userLabel="ViewBG">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pH9-NF-s9u">
+                    <rect key="frame" x="0.0" y="682" width="414" height="214"/>
+                    <subviews>
+                        <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQ4-1f-jhw" userLabel="spratorView">
+                            <rect key="frame" x="103.5" y="20" width="207" height="5"/>
+                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="5" id="jdz-1Y-TeY"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                    <real key="value" value="2.5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to Logout?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dl-AN-DrT">
+                            <rect key="frame" x="20" y="25" width="374" height="24.5"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEs-be-eBg">
+                            <rect key="frame" x="20" y="69.5" width="374" height="52"/>
+                            <color key="backgroundColor" red="0.0" green="0.43921568630000002" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="dEs-be-eBg" secondAttribute="height" multiplier="25:3.5" id="nie-j0-Jh1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                            <state key="normal" title="Yes">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="btnLogout:" destination="-1" eventType="touchUpInside" id="qf3-cP-s0o"/>
+                            </connections>
+                        </button>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="fv5-WU-0zn">
+                            <rect key="frame" x="364" y="85.5" width="20" height="20"/>
+                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </activityIndicatorView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHe-bI-YGZ">
+                            <rect key="frame" x="20" y="136.5" width="374" height="52.5"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="btnCancel:" destination="-1" eventType="touchUpInside" id="0Br-fq-ElE"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="dEs-be-eBg" firstAttribute="top" secondItem="9dl-AN-DrT" secondAttribute="bottom" constant="20" id="5mf-h4-QKv"/>
+                        <constraint firstItem="9dl-AN-DrT" firstAttribute="top" secondItem="LQ4-1f-jhw" secondAttribute="bottom" id="5ni-E2-mdY"/>
+                        <constraint firstAttribute="trailing" secondItem="9dl-AN-DrT" secondAttribute="trailing" constant="20" id="6gR-qu-Rqq"/>
+                        <constraint firstItem="dEs-be-eBg" firstAttribute="leading" secondItem="pH9-NF-s9u" secondAttribute="leading" constant="20" id="9TD-mh-UXU"/>
+                        <constraint firstItem="LQ4-1f-jhw" firstAttribute="centerX" secondItem="pH9-NF-s9u" secondAttribute="centerX" id="ALc-iK-4RN"/>
+                        <constraint firstItem="sHe-bI-YGZ" firstAttribute="top" secondItem="dEs-be-eBg" secondAttribute="bottom" constant="15" id="BIL-DM-mHK"/>
+                        <constraint firstItem="sHe-bI-YGZ" firstAttribute="height" secondItem="dEs-be-eBg" secondAttribute="height" id="HSU-zk-agA"/>
+                        <constraint firstItem="sHe-bI-YGZ" firstAttribute="width" secondItem="dEs-be-eBg" secondAttribute="width" id="J8t-p0-F1M"/>
+                        <constraint firstAttribute="trailing" secondItem="dEs-be-eBg" secondAttribute="trailing" constant="20" id="JPL-Lf-mg5"/>
+                        <constraint firstItem="fv5-WU-0zn" firstAttribute="centerY" secondItem="dEs-be-eBg" secondAttribute="centerY" id="Lq9-52-wwU"/>
+                        <constraint firstAttribute="bottom" secondItem="sHe-bI-YGZ" secondAttribute="bottom" constant="25" id="O3E-7M-hAb"/>
+                        <constraint firstItem="fv5-WU-0zn" firstAttribute="trailing" secondItem="dEs-be-eBg" secondAttribute="trailing" constant="-10" id="Rf0-Qp-DI8"/>
+                        <constraint firstItem="LQ4-1f-jhw" firstAttribute="top" secondItem="pH9-NF-s9u" secondAttribute="top" constant="20" id="Rpp-EF-5eb"/>
+                        <constraint firstItem="9dl-AN-DrT" firstAttribute="leading" secondItem="pH9-NF-s9u" secondAttribute="leading" constant="20" id="ch8-e3-inJ"/>
+                        <constraint firstItem="LQ4-1f-jhw" firstAttribute="width" secondItem="pH9-NF-s9u" secondAttribute="width" multiplier="0.5" id="dBd-uF-fG4"/>
+                        <constraint firstItem="sHe-bI-YGZ" firstAttribute="centerX" secondItem="pH9-NF-s9u" secondAttribute="centerX" id="sKl-zf-cdY"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="GFv-VI-Sdk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0Fk-bx-omF"/>
+                <constraint firstAttribute="bottom" secondItem="pH9-NF-s9u" secondAttribute="bottom" id="E7m-zs-pXh"/>
+                <constraint firstItem="GFv-VI-Sdk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ipa-fL-GGn"/>
+                <constraint firstAttribute="bottom" secondItem="GFv-VI-Sdk" secondAttribute="bottom" id="K2k-oE-ufL"/>
+                <constraint firstItem="GFv-VI-Sdk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Vra-1L-W56"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pH9-NF-s9u" secondAttribute="trailing" id="caM-5l-r4d"/>
+                <constraint firstItem="pH9-NF-s9u" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xWg-9e-6hd"/>
+            </constraints>
+            <point key="canvasLocation" x="140.57971014492756" y="77.678571428571431"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

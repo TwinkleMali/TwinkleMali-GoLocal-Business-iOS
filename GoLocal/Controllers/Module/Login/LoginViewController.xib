@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,6 +38,39 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qnv-gc-5rU">
+                    <rect key="frame" x="0.0" y="226" width="414" height="670"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFF-We-xp7">
+                            <rect key="frame" x="15" y="40" width="77" height="32"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="26"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to your account or register below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5z-b1-Oge">
+                            <rect key="frame" x="15" y="80" width="353.5" height="22"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bzt-gf-Bbz">
+                            <rect key="frame" x="10" y="128" width="394" height="542"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="nFF-We-xp7" firstAttribute="leading" secondItem="Qnv-gc-5rU" secondAttribute="leading" constant="15" id="8Z4-Lm-Ipf"/>
+                        <constraint firstAttribute="trailing" secondItem="bzt-gf-Bbz" secondAttribute="trailing" constant="10" id="CXb-7T-b7L"/>
+                        <constraint firstAttribute="bottom" secondItem="bzt-gf-Bbz" secondAttribute="bottom" id="JLG-Nq-897"/>
+                        <constraint firstItem="Y5z-b1-Oge" firstAttribute="leading" secondItem="nFF-We-xp7" secondAttribute="leading" id="WP3-6z-htf"/>
+                        <constraint firstItem="nFF-We-xp7" firstAttribute="top" secondItem="Qnv-gc-5rU" secondAttribute="top" constant="40" id="bRq-H4-FT4"/>
+                        <constraint firstItem="bzt-gf-Bbz" firstAttribute="top" secondItem="Y5z-b1-Oge" secondAttribute="bottom" multiplier="120:102" constant="8" symbolic="YES" id="c6I-tQ-Nhw"/>
+                        <constraint firstItem="Y5z-b1-Oge" firstAttribute="top" secondItem="nFF-We-xp7" secondAttribute="bottom" multiplier="80:72" id="jmQ-El-paG"/>
+                        <constraint firstItem="bzt-gf-Bbz" firstAttribute="leading" secondItem="Qnv-gc-5rU" secondAttribute="leading" constant="10" id="p5t-Ts-OLd"/>
+                    </constraints>
+                </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_top_bg" translatesAutoresizingMaskIntoConstraints="NO" id="vxZ-lx-s7E">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
                     <constraints>
@@ -56,39 +88,6 @@
                         <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="i00-ye-iKM"/>
                     </connections>
                 </button>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qnv-gc-5rU">
-                    <rect key="frame" x="0.0" y="233" width="414" height="663"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFF-We-xp7">
-                            <rect key="frame" x="15" y="40" width="77" height="32"/>
-                            <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="26"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to your account or register below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5z-b1-Oge">
-                            <rect key="frame" x="15" y="80" width="353.5" height="22"/>
-                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bzt-gf-Bbz">
-                            <rect key="frame" x="10" y="128" width="394" height="535"/>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </tableView>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="nFF-We-xp7" firstAttribute="leading" secondItem="Qnv-gc-5rU" secondAttribute="leading" constant="15" id="8Z4-Lm-Ipf"/>
-                        <constraint firstAttribute="trailing" secondItem="bzt-gf-Bbz" secondAttribute="trailing" constant="10" id="CXb-7T-b7L"/>
-                        <constraint firstAttribute="bottom" secondItem="bzt-gf-Bbz" secondAttribute="bottom" id="JLG-Nq-897"/>
-                        <constraint firstItem="Y5z-b1-Oge" firstAttribute="leading" secondItem="nFF-We-xp7" secondAttribute="leading" id="WP3-6z-htf"/>
-                        <constraint firstItem="nFF-We-xp7" firstAttribute="top" secondItem="Qnv-gc-5rU" secondAttribute="top" constant="40" id="bRq-H4-FT4"/>
-                        <constraint firstItem="bzt-gf-Bbz" firstAttribute="top" secondItem="Y5z-b1-Oge" secondAttribute="bottom" multiplier="120:102" constant="8" symbolic="YES" id="c6I-tQ-Nhw"/>
-                        <constraint firstItem="Y5z-b1-Oge" firstAttribute="top" secondItem="nFF-We-xp7" secondAttribute="bottom" multiplier="80:72" id="jmQ-El-paG"/>
-                        <constraint firstItem="bzt-gf-Bbz" firstAttribute="leading" secondItem="Qnv-gc-5rU" secondAttribute="leading" constant="10" id="p5t-Ts-OLd"/>
-                    </constraints>
-                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7R5-Qy-Zy4">
                     <rect key="frame" x="18" y="111" width="125" height="31"/>
                     <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="25"/>
@@ -132,7 +131,7 @@
                 <constraint firstItem="vxZ-lx-s7E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="iFy-st-mmz"/>
                 <constraint firstItem="Qnv-gc-5rU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="n81-Jr-tQT"/>
                 <constraint firstItem="vxZ-lx-s7E" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="nLv-FR-uMF"/>
-                <constraint firstItem="Qnv-gc-5rU" firstAttribute="top" secondItem="vxZ-lx-s7E" secondAttribute="bottom" id="pvy-wm-mKU"/>
+                <constraint firstItem="Qnv-gc-5rU" firstAttribute="top" secondItem="vxZ-lx-s7E" secondAttribute="bottom" constant="-7" id="pvy-wm-mKU"/>
                 <constraint firstItem="gP8-BT-an5" firstAttribute="width" secondItem="gP8-BT-an5" secondAttribute="height" multiplier="1:1" id="rnP-J7-vsC"/>
             </constraints>
             <point key="canvasLocation" x="60.869565217391312" y="76.339285714285708"/>
@@ -140,7 +139,7 @@
     </objects>
     <resources>
         <image name="icon_back_w" width="25" height="20.5"/>
-        <image name="login_top_bg" width="375" height="226.5"/>
+        <image name="login_top_bg" width="375" height="233.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -235,8 +235,22 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
             case OrderDetailsField.requestDetail.rawValue:
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "RequestDetailsOrderTVCell") as? RequestDetailsOrderTVCell{
                     cell.selectionStyle = .none
+                    var varient = ""
+                    var addons = ""
+                    if let product = self.viewModel.getProductDetails(productAt: indexPath.row) {
+                        if let selected = product.selectedProducts {
+                            varient  = selected[0].variationName ?? ""
+                            addons = selected[0].addons?.map({$0.addonName ?? ""}).joined(separator: ",") ?? ""
+                        }
+                    }
                     cell.lblOrderName.text = self.viewModel.getProductDetails(productAt: indexPath.row)?.productName
-                    cell.lblOrderDescription.text = self.viewModel.getProductDetails(productAt: indexPath.row)?.productDescription
+                    
+                    cell.lblOrderDescription.text = varient
+                    if addons.count > 0 {
+                        cell.lblOrderDescription.text = "\(varient) - \(addons)"
+                    }
+                        //self.viewModel.getProductDetails(productAt: indexPath.row)?.productDescription
+                    cell.lblQty.text = "Qty : \(self.viewModel.getProductDetails(productAt: indexPath.row)?.selectedProducts?[0].quantity ?? 0)"
                     cell.leftPaddingConst.constant = 5
                     cell.rightPaddingConst.constant = 5
                     cell.mainView.clipsToBounds = true

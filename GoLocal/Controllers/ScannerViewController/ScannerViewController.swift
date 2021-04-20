@@ -35,7 +35,7 @@ class ScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsD
     fileprivate var completionHandler: (String) -> () = {scannedValue  in }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
        
     }
     override func viewWillAppear(_ animated: Bool) {

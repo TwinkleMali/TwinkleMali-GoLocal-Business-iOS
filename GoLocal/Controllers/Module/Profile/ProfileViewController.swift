@@ -68,22 +68,34 @@ class ProfileViewController: BaseViewController {
             break
             
         case PROFILE.Logout.rawValue:
-            switch APP_DELEGATE?.socketIOHandler?.socket?.status{
-                case .connected?:
-                    if (APP_DELEGATE!.socketIOHandler!.isJoinSocket){
-                        APP_DELEGATE!.socketIOHandler?.leaveBusinessRoom()
+           
+            let vc = LogoutViewController.loadFromNib()
+            vc.modalPresentationStyle = .overFullScreen
+            vc.setView { (result) in
+                if result == .success {
+                    switch APP_DELEGATE?.socketIOHandler?.socket?.status{
+                        case .connected?:
+                            if (APP_DELEGATE!.socketIOHandler!.isJoinSocket){
+                                APP_DELEGATE!.socketIOHandler?.leaveBusinessRoom()
+                            }
+                            break
+                        default:
+                            print("Socket Not Connected")
                     }
-                    break
-                default:
-                   print("Socket Not Connected")
+                    self.doLogout { (isSuccess) in
+                        if isSuccess {
+                            USER_DEFAULTS.removeObject(forKey: defaultsKey.RejectReasons.rawValue)
+                            USER_DEFAULTS.removeObject(forKey: defaultsKey.userDetails.rawValue)
+                            let loginVc = LoginViewController(nibName: "LoginViewController", bundle: nil)
+                            let navVC = UINavigationController(rootViewController: loginVc)
+                            navVC.navigationBar.isHidden = true
+                            APP_DELEGATE?.socketIOHandler?.disconnectSocket()
+                            APP_DELEGATE?.window?.rootViewController = navVC
+                        }
+                    }
+                }
             }
-            USER_DEFAULTS.removeObject(forKey: defaultsKey.RejectReasons.rawValue)
-            USER_DEFAULTS.removeObject(forKey: defaultsKey.userDetails.rawValue)
-            let loginVc = LoginViewController(nibName: "LoginViewController", bundle: nil)
-            let navVC = UINavigationController(rootViewController: loginVc)
-            navVC.navigationBar.isHidden = true
-            APP_DELEGATE?.socketIOHandler?.disconnectSocket()
-            APP_DELEGATE?.window?.rootViewController = navVC
+            self.present(vc, animated: true, completion: nil)
             break
             
         default:

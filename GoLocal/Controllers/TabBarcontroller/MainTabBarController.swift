@@ -57,14 +57,12 @@ class MainTabBarController: UITabBarController {
             [
                #imageLiteral(resourceName: "order_req_icon"),
                #imageLiteral(resourceName: "order_icon"),
-//               #imageLiteral(resourceName: "product_icon"),
                #imageLiteral(resourceName: "driver_icon"),
                 #imageLiteral(resourceName: "profile_icon")
             ],
             [
                #imageLiteral(resourceName: "order_req_icon_en"),
                 #imageLiteral(resourceName: "order_icon_en"),
-//                #imageLiteral(resourceName: "product_icon_en"),
                 #imageLiteral(resourceName: "driver_icon_en"),
                 #imageLiteral(resourceName: "profile_icon_en")
             ]

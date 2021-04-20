@@ -131,19 +131,20 @@ class DriverSeleListViewController: BaseViewController{
             //Formate Date
         datePicker.datePickerMode = .dateAndTime
         datePicker.tag = textfield.tag
-            if #available(iOS 13.4, *) {
-                datePicker.preferredDatePickerStyle = .wheels
-            }
-            datePicker.minimumDate = Date()
-            //ToolBar
-            let toolbar = UIToolbar();
-            toolbar.sizeToFit()
-            let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-            let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(handleDatePicker));
-            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
-            toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
-            textfield.inputAccessoryView = toolbar
-            textfield.inputView = datePicker
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        let earlyDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())
+        datePicker.minimumDate = earlyDate
+        //ToolBar
+        let toolbar = UIToolbar();
+        toolbar.sizeToFit()
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(handleDatePicker));
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        toolbar.setItems([cancelButton,spaceButton,doneButton], animated: false)
+        textfield.inputAccessoryView = toolbar
+        textfield.inputView = datePicker
     }
 
     @objc func cancelDatePicker(){
@@ -152,7 +153,7 @@ class DriverSeleListViewController: BaseViewController{
     }
     
     @objc func handleDatePicker() {
-        selectedMin = datePicker.date.minutes(from: Date())
+        selectedMin = datePicker.date.minutes(from: Date()) + 1
         if datePicker.tag == DriverType.GoLocalFirstDrivers.rawValue{
             pickupTime = datePicker.date.seconds(from: Date())
             deliveryTimes = 0

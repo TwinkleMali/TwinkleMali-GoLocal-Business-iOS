@@ -114,16 +114,20 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
     // QRCode Scan icon Click
     @IBAction func actionScanCode(_ sender: UIButton) {
         //let vc = PaymentOptionViewController(nibName: "PaymentOptionViewController", bundle: .main)
-        let vc = ScannerViewController(nibName: "ScannerViewController", bundle: .main)
-        vc.modalPresentationStyle = .overFullScreen
-        vc.setView { (scannedValue) in
-            if scannedValue.count > 0 {
-                let vc1 = PaymentOptionViewController(nibName: "PaymentOptionViewController", bundle: .main)
-                vc1.scannedQRCode = scannedValue
-                self.navigationController?.pushViewController(vc1, animated: true)
+        if !requestCameraPermission() {
+            alertPromptToAllowCameraAccessViaSetting()
+        } else {
+            let vc = ScannerViewController(nibName: "ScannerViewController", bundle: .main)
+            vc.modalPresentationStyle = .overFullScreen
+            vc.setView { (scannedValue) in
+                if scannedValue.count > 0 {
+                    let vc1 = PaymentOptionViewController(nibName: "PaymentOptionViewController", bundle: .main)
+                    vc1.scannedQRCode = scannedValue
+                    self.navigationController?.pushViewController(vc1, animated: true)
+                }
             }
+            self.navigationController?.present(vc, animated: true, completion: nil)
         }
-        self.navigationController?.present(vc, animated: true, completion: nil)
     }
     
     // Order Request Detail and Accept Order Request Click

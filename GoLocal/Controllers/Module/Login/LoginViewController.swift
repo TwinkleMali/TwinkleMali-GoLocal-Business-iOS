@@ -127,6 +127,12 @@ class LoginViewController: BaseViewController {
             banner.show()
             return false
         }
+        if email.trimmingCharacters(in: .whitespacesAndNewlines).count < 5 {
+            let banner = NotificationBanner(title: BannerTitle.validation.rawValue, subtitle: validationMethod.getEnterValidDataMessage(.emailAddress), leftView: nil, rightView: nil, style: .danger)
+            banner.delegate = self
+            banner.show()
+            return false
+        }
         if !(email.isEmail) {
             let banner = NotificationBanner(title: BannerTitle.validation.rawValue, subtitle: validationMethod.getEnterValidDataMessage(.emailAddress), leftView: nil, rightView: nil, style: .danger)
             banner.delegate = self

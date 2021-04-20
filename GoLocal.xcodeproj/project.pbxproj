@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		000751912608741400B05BFC /* OrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000751902608741300B05BFC /* OrderList.swift */; };
 		00084C8F25C2B46100758ADA /* PastOrdersTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00084C8E25C2B46100758ADA /* PastOrdersTVCell.xib */; };
 		0019F5F225B98DAE005139F4 /* DriverListViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0019F5EC25B98DAE005139F4 /* DriverListViewDataSource.swift */; };
 		0019F5F325B98DAE005139F4 /* DriverListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0019F5ED25B98DAE005139F4 /* DriverListViewModel.swift */; };
@@ -81,7 +80,6 @@
 		0036BB7425BAE88000FFCC5E /* RatingTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0036BB4E25BAE87F00FFCC5E /* RatingTVCell.xib */; };
 		0036BB7525BAE88000FFCC5E /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0036BB4F25BAE87F00FFCC5E /* RatingViewController.swift */; };
 		0036BB7625BAE88000FFCC5E /* RatingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0036BB5025BAE87F00FFCC5E /* RatingViewController.xib */; };
-		003DAD432603743E00B3CF40 /* OrderDetailDriverTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 003DAD422603743E00B3CF40 /* OrderDetailDriverTVCell.xib */; };
 		0043A2FD25E0D3BD00A74E08 /* OrderDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0043A2FC25E0D3BD00A74E08 /* OrderDetails.swift */; };
 		005DB98B25D3B19700B7766D /* ShopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005DB98325D3B19700B7766D /* ShopDetail.swift */; };
 		005DB98C25D3B19700B7766D /* SelectedProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005DB98425D3B19700B7766D /* SelectedProducts.swift */; };
@@ -93,8 +91,6 @@
 		005F87F025D1588C000A475A /* SocketIOHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F87EF25D1588C000A475A /* SocketIOHandler.swift */; };
 		005FE44925F2656E0093483B /* ImageSliderTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005FE44825F2656E0093483B /* ImageSliderTVCell.xib */; };
 		005FE44B25F269760093483B /* MediaUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005FE44A25F269760093483B /* MediaUrl.swift */; };
-		006012552604C8C60093C096 /* ConfirmationDialogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006012532604C8C40093C096 /* ConfirmationDialogVC.swift */; };
-		006012562604C8C60093C096 /* ConfirmationDialogVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006012542604C8C50093C096 /* ConfirmationDialogVC.xib */; };
 		0061591225CAB71000F7ED1E /* CalanderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061591025CAB70F00F7ED1E /* CalanderViewController.swift */; };
 		0061591325CAB71000F7ED1E /* CalanderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0061591125CAB70F00F7ED1E /* CalanderViewController.xib */; };
 		0061592225CAB76F00F7ED1E /* VACalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0061591525CAB76F00F7ED1E /* VACalendar.swift */; };
@@ -274,24 +270,26 @@
 		B58B75FA25A5D5F600446FB7 /* DynamicArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58B75F625A5D5F600446FB7 /* DynamicArray.swift */; };
 		B58B75FB25A5D5F600446FB7 /* DynamicAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58B75F725A5D5F600446FB7 /* DynamicAsync.swift */; };
 		B58B75FC25A5D5F600446FB7 /* GenericUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58B75F825A5D5F600446FB7 /* GenericUtils.swift */; };
-
-		B594B9022615858A0058D98B /* MergerRequestDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B594B901261585890058D98B /* MergerRequestDetail.swift */; };
-
+		B590BFD8262EEF7C008F646B /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B590BFD6262EEF7C008F646B /* LogoutViewController.swift */; };
+		B590BFD9262EEF7C008F646B /* LogoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B590BFD7262EEF7C008F646B /* LogoutViewController.xib */; };
 		B5A6C6CA2603475D007204ED /* CopyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6C6C82603475C007204ED /* CopyLabel.swift */; };
 		B5A6C6CB2603475D007204ED /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6C6C92603475D007204ED /* QRScannerView.swift */; };
 		B5A6C6CD260347FC007204ED /* QRData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A6C6CC260347FC007204ED /* QRData.swift */; };
 		B5A6C6CF26034D2A007204ED /* scan.gif in Resources */ = {isa = PBXBuildFile; fileRef = B5A6C6CE26034D2A007204ED /* scan.gif */; };
-
 		B5D307DE2599BC2A00858439 /* ModelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D307DC2599BC2A00858439 /* ModelViewController.swift */; };
 		B5D307DF2599BC2A00858439 /* ModelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D307DD2599BC2A00858439 /* ModelViewController.xib */; };
-		B5D4D64D261AE61E00476AF3 /* StripeConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D64B261AE61E00476AF3 /* StripeConnectViewController.swift */; };
-		B5D4D64E261AE61E00476AF3 /* StripeConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D4D64C261AE61E00476AF3 /* StripeConnectViewController.xib */; };
-		B5D4D651261AE73100476AF3 /* StripeConnectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D64F261AE73000476AF3 /* StripeConnectViewModel.swift */; };
-		B5D4D652261AE73100476AF3 /* StripeConnectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D650261AE73000476AF3 /* StripeConnectDataSource.swift */; };
+		B5D4D655261B34CD00476AF3 /* OrderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D653261B34CD00476AF3 /* OrderList.swift */; };
+		B5D4D656261B34CE00476AF3 /* MergerRequestDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D654261B34CD00476AF3 /* MergerRequestDetail.swift */; };
+		B5D4D659261B351800476AF3 /* StripeConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D657261B351800476AF3 /* StripeConnectViewController.swift */; };
+		B5D4D65A261B351800476AF3 /* StripeConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D4D658261B351800476AF3 /* StripeConnectViewController.xib */; };
+		B5D4D65D261B352400476AF3 /* StripeConnectDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D65B261B352200476AF3 /* StripeConnectDataSource.swift */; };
+		B5D4D65E261B352400476AF3 /* StripeConnectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D65C261B352300476AF3 /* StripeConnectViewModel.swift */; };
+		B5D4D662261B360800476AF3 /* ConfirmationDialogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D4D660261B360800476AF3 /* ConfirmationDialogVC.swift */; };
+		B5D4D663261B360800476AF3 /* ConfirmationDialogVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D4D661261B360800476AF3 /* ConfirmationDialogVC.xib */; };
+		B5D4D665261B3A4300476AF3 /* OrderDetailDriverTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5D4D664261B3A4200476AF3 /* OrderDetailDriverTVCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		000751902608741300B05BFC /* OrderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderList.swift; sourceTree = "<group>"; };
 		00084C8E25C2B46100758ADA /* PastOrdersTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PastOrdersTVCell.xib; sourceTree = "<group>"; };
 		0019F5EC25B98DAE005139F4 /* DriverListViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverListViewDataSource.swift; sourceTree = "<group>"; };
 		0019F5ED25B98DAE005139F4 /* DriverListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverListViewModel.swift; sourceTree = "<group>"; };
@@ -367,7 +365,6 @@
 		0036BB4E25BAE87F00FFCC5E /* RatingTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingTVCell.xib; sourceTree = "<group>"; };
 		0036BB4F25BAE87F00FFCC5E /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		0036BB5025BAE87F00FFCC5E /* RatingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RatingViewController.xib; sourceTree = "<group>"; };
-		003DAD422603743E00B3CF40 /* OrderDetailDriverTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailDriverTVCell.xib; sourceTree = "<group>"; };
 		0043A2FC25E0D3BD00A74E08 /* OrderDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetails.swift; sourceTree = "<group>"; };
 		005DB98325D3B19700B7766D /* ShopDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetail.swift; sourceTree = "<group>"; };
 		005DB98425D3B19700B7766D /* SelectedProducts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedProducts.swift; sourceTree = "<group>"; };
@@ -379,8 +376,6 @@
 		005F87EF25D1588C000A475A /* SocketIOHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOHandler.swift; sourceTree = "<group>"; };
 		005FE44825F2656E0093483B /* ImageSliderTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSliderTVCell.xib; sourceTree = "<group>"; };
 		005FE44A25F269760093483B /* MediaUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaUrl.swift; sourceTree = "<group>"; };
-		006012532604C8C40093C096 /* ConfirmationDialogVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationDialogVC.swift; sourceTree = "<group>"; };
-		006012542604C8C50093C096 /* ConfirmationDialogVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmationDialogVC.xib; sourceTree = "<group>"; };
 		0061591025CAB70F00F7ED1E /* CalanderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalanderViewController.swift; sourceTree = "<group>"; };
 		0061591125CAB70F00F7ED1E /* CalanderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalanderViewController.xib; sourceTree = "<group>"; };
 		0061591525CAB76F00F7ED1E /* VACalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VACalendar.swift; sourceTree = "<group>"; };
@@ -563,26 +558,23 @@
 		B58B75F625A5D5F600446FB7 /* DynamicArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicArray.swift; sourceTree = "<group>"; };
 		B58B75F725A5D5F600446FB7 /* DynamicAsync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicAsync.swift; sourceTree = "<group>"; };
 		B58B75F825A5D5F600446FB7 /* GenericUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericUtils.swift; sourceTree = "<group>"; };
-
-		B594B901261585890058D98B /* MergerRequestDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergerRequestDetail.swift; sourceTree = "<group>"; };
-
+		B590BFD6262EEF7C008F646B /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
+		B590BFD7262EEF7C008F646B /* LogoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogoutViewController.xib; sourceTree = "<group>"; };
 		B5A6C6C82603475C007204ED /* CopyLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyLabel.swift; sourceTree = "<group>"; };
 		B5A6C6C92603475D007204ED /* QRScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
 		B5A6C6CC260347FC007204ED /* QRData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRData.swift; sourceTree = "<group>"; };
 		B5A6C6CE26034D2A007204ED /* scan.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = scan.gif; sourceTree = "<group>"; };
-Following are the remaining tasks in Business App,
-1. Test Merge Order Request Accept Flow
-2. Check Height issue of Order List Screen After Merged Request
-3. Manage Order Detail Screen After Merged Request.
-4. Test Push notification.
-5. Order Detail -> Print receipt
-6. Profile -> Manage Bank Account
 		B5D307DC2599BC2A00858439 /* ModelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewController.swift; sourceTree = "<group>"; };
 		B5D307DD2599BC2A00858439 /* ModelViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModelViewController.xib; sourceTree = "<group>"; };
-		B5D4D64B261AE61E00476AF3 /* StripeConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeConnectViewController.swift; sourceTree = "<group>"; };
-		B5D4D64C261AE61E00476AF3 /* StripeConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StripeConnectViewController.xib; sourceTree = "<group>"; };
-		B5D4D64F261AE73000476AF3 /* StripeConnectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeConnectViewModel.swift; sourceTree = "<group>"; };
-		B5D4D650261AE73000476AF3 /* StripeConnectDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeConnectDataSource.swift; sourceTree = "<group>"; };
+		B5D4D653261B34CD00476AF3 /* OrderList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderList.swift; sourceTree = "<group>"; };
+		B5D4D654261B34CD00476AF3 /* MergerRequestDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergerRequestDetail.swift; sourceTree = "<group>"; };
+		B5D4D657261B351800476AF3 /* StripeConnectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeConnectViewController.swift; sourceTree = "<group>"; };
+		B5D4D658261B351800476AF3 /* StripeConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StripeConnectViewController.xib; sourceTree = "<group>"; };
+		B5D4D65B261B352200476AF3 /* StripeConnectDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeConnectDataSource.swift; sourceTree = "<group>"; };
+		B5D4D65C261B352300476AF3 /* StripeConnectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeConnectViewModel.swift; sourceTree = "<group>"; };
+		B5D4D660261B360800476AF3 /* ConfirmationDialogVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmationDialogVC.swift; sourceTree = "<group>"; };
+		B5D4D661261B360800476AF3 /* ConfirmationDialogVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmationDialogVC.xib; sourceTree = "<group>"; };
+		B5D4D664261B3A4200476AF3 /* OrderDetailDriverTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailDriverTVCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -762,6 +754,7 @@ Following are the remaining tasks in Business App,
 		0036BB1825BAE87F00FFCC5E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				B590BFD5262EEF7C008F646B /* LogoutViewController */,
 				00F0662025C7F84200BAB8E3 /* BusinessDetails */,
 				0036BB1925BAE87F00FFCC5E /* BankAccount */,
 				0036BB2E25BAE87F00FFCC5E /* ChangePassword */,
@@ -779,14 +772,14 @@ Following are the remaining tasks in Business App,
 		0036BB1925BAE87F00FFCC5E /* BankAccount */ = {
 			isa = PBXGroup;
 			children = (
+				B5D4D657261B351800476AF3 /* StripeConnectViewController.swift */,
+				B5D4D658261B351800476AF3 /* StripeConnectViewController.xib */,
 				0036BB1A25BAE87F00FFCC5E /* AddBankAccount */,
 				0036BB2325BAE87F00FFCC5E /* CommonAddTVCell */,
 				0036BB2625BAE87F00FFCC5E /* dataSourceAndViewModel */,
 				0036BB2925BAE87F00FFCC5E /* ManageBankAccountTVCell */,
 				0036BB2C25BAE87F00FFCC5E /* ManageBankAccountViewController.swift */,
 				0036BB2D25BAE87F00FFCC5E /* ManageBankAccountViewController.xib */,
-				B5D4D64B261AE61E00476AF3 /* StripeConnectViewController.swift */,
-				B5D4D64C261AE61E00476AF3 /* StripeConnectViewController.xib */,
 			);
 			path = BankAccount;
 			sourceTree = "<group>";
@@ -832,8 +825,8 @@ Following are the remaining tasks in Business App,
 		0036BB2625BAE87F00FFCC5E /* dataSourceAndViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				B5D4D650261AE73000476AF3 /* StripeConnectDataSource.swift */,
-				B5D4D64F261AE73000476AF3 /* StripeConnectViewModel.swift */,
+				B5D4D65B261B352200476AF3 /* StripeConnectDataSource.swift */,
+				B5D4D65C261B352300476AF3 /* StripeConnectViewModel.swift */,
 				0036BB2725BAE87F00FFCC5E /* ManageBankAccountDataSource.swift */,
 				0036BB2825BAE87F00FFCC5E /* ManageBankAccountViewModel.swift */,
 			);
@@ -952,15 +945,6 @@ Following are the remaining tasks in Business App,
 				005F87EF25D1588C000A475A /* SocketIOHandler.swift */,
 			);
 			path = SocketHandler;
-			sourceTree = "<group>";
-		};
-		006012522604C86E0093C096 /* ConfirmationDialog */ = {
-			isa = PBXGroup;
-			children = (
-				006012532604C8C40093C096 /* ConfirmationDialogVC.swift */,
-				006012542604C8C50093C096 /* ConfirmationDialogVC.xib */,
-			);
-			path = ConfirmationDialog;
 			sourceTree = "<group>";
 		};
 		0061590F25CAB70F00F7ED1E /* CalanderViewController */ = {
@@ -1377,10 +1361,10 @@ Following are the remaining tasks in Business App,
 		00F0662325C7F92600BAB8E3 /* OrderDetailsTVCell */ = {
 			isa = PBXGroup;
 			children = (
+				B5D4D664261B3A4200476AF3 /* OrderDetailDriverTVCell.xib */,
 				00F0662425C7F92600BAB8E3 /* OrderDetailsTVCell.swift */,
 				00F0662525C7F92600BAB8E3 /* OrderDetailsTVCell.xib */,
 				00F0662925C7FF7E00BAB8E3 /* OrderBillDetailsTVCell.xib */,
-				003DAD422603743E00B3CF40 /* OrderDetailDriverTVCell.xib */,
 			);
 			path = OrderDetailsTVCell;
 			sourceTree = "<group>";
@@ -1537,8 +1521,8 @@ Following are the remaining tasks in Business App,
 		46CDA38D2589BB430089105D /* model */ = {
 			isa = PBXGroup;
 			children = (
-				B594B901261585890058D98B /* MergerRequestDetail.swift */,
-				000751902608741300B05BFC /* OrderList.swift */,
+				B5D4D654261B34CD00476AF3 /* MergerRequestDetail.swift */,
+				B5D4D653261B34CD00476AF3 /* OrderList.swift */,
 				0022D824260083BD00A246D1 /* Country.swift */,
 				005FE44A25F269760093483B /* MediaUrl.swift */,
 				00C2F47F25F2038B00032EBE /* Categories.swift */,
@@ -1602,7 +1586,7 @@ Following are the remaining tasks in Business App,
 		46CDA3972589C1470089105D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				006012522604C86E0093C096 /* ConfirmationDialog */,
+				B5D4D65F261B360800476AF3 /* ConfirmationDialog */,
 				B56C3F7D2604B562003B0F6E /* EarningViewController */,
 				468AB1992603B1F6006832A8 /* PaymentConfirmationViewController */,
 				B51EBF652603309C008FDBA5 /* ScannerViewController */,
@@ -1810,6 +1794,15 @@ Following are the remaining tasks in Business App,
 			path = Dynamics;
 			sourceTree = "<group>";
 		};
+		B590BFD5262EEF7C008F646B /* LogoutViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B590BFD6262EEF7C008F646B /* LogoutViewController.swift */,
+				B590BFD7262EEF7C008F646B /* LogoutViewController.xib */,
+			);
+			path = LogoutViewController;
+			sourceTree = "<group>";
+		};
 		B5A6C6C72603474C007204ED /* QRScanner */ = {
 			isa = PBXGroup;
 			children = (
@@ -1828,6 +1821,15 @@ Following are the remaining tasks in Business App,
 				B5D307DD2599BC2A00858439 /* ModelViewController.xib */,
 			);
 			path = ModelViewController;
+			sourceTree = "<group>";
+		};
+		B5D4D65F261B360800476AF3 /* ConfirmationDialog */ = {
+			isa = PBXGroup;
+			children = (
+				B5D4D660261B360800476AF3 /* ConfirmationDialogVC.swift */,
+				B5D4D661261B360800476AF3 /* ConfirmationDialogVC.xib */,
+			);
+			path = ConfirmationDialog;
 			sourceTree = "<group>";
 		};
 		E1F14BB46461F86CE381D55E /* Frameworks */ = {
@@ -1917,6 +1919,7 @@ Following are the remaining tasks in Business App,
 				00A468F625C91E2A008B7671 /* Info.plist in Resources */,
 				46CDA4012589D5890089105D /* Assets.xcassets in Resources */,
 				00F0661425C7DE4D00BAB8E3 /* ConfirmAmountAlert.xib in Resources */,
+				B590BFD9262EEF7C008F646B /* LogoutViewController.xib in Resources */,
 				0036BB5425BAE87F00FFCC5E /* AddBankAccountViewController.xib in Resources */,
 				B51EBF69260330BD008FDBA5 /* ScannerViewController.xib in Resources */,
 				0020284B25DE8456008E0E2E /* DriverSectionTVCell.xib in Resources */,
@@ -1940,14 +1943,12 @@ Following are the remaining tasks in Business App,
 				00F065DC25C5494F00BAB8E3 /* PaymentOptionTVCell.xib in Resources */,
 				005FE44925F2656E0093483B /* ImageSliderTVCell.xib in Resources */,
 				0099D94625C1717700383466 /* OptionViewController.xib in Resources */,
-				B5D4D64E261AE61E00476AF3 /* StripeConnectViewController.xib in Resources */,
 				46BBFE78258BA2DC0088CBB9 /* ForgotPasswordViewController.xib in Resources */,
 				00A4698425C965D2008B7671 /* SelectDriverTVCell.xib in Resources */,
 				00A4697525C950BD008B7671 /* OpenCloseTimeTVCell.xib in Resources */,
 				006D7F7E25B5B9F80068C598 /* OrderRequestViewController.xib in Resources */,
 				B504F01B260307850041A85B /* CalenderMonthCell.xib in Resources */,
 				0019F61525B9904E005139F4 /* SingleCategoryTVCell.xib in Resources */,
-				006012562604C8C60093C096 /* ConfirmationDialogVC.xib in Resources */,
 				00CB992B25F0F02A00161590 /* DriverLocationViewController.xib in Resources */,
 				0036BB6A25BAE87F00FFCC5E /* NotificationsViewController.xib in Resources */,
 				00084C8F25C2B46100758ADA /* PastOrdersTVCell.xib in Resources */,
@@ -1963,9 +1964,9 @@ Following are the remaining tasks in Business App,
 				0019F5F525B98DAE005139F4 /* SingleDriverTVCell.xib in Resources */,
 				0036BB6025BAE87F00FFCC5E /* ChangePasswordViewController.xib in Resources */,
 				46595045258B3237001D8CC0 /* LoginViewController.xib in Resources */,
-				003DAD432603743E00B3CF40 /* OrderDetailDriverTVCell.xib in Resources */,
 				0061591325CAB71000F7ED1E /* CalanderViewController.xib in Resources */,
 				00A4698025C965D2008B7671 /* DriverSeleListViewController.xib in Resources */,
+				B5D4D665261B3A4300476AF3 /* OrderDetailDriverTVCell.xib in Resources */,
 				0099D97625C1978400383466 /* RequestDetailsOrderTVCell.xib in Resources */,
 				0020284E25DE84A6008E0E2E /* GoLocalDriverTVCell.xib in Resources */,
 				0036BB6E25BAE87F00FFCC5E /* ProfileViewController.xib in Resources */,
@@ -1973,10 +1974,12 @@ Following are the remaining tasks in Business App,
 				0020284025DE820F008E0E2E /* DriverStatusViewController.xib in Resources */,
 				00F0664125C82BEC00BAB8E3 /* BussinessImageCVCell.xib in Resources */,
 				0019F61E25B9909E005139F4 /* ProductListViewController.xib in Resources */,
+				B5D4D663261B360800476AF3 /* ConfirmationDialogVC.xib in Resources */,
 				00F0663425C8185600BAB8E3 /* BusinessDetailsViewController.xib in Resources */,
 				0099D96525C1972300383466 /* OrderButtonTVCell.xib in Resources */,
 				0022D8342600869400A246D1 /* MobileNumberTVCell.xib in Resources */,
 				46CDA3FA2589D5890089105D /* Montserrat-Bold.otf in Resources */,
+				B5D4D65A261B351800476AF3 /* StripeConnectViewController.xib in Resources */,
 				0061593625CACC6E00F7ED1E /* SingleMonthCVCell.xib in Resources */,
 				00F0662725C7F92700BAB8E3 /* OrderDetailsTVCell.xib in Resources */,
 				0099D96725C1972300383466 /* OrderListTVCell.xib in Resources */,
@@ -2059,7 +2062,6 @@ Following are the remaining tasks in Business App,
 				46CDA3B92589CF380089105D /* StringExtensions.swift in Sources */,
 				00B98D2D25BEDEA500538651 /* NotificationViewModel.swift in Sources */,
 				0036BB7525BAE88000FFCC5E /* RatingViewController.swift in Sources */,
-				B5D4D652261AE73100476AF3 /* StripeConnectDataSource.swift in Sources */,
 				46CDA3BC2589CF380089105D /* Optional+Extensions.swift in Sources */,
 				46CDA3BB2589CF380089105D /* JSON+Extensions.swift in Sources */,
 				0089110C25B1AE4F00C9125A /* Struct.swift in Sources */,
@@ -2084,17 +2086,18 @@ Following are the remaining tasks in Business App,
 				005F87F025D1588C000A475A /* SocketIOHandler.swift in Sources */,
 				00F065DB25C5494F00BAB8E3 /* PaymentOptionTVCell.swift in Sources */,
 				00A4698325C965D2008B7671 /* SelectDriverTVCell.swift in Sources */,
-				B594B9022615858A0058D98B /* MergerRequestDetail.swift in Sources */,
 				005DB98E25D3B19700B7766D /* BillingDetails.swift in Sources */,
 				006D7F7525B5B8870068C598 /* DriversListViewController.swift in Sources */,
 				0022D825260083BD00A246D1 /* Country.swift in Sources */,
 				0061592C25CAB76F00F7ED1E /* VAWeek.swift in Sources */,
+				B5D4D65E261B352400476AF3 /* StripeConnectViewModel.swift in Sources */,
 				005FE44B25F269760093483B /* MediaUrl.swift in Sources */,
 				46CDA3B82589CF380089105D /* UITextField+Extensions.swift in Sources */,
 				00B98D2925BEDD6700538651 /* NotificationDataSource.swift in Sources */,
 				005DB98C25D3B19700B7766D /* SelectedProducts.swift in Sources */,
 				0099D97325C1978400383466 /* RequestDetailsMapTVCell.swift in Sources */,
 				0099D97725C1978400383466 /* RequestProductDetailsTVCell.swift in Sources */,
+				B5D4D65D261B352400476AF3 /* StripeConnectDataSource.swift in Sources */,
 				B51EBF68260330BD008FDBA5 /* ScannerViewController.swift in Sources */,
 				0089110F25B1AE5900C9125A /* Enum.swift in Sources */,
 				0099D96425C1972300383466 /* OrderButtonTVCell.swift in Sources */,
@@ -2102,7 +2105,6 @@ Following are the remaining tasks in Business App,
 				0099D96225C1972300383466 /* PastOrdersTVCell.swift in Sources */,
 				005DB99025D3B19700B7766D /* OrderRequests.swift in Sources */,
 				0020283F25DE820F008E0E2E /* DriverStatusViewController.swift in Sources */,
-				006012552604C8C60093C096 /* ConfirmationDialogVC.swift in Sources */,
 				0061592525CAB76F00F7ED1E /* VADay.swift in Sources */,
 				0061592A25CAB76F00F7ED1E /* VAMonthHeaderView.swift in Sources */,
 				B56C3F7B2604A668003B0F6E /* LocalBusinessHomeViewController.swift in Sources */,
@@ -2110,14 +2112,15 @@ Following are the remaining tasks in Business App,
 				0036BB6925BAE87F00FFCC5E /* NotificationsViewController.swift in Sources */,
 				B571EE292604C27100305603 /* EarningViewModel.swift in Sources */,
 				00A4698525C965D2008B7671 /* DriverSeleListViewController.swift in Sources */,
+				B5D4D659261B351800476AF3 /* StripeConnectViewController.swift in Sources */,
 				00B98D3925BEF2C300538651 /* GiveRatingViewController.swift in Sources */,
 				46CDA3B52589CF380089105D /* UICollectionView_Extension.swift in Sources */,
-				B5D4D64D261AE61E00476AF3 /* StripeConnectViewController.swift in Sources */,
 				00F0664525C82CE900BAB8E3 /* BussinessImageCVCell.swift in Sources */,
 				0036BB5625BAE87F00FFCC5E /* AddBankAccountViewModel.swift in Sources */,
 				00F0663625C8185600BAB8E3 /* BusinessDetailsDataSource.swift in Sources */,
 				46CDA3C12589CF380089105D /* Popover.swift in Sources */,
 				B58B75FB25A5D5F600446FB7 /* DynamicAsync.swift in Sources */,
+				B5D4D662261B360800476AF3 /* ConfirmationDialogVC.swift in Sources */,
 				0020285025DE8B99008E0E2E /* GoLocalDriverTVCell.swift in Sources */,
 				00F0661025C7DE3100BAB8E3 /* ConfirmAmountAlert.swift in Sources */,
 				00F065A325C407B600BAB8E3 /* OrderDetailsViewModel.swift in Sources */,
@@ -2136,7 +2139,6 @@ Following are the remaining tasks in Business App,
 				0099D94325C1717700383466 /* BlurVC.swift in Sources */,
 				0020283D25DE820F008E0E2E /* DriverDetailsViewController.swift in Sources */,
 				00F065AD25C42D0E00BAB8E3 /* BottomSheetVC.swift in Sources */,
-				000751912608741400B05BFC /* OrderList.swift in Sources */,
 				46BBFE77258BA2DC0088CBB9 /* ForgotPasswordViewController.swift in Sources */,
 				0089111525B1AE6200C9125A /* HttpRequestManager.swift in Sources */,
 				0036BB6725BAE87F00FFCC5E /* EditProfileViewController.swift in Sources */,
@@ -2204,8 +2206,11 @@ Following are the remaining tasks in Business App,
 				0099D96625C1972300383466 /* OrderListTVCell.swift in Sources */,
 				46CDA3B72589CF380089105D /* UIImage+Extension.swift in Sources */,
 				00F0663725C8185600BAB8E3 /* BusinessDetailsViewModel.swift in Sources */,
+				B590BFD8262EEF7C008F646B /* LogoutViewController.swift in Sources */,
 				B5D307DE2599BC2A00858439 /* ModelViewController.swift in Sources */,
 				0089111625B1AE6200C9125A /* API_Manager+Extensions.swift in Sources */,
+				B5D4D655261B34CD00476AF3 /* OrderList.swift in Sources */,
+				B5D4D656261B34CE00476AF3 /* MergerRequestDetail.swift in Sources */,
 				46595056258B54BA001D8CC0 /* LoginViewModel.swift in Sources */,
 				00F0663525C8185600BAB8E3 /* BusinessDetailsViewController.swift in Sources */,
 				468AB19C2603B221006832A8 /* PaymentConfirmationViewController.swift in Sources */,
@@ -2235,7 +2240,6 @@ Following are the remaining tasks in Business App,
 				46F7DA73259A3B5900923A08 /* User.swift in Sources */,
 				46CDA3D52589D0330089105D /* AnimationManager.swift in Sources */,
 				00F0659A25C3CE5B00BAB8E3 /* OrderRequestViewModel.swift in Sources */,
-				B5D4D651261AE73100476AF3 /* StripeConnectViewModel.swift in Sources */,
 				B5A6C6CA2603475D007204ED /* CopyLabel.swift in Sources */,
 				0089111825B1AE6200C9125A /* APIHelper.swift in Sources */,
 				00C2F48025F2038B00032EBE /* SliderImages.swift in Sources */,
