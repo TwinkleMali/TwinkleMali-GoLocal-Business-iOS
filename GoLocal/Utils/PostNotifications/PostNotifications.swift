@@ -18,6 +18,11 @@ func postNotification(withName notificationName: String, userInfo : [AnyHashable
 
 //MARK:- NOTIFICATION KEYS
 enum notificationCenterKeys : String {
+    //Chat
+    case getAllMessages = "getAllMessages"
+    case receiveMessage = "receiveMessage"
+    case receiveMessageAck = "receiveMessageAck"
+    //End Chat
 	case commentReceived = "comment-received-for-feedback"
 	case leaveFeedbackRoom = "Leave_Feedback_Chat_Room"
     case joinFeedbackRoom = "Join_Feedback_Room"
@@ -37,5 +42,18 @@ enum notificationCenterKeys : String {
     case sendBusinessPaymentRequest = "sendBusinessPaymentRequest"
     case changeBusinessPaymentRequestStatus = "changeBusinessPaymentRequestStatus"
     case paymentRequestStatusChangeAck = "payment_request_status_change_ack"
-  
+//Trade
+    case trade_business_service_request = "trade_business_service_request"
+    case trade_request_cancelled = "trade_request_cancelled"
+    case submitServiceQuotation = "submitServiceQuotation"
+    case quotation_status_change_ack = "quotation_status_change_ack"
+    case changeTradeServiceStatus = "changeTradeServiceStatus"
+    case makeExtraChargeRequest = "makeExtraChargeRequest"
+    case getTradeRequestExtraCharges = "getTradeRequestExtraCharges"
+    case extra_charge_request_status_change_ack = "extra_charge_request_status_change_ack"
+    case trade_payment_received_ack = "trade_payment_received_ack"
+    case makeServicePaymentRequest = "makeServicePaymentRequest"
+    case service_payment_request_status_change_ack = "service_payment_request_status_change_ack"
+    case confirm_cash_payment = "confirm_cash_payment"
+    case confirmTradeServiceCashPayment = "confirmTradeServiceCashPayment"
 }

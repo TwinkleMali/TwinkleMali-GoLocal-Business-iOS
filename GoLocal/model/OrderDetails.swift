@@ -64,7 +64,7 @@ public struct OrderDetails {
     public var orderReceipt: String?
     public var orderFor: String?
     public var ontimeDeliveryRating: Int?
-    public var orderTotal: Float?
+    public var orderTotal: Double?
     public var isDriverRequestSent: Int?
     public var orderType: String?
     public var sentShopRequestAt: String?
@@ -83,14 +83,14 @@ public struct OrderDetails {
     public var rejectReason: String?
     public var deliveryAddress: String?
     public var orderUniqueId: String?
-    public var deliveryCharge: Int?
+    public var deliveryCharge: Double?
     public var driverId: Int?
     public var sentDriverRequestAt: String?
     public var billingDetails: BillingDetails?
     public var isReviewGiven: Int?
     public var orderStatus: String?
     public var offerApplied: Int?
-    public var orderTotalAmount: Int?
+    public var orderTotalAmount: Double?
     public var createdAt: String?
     public var appliedPartnerCode: String?
     public var serviceCharge: Float?
@@ -120,7 +120,7 @@ public struct OrderDetails {
       orderReceipt = json[SerializationKeys.orderReceipt].string
       orderFor = json[SerializationKeys.orderFor].string
       ontimeDeliveryRating = json[SerializationKeys.ontimeDeliveryRating].int
-      orderTotal = json[SerializationKeys.orderTotal].float
+      orderTotal = json[SerializationKeys.orderTotal].double
       isDriverRequestSent = json[SerializationKeys.isDriverRequestSent].int
       orderType = json[SerializationKeys.orderType].string
       sentShopRequestAt = json[SerializationKeys.sentShopRequestAt].string
@@ -139,14 +139,14 @@ public struct OrderDetails {
       rejectReason = json[SerializationKeys.rejectReason].string
       deliveryAddress = json[SerializationKeys.deliveryAddress].string
       orderUniqueId = json[SerializationKeys.orderUniqueId].string
-      deliveryCharge = json[SerializationKeys.deliveryCharge].int
+      deliveryCharge = json[SerializationKeys.deliveryCharge].double
       driverId = json[SerializationKeys.driverId].int
       sentDriverRequestAt = json[SerializationKeys.sentDriverRequestAt].string
       billingDetails = BillingDetails(json: json[SerializationKeys.billingDetails])
       isReviewGiven = json[SerializationKeys.isReviewGiven].int
       orderStatus = json[SerializationKeys.orderStatus].string
       offerApplied = json[SerializationKeys.offerApplied].int
-      orderTotalAmount = json[SerializationKeys.orderTotalAmount].int
+      orderTotalAmount = json[SerializationKeys.orderTotalAmount].double
       createdAt = json[SerializationKeys.createdAt].string
       appliedPartnerCode = json[SerializationKeys.appliedPartnerCode].string
       serviceCharge = json[SerializationKeys.serviceCharge].float

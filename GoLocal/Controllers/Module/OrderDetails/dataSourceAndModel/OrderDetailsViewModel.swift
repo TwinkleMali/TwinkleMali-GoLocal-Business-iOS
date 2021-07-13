@@ -13,6 +13,7 @@ class OrderDetailsViewModel {
     private var objOrderRequest : OrderRequests!
     //private var objOrder : OrderDetails!
     private var selectedTab = 0
+    private var products : [OrderProduct] = []
 }
 
 extension OrderDetailsViewModel {
@@ -45,6 +46,29 @@ extension OrderDetailsViewModel {
     func setOrderArr(arrOrders : [OrderDetails]){
         self.arrOrders.removeAll()
         self.arrOrders.append(contentsOf: arrOrders)
+    }
+    func getProductsCount() -> Int{
+        products.count
+    }
+    func getProduct(atPos : Int) -> OrderProduct{
+        products[atPos]
+    }
+    func manageProducts()  {
+        products.removeAll()
+        if let products = getOrderDetail().shopDetail?.products {
+            for product in products {
+                if let selectedProducts = product.selectedProducts {
+                    var subProductCnt = 0
+                    for _ in selectedProducts {
+                        var productObj = OrderProduct()
+                        productObj.products = product
+                        productObj.index = subProductCnt
+                        self.products.append(productObj)
+                        subProductCnt += 1
+                    }
+                }
+            }
+        }
     }
     
     //Update tab - (first / second)

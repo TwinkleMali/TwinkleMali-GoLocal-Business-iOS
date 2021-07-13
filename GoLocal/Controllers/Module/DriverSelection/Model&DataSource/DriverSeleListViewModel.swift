@@ -9,17 +9,26 @@ import Foundation
 class DriverSeleListViewModel {
     private var objDrivers : BusinessDrivers!
     private var driverList : [Drivers] = []
+    private var filteredDriverList : [Drivers] = []
+    private var searchEnabled = false
     private var objDriver : Drivers!
+    private var searchedText = ""
     private var objDriverOrder : OrderDetails!
 }
 //Getter Setter
 extension DriverSeleListViewModel{
     func getDriverRowCount() -> Int{
-        return driverList.count 
+        if searchedText != ""{
+            return searchEnabled ? filteredDriverList.count : driverList.count
+        }
+        return driverList.count
     }
     
     func getDriver(atPos : Int) -> Drivers{
-            return driverList[atPos]
+        if searchedText != ""{
+            return searchEnabled ? filteredDriverList[atPos] : driverList[atPos]
+        }
+        return driverList[atPos]
     }
     
     func setDrivers(drivers:[Drivers]){
@@ -48,5 +57,23 @@ extension DriverSeleListViewModel{
     
     func setDriverOrder(objDriverOrder: OrderDetails) {
         self.objDriverOrder = objDriverOrder
+    }
+    func updateSearch( _ value : Bool){
+        searchEnabled = value
+    }
+    func isSearchEnabled() -> Bool{
+        searchEnabled
+    }
+    func setSearchedText(text: String) {
+        searchedText = text
+        FilterData(text: text)
+    }
+    func FilterData(text: String){
+        let finaltext = text.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        let result = driverList.filter({($0.name ?? "").trimmingCharacters(in:          .whitespacesAndNewlines).lowercased().contains(finaltext) ||
+                                        ($0.lname ?? "").trimmingCharacters(in: .whitespacesAndNewlines).lowercased().contains(finaltext) ||
+                                        ($0.username ?? "").trimmingCharacters(in: .whitespacesAndNewlines).lowercased().contains(finaltext)})
+        self.filteredDriverList.removeAll()
+        self.filteredDriverList.append(contentsOf: result)
     }
 }

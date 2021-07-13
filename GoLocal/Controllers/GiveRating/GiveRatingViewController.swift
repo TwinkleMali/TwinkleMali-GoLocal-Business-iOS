@@ -7,7 +7,7 @@
 
 import UIKit
 import Cosmos
-
+import NotificationBannerSwift
 protocol GiveRatingViewControllerDelegate {
     func actioncancel()
     func actionSendReview(strReply : String)
@@ -76,8 +76,14 @@ class GiveRatingViewController: UIViewController {
     }
     
     @IBAction func btnSendReview(_ sender: UIButton) {
-        hidescanView()
-        delegateGiveratingViewController?.actionSendReview(strReply: ratingTextView.text)       
+        
+        if !ratingTextView.text.isEmpty {
+            hidescanView()
+            delegateGiveratingViewController?.actionSendReview(strReply: ratingTextView.text)
+        } else {
+            let banner = NotificationBanner(title: "Validation", subtitle: "Please add some review text to proceed.", leftView: nil, rightView: nil, style: .danger)
+            banner.show(bannerPosition: .top, on: self)
+        }
     }
     
     @IBAction func btnCancel(_ sender: UIButton) {

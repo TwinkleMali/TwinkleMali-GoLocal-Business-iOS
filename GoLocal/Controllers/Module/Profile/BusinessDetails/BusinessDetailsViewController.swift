@@ -51,7 +51,7 @@ class BusinessDetailsViewController: BaseViewController {
         }else {
             isEditEnable = true
             btnEdit.setTitle("Save", for: .normal)
-            tableView.reloadData()
+            tableView.reloadDataWithAutoSizingCellWorkAround()
         }
     }
     

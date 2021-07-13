@@ -15,6 +15,13 @@ func makeCircular(view : UIView) {
     view.layer.cornerRadius = view.frame.size.height/2
     view.layer.masksToBounds = true
 }
+func bundleForResource(name: String, ofType type: String) -> Bundle {
+    if Bundle.main.path(forResource: name, ofType: type) != nil {
+        return .main
+    }
+
+    return Bundle(for: PasscodeLock.self)
+}
 
 func getAppDelegate() -> Any? {
     return UIApplication.shared.delegate as? AppDelegate
@@ -187,20 +194,39 @@ func doScaleAnimation(sender : UIView, scale : CGFloat, duration : CGFloat, comp
     })
 }
 //MARK:- ADD DASHED BOARDER
-func addDashedBorder(withColor : UIColor, view : UIView) {
-//    let frameSize = view.frame.size
-    let shapeLayer = CAShapeLayer()
-    shapeLayer.strokeColor = UIColor.gray.cgColor
-    shapeLayer.lineWidth = 1
-    // passing an array with the values [2,3] sets a dash pattern that alternates between a 2-user-space-unit-long painted segment and a 3-user-space-unit-long unpainted segment
-    shapeLayer.lineDashPattern = [7,3]
-    let path = CGMutablePath()
-    path.addLines(between: [CGPoint(x: view.bounds.minX, y: view.bounds.minY),
-                            CGPoint(x: view.bounds.maxX, y: view.bounds.minY)])
-    shapeLayer.path = path    
+//func addDashedBorder(withColor : UIColor, view : UIView) {
+////    let frameSize = view.frame.size
+//    let shapeLayer = CAShapeLayer()
+//    shapeLayer.strokeColor = UIColor.gray.cgColor
+//    shapeLayer.lineWidth = 1
+//    // passing an array with the values [2,3] sets a dash pattern that alternates between a 2-user-space-unit-long painted segment and a 3-user-space-unit-long unpainted segment
+//    shapeLayer.lineDashPattern = [7,3]
+//    let path = CGMutablePath()
+//    path.addLines(between: [CGPoint(x: view.bounds.minX, y: view.bounds.minY),
+//                            CGPoint(x: view.bounds.maxX, y: view.bounds.minY)])
+//    shapeLayer.path = path
+//    view.layer.addSublayer(shapeLayer)
+//}
+
+func addDashedBorder(withColor : UIColor, view : UIView, isRound : Bool = false) {
+    let shapeLayer:CAShapeLayer = CAShapeLayer()
+    let frameSize = view.frame.size
+    let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
+
+    shapeLayer.bounds = shapeRect
+    shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
+    shapeLayer.fillColor = UIColor.clear.cgColor
+    shapeLayer.strokeColor = withColor.cgColor
+    shapeLayer.lineWidth = 1.5
+    shapeLayer.lineJoin = CAShapeLayerLineJoin.round
+    shapeLayer.lineDashPattern = [4,4]
+    shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 3).cgPath
+    view.layer.sublayers?.removeAll()
+    if isRound {
+        view.layer.cornerRadius =  (view.bounds.width / 2)
+    }
     view.layer.addSublayer(shapeLayer)
 }
-
 func addDashedCircle(withColor : UIColor, view : UIView) {
     let circleLayer = CAShapeLayer()
     circleLayer.path = UIBezierPath(ovalIn: view.bounds).cgPath
@@ -272,4 +298,36 @@ func convertStringToDictionary(text: String) -> [String:Any]? {
         print("Failed to load: \(error.localizedDescription)")
     }
     return nil
+}
+
+func getMonthfrom(_ number : Int) -> String{
+    switch number {
+    case 1:
+        return "January"
+    case 2:
+        return "February"
+    case 3:
+        return "March"
+    case 4:
+        return "April"
+    case 5:
+        return "May"
+    case 6:
+        return "June"
+    case 7:
+        return "July"
+    case 8:
+        return "August"
+    case 9:
+        return "September"
+    case 10:
+        return "October"
+    case 11:
+        return "November"
+    case 12:
+        return "December"
+    
+    default:
+        return ""
+    }
 }

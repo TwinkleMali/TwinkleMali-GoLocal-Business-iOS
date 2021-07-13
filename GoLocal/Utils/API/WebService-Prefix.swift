@@ -13,16 +13,17 @@ let POST = "POST"
 let MEDIA = "MEDIA"
 let PRIVATE_KEY = "kashfk=1gdj1123_asdq283y059==="
 
-let isLive = true
+let isLive = false
 let IS_TESTDATA = 1
 
 //http://clientapp.narola.online/sv/GoLocalFirst/API
 //GLFService.php?Service=Register
-let LOCAL_SERVER_URL = "https://apps.narola.online:444/pma/hde/data/459815/API"
+let LOCAL_SERVER_URL = "https://apps.narola.online:444/pma/hde/data/459815/API"//"https://narola.golocalfirst.co.uk/src/API"//
 
-let LIVE_SERVER_URL = "http://18.223.15.96/src/API"
+let LIVE_SERVER_URL = "https://narola.golocalfirst.co.uk/src/API"//"http://3.16.214.74/src/API"
 
-let SERVER_URL = isLive ?  LIVE_SERVER_URL : LOCAL_SERVER_URL
+
+let SERVER_URL = LIVE_SERVER_URL// isLive ?  LIVE_SERVER_URL : LOCAL_SERVER_URL
 let WEBSERVICE_PATH = "\(SERVER_URL)/GLFService.php?Service="
 
 
@@ -42,15 +43,20 @@ var headers = [
 ]
 //Terms location
 let TERMS_LOCATION = "\(SERVER_URL)/Terms/"
-let PATH_PP = "\(TERMS_LOCATION)privacy_policy.pdf"
-let PATH_TC = "\(TERMS_LOCATION)terms_conditions.pdf"
+//let PATH_PP = "\(TERMS_LOCATION)privacy_policy.pdf"
+//let PATH_TC = "\(TERMS_LOCATION)terms_conditions.pdf"
 let PATH_disclaimer = "\(TERMS_LOCATION)disclaimer.pdf"
 let PATH_OAUTH = "\(SERVER_URL)/s_oauth.php"
+
+let PATH_PP = "https://www.golocalfirst.co.uk/privacy_policy.php"
+let PATH_TC = "https://www.golocalfirst.co.uk/terms_and_conditions.php"
+let PATH_CONTACT_US = "https://www.golocalfirst.co.uk/contact_us.php"
+
 //Services
 let APIRefreshToken = "\(WEBSERVICE_PATH)RefreshToken"
 let APILogin = "\(WEBSERVICE_PATH)Login"
 let APILogout  = "\(WEBSERVICE_PATH)Logout"
-
+let API_RESET_PIN = "\(WEBSERVICE_PATH)ResetPin"
 let APIForgotPassword = "\(WEBSERVICE_PATH)ForgotPassword"
 let APIChangePassword = "\(WEBSERVICE_PATH)ChangePassword"
 let APIGetAllCountries = "\(WEBSERVICE_PATH)GetAllCountries"
@@ -72,7 +78,15 @@ let APIGetAllBusinessOrders = "\(WEBSERVICE_PATH)GetAllBusinessOrders"
 let APIGetBusinessDrivers = "\(WEBSERVICE_PATH)GetBusinessDrivers"
 let APIGetAllBusinessDrivers = "\(WEBSERVICE_PATH)GetAllBusinessDrivers"
 let APIGetBusyDriverOrderDetails = "\(WEBSERVICE_PATH)GetBusyDriverOrderDetails"
-
+let APIGetSingleTradeRequestDetail = "\(WEBSERVICE_PATH)GetSingleTradeRequestDetail"
+let APIGetAllNearestServices = "\(WEBSERVICE_PATH)GetAllNearestServices"
+let APIGetTradeBusinessOrders = "\(WEBSERVICE_PATH)GetTradeBusinessOrders"
+let APIGetTradeBusinessOrderDetails = "\(WEBSERVICE_PATH)GetTradeBusinessOrderDetails"
+let APIGetPendingQuotationList = "\(WEBSERVICE_PATH)GetPendingQuotationList"
+//Business Notifications
+let API_CheckBusinessPushNotificationTiming = "\(WEBSERVICE_PATH)CheckBusinessPushNotificationTiming"
+let API_GetBusinessPushNotificationList = "\(WEBSERVICE_PATH)GetBusinessPushNotificationList"
+let API_SendBusinessNotifications = "\(WEBSERVICE_PATH)SendBusinessNotifications"
 
 //let APISaveBusinessAccountDetail = "\(WEBSERVICE_PATH)SaveBusinessAccountDetail"
 
@@ -84,9 +98,9 @@ let APIGetBusyDriverOrderDetails = "\(WEBSERVICE_PATH)GetBusyDriverOrderDetails"
 
 
 
-let LOCAL_SOCKET_SERVER_URL = "http://192.168.100.174:8055"
-let LIVE_SOCKET_SERVER_URL = "http://18.223.15.96:3080"
-let SOCKET_SERVER_PATH = isLive ?  LIVE_SOCKET_SERVER_URL : LOCAL_SOCKET_SERVER_URL
+let liveSocketURL = "https://narola.golocalfirst.co.uk:3081"//"http://3.16.214.74:3080"
+let debugSocketURL = "https://narola.golocalfirst.co.uk:3080"//"https://narola.golocalfirst.co.uk:3080"//"http://192.168.100.174:8055"
+let SOCKET_SERVER_PATH =  isLive ? liveSocketURL : debugSocketURL
 
 let API_SOCKET_JOIN = "join_socket"
 let API_SOCKET_DISCONNECT = "disconnect_manually"
@@ -111,6 +125,24 @@ let API_CHANGE_TAKEAWAY_ORDER_STATUS = "changeTakeawayOrderStatus"
 let API_ORDER_STATUS_CHANGE_ACK = "order_status_change_ack"
 let API_GET_SINGLE_ORDER_DETAILS = "getSingleOrderDetails"
 let API_SAVE_BUSINESS_ACCOUNT_DETAIL = "\(WEBSERVICE_PATH)SaveBusinessAccountDetail"
+//Trade
+let API_SOCKET_TRADE_BUSINESS_SERVICE_REQUEST = "trade_business_service_request"
+let API_SOCKET_TRADE_REQUEST_CANCELLED = "trade_request_cancelled"
+let API_SOCKET_SUBMIT_SERVICE_QUOTATION = "submitServiceQuotation"
+let API_SOCKET_QUOTATION_STATUS_CHANGE_ACK = "quotation_status_change_ack"
+let API_SOCKET_CHANGE_TRADE_SERVICE_STATUS = "changeTradeServiceStatus"
+let API_SOCKET_MAKE_EXTRA_CHARGE_REQUEST = "makeExtraChargeRequest"
+let API_SOCKET_GET_TRADE_REQUEST_EXTRA_CHARGES = "getTradeRequestExtraCharges"
+let API_SOCKET_EXTRA_CHARGE_REQUEST_STATUS_CHANGE_ACK = "extra_charge_request_status_change_ack"
+let API_SOCKET_TRADE_PAYMENT_RECEIVED_ACK = "trade_payment_received_ack"
+let API_SOCKET_MAKE_SERVICE_PAYMENT_REQUEST = "makeServicePaymentRequest"
+let API_SOCKET_SERVICE_PAYMENT_REQUEST_STATUS_CHANGE_ACK = "service_payment_request_status_change_ack"
+let API_SOCKET_CONFIRM_CASH_PAYMENT = "confirm_cash_payment"
+let API_SOCKET_CONFIRM_TRADE_SERVICE_CASH_PAYMENT = "confirmTradeServiceCashPayment"
+//Chat
+let API_SOCKET_GET_NEW_MESSAGE_ACK = "get_new_message_ack"
+let API_SOCKET_GET_ORDER_CHAT_MESSAGE = "getOrderChatMessage"
+let API_SOCKET_SEND_ORDER_CHAT_MESSAGE = "sendOrderChatMessage"
 
 
 //Paths
@@ -147,6 +179,11 @@ var PATH_driver : String {
 var PATH_orders : String {
     get{
         getURL(forType: .orders)?.urlFormat ?? ""
+    }
+}
+var PATH_TradeAttachments : String {
+    get{
+        getURL(forType: .TradeAttachments)?.urlFormat ?? ""
     }
 }
 

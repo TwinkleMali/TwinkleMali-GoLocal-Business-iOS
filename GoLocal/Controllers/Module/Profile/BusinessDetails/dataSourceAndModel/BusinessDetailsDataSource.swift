@@ -64,7 +64,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == BusinessDetailField.Images.rawValue{
-            var arraycount : CGFloat = CGFloat(viewModel.getSliderImages().count + viewModel.getImages().count + 1)
+            var arraycount : CGFloat = CGFloat(viewModel.getSliderImages().count + viewModel.getImages().count)
             if businessDetailsViewController?.isEditEnable == true{
                 arraycount = arraycount + 1
             }
@@ -146,6 +146,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.btnHidePassword.isHidden = true
                 cell.textField.isSecureTextEntry = false
                 cell.lblTitle.text = "Store Name"
+                cell.textField.textColor = .black
                 cell.imgIcon.isHidden = true
                 cell.textField.isHidden = false
                 if businessDetailsViewController?.isEditEnable == true{
@@ -175,6 +176,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.textField.isSecureTextEntry = false
                 cell.lblTitle.text = "Store Location"
                 cell.imgIcon.isHidden = true
+                cell.textField.textColor = .black
                 cell.imgIconWidthConstraint.constant = 0
                 cell.btnHidePassword.isHidden = false
                 cell.btnHidePassword.setImage(UIImage(named: "placeholder"), for: .normal)
@@ -208,6 +210,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.btnHidePassword.isHidden = true
                 cell.textField.isSecureTextEntry = false
                 cell.lblTitle.text = "Email"
+                cell.textField.textColor = .black
                 cell.textField.isHidden = false
                 cell.imgIconWidthConstraint.constant = 0
                 cell.imgIcon.isHidden = true
@@ -236,6 +239,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 } else {
                     cell.lblCountryPhoneCode.text = "+0"
                 }
+                
                 cell.textPhoneNumber.delegate = self
                 cell.textPhoneNumber.keyboardType = .numberPad
                 cell.textPhoneNumber.text = viewModel.getContactNum()
@@ -289,6 +293,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.stviewRadio.isHidden = true
                 cell.textField.isSecureTextEntry = false
                 cell.textField.isHidden = false
+                cell.textField.textColor = .blue
                 cell.lblTitle.text = "Website"
                 cell.imgIcon.isHidden = true
                 if businessDetailsViewController?.isEditEnable == true{
@@ -317,6 +322,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.textField.isSecureTextEntry = false
                 cell.lblTitle.text = "Delivery Type"
                 cell.imgIcon.isHidden = true
+                cell.textField.textColor = .black
                 cell.imgIconWidthConstraint.constant = 0
                 if businessDetailsViewController?.isEditEnable == true{
                     cell.lblTitle.alpha = 1
@@ -362,6 +368,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.stviewRadio.isHidden = true
                 cell.btnHidePassword.isHidden = true
                 cell.textField.isHidden = false
+                cell.textField.textColor = .black
                 cell.textField.isSecureTextEntry = false
                 cell.lblTitle.text = "Business License number"
                 cell.imgIcon.isHidden = true

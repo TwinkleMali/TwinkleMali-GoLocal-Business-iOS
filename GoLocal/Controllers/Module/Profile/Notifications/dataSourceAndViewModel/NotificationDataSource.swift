@@ -11,8 +11,8 @@ import UIKit
 class NotificationDataSource: NSObject {
     //MARK:- VARIABLES
     private let tableView : UITableView
-    private let viewModel: NotificationViewModel
-    private let viewController: UIViewController
+    private let viewModel : NotificationViewModel
+    private let viewController : UIViewController
     private var notificationViewController : NotificationsViewController? {
         get{
             viewController as? NotificationsViewController
@@ -43,7 +43,9 @@ extension NotificationDataSource: UITableViewDelegate,UITableViewDataSource{
         if let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTVCell", for: indexPath) as? NotificationTVCell{
             cell.selectionStyle = .none
             cell.lblNotificationTitle.text = self.viewModel.getNotification(at: indexPath.row).notificationMessage.asStringOrEmpty()
-            cell.lblNotificationTime.text = self.viewModel.getNotification(at: indexPath.row).createdAt?.timeAgo()
+            let time = self.viewModel.getNotification(at: indexPath.row).createdAt
+            let local = time?.toDate()?.UTCtoLocal() ?? ""
+            cell.lblNotificationTime.text = local.toDate()!.timeAgoDisplay()
             cell.btnNavigateToScreens.tag = indexPath.row
             cell.btnNavigateToScreens.addTarget(self.notificationViewController, action: #selector(self.notificationViewController?.actionGoToDifferentScreens(_:)), for: .touchUpInside)
             return cell

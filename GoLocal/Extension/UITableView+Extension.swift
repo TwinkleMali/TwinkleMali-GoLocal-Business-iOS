@@ -46,5 +46,11 @@ extension UITableView{
 		   let rect = self.rectForRow(at: indexPath)
 		   return self.convert(rect, to: self.superview)
 	}
+    func reloadDataWithAutoSizingCellWorkAround() {
+        self.reloadData()
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
+        self.reloadData()
+    }
     
 }

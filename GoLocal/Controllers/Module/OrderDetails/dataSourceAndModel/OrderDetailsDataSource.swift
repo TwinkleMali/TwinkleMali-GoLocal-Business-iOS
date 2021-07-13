@@ -45,7 +45,14 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
             return 0
         }
         if section == OrderDetailsField.requestDetail.rawValue{
-            return viewModel.getOrderDetail().shopDetail?.products?.count ?? 0
+//            var count = 0
+//            if let products = viewModel.getOrderDetail().shopDetail?.products {
+//                for product in products {
+//                    count += product.selectedProducts?.count ?? 0
+//                }
+//            }
+//            return count //viewModel.getOrderDetail().shopDetail?.products?.count ?? 0
+            return viewModel.getProductsCount()
         }else{
             return 1
         }
@@ -237,20 +244,22 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     cell.selectionStyle = .none
                     var varient = ""
                     var addons = ""
-                    if let product = self.viewModel.getProductDetails(productAt: indexPath.row) {
-                        if let selected = product.selectedProducts {
-                            varient  = selected[0].variationName ?? ""
-                            addons = selected[0].addons?.map({$0.addonName ?? ""}).joined(separator: ",") ?? ""
+                    let product = self.viewModel.getProduct(atPos: indexPath.row) //getProductDetails(productAt: indexPath.row) {
+                        if let selected = product.products?.selectedProducts?[product.index] {
+                            varient  = selected.variationName ?? ""
+                            addons = selected.addons?.map({$0.addonName ?? ""}).joined(separator: ",") ?? ""
+                            cell.lblQty.text = "Qty : \(selected.quantity ?? 0)"
                         }
-                    }
-                    cell.lblOrderName.text = self.viewModel.getProductDetails(productAt: indexPath.row)?.productName
+                    
+                    cell.lblOrderName.text = product.products?.productName ?? ""
+                        //self.viewModel.getProductDetails(productAt: indexPath.row)?.productName
                     
                     cell.lblOrderDescription.text = varient
                     if addons.count > 0 {
                         cell.lblOrderDescription.text = "\(varient) - \(addons)"
                     }
                         //self.viewModel.getProductDetails(productAt: indexPath.row)?.productDescription
-                    cell.lblQty.text = "Qty : \(self.viewModel.getProductDetails(productAt: indexPath.row)?.selectedProducts?[0].quantity ?? 0)"
+                    
                     cell.leftPaddingConst.constant = 5
                     cell.rightPaddingConst.constant = 5
                     cell.mainView.clipsToBounds = true
@@ -262,7 +271,7 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
             if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailsTVCell") as? OrderDetailsTVCell{
                 cell.selectionStyle = .none
                 cell.lblTitle.text = "Amount"
-                cell.lblValue.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetail().orderTotalAmount ?? 0)"
+                cell.lblValue.text = (self.viewModel.getOrderDetail().billingDetails?.grandTotal ?? 0.0).getAmountInString()
                 return cell
             }
             
@@ -284,35 +293,35 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
         case OrderDetailsField.billDetails.rawValue:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "OrderBillDetailsTVCell") as? OrderDetailsTVCell{
                 cell.selectionStyle = .none
-                cell.lblItemTotal.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetail().billingDetails?.totalItemsPrice ?? 0.0)"
+                cell.lblItemTotal.text = (self.viewModel.getOrderDetail().billingDetails?.totalItemsPrice ?? 0.0).getAmountInString()
                 
-                cell.lblServiceCharge.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetail().billingDetails?.serviceCharge ?? 0)"
+                cell.lblServiceCharge.text = (self.viewModel.getOrderDetail().billingDetails?.serviceCharge ?? 0).getAmountInString()
                 
                 if (self.viewModel.getOrderDetail().billingDetails?.deliveryCharge ?? 0) > 0{
-                    cell.lblDeliveryFee.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetail().billingDetails?.deliveryCharge ?? 0)"
+                    cell.lblDeliveryFee.text = (self.viewModel.getOrderDetail().billingDetails?.deliveryCharge ?? 0).getAmountInString()
                 }else {
                     cell.lblDeliveryFee.text = "FREE"
                 }
                 
                 if (self.viewModel.getOrderDetail().billingDetails?.serviceCharge ?? 0) > 0{
-                    cell.lblShoppingFeeTotal.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetail().billingDetails?.serviceCharge ?? 0)"
+                    cell.lblShoppingFeeTotal.text = (self.viewModel.getOrderDetail().billingDetails?.serviceCharge ?? 0).getAmountInString()
                 }else {
                     cell.lblShoppingFeeTotal.text = "\(CURRENCY_SYMBOL)0.0"
                 }
                 
                 if (self.viewModel.getOrderDetail().billingDetails?.offerDiscountPrice ?? 0) > 0{
-                    cell.lblOrderDiscount.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetail().billingDetails?.offerDiscountPrice ?? 0)"
+                    cell.lblOrderDiscount.text = (self.viewModel.getOrderDetail().billingDetails?.offerDiscountPrice ?? 0).getAmountInString()
                 }else {
                     cell.lblOrderDiscount.text = "\(CURRENCY_SYMBOL)0.0"
                 }
                 
                 if (self.viewModel.getOrderDetail().billingDetails?.offerDiscountPrice ?? 0) > 0{
-                    cell.lblCouponDiscount.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetail().billingDetails?.offerDiscountPrice ?? 0)"
+                    cell.lblCouponDiscount.text = (self.viewModel.getOrderDetail().billingDetails?.offerDiscountPrice ?? 0).getAmountInString()
                 }else {
                     cell.lblCouponDiscount.text = "\(CURRENCY_SYMBOL)0.0"
                 }
                
-                cell.lblTotal.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetail().billingDetails?.grandTotal ?? 0.0)"
+                cell.lblTotal.text = (self.viewModel.getOrderDetail().billingDetails?.grandTotal ?? 0.0).getAmountInString()
                 return cell
             }
             
@@ -337,7 +346,11 @@ extension OrderDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                     
 //                    cell.lblUserName.text = "\(strname)"
                     cell.lblDriverName.text = "\(strname)"
-                    cell.lblDriverNumber.text = "+\(viewModel.getOrderDetail().driverDetails?.phonecode ?? 0) \(viewModel.getOrderDetail().driverDetails?.phone ?? "")"
+                    if (viewModel.getOrderDetail().driverDetails?.phone ?? "").isEmpty {
+                        cell.lblDriverNumber.text = "No Number"
+                    } else {
+                        cell.lblDriverNumber.text = "+\(viewModel.getOrderDetail().driverDetails?.phonecode ?? 0) \(viewModel.getOrderDetail().driverDetails?.phone ?? "")"
+                    }
                     cell.btnEdit.setImage(UIImage(named: ""), for: .normal)
                     cell.btnEdit.setTitle("View on Map", for: .normal)
                     cell.btnEdit.layer.cornerRadius = 7

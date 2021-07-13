@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -16,6 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderRequestViewController" customModule="GoLocal" customModuleProvider="target">
             <connections>
+                <outlet property="btnShowBusinessNotification" destination="Rdy-pB-Z0O" id="oqp-Q0-tJw"/>
                 <outlet property="lblNoMsg" destination="Gps-gR-Cto" id="BcA-LT-tYP"/>
                 <outlet property="navView" destination="YxL-v9-IyS" id="uLA-XK-U2i"/>
                 <outlet property="tableView" destination="GQ2-Dd-b3l" id="dSh-xL-KzS"/>
@@ -31,7 +32,7 @@
                     <rect key="frame" x="0.0" y="107.5" width="414" height="758.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gps-gR-Cto">
-                            <rect key="frame" x="146" y="369" width="122.5" height="21"/>
+                            <rect key="frame" x="137" y="368.5" width="140.5" height="22"/>
                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
                             <color key="textColor" name="DarkGreyColor"/>
                             <nil key="highlightedColor"/>
@@ -75,14 +76,28 @@
                                 <action selector="actionScanCode:" destination="-1" eventType="touchUpInside" id="C4r-tq-dXe"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdy-pB-Z0O">
+                            <rect key="frame" x="288.5" y="0.0" width="63" height="62.5"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" name="AppGreenColor"/>
+                            <state key="normal" image="icon_broadcast"/>
+                            <connections>
+                                <action selector="actionBusinessNotification:" destination="-1" eventType="touchUpInside" id="fU9-I1-NVW"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="XDs-xc-pXS" secondAttribute="trailing" id="1Ld-BX-VKS"/>
                         <constraint firstItem="Hoe-xw-mke" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="top" id="3P1-4e-0xo"/>
+                        <constraint firstItem="Rdy-pB-Z0O" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="top" id="5u7-rN-MaR"/>
                         <constraint firstAttribute="bottom" secondItem="Hoe-xw-mke" secondAttribute="bottom" constant="2" id="DV9-if-zTt"/>
                         <constraint firstItem="XDs-xc-pXS" firstAttribute="top" secondItem="YxL-v9-IyS" secondAttribute="top" id="Ve7-38-B55"/>
+                        <constraint firstItem="Rdy-pB-Z0O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hoe-xw-mke" secondAttribute="trailing" id="kE6-fO-wtB"/>
                         <constraint firstItem="Hoe-xw-mke" firstAttribute="leading" secondItem="YxL-v9-IyS" secondAttribute="leading" constant="20" id="p3Q-1b-px5"/>
+                        <constraint firstItem="Rdy-pB-Z0O" firstAttribute="width" secondItem="Rdy-pB-Z0O" secondAttribute="height" multiplier="1:1" id="rXu-4E-Yyf"/>
+                        <constraint firstItem="XDs-xc-pXS" firstAttribute="leading" secondItem="Rdy-pB-Z0O" secondAttribute="trailing" id="s1g-te-oNo"/>
+                        <constraint firstAttribute="bottom" secondItem="Rdy-pB-Z0O" secondAttribute="bottom" id="te7-zB-Q2f"/>
                         <constraint firstAttribute="bottom" secondItem="XDs-xc-pXS" secondAttribute="bottom" id="yF4-ZS-jKE"/>
                     </constraints>
                 </view>
@@ -106,8 +121,12 @@
         </view>
     </objects>
     <resources>
+        <image name="icon_broadcast" width="32" height="32"/>
         <image name="nav_golocal_logo" width="175" height="44"/>
         <image name="scan_icon" width="23" height="23"/>
+        <namedColor name="AppGreenColor">
+            <color red="0.0" green="0.43900001049041748" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="DarkGreyColor">
             <color red="0.50599998235702515" green="0.50599998235702515" blue="0.50599998235702515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

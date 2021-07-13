@@ -12,6 +12,7 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var navView : UIView!
     @IBOutlet weak var lblNoMsg : UILabel!
+    @IBOutlet weak var btnShowBusinessNotification: UIButton!
     var dataSource: OrderRequestDataSource?
     var viewModel = OrderRequestViewModel()
     var selRequest : OrderRequests!
@@ -27,7 +28,7 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
         DispatchQueue.global().async {
             self.getUpdatedUserData()
         }
-        getUpdatedUserData()
+        //getUpdatedUserData()
 //        self.navView.addBottomShadow()
         if !USER_DEFAULTS.contains(key: defaultsKey.RejectReasons.rawValue){
         switch APP_DELEGATE?.socketIOHandler?.socket?.status{
@@ -44,6 +45,11 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
         allNotificationCenterObservers()
     }
     
+    @IBAction func actionBusinessNotification(_ sender: Any) {
+        let vc = BusinessNotificationViewController.loadFromNib()
+        vc.isForSendPush = false
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     func openConfirmationPopup(orderUniqId : String ){
         let confirmationView = ConfirmationDialogVC(nibName: "ConfirmationDialogVC", bundle: nil)
         confirmationView.delegateConfirmationDialogVC = self
@@ -67,6 +73,8 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
     
     //MARK: -   Notifiation Methods
     func allNotificationCenterObservers() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(OrderRequestAccepted(notification:)), name: NSNotification.Name(rawValue: notificationCenterKeys.shopAcceptOrder.rawValue), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(OrderRequestReceived(notification:)), name: NSNotification.Name(rawValue: notificationCenterKeys.shopOrderRequest.rawValue), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(OrderRequestRejected(notification:)), name: NSNotification.Name(rawValue: notificationCenterKeys.shopRejectOrder.rawValue), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(OrderMergeRequestReceived(notification:)), name: NSNotification.Name(rawValue: notificationCenterKeys.shopOrderMergeRequest.rawValue), object: nil)
@@ -87,7 +95,12 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
             self.tableView.reloadData()
 //        }
     }
-    
+
+    @objc func OrderRequestAccepted(notification : Notification) {
+        self.view.makeToast("Order is accepted.",duration: 2.0, position: .center)
+        APP_DELEGATE?.setupRootTabBarViewController(tabIndex: 1)
+        tableView.reloadData()
+    }
     @objc func OrderRequestRejected(notification : Notification) {
         self.view.makeToast("Order is rejected.",duration: 2.0, position: .center)
 //        let section : Int = viewModel.getSelectedOrderIndex()
@@ -146,10 +159,10 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
     @objc func actionAcceptRequest(_ sender : UIButton) {
         viewModel.setSelectedOrderIndex(index: sender.tag)
         let objRequest = viewModel.getOrderRequest(at: sender.tag)
-        if let mergerRequestDetail = objRequest.orderDetails?.mergerRequestDetail{
+        if let mergerRequestDetail = objRequest?.orderDetails?.mergerRequestDetail{
             openConfirmationPopup(orderUniqId: mergerRequestDetail.orderUniqueId ?? "")
         } else {
-            if viewModel.getOrderRequest(at: sender.tag).orderDetails?.deliveryType == DeliveryType.collection.rawValue {
+            if viewModel.getOrderRequest(at: sender.tag)?.orderDetails?.deliveryType == DeliveryType.collection.rawValue {
                 let vc = TimeSelectionVC(nibName: "TimeSelectionVC", bundle: .main)
                 vc.objOrderRequest = viewModel.getOrderRequest(at: sender.tag)
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -192,7 +205,7 @@ extension OrderRequestViewController: ConfirmationDialogVCDelegate{
 //        if APP_DELEGATE?.arrOrderRequestMain.contains(where: { $0.orderDetails?.id == objOrderReq.orderDetails?.id }) == false{
 //            APP_DELEGATE?.arrOrderRequestMain.append(objOrderReq)
 //        }
-        if viewModel.getOrderRequest(at: viewModel.getSelectedOrderIndex()).orderDetails?.deliveryType == DeliveryType.collection.rawValue {
+        if viewModel.getOrderRequest(at: viewModel.getSelectedOrderIndex())?.orderDetails?.deliveryType == DeliveryType.collection.rawValue {
             let vc = TimeSelectionVC(nibName: "TimeSelectionVC", bundle: .main)
             vc.objOrderRequest = viewModel.getOrderRequest(at: viewModel.getSelectedOrderIndex())
             self.navigationController?.pushViewController(vc, animated: true)
@@ -206,14 +219,14 @@ extension OrderRequestViewController: ConfirmationDialogVCDelegate{
     func actionOk() {
          let objOrder = viewModel.getOrderRequest(at: viewModel.getSelectedOrderIndex())
             let dic = ["user_id" : USER_DETAILS?.id ?? 0,
-                       "customer_id" : objOrder.orderDetails?.customerDetails?.id ?? 0 ,
-                       "order_id" : objOrder.orderDetails?.id ?? 0,
+                       "customer_id" : objOrder?.orderDetails?.customerDetails?.id ?? 0 ,
+                       "order_id" : objOrder?.orderDetails?.id ?? 0,
                        "driver_id" : 0,
                        "pickup_time" : 0,
                        "delivery_time" : 0,
                        "need_to_merge" : 1,
-                       "merge_request_id":objOrder.orderDetails?.mergerRequestDetail?.mergeRequestId ?? "",
-                       "merge_with_order_id":objOrder.orderDetails?.mergerRequestDetail?.id ?? 0] as [String : Any]
+                       "merge_request_id":objOrder?.orderDetails?.mergerRequestDetail?.mergeRequestId ?? "",
+                       "merge_with_order_id":objOrder?.orderDetails?.mergerRequestDetail?.id ?? 0] as [String : Any]
             print("accept dic : \(dic)")
             socketAcceptOrderRequest(dictionary: dic)
     }

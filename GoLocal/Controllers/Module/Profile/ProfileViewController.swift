@@ -66,7 +66,12 @@ class ProfileViewController: BaseViewController {
             let vc = RatingViewController(nibName: "RatingViewController", bundle: .main)
             self.navigationController?.pushViewController(vc, animated: true)
             break
-            
+        case PROFILE.LocKPin.rawValue:
+            let repository = UserDefaultsPasscodeRepository()
+            let configuration = PasscodeLockConfiguration(repository: repository)
+            let vc = PinLockConfigViewController(configuration: configuration) //.loadFromNib()
+            self.navigationController?.pushViewController(vc, animated: true)
+            break
         case PROFILE.Logout.rawValue:
            
             let vc = LogoutViewController.loadFromNib()
@@ -84,13 +89,7 @@ class ProfileViewController: BaseViewController {
                     }
                     self.doLogout { (isSuccess) in
                         if isSuccess {
-                            USER_DEFAULTS.removeObject(forKey: defaultsKey.RejectReasons.rawValue)
-                            USER_DEFAULTS.removeObject(forKey: defaultsKey.userDetails.rawValue)
-                            let loginVc = LoginViewController(nibName: "LoginViewController", bundle: nil)
-                            let navVC = UINavigationController(rootViewController: loginVc)
-                            navVC.navigationBar.isHidden = true
-                            APP_DELEGATE?.socketIOHandler?.disconnectSocket()
-                            APP_DELEGATE?.window?.rootViewController = navVC
+                            self.callAfterLogout()
                         }
                     }
                 }
@@ -101,5 +100,22 @@ class ProfileViewController: BaseViewController {
         default:
             print("")
         }
+    }
+    func callAfterLogout(){
+        //Remove PassLock If added
+        let repository = UserDefaultsPasscodeRepository()
+        let configuration = PasscodeLockConfiguration(repository: repository)
+        let hasPasscode = configuration.repository.hasPasscode
+        if hasPasscode {
+            repository.delete()
+        }
+        //remove other details
+        USER_DEFAULTS.removeObject(forKey: defaultsKey.RejectReasons.rawValue)
+        USER_DEFAULTS.removeObject(forKey: defaultsKey.userDetails.rawValue)
+        let loginVc = LoginViewController(nibName: "LoginViewController", bundle: nil)
+        let navVC = UINavigationController(rootViewController: loginVc)
+        navVC.navigationBar.isHidden = true
+        APP_DELEGATE?.socketIOHandler?.disconnectSocket()
+        APP_DELEGATE?.window?.rootViewController = navVC
     }
 }

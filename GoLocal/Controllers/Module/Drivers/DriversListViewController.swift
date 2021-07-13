@@ -11,6 +11,8 @@ class DriversListViewController: BaseViewController{
 
     @IBOutlet weak var btnSearch: UIButton!
     @IBOutlet weak var vwNav: UIView!
+    @IBOutlet weak var btnCancelSearch: UIButton!
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var vwSearch: UIView!
     {
         didSet{
@@ -23,7 +25,11 @@ class DriversListViewController: BaseViewController{
     @IBOutlet weak var searchHeight: NSLayoutConstraint!
     var isSearch : Bool = false
     
-    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!{
+        didSet{
+            lblTitle.text = "Select Driver"
+        }
+    }
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -43,6 +49,24 @@ class DriversListViewController: BaseViewController{
     
     override func viewWillAppear(_ animated: Bool) {
     }
+    @IBAction func TextChange(_ sender: UITextField) {
+        viewModel.setSearchedText(text: sender.text ?? "")
+        self.tableView.reloadData()
+    }
+    @IBAction func cancelSearch(_ sender: Any) {
+        if isSearch {
+            searchHeight.constant = 0
+            isSearch = false
+            textField.text = ""
+            textField.endEditing(true)
+            UIView.animate(withDuration: 0.2) {
+                self.view.layoutIfNeeded()
+            }
+            viewModel.updateSearch(isSearch)
+            viewModel.setSearchedText(text: "")
+            tableView.reloadData()
+        }
+    }
     
     @IBAction func actionSearch(_ sender: Any) {
         if isSearch {
@@ -51,6 +75,10 @@ class DriversListViewController: BaseViewController{
         }else {
             searchHeight.constant = 45
             isSearch = true
+        }
+        viewModel.updateSearch(isSearch)
+        UIView.animate(withDuration: 0.2) {
+            self.view.layoutIfNeeded()
         }
     }   
    

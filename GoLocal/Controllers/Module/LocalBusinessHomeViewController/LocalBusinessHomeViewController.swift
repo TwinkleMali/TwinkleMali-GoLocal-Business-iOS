@@ -10,12 +10,17 @@ import UIKit
 class LocalBusinessHomeViewController: BaseViewController {
 
     @IBOutlet weak var btnShowScanner: UIButton!
+    @IBOutlet weak var btnBusinessNotification: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
     }
-
+    @IBAction func actionBusinessNotification(_ sender: Any) {
+        let vc = BusinessNotificationViewController.loadFromNib()
+        vc.isForSendPush = false
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     @IBAction func actionShowScanner(_ sender: Any) {
         if !requestCameraPermission() {
             alertPromptToAllowCameraAccessViaSetting()

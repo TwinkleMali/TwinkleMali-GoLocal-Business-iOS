@@ -12,6 +12,9 @@ class ForgotPasswordViewController: BaseViewController {
 
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblSubTitle: UILabel!
+    @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var mainView: UIView!
     var activityIndicator: UIActivityIndicatorView? {
         get{
@@ -24,7 +27,7 @@ class ForgotPasswordViewController: BaseViewController {
     //MARK:- VARIABLES
     var dataSource: ForgotPasswordViewDataSource?
     var viewModel = ForgotPasswordViewModel()
-    
+    var isForLoginPin = false
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.layer.cornerRadius = 45
@@ -32,7 +35,13 @@ class ForgotPasswordViewController: BaseViewController {
         self.dataSource = ForgotPasswordViewDataSource(tableView: tableView, viewModel: viewModel, viewController: self)
         tableView.delegate = self.dataSource
         tableView.dataSource = self.dataSource
-       
+        if isForLoginPin {
+            lblTitle.text = "Forgot Login\nPin"
+            lblSubTitle.text = "Reset your login pin"
+            lblDescription.text = "Please enter the email address below, Reset PIN instructions will be sent to your email address."
+            btnBack.setImage(#imageLiteral(resourceName: "icon_close").withRenderingMode(.alwaysTemplate), for: .normal)
+            btnBack.tintColor = .white
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         IQKeyboardManager.shared.enable = false
@@ -45,7 +54,11 @@ class ForgotPasswordViewController: BaseViewController {
         navigationController?.navigationBar.barStyle = .default
     }
     @IBAction func actionBack(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if isForLoginPin {
+            dismiss(animated: true)
+        }else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     @objc func doForgotPassword(_ sender : UIButton) {
         if let cell = tableView.cellForRow(at: IndexPath(row: ForgotPasswordField.email.rawValue, section: 0)) as? CommonTextFieldTVCell{
@@ -57,16 +70,22 @@ class ForgotPasswordViewController: BaseViewController {
     }
     
     func validation() -> Bool {
-        guard let email = self.viewModel.getEmail() else {
+        guard let email = self.viewModel.getEmail(),email.count > 2 else {
             let banner = NotificationBanner(title: BannerTitle.validation.rawValue, subtitle: validationMethod.getEnterValidDataMessage(.validInformation), leftView: nil, rightView: nil, style: .danger)
             banner.delegate = self
-            banner.show()
+            banner.show(bannerPosition: .top, on: self)
+            return false
+        }
+        if email.trimmingCharacters(in: .whitespacesAndNewlines).count < 5 {
+            let banner = NotificationBanner(title: BannerTitle.validation.rawValue, subtitle: validationMethod.getEnterValidDataMessage(.emailAddress), leftView: nil, rightView: nil, style: .danger)
+            banner.delegate = self
+            banner.show(bannerPosition: .top, on: self)
             return false
         }
         if !(email.isEmail) {
             let banner = NotificationBanner(title: BannerTitle.validation.rawValue, subtitle: validationMethod.getEnterValidDataMessage(.emailAddress), leftView: nil, rightView: nil, style: .danger)
             banner.delegate = self
-            banner.show()
+            banner.show(bannerPosition: .top, on: self)
             return false
         }
         return true

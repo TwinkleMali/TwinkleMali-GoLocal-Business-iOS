@@ -15,6 +15,7 @@ import Firebase
 import FirebaseMessaging
 import UserNotifications
 import UserNotificationsUI
+import SwiftyJSON
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,9 +33,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //MARK:- Notification Obj
     let notificationCenter = UNUserNotificationCenter.current()
     
+    fileprivate var application : UIApplication?
+    
+    lazy var passcodeLockPresenter: PasscodeLockPresenter = {
+        
+        let configuration = PasscodeLockConfiguration()
+        let presenter = PasscodeLockPresenter(mainWindow: self.window, configuration: configuration)
+        
+        return presenter
+    }()
+    
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        let repository = UserDefaultsPasscodeRepository()
+        let configuration = PasscodeLockConfiguration(repository: repository)
+        let hasPasscode = configuration.repository.hasPasscode
+        if hasPasscode {
+            self.passcodeLockPresenter.present()
+        }
+        return true
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-       
+        //CHECK USER STATUS
+        checkScreenNavigation()
+        self.application = application
         // IQKEYBOARD
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = true
@@ -46,33 +68,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //FIREBASE CONFIGURATION
         FirebaseApp.configure()
+        FirebaseConfiguration.shared.setLoggerLevel(.min)
         Messaging.messaging().delegate = self
         
         //GOOGLE MAPS CONFIG
         GMSPlacesClient.provideAPIKey(GOOGLE_KEY)
         GMSServices.provideAPIKey(GOOGLE_KEY)
         
-        
-        //CHECK USER STATUS
-        checkScreenNavigation()
+        //NOTIFICATION MANAGE
+        let remoteNotif = launchOptions?[.remoteNotification] as? NSDictionary
+        let keyExists = remoteNotif?["aps"] != nil
+        if /*remoteNotif != nil*/keyExists {
+            IS_APP_OPEN_FROM_NOTIFICATION_LAUNCH = true
+        }
+        else {
+            IS_APP_OPEN_FROM_NOTIFICATION_LAUNCH = false
+        }
+
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
         
         //Register for Push Notification
-        self.registerForPushNotifications()
+        
         notificationCenter.delegate = self
-                    
+        self.registerForPushNotifications()
+        //self.getNotificationSettings()
         
         return true
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-//        if socketIOHandler != nil{
-//            socketIOHandler?.background()
-//        }
+        if socketIOHandler != nil{
+            socketIOHandler?.background()
+        }
     }
     func applicationDidEnterBackground(_ application: UIApplication) {
-//        if socketIOHandler != nil{
-//           socketIOHandler?.background()
-//       }
+        IS_APP_OPEN_FROM_NOTIFICATION_LAUNCH = false
+        if socketIOHandler != nil{
+           socketIOHandler?.background()
+       }
+        let repository = UserDefaultsPasscodeRepository()
+        let configuration = PasscodeLockConfiguration(repository: repository)
+        let hasPasscode = configuration.repository.hasPasscode
+        if hasPasscode {
+            self.passcodeLockPresenter.present()
+        }
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -85,6 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         //UPDATE TIMEZONE
         TIME_ZONE = TimeZone.current.identifier
+        
         if socketIOHandler != nil{
            socketIOHandler?.foreground()
        }
@@ -166,12 +206,13 @@ extension AppDelegate : UNUserNotificationCenterDelegate ,MessagingDelegate{
         
     }
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        print("Firebase registration token: \(fcmToken)")
+        print("Firebase registration token: \(fcmToken ?? "")")
         FCM_TOKEN = fcmToken ?? "1234"
     }
+
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        var isDisplayNotification = true
+        let isDisplayNotification = true
         let userInfo = notification.request.content.userInfo
         print("willPresent: \(userInfo)")
         
@@ -190,7 +231,174 @@ extension AppDelegate : UNUserNotificationCenterDelegate ,MessagingDelegate{
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("Firebase Noti \(response)")
         let userInfo = response.notification.request.content.userInfo
-        // let navigationController = UIApplication.shared.windows[0].rootViewController as! UINavigationController
+        print("didReceive: \(userInfo)")
+        if ( self.application?.applicationState == UIApplication.State.inactive || self.application?.applicationState == UIApplication.State.background  )
+           {
+                //opened from a push notification when the app was on background
+                IS_APP_OPEN_FROM_NOTIFICATION_LAUNCH = true
+           }
+        if IS_APP_OPEN_FROM_NOTIFICATION_LAUNCH {
+            if let notificationType = userInfo[AnyHashable("notification_type")] as? String ,let notificationId = Int(notificationType) {
+                switch NOTIFICATION_TYPE(rawValue: notificationId)! {
+                case .NOTIFICATION_SHOP_ORDER_REQUEST:
+                    if let order_id = Int(userInfo[AnyHashable("order_id")] as? String ?? "") ,order_id != 0{
+                        
+                        let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
+                        let navVC = UINavigationController(rootViewController: tabBar)
+                        navVC.navigationBar.isHidden = true
+                        APP_DELEGATE?.window?.rootViewController = navVC
+                    }
+                break
+                case .NOTIFICATION_RATING:
+                    let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
+                    let navVC = UINavigationController(rootViewController: tabBar)
+                    navVC.navigationBar.isHidden = true
+                    APP_DELEGATE?.window?.rootViewController = navVC
+                    let vc = RatingViewController(nibName: "RatingViewController", bundle: .main)
+                    navVC.pushViewController(vc, animated: true)
+                    break
+                case .NOTIFICATION_TRADE_REQUEST:
+                    let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
+                    tabBar.selectedIndex = 0
+                    let navVC = UINavigationController(rootViewController: tabBar)
+                    navVC.navigationBar.isHidden = true
+                    APP_DELEGATE?.window?.rootViewController = navVC
+                    break
+                case .NOTIFICATION_EXTRA_CHARGE_STATUS_UPDATE:
+                    if let request_id = Int(userInfo[AnyHashable("request_id")] as? String ?? "") ,
+                       let response_id = Int(userInfo[AnyHashable("response_id")] as? String ?? "") {
+                        let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
+                        tabBar.selectedIndex = 1
+                        let navVC = UINavigationController(rootViewController: tabBar)
+                        navVC.navigationBar.isHidden = true
+                        APP_DELEGATE?.window?.rootViewController = navVC
+                        let vc = TradeOrderDetailsViewController.loadFromNib()
+                        vc.viewModel.setResponseId(value: response_id)
+                        navVC.pushViewController(vc, animated: true)
+                    }
+                    break
+                case .NOTIFICATION_TRADE_PAYMENT_RECEIVED:
+                    if let request_id = Int(userInfo[AnyHashable("request_id")] as? String ?? "") ,
+                       let response_id = Int(userInfo[AnyHashable("response_id")] as? String ?? "") {
+                        let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
+                        tabBar.selectedIndex = 1
+                        let navVC = UINavigationController(rootViewController: tabBar)
+                        navVC.navigationBar.isHidden = true
+                        APP_DELEGATE?.window?.rootViewController = navVC
+                        let vc = TradeOrderDetailsViewController.loadFromNib()
+                        vc.viewModel.setResponseId(value: response_id)
+                        navVC.pushViewController(vc, animated: true)
+                    }
+                    break
+                case .NOTIFICATION_CONFIRM_CASH_PAYMENT:
+                    if let request_id = Int(userInfo[AnyHashable("request_id")] as? String ?? "") ,
+                       let response_id = Int(userInfo[AnyHashable("response_id")] as? String ?? "") {
+                        let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
+                        tabBar.selectedIndex = 1
+                        let navVC = UINavigationController(rootViewController: tabBar)
+                        navVC.navigationBar.isHidden = true
+                        APP_DELEGATE?.window?.rootViewController = navVC
+                        let vc = TradeOrderDetailsViewController.loadFromNib()
+                        vc.viewModel.setResponseId(value: response_id)
+                        vc.showCashConfirmation = true
+                        navVC.pushViewController(vc, animated: true)
+                    }
+                    break
+                case .NOTIFICATION_TRADE_SERVICE_PAYMENT_STATUS_CHANGE,.NOTIFICATION_TRADE_PAYMENT_REQUEST:
+                    if let request_id = Int(userInfo[AnyHashable("request_id")] as? String ?? "") ,
+                       let response_id = Int(userInfo[AnyHashable("response_id")] as? String ?? "") {
+                        let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
+                        tabBar.selectedIndex = 1
+                        let navVC = UINavigationController(rootViewController: tabBar)
+                        navVC.navigationBar.isHidden = true
+                        APP_DELEGATE?.window?.rootViewController = navVC
+                        let vc = TradeOrderDetailsViewController.loadFromNib()
+                        vc.viewModel.setResponseId(value: response_id)
+                        navVC.pushViewController(vc, animated: true)
+                    }
+                    break
+                case .NOTIFICATION_TRADE_QUOTE_STATUS_CHANGE:
+                    if let request_id = Int(userInfo[AnyHashable("request_id")] as? String ?? "")
+                        {
+                        //Confirmed
+                        var quotationId = 0
+                        var customerId = 0
+                        var businessId = 0
+                        if let quotation_id = Int(userInfo[AnyHashable("quotation_id")] as? String ?? "") {
+                            quotationId = quotation_id
+                        }
+                        if let customer_id = Int(userInfo[AnyHashable("customer_id")] as? String ?? "") {
+                            customerId = customer_id
+                        }
+                        //reject
+                        if let business_id = Int(userInfo[AnyHashable("business_id")] as? String ?? "") {
+                            businessId = business_id
+                        }
+                        let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
+                        tabBar.selectedIndex = 1
+                        let navVC = UINavigationController(rootViewController: tabBar)
+                        navVC.navigationBar.isHidden = true
+                        APP_DELEGATE?.window?.rootViewController = navVC
+                        if businessId == 0 {
+                            let vc = TradeOrderDetailsViewController.loadFromNib()
+                            vc.viewModel.setResponseId(value: quotationId)
+                            navVC.pushViewController(vc, animated: true)
+                        } else {
+                            let vc = TradeSentQuotationHistoryViewController.loadFromNib()
+                            navVC.pushViewController(vc, animated: true)
+                        }
+                    }
+                    break
+                case .NOTIFICATION_ORDER_CHAT:
+                    if let sender_id = Int(userInfo[AnyHashable("sender_id")] as? String ?? ""),
+                       let receiver_id = Int(userInfo[AnyHashable("receiver_id")] as? String ?? ""),
+                       let name = userInfo[AnyHashable("name")] as? String
+                    {
+                        
+                        var Id = 0
+                        if let request_id = Int(userInfo[AnyHashable("request_id")] as? String ?? ""){
+                            Id = request_id
+                        }
+                        let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
+                        let navVC = UINavigationController(rootViewController: tabBar)
+                        navVC.navigationBar.isHidden = true
+                        tabBar.selectedIndex = 1
+                            
+                        var user = CustomerDetails(json: JSON((Any).self))
+                        user.name = name
+                        user.id = sender_id
+                        
+                        let chatVC = ChatViewController.loadFromNib()
+                        chatVC.customerDetails = user
+                        chatVC.requestId = Id
+                        chatVC.fromNotification = true
+                        CURRENT_NAVIGATION = navVC
+                        APP_DELEGATE?.window?.rootViewController = navVC
+                        navVC.pushViewController(chatVC, animated: true)
+                    }
+                    break
+            //MARK: Driver
+                case .NOTIFICATION_DRIVER_VERIFICATION,
+                     .NOTIFICATION_DRIVER_ORDER_REQUEST,
+                    .NOTIFICATION_WEEKLY_PAYMENT,
+                    .NOTIFICATION_PAYMENT_REQUEST_STATUS:
+                    break
+            //MARK: Customer Notifications
+                case .NOTIFICATION_ORDER_STATUS_CHANGE,
+                     .NOTIFICATION_ORDER_RECEIPT_UPLOADED,
+                     .NOTIFICATION_EARN_POINT,
+                     .NOTIFICATION_PAYMENT_REQUEST,
+                     .NOTIFICATION_TRADE_CONFIRM_QUOTATION,
+                     .NOTIFICATION_TRADE_REQUEST_CANCELLED,
+                     .NOTIFICATION_TRADE_REQUEST_COMPLETED,
+                     .NOTIFICATION_SHOP_BROADCAST_MESSAGE,
+                     .NOTIFICATION_TRADE_SERVICE_EXTRA_CHARGES,
+                     .NOTIFICATION_CASH_PAYMENT_CONFIRMED:
+                    break
+                }
+            }
+        }
+        
         completionHandler()
         
     }

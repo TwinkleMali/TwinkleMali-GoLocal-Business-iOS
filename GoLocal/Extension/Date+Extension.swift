@@ -8,7 +8,7 @@
 
 import Foundation
 let defaultDateFormat = "0000-00-00 00:00:00"
-let REQUESTED_TIME_FORMATE = "dd MMM HH:mm a"
+let REQUESTED_TIME_FORMATE = "dd MMM hh:mm a"
 let TIME_FORMATE = "HH:mm:ss"
 extension Date {
 	
@@ -46,6 +46,14 @@ extension Date {
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
     }
+    public func timeAgoSinceDate(numericDates:Bool) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm a"
+        dateFormatter.timeZone = NSTimeZone.local
+        let currentDate = self
+        return dateFormatter.string(from: currentDate)
+        
+    }
 	func daySuffix() -> String {
 		let calendar = Calendar.current
 		let dayOfMonth = calendar.component(.day, from: self)
@@ -82,35 +90,59 @@ extension Date {
 //        return DateFormatter(format: format).string(from: self)
 //    }
     
-    func timeAgo() -> String? {
-        let date: Date? = self
-        let units:Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
-        var components: DateComponents? = nil
-        if let aDate = date {
-            components = Calendar.current.dateComponents(units, from: aDate, to: Date())
+//    func timeAgo() -> String? {
+//        let date: Date? = self
+//        let units:Set<Calendar.Component> = [.minute, .hour, .day, .weekOfYear, .month, .year, .second]
+//        var components: DateComponents? = nil
+//        if let aDate = date {
+//            components = Calendar.current.dateComponents(units, from: aDate, to: Date())
+//        }
+//
+//        var strTimeAgo: String?
+//
+//        if (components?.year ?? 0) > 0 {
+//            strTimeAgo = date?.toString(format: "yyyy-MM-dd")
+//        } else if (components?.month ?? 0) > 0 {
+//            strTimeAgo = date?.toString(format: "MM-dd HH:mm")
+//        } else if (components?.weekOfYear ?? 0) > 0 {
+//            strTimeAgo = date?.toString(format: "MM-dd HH:mm")
+//        } else if (components?.day ?? 0) > 0 {
+//            strTimeAgo = date?.toString(format: "MM-dd HH:mm")
+//        } else if (components?.hour ?? 0 >= 1) {
+//            strTimeAgo = date?.toString(format: "HH:mm")
+//        } else if (components?.minute ?? 0 >= 1) {
+//            strTimeAgo = "\(Int(components?.minute ?? 0)) m ago"
+//        } else if (components?.second ?? 0 >= 10) {
+//            strTimeAgo = "\(Int(components?.second ?? 0)) s ago"
+//        } else {
+//            strTimeAgo = "Just now"
+//        }
+//
+//        return strTimeAgo
+//    }
+    func timeAgoDisplay() -> String {
+
+        let calendar = Calendar.current
+        let minuteAgo = calendar.date(byAdding: .minute, value: -1, to: Date())!
+        let hourAgo = calendar.date(byAdding: .hour, value: -1, to: Date())!
+        let dayAgo = calendar.date(byAdding: .day, value: -1, to: Date())!
+        let weekAgo = calendar.date(byAdding: .day, value: -7, to: Date())!
+
+        if minuteAgo < self {
+            let diff = Calendar.current.dateComponents([.second], from: self, to: Date()).second ?? 0
+            return "\(diff) sec ago"
+        } else if hourAgo < self {
+            let diff = Calendar.current.dateComponents([.minute], from: self, to: Date()).minute ?? 0
+            return "\(diff) min ago"
+        } else if dayAgo < self {
+            let diff = Calendar.current.dateComponents([.hour], from: self, to: Date()).hour ?? 0
+            return "\(diff) hrs ago"
+        } else if weekAgo < self {
+            let diff = Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
+            return "\(diff) days ago"
         }
-        
-        var strTimeAgo: String?
-        
-        if (components?.year ?? 0) > 0 {
-            strTimeAgo = date?.toString(format: "yyyy-MM-dd")
-        } else if (components?.month ?? 0) > 0 {
-            strTimeAgo = date?.toString(format: "MM-dd HH:mm")
-        } else if (components?.weekOfYear ?? 0) > 0 {
-            strTimeAgo = date?.toString(format: "MM-dd HH:mm")
-        } else if (components?.day ?? 0) > 0 {
-            strTimeAgo = date?.toString(format: "MM-dd HH:mm")
-        } else if (components?.hour ?? 0 >= 1) {
-            strTimeAgo = date?.toString(format: "HH:mm")
-        } else if (components?.minute ?? 0 >= 1) {
-            strTimeAgo = "\(Int(components?.minute ?? 0)) m ago"
-        } else if (components?.second ?? 0 >= 10) {
-            strTimeAgo = "\(Int(components?.second ?? 0)) s ago"
-        } else {
-            strTimeAgo = "Just now"
-        }
-        
-        return strTimeAgo
+        let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
+        return "\(diff) weeks ago"
     }
     /// Returns the amount of minutes from another date
         func minutes(from date: Date) -> Int {

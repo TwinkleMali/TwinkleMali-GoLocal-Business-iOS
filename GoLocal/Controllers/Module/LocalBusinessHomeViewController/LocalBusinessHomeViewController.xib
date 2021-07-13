@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,6 +19,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocalBusinessHomeViewController" customModule="GoLocal" customModuleProvider="target">
             <connections>
+                <outlet property="btnBusinessNotification" destination="Gps-zq-VII" id="JY9-nr-GXg"/>
                 <outlet property="btnShowScanner" destination="ewP-D1-n6e" id="KmL-CG-wsy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,11 +35,26 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav_golocal_logo" translatesAutoresizingMaskIntoConstraints="NO" id="tyU-SQ-UPr">
                             <rect key="frame" x="20" y="44" width="175" height="80"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gps-zq-VII">
+                            <rect key="frame" x="360" y="62" width="44" height="44"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="1il-z6-7C7"/>
+                            </constraints>
+                            <color key="tintColor" name="AppGreenColor"/>
+                            <state key="normal" image="icon_broadcast"/>
+                            <connections>
+                                <action selector="actionBusinessNotification:" destination="-1" eventType="touchUpInside" id="LEW-3M-kEG"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="Gps-zq-VII" firstAttribute="width" secondItem="Gps-zq-VII" secondAttribute="height" multiplier="1:1" id="IMD-Wh-7mT"/>
                         <constraint firstItem="tyU-SQ-UPr" firstAttribute="leading" secondItem="SQI-0N-SDo" secondAttribute="leading" constant="20" id="W6i-ar-t7k"/>
                         <constraint firstAttribute="bottom" secondItem="tyU-SQ-UPr" secondAttribute="bottom" id="lHc-ZH-fB7"/>
+                        <constraint firstAttribute="trailing" secondItem="Gps-zq-VII" secondAttribute="trailing" constant="10" id="rvO-eD-RQF"/>
+                        <constraint firstItem="Gps-zq-VII" firstAttribute="centerY" secondItem="tyU-SQ-UPr" secondAttribute="centerY" id="wIj-nN-T2b"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetWidth">
@@ -112,6 +128,7 @@
         </view>
     </objects>
     <resources>
+        <image name="icon_broadcast" width="32" height="32"/>
         <image name="nav_golocal_logo" width="175" height="44"/>
         <image name="qr_code_button" width="32" height="32"/>
         <image name="qr_code_img_home" width="624.5" height="604"/>

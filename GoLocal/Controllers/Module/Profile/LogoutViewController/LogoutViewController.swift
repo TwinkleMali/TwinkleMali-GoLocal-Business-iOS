@@ -31,6 +31,8 @@ class LogoutViewController: BaseViewController {
             MainView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         }
     }
+    
+    @IBOutlet weak var lblTitle: UILabel!
     fileprivate var completionHandler: (AlertResult) -> () = {result  in }
     
     var activityIndicator: UIActivityIndicatorView? {
@@ -38,9 +40,21 @@ class LogoutViewController: BaseViewController {
             return activityIndecator
         }
     }
+    
+    var isForCancelService = false
+    var  isForConfirmPayment = false
+    var customerName = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if isForCancelService {
+            self.lblTitle.text = "Are you sure you want to cancel this service?"
+            self.btnLogout.setTitle("Yes", for: .normal)
+            self.btnCancel.setTitle("No", for: .normal)
+        } else if isForConfirmPayment {
+            self.lblTitle.text = "Please confirm you received Payment from \(customerName)"
+            self.btnLogout.setTitle("Received", for: .normal)
+            self.btnCancel.setTitle("Not received", for: .normal)
+        }
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -50,7 +64,7 @@ class LogoutViewController: BaseViewController {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
-        if(touch?.view?.tag == -786) {
+        if(touch?.view?.tag == -786) && !isForConfirmPayment {
             
             UIView.animate(withDuration: 0.5) {
                 self.view.backgroundColor = UIColor.clear

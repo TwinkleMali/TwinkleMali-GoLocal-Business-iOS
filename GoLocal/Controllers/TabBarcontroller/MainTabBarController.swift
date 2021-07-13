@@ -18,16 +18,18 @@ class MainTabBarController: UITabBarController {
     
     func setupUI() {
         addAboveShadow()
-        
+        //var currentRole : UserRole = UserRole()
         switch currentRole {
         case .Owner:
             self.BussinessOwnerTabSetUp()
             break
-            
         case .Employee:
             break
         case .LocalBusiness:
             self.LocalBussinessTabSetUp()
+            break
+        case .Trade:
+            self.TradeServicesTabSetUp()
             break
         }
     }
@@ -64,6 +66,50 @@ class MainTabBarController: UITabBarController {
                #imageLiteral(resourceName: "order_req_icon_en"),
                 #imageLiteral(resourceName: "order_icon_en"),
                 #imageLiteral(resourceName: "driver_icon_en"),
+                #imageLiteral(resourceName: "profile_icon_en")
+            ]
+        ]
+        var index = 0
+        for item in tabBar.items! {
+            item.image = tabImages[0][index]
+            item.selectedImage = tabImages[1][index]
+            item.imageInsets = UIEdgeInsets(top: HAS_TOP_NOTCH ? 10 : 5, left: 0, bottom: HAS_TOP_NOTCH ? -15 : -5, right: 0)
+            index += 1
+        }
+        tabBar.backgroundColor = .white
+    }
+    func TradeServicesTabSetUp(){
+        let tradeHomeVC = TradeHomeViewController.loadFromNib()
+        let tradeOrdersVC = TradeOrdersViewController.loadFromNib()
+        //let notificationsVC = NotificationsViewController.loadFromNib()
+        //notificationsVC.isFromProfile = false
+        let profileVC = ProfileViewController(nibName: "ProfileViewController", bundle: .main)
+        
+        tradeHomeVC.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 0)
+        tradeOrdersVC.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 1)
+        //notificationsVC.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 3)
+        profileVC.tabBarItem = UITabBarItem(title: nil, image: nil, tag: 3)
+
+        viewControllers?.removeAll()
+        //viewControllers = [localBusinessVC,earningVC,notificationsVC,profileVC]
+        viewControllers = [tradeHomeVC,tradeOrdersVC,profileVC]
+        
+        let selectedColor = GreenColor
+       // tabBar.tintColor = .none
+        tabBarItem.badgeColor = selectedColor
+
+
+        let tabImages: [[UIImage]] = [
+            [
+                #imageLiteral(resourceName: "order_req_icon"),
+                #imageLiteral(resourceName: "order_icon"),
+//                #imageLiteral(resourceName: "notification_icon"),
+                #imageLiteral(resourceName: "profile_icon")
+            ],
+            [
+                #imageLiteral(resourceName: "order_req_icon_en"),
+                #imageLiteral(resourceName: "order_icon_en"),
+//                #imageLiteral(resourceName: "notification_icon_en"),
                 #imageLiteral(resourceName: "profile_icon_en")
             ]
         ]

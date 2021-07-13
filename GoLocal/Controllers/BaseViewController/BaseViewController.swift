@@ -134,7 +134,14 @@ class BaseViewController: UIViewController {
                print("Unable to start notifier")
            }
        }
-        
+    public func setupRootTabBarViewController(tabIndex: Int) {
+        let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
+        tabBar.selectedIndex = tabIndex
+        let navVC = UINavigationController(rootViewController: tabBar)
+        navVC.navigationBar.isHidden = true
+        APP_DELEGATE?.window?.rootViewController = navVC
+
+    }
     func navigateToHome(){
         let tabBar = MainTabBarController(nibName: "MainTabBarController", bundle: nil)
         let navVC = UINavigationController(rootViewController: tabBar)

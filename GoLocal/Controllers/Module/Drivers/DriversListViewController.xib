@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,10 +18,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DriversListViewController" customModule="GoLocal" customModuleProvider="target">
             <connections>
+                <outlet property="btnCancelSearch" destination="kl5-NP-i1x" id="l1I-L2-VPn"/>
                 <outlet property="btnSearch" destination="w9p-ul-vuA" id="sTU-cc-MkX"/>
                 <outlet property="lblTitle" destination="QZ0-Kc-WiM" id="PNj-ag-jnQ"/>
                 <outlet property="searchHeight" destination="aZk-Nt-nmY" id="Ofa-bH-VnW"/>
                 <outlet property="tableView" destination="vlJ-fD-3dk" id="AKO-8N-odO"/>
+                <outlet property="textField" destination="pin-kR-9GS" id="iUQ-LY-Ido"/>
                 <outlet property="view" destination="4IN-OO-Vh9" id="7S8-od-ueR"/>
                 <outlet property="vwNav" destination="gwd-qc-aYK" id="fcb-RZ-bHR"/>
                 <outlet property="vwSearch" destination="XJG-4S-JU8" id="6i2-2y-ntT"/>
@@ -58,28 +59,35 @@
                     <rect key="frame" x="15" y="126.5" width="384" height="45"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search Driver" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pin-kR-9GS">
-                            <rect key="frame" x="15" y="0.0" width="369" height="45"/>
+                            <rect key="frame" x="15" y="0.0" width="324" height="45"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="TextChange:" destination="-1" eventType="editingChanged" id="cDA-6x-4Nu"/>
+                            </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kl5-NP-i1x">
-                            <rect key="frame" x="357.5" y="0.0" width="11.5" height="45"/>
+                            <rect key="frame" x="339" y="0.0" width="45" height="45"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" image="icon_close"/>
+                            <connections>
+                                <action selector="cancelSearch:" destination="-1" eventType="touchUpInside" id="sW6-uW-TzV"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="kl5-NP-i1x" firstAttribute="leading" secondItem="pin-kR-9GS" secondAttribute="trailing" id="1qz-8d-agM"/>
                         <constraint firstAttribute="bottom" secondItem="kl5-NP-i1x" secondAttribute="bottom" id="EXu-Kg-NXh"/>
                         <constraint firstAttribute="bottom" secondItem="pin-kR-9GS" secondAttribute="bottom" id="HOh-9f-f3m"/>
-                        <constraint firstAttribute="trailing" secondItem="pin-kR-9GS" secondAttribute="trailing" id="Jhi-Dg-QZT"/>
                         <constraint firstItem="pin-kR-9GS" firstAttribute="leading" secondItem="XJG-4S-JU8" secondAttribute="leading" constant="15" id="Mxq-P8-ms3"/>
-                        <constraint firstAttribute="trailing" secondItem="kl5-NP-i1x" secondAttribute="trailing" constant="15" id="PUA-YQ-a8E"/>
+                        <constraint firstAttribute="trailing" secondItem="kl5-NP-i1x" secondAttribute="trailing" id="PUA-YQ-a8E"/>
                         <constraint firstItem="kl5-NP-i1x" firstAttribute="top" secondItem="XJG-4S-JU8" secondAttribute="top" id="Ron-qL-4ad"/>
                         <constraint firstAttribute="height" constant="45" id="aZk-Nt-nmY"/>
                         <constraint firstItem="pin-kR-9GS" firstAttribute="top" secondItem="XJG-4S-JU8" secondAttribute="top" id="rye-BJ-EP5"/>
+                        <constraint firstItem="kl5-NP-i1x" firstAttribute="width" secondItem="pin-kR-9GS" secondAttribute="height" id="wkg-0F-4Sa"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwd-qc-aYK">

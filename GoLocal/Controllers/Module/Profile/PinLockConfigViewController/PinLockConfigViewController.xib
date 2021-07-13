@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PinLockConfigViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="btnBack" destination="Pn3-h1-tb6" id="xeP-8n-MgW"/>
+                <outlet property="btnChangePin" destination="IJt-Z0-ScZ" id="rv4-EP-q9L"/>
+                <outlet property="lblDescription" destination="fEM-dF-afQ" id="Kbo-fI-MdO"/>
+                <outlet property="lblSwitchText" destination="EyN-1k-uoX" id="IPV-Uf-dfU"/>
+                <outlet property="lblTitle" destination="xgN-r9-8Ub" id="QVW-2t-qX7"/>
+                <outlet property="switchPinLock" destination="gkl-9Y-PgY" id="lV9-hD-OsL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewChangePin" destination="SSb-Es-E6t" id="4oJ-4f-2Se"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dxC-hp-43V">
+                    <rect key="frame" x="0.0" y="98" width="414" height="258"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tiy-VZ-C5g">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn passcode &amp; biomatrics on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyN-1k-uoX">
+                                    <rect key="frame" x="15" y="19" width="325" height="17.5"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gkl-9Y-PgY">
+                                    <rect key="frame" x="350" y="12" width="51" height="31"/>
+                                    <color key="onTintColor" name="App Green"/>
+                                    <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <connections>
+                                        <action selector="switchChange:" destination="-1" eventType="valueChanged" id="Qvg-kn-IBR"/>
+                                    </connections>
+                                </switch>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XY1-1M-9Wc">
+                                    <rect key="frame" x="0.0" y="54" width="414" height="1"/>
+                                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="hbP-qO-0Rc"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="55" id="Cph-zo-3JQ"/>
+                                <constraint firstItem="XY1-1M-9Wc" firstAttribute="leading" secondItem="tiy-VZ-C5g" secondAttribute="leading" id="G6d-Ux-ch7"/>
+                                <constraint firstItem="gkl-9Y-PgY" firstAttribute="centerY" secondItem="tiy-VZ-C5g" secondAttribute="centerY" id="Gei-Xz-Spi"/>
+                                <constraint firstItem="EyN-1k-uoX" firstAttribute="centerY" secondItem="tiy-VZ-C5g" secondAttribute="centerY" id="K5e-Au-1xF"/>
+                                <constraint firstAttribute="trailing" secondItem="XY1-1M-9Wc" secondAttribute="trailing" id="Sn9-zY-UZb"/>
+                                <constraint firstItem="EyN-1k-uoX" firstAttribute="leading" secondItem="tiy-VZ-C5g" secondAttribute="leading" constant="15" id="dCi-aI-VmL"/>
+                                <constraint firstItem="gkl-9Y-PgY" firstAttribute="leading" secondItem="EyN-1k-uoX" secondAttribute="trailing" constant="10" id="e4V-Wp-YA9"/>
+                                <constraint firstAttribute="bottom" secondItem="XY1-1M-9Wc" secondAttribute="bottom" id="g8U-h8-xO3"/>
+                                <constraint firstAttribute="trailing" secondItem="gkl-9Y-PgY" secondAttribute="trailing" constant="15" id="nbg-bh-qSF"/>
+                            </constraints>
+                        </view>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SSb-Es-E6t">
+                            <rect key="frame" x="0.0" y="65" width="414" height="55"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zab-na-NFT">
+                                    <rect key="frame" x="0.0" y="54" width="414" height="1"/>
+                                    <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="A2X-rG-ixa"/>
+                                    </constraints>
+                                </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJt-Z0-ScZ">
+                                    <rect key="frame" x="15" y="0.0" width="384" height="54"/>
+                                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
+                                    <state key="normal" title="Change Your Pin">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actionChangePin:" destination="-1" eventType="touchUpInside" id="9ER-W1-PVW"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="IJt-Z0-ScZ" firstAttribute="leading" secondItem="SSb-Es-E6t" secondAttribute="leading" constant="15" id="AJq-8r-pbt"/>
+                                <constraint firstAttribute="height" constant="55" id="B5e-5y-X25"/>
+                                <constraint firstAttribute="trailing" secondItem="IJt-Z0-ScZ" secondAttribute="trailing" constant="15" id="EDJ-W4-X9U"/>
+                                <constraint firstItem="IJt-Z0-ScZ" firstAttribute="top" secondItem="SSb-Es-E6t" secondAttribute="top" id="IzT-5W-7l9"/>
+                                <constraint firstItem="zab-na-NFT" firstAttribute="top" secondItem="IJt-Z0-ScZ" secondAttribute="bottom" id="Sel-ta-njf"/>
+                                <constraint firstItem="zab-na-NFT" firstAttribute="leading" secondItem="SSb-Es-E6t" secondAttribute="leading" id="fcV-r2-fMg"/>
+                                <constraint firstAttribute="bottom" secondItem="zab-na-NFT" secondAttribute="bottom" id="ode-uh-sHJ"/>
+                                <constraint firstAttribute="trailing" secondItem="zab-na-NFT" secondAttribute="trailing" id="ph5-xM-fiL"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIj-aN-Iig">
+                            <rect key="frame" x="0.0" y="130" width="414" height="128"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEM-dF-afQ">
+                                    <rect key="frame" x="15" y="0.0" width="384" height="118"/>
+                                    <string key="text">Setting up a PIN both keeps your account secure and also allows you to login to your account far quicker. After setting up your PIN, you only need to enter it each time you need to login back into the app, for example when you fully close the app and reopen it again.</string>
+                                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="fEM-dF-afQ" secondAttribute="trailing" constant="15" id="2w3-lF-aXy"/>
+                                <constraint firstAttribute="bottom" secondItem="fEM-dF-afQ" secondAttribute="bottom" constant="10" id="Hiu-2V-ggL"/>
+                                <constraint firstItem="fEM-dF-afQ" firstAttribute="leading" secondItem="OIj-aN-Iig" secondAttribute="leading" constant="15" id="ZpQ-w0-rTO"/>
+                                <constraint firstItem="fEM-dF-afQ" firstAttribute="top" secondItem="OIj-aN-Iig" secondAttribute="top" id="tOa-9s-yg4"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MvB-Vb-d1P" customClass="CardView" customModule="GoLocal" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pn3-h1-tb6">
+                            <rect key="frame" x="0.0" y="44" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Pn3-h1-tb6" secondAttribute="height" multiplier="1:1" id="aQk-ru-Lfb"/>
+                            </constraints>
+                            <state key="normal" image="icon_back_b"/>
+                            <connections>
+                                <action selector="actionBack:" destination="-1" eventType="touchUpInside" id="zBr-kg-Jtk"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Login Pin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgN-r9-8Ub">
+                            <rect key="frame" x="152" y="44" width="110" height="44"/>
+                            <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Pn3-h1-tb6" secondAttribute="bottom" id="59T-ZT-Nxs"/>
+                        <constraint firstItem="Pn3-h1-tb6" firstAttribute="leading" secondItem="MvB-Vb-d1P" secondAttribute="leading" id="i7d-cW-pMJ"/>
+                        <constraint firstItem="xgN-r9-8Ub" firstAttribute="centerX" secondItem="MvB-Vb-d1P" secondAttribute="centerX" id="ioC-vn-6tl"/>
+                        <constraint firstAttribute="bottom" secondItem="xgN-r9-8Ub" secondAttribute="bottom" id="u2g-UJ-rHt"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetWidth">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetHeight">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" systemColor="systemGrayColor"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="dxC-hp-43V" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7y4-Hi-Dn8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="MvB-Vb-d1P" secondAttribute="bottom" constant="-44" id="PAs-co-Zsg"/>
+                <constraint firstItem="xgN-r9-8Ub" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Q5i-Lm-FzY"/>
+                <constraint firstItem="dxC-hp-43V" firstAttribute="top" secondItem="MvB-Vb-d1P" secondAttribute="bottom" constant="10" id="RaB-0O-pon"/>
+                <constraint firstItem="MvB-Vb-d1P" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="dAv-X1-jEq"/>
+                <constraint firstItem="MvB-Vb-d1P" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dfU-bX-kBk"/>
+                <constraint firstItem="Pn3-h1-tb6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="erf-LE-TDl"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dxC-hp-43V" secondAttribute="trailing" id="qgl-du-z3T"/>
+                <constraint firstAttribute="trailing" secondItem="MvB-Vb-d1P" secondAttribute="trailing" id="w0c-V5-fFJ"/>
+            </constraints>
+            <point key="canvasLocation" x="113.04347826086958" y="89.732142857142847"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_back_b" width="25" height="20.5"/>
+        <namedColor name="App Green">
+            <color red="0.0" green="0.43900001049041748" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

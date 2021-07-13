@@ -89,6 +89,7 @@ class DriverSeleListViewController: BaseViewController{
     @IBAction func btnClickHere(_ sender: UIButton) {        
         let vc = DriverStatusViewController(nibName: "DriverStatusViewController", bundle: .main)
         vc.viewModel.setDrivers(objDrivers: self.viewModel.getAllDriver())
+        vc.objOrderRequest = objOrderRequest
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

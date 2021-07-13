@@ -22,6 +22,15 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     @IBOutlet weak var switchStackView: UIStackView!
     @IBOutlet weak var btnCurrentOrders: UIButton!
     @IBOutlet weak var btnPastOrders: UIButton!
+    @IBOutlet weak var viewPastSelectedFilterData: UIView!
+    @IBOutlet weak var lblSelectedDataTitle: UILabel!
+    @IBOutlet weak var lblSelectedDataValue: UILabel!
+    @IBOutlet weak var filterSelectedDataViewHeight: NSLayoutConstraint! {
+        didSet{
+            filterSelectedDataViewHeight.constant = 0
+        }
+    }
+    
     var selectedDate : Date = Date()
     var dataSource: OrderDataSource?
     var viewModel = OrderViewModel()
@@ -32,10 +41,7 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var offset = 0
     var isLoadMore:Bool = false
-
-
     var monthSelected = -1, yearSelected = ""
-
     var selOrder = OrderType.CurrentOrder.rawValue
     
     override func viewDidLoad() {
@@ -71,15 +77,15 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
         callAPIToGetOrder()
     }
     
-    func callAPIToGetOrder(filterType :Int = 0,date : String = "",year : String = "",month :String = ""){//  filter_type: 1-Date 2-Month : 1-> filter_date in yyyy-MM-dd format | 2-> filter_year ,filter_month in yyyy and MM format
+    func callAPIToGetOrder(){//  filter_type: 1-Date 2-Month : 1-> filter_date in yyyy-MM-dd format | 2-> filter_year ,filter_month in yyyy and MM format
         let  param : [String : Any] = [
-            "user_id" : 30,// USER_DETAILS?.id ?? 0,
-            "shop_id" : 1, //USER_DETAILS?.shopId ?? 0,
+            "user_id" :  USER_DETAILS?.id ?? 0,
+            "shop_id" : USER_DETAILS?.shopId ?? 0,
             "order_option" : selOrder,
-            "filter_type" : filterType,
-            "filter_date" : date,
-            "filter_year" : year,
-            "filter_month" : month,
+            "filter_type" : viewModel.getFilterOption().rawValue,
+            "filter_date" : viewModel.getSelectedDate(),
+            "filter_year" : viewModel.getSelectedYear(),
+            "filter_month" : viewModel.getSelectedMonth(),
             "page_num" : offset
         ]
         getListOfOrders(param: param)
@@ -110,21 +116,40 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
     
     
     @IBAction func actionTabValueChange(_ sender: UIButton) {
+        tableView.isScrollEnabled = false
         if sender == btnCurrentOrders{
+//            tableView.scrollToTop()
             selOrder = OrderType.CurrentOrder.rawValue
             sender.backgroundColor = GreenColor
             sender.isSelected = true
             btnPastOrders.backgroundColor = .white
             btnPastOrders.isSelected = false
             btnFilter.isHidden = true
+            
+//            viewModel.setCurrentOption(value: 1)
+            viewModel.setFilterOption(value: .none)
+            viewModel.setSelectedDate(value: "")
+            viewModel.setSelectedMonth(value: "")
+            viewModel.setSelectedYear(value: "")
+            filterSelectedDataViewHeight.constant = 0
+            
+//            viewModel.UpdateLoadMore(value: false)
+//            viewModel.resetPageCount()
         }else {
+//            tableView.scrollToTop()
             selOrder = OrderType.PastOrder.rawValue
             sender.backgroundColor = GreenColor
             sender.isSelected = true
             btnCurrentOrders.backgroundColor = .white
             btnCurrentOrders.isSelected = false
             btnFilter.isHidden = false
+            if viewModel.getFilterOption() == .none {
+                filterSelectedDataViewHeight.constant = 0
+                self.view.layoutIfNeeded()
+            }
         }
+        isLoadMore = false
+        offset = 0
         viewModel.removeAllCurrentOrder(orderType: selOrder)
         callAPIToGetOrder()
     }
@@ -133,6 +158,7 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
         let vc = BottomSheetVC(nibName: "BottomSheetVC", bundle: nil)
         vc.arrOptions = ["Date","Monthly"]
         vc.strTitle = "Filter"
+        vc.selectedOption = viewModel.getFilterOption().rawValue - 1
         vc.modalPresentationStyle = .overFullScreen
         vc.delegate = self
         self.present(vc, animated: true, completion: nil)
@@ -197,33 +223,56 @@ class OrderViewController: BaseViewController, BottomSheetDelegate, CalenderView
 //            monthView.arrYears = arrYear
             monthView.modalPresentationStyle = .overFullScreen
             self.present(monthView, animated: false, completion: nil)
+        } else if selValue == "Clear"{
+            viewModel.setFilterOption(value: .none)
+            viewModel.setSelectedDate(value: "")
+            viewModel.setSelectedMonth(value: "")
+            viewModel.setSelectedYear(value: "")
+            self.filterSelectedDataViewHeight.constant = 0
+            self.viewPastSelectedFilterData.isHidden = true
+            self.view.layoutIfNeeded()
+            self.view.layoutIfNeeded()
+            self.callAPIToGetOrder()
         }
         
     }
     
     func selectedWeekDates(dates: [Date]) {
         let selectedDate = dates[0].toString(format: "yyyy-MM-dd")
-        self.selectedDate = dates.first ?? Date()
+        self.viewModel.setFilterOption(value: .date)
+        self.lblSelectedDataTitle.text = "Date : "
+        self.lblSelectedDataValue.text = selectedDate
+        self.viewModel.setSelectedDate(value: selectedDate)
+        viewModel.setSelectedMonth(value: "")
+        viewModel.setSelectedYear(value: "")
+        self.filterSelectedDataViewHeight.constant = 80
+        self.viewPastSelectedFilterData.isHidden = false
+        self.view.layoutIfNeeded()
         self.viewModel.removeAllCurrentOrder(orderType: 2)
-        callAPIToGetOrder(filterType: 1, date: selectedDate, year: "", month: "")
+        callAPIToGetOrder()
     }
 }
 extension OrderViewController: MonthCalanderDelegate{
     func getSelectedMonth(vc: MonthCalanderViewController, selectedmonth: Int,year: String,yearString: String) {
-//        arrYear = vc.arrYears
-//        month = selectedmonth
-        monthSelected = selectedmonth
-        yearSelected = year
+        let finalMonthString = getMonthfrom(selectedmonth) + "/" + year
+        self.lblSelectedDataTitle.text = "Month/Year : "
+        self.lblSelectedDataValue.text = finalMonthString
         var monthString = ""
         if selectedmonth == 10 || selectedmonth == 11 || selectedmonth == 12{
             monthString = String(selectedmonth).description
         }else{
             monthString = "0" + String(selectedmonth).description
         }
-        let finalMonthString = year + "-" + monthString
-        print("SELECTED YEAR _ MONTH : ",finalMonthString)
+        print("SELECTED Month/Year : ",finalMonthString)
+        self.viewModel.setFilterOption(value: .month)
+        self.viewModel.setSelectedDate(value: "")
+        viewModel.setSelectedMonth(value: monthString)
+        viewModel.setSelectedYear(value: year)
+        self.filterSelectedDataViewHeight.constant = 80
+        self.viewPastSelectedFilterData.isHidden = false
+        self.view.layoutIfNeeded()
         self.viewModel.removeAllCurrentOrder(orderType: 2)
-        callAPIToGetOrder(filterType: 2, date: "", year: year, month: monthString)
+        callAPIToGetOrder()
 //        getEarningDataFromAPI(startDate: startDate, endDate: endDate,filterType: filterType,todayDate: todayDate,selectedMonth: finalMonthString)
 //        btnDateRangeTitle.setTitle(yearString + ", " + year, for: .normal)
     }

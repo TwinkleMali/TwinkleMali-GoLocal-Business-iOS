@@ -27,7 +27,7 @@ class CalanderViewController: UIViewController {
     @IBOutlet var weekDaysView: VAWeekDaysView!{
         didSet {
             if usedFor != .advanced {
-                defaultCalendar.firstWeekday = 4
+                defaultCalendar.firstWeekday = 1
             } else {
                 defaultCalendar.firstWeekday = 1
             }
@@ -81,9 +81,9 @@ class CalanderViewController: UIViewController {
 //        self.updateViewConstraints()
 //        self.view.layoutIfNeeded()
         if usedFor != .advanced {
-            defaultCalendar.firstWeekday = 2
+            defaultCalendar.firstWeekday = 0
         } else {
-            defaultCalendar.firstWeekday = 2
+            defaultCalendar.firstWeekday = 0
         }
         
         let calendar = VACalendar(startDate: nil, endDate: nil, selectedDate: nil, calendar: defaultCalendar)

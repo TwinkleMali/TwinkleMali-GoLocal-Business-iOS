@@ -12,15 +12,31 @@ class OrderViewModel {
 //    private var arrOrdersList : [OrderList] = []
     private var arrCurrentOrderList : [OrderList] = []
     private var arrPastOrdersList : [OrderList] = []
-    private var arrCurrentOrders : [OrderDetails] = []
-    private var arrPastOrders : [OrderDetails] = []
+//    private var arrCurrentOrders : [OrderDetails] = []
+//    private var arrPastOrders : [OrderDetails] = []
     private var objOrder : OrderDetails!
+    
     private var arrayCurrentProduct : [[String:Any]] = []
     private var arrayPastProduct : [[String:Any]] = []
+    
+    private var selectedFilter : filterOptions = .none // 0-none / 1-date / 2-Month
+    private var selectedDate = ""
+    private var selectedMonth = ""
+    private var selectedYear = ""
+    private var currentOption = 1 // 1- current /2- past
+    
+    private var isScrolling = false
 }
     
 extension OrderViewModel {
-    
+    func isOrderAvailable(forType: Int) -> Bool {
+        if forType == OrderType.CurrentOrder.rawValue{
+            return arrCurrentOrderList.count > 0
+        }else if forType == OrderType.PastOrder.rawValue{
+            return arrPastOrdersList.count > 0
+        }
+        return false
+    }
     func getOrderListCount(orderType : Int) -> Int{
         if orderType == OrderType.CurrentOrder.rawValue{
             return arrCurrentOrderList.count
@@ -39,21 +55,29 @@ extension OrderViewModel {
         return 0
     }
    
-    func setOrderList(arrOrderList : [OrderList],orderType : Int){
+    func setOrderList(isloadMore : Bool = false, arrOrderList : [OrderList],orderType : Int){
+        if !isloadMore {
+            self.arrCurrentOrderList.removeAll()
+            self.arrayCurrentProduct.removeAll()
+        }
         if orderType == OrderType.CurrentOrder.rawValue{
             arrCurrentOrderList.append(contentsOf: arrOrderList)
             var productDic : [String : Any]
                 for Orders  in arrOrderList as [OrderList]{
                     for objOrder in Orders.orders! as [OrderDetails]{
-                        for objproduct in (objOrder.shopDetail?.products)! {
-                            for objselItem in objproduct.selectedProducts! {
-                                productDic = ["orderId":objOrder.id ?? 0,
-                                              "productId" : objproduct.id!,
-                                              "productName":objproduct.productName!,
-                                              "quantity":objselItem.quantity!,
-                                              "variationName":objselItem.variationName.asStringOrEmpty(),
-                                              "addons":objselItem.addons ?? []]
-                                arrayCurrentProduct.append(productDic)
+                        if let products = (objOrder.shopDetail?.products){
+                            for objproduct in products {
+                                if let selectedProducts = (objproduct.selectedProducts){
+                                    for objselItem in selectedProducts {
+                                        productDic = ["orderId":objOrder.id ?? 0,
+                                                      "productId" : objproduct.id!,
+                                                      "productName":objproduct.productName!,
+                                                      "quantity":objselItem.quantity!,
+                                                      "variationName":objselItem.variationName.asStringOrEmpty(),
+                                                      "addons":objselItem.addons ?? []]
+                                        arrayCurrentProduct.append(productDic)
+                                    }
+                                }
                             }
                         }
                     }
@@ -61,65 +85,69 @@ extension OrderViewModel {
         }else{
             arrPastOrdersList.append(contentsOf: arrOrderList)
             var productDic : [String : Any]
-                for Orders  in arrOrderList as [OrderList]{
-                    for objOrder in Orders.orders! as [OrderDetails]{
-                        for objproduct in (objOrder.shopDetail?.products)! {
-                            for objselItem in objproduct.selectedProducts! {
-                                productDic = ["orderId":objOrder.id ?? 0,
-                                              "productId" : objproduct.id!,
-                                              "productName":objproduct.productName!,
-                                              "quantity":objselItem.quantity!,
-                                              "variationName":objselItem.variationName.asStringOrEmpty(),
-                                              "addons":objselItem.addons ?? []]
-                                arrayPastProduct.append(productDic)
+            for Orders  in arrOrderList as [OrderList]{
+                for objOrder in Orders.orders! as [OrderDetails]{
+                    if let products = (objOrder.shopDetail?.products){
+                        for objproduct in products {
+                            if let selectedProducts = (objproduct.selectedProducts){
+                                for objselItem in selectedProducts {
+                                    productDic = ["orderId":objOrder.id ?? 0,
+                                                  "productId" : objproduct.id!,
+                                                  "productName":objproduct.productName!,
+                                                  "quantity":objselItem.quantity!,
+                                                  "variationName":objselItem.variationName.asStringOrEmpty(),
+                                                  "addons":objselItem.addons ?? []]
+                                    arrayPastProduct.append(productDic)
+                                }
                             }
                         }
                     }
                 }
+            }
         }
     }
     
-    func setOrders(arrOrder : [OrderDetails],orderType : Int){
-        if orderType == OrderType.CurrentOrder.rawValue{
-            for objOrder in  arrOrder{
-                if !self.arrCurrentOrders.contains(where: { $0.id == objOrder.id }) {
-                    print("OrderId : \(objOrder.id ?? 0)")
-                    self.arrCurrentOrders.append(objOrder)
-                    var productDic : [String : Any]
-                    for objproduct in (objOrder.shopDetail?.products)! {
-                        for objselItem in objproduct.selectedProducts! {
-                            productDic = ["orderId":objOrder.id ?? 0,
-                                          "productId" : objproduct.id ?? 0,
-                                          "productName":objproduct.productName ?? "",
-                                          "quantity":objselItem.quantity ?? 0,
-                                          "variationName":objselItem.variationName ?? "",
-                                          "addons":objselItem.addons ?? []]
-                            arrayCurrentProduct.append(productDic)
-                        }
-                    }
-                }
-            }
-        }else {
-            for objOrder in arrOrder{
-                if !self.arrPastOrders.contains(where: { $0.id == objOrder.id }) {
-                    print("POrderId : \(objOrder.id ?? 0)")
-                    self.arrPastOrders.append(objOrder)
-                    var productDic : [String : Any]
-                    for objproduct in (objOrder.shopDetail?.products)! {
-                        for objselItem in objproduct.selectedProducts! {
-                            productDic = ["orderId":objOrder.id ?? 0,
-                                          "productId" : objproduct.id ?? 0,
-                                          "productName":objproduct.productName ?? "",
-                                          "quantity":objselItem.quantity ?? 0,
-                                          "variationName":objselItem.variationName ?? "",
-                                          "addons":objselItem.addons ?? []]
-                            arrayPastProduct.append(productDic)
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    func setOrders(arrOrder : [OrderDetails],orderType : Int){
+//        if orderType == OrderType.CurrentOrder.rawValue{
+//            for objOrder in  arrOrder{
+//                if !self.arrCurrentOrders.contains(where: { $0.id == objOrder.id }) {
+//                    print("OrderId : \(objOrder.id ?? 0)")
+//                    self.arrCurrentOrders.append(objOrder)
+//                    var productDic : [String : Any]
+//                    for objproduct in (objOrder.shopDetail?.products)! {
+//                        for objselItem in objproduct.selectedProducts! {
+//                            productDic = ["orderId":objOrder.id ?? 0,
+//                                          "productId" : objproduct.id ?? 0,
+//                                          "productName":objproduct.productName ?? "",
+//                                          "quantity":objselItem.quantity ?? 0,
+//                                          "variationName":objselItem.variationName ?? "",
+//                                          "addons":objselItem.addons ?? []]
+//                            arrayCurrentProduct.append(productDic)
+//                        }
+//                    }
+//                }
+//            }
+//        }else {
+//            for objOrder in arrOrder{
+//                if !self.arrPastOrders.contains(where: { $0.id == objOrder.id }) {
+//                    print("POrderId : \(objOrder.id ?? 0)")
+//                    self.arrPastOrders.append(objOrder)
+//                    var productDic : [String : Any]
+//                    for objproduct in (objOrder.shopDetail?.products)! {
+//                        for objselItem in objproduct.selectedProducts! {
+//                            productDic = ["orderId":objOrder.id ?? 0,
+//                                          "productId" : objproduct.id ?? 0,
+//                                          "productName":objproduct.productName ?? "",
+//                                          "quantity":objselItem.quantity ?? 0,
+//                                          "variationName":objselItem.variationName ?? "",
+//                                          "addons":objselItem.addons ?? []]
+//                            arrayPastProduct.append(productDic)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     func getArrOrder(listAt :Int,orderType : Int) -> [OrderDetails]? {
         if orderType == OrderType.CurrentOrder.rawValue{
@@ -195,10 +223,11 @@ extension OrderViewModel {
     
     func removeAllCurrentOrder(orderType : Int){
         if orderType == OrderType.CurrentOrder.rawValue{
-            self.arrCurrentOrders.removeAll()
+            
+            self.arrCurrentOrderList.removeAll()
             self.arrayCurrentProduct.removeAll()
         }else if orderType == OrderType.PastOrder.rawValue{
-            self.arrPastOrders.removeAll()
+            self.arrPastOrdersList.removeAll()
             self.arrayPastProduct.removeAll()
         }
     }    
@@ -228,7 +257,45 @@ extension OrderViewModel {
         }
         return []
     }
+    //filter option
+    func setFilterOption(value : filterOptions) {
+        self.selectedFilter = value
+    }
+    func getFilterOption() -> filterOptions{
+        self.selectedFilter
+    }
     
+    //date
+    func setSelectedDate(value : String) {
+        self.selectedDate = value
+    }
+    func getSelectedDate() -> String{
+        self.selectedDate
+    }
+    
+    //month
+    func setSelectedMonth(value : String) {
+        self.selectedMonth = value
+    }
+    func getSelectedMonth() -> String{
+        self.selectedMonth
+    }
+    
+    //year
+    func setSelectedYear(value : String) {
+        self.selectedYear = value
+    }
+    func getSelectedYear() -> String{
+        self.selectedYear
+    }
+    
+    //scroll
+    func updateIsScrolling(value: Bool) {
+        isScrolling = value
+    }
+    func isTableViewScrolling() -> Bool {
+        isScrolling
+    }
 //        var arrProduct : [Products] = []
 //        var tempArray : [Products] = []
 //        if orderType == OrderType.CurrentOrder.rawValue{

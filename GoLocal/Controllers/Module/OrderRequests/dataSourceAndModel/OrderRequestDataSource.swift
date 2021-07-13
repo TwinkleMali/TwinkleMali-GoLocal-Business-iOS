@@ -71,7 +71,7 @@ extension OrderRequestDataSource: UITableViewDelegate,UITableViewDataSource{
                 cell.lblTime.timerType = MZTimerLabelTypeTimer
                 cell.lblTime.delegate =  self
                 cell.lblTime.tag = section
-                cell.orderRequestTime = getSecondsBetweenDates(date1: Date(), date2: serverToLocal(date: objOrderDetail.sentShopRequestAt!)!, orderTimerValue: Double(viewModel.getOrderRequest(at: section).orderTimerValue!))
+                cell.orderRequestTime = getSecondsBetweenDates(date1: Date(), date2: serverToLocal(date: objOrderDetail.sentShopRequestAt!)!, orderTimerValue: Double(viewModel.getOrderRequest(at: section)?.orderTimerValue ?? 0))
                 cell.lblTime.addTimeCounted(byTime: TimeInterval(cell.orderRequestTime))
                 cell.lblTime.start()
 //                cell.lblOrderId.text = "Order ID : #\(objOrderDetail.orderUniqueId ?? "")"
@@ -97,7 +97,7 @@ extension OrderRequestDataSource: UITableViewDelegate,UITableViewDataSource{
 //            cell.mainView.addRightBorder(with:#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), andWidth: 1)
 //            cell.mainView.addBottomBorder(with:#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), andWidth: 1)
             if viewModel.getRowCount() > 0{
-            cell.lblOrderTotal.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrderDetails(at: section).orderTotalAmount ?? 0)"
+                cell.lblOrderTotal.text = "\((self.viewModel.getOrderDetails(at: section).orderTotalAmount ?? 0).getAmountInString())"
             cell.lblRequestedTime.text = "Requested Time : \(self.viewModel.getOrderDetails(at: section).sentShopRequestAt ?? "")"
             cell.btnAccept.tag = section
             cell.btnReject.tag = section
@@ -160,11 +160,11 @@ extension OrderRequestDataSource: UITableViewDelegate,UITableViewDataSource{
 
 extension OrderRequestDataSource : MZTimerLabelDelegate {
     func timerLabel(_ timerLabel: MZTimerLabel!, finshedCountDownTimerWithTime countTime: TimeInterval) {
-        if APP_DELEGATE?.arrOrderRequestMain.contains(where: { $0.orderDetails?.id == viewModel.getOrderRequest(at: timerLabel.tag).orderDetails?.id }) == true {
-            print("Order Request Time out on Request screen for \(viewModel.getOrderRequest(at: timerLabel.tag).orderId ?? 0)")
+        if APP_DELEGATE?.arrOrderRequestMain.contains(where: { $0.orderDetails?.id == viewModel.getOrderRequest(at: timerLabel.tag)?.orderDetails?.id ?? 0 }) == true {
+            print("Order Request Time out on Request screen for \(viewModel.getOrderRequest(at: timerLabel.tag)?.orderId ?? 0)")
             let dic = ["user_id" : USER_DETAILS?.id ?? 0,
-                       "customer_id" : viewModel.getOrderRequest(at: timerLabel.tag).orderDetails?.customerDetails?.id ?? 0,
-                       "order_id" : viewModel.getOrderRequest(at: timerLabel.tag).orderDetails?.id ?? 0,
+                       "customer_id" : viewModel.getOrderRequest(at: timerLabel.tag)?.orderDetails?.customerDetails?.id ?? 0,
+                       "order_id" : viewModel.getOrderRequest(at: timerLabel.tag)?.orderDetails?.id ?? 0,
                        "shop_id" : USER_DETAILS?.shopId ?? 0,
                        "reject_reason" : "No delivery driver available.",
                        "is_auto_rejection" : true] as [String : Any]

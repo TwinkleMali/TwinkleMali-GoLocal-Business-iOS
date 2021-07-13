@@ -43,10 +43,9 @@ extension BusinessDetailsViewModel {
         self.setLicenseNum(licenseNum: objBusinessDetail.businessLicenceNumber.asStringOrEmpty())
         self.setLatitude(latitude: objBusinessDetail.latitude.asStringOrEmpty())
         self.setLongitude(longitude: objBusinessDetail.longitude.asStringOrEmpty())
-        self.setShopSchedule(shopSchedule: objBusinessDetail
-                                .schedule!)
+        self.setShopSchedule(shopSchedule: objBusinessDetail.schedule!)
         self.setSliderImages(sliderImages: objBusinessDetail.sliderImages!)
-        
+        arrImages.removeAll()
         let obj = COUNTRY_LIST.filter({($0.id ?? 230) == objBusinessDetail.countryId})
         self.setSelectedCountry(country: obj[0])
     }

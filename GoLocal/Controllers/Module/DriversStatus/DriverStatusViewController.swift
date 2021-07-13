@@ -50,8 +50,8 @@ class DriverStatusViewController: BaseViewController{
             self.showBanner(bannerTitle: .none, message: "Please select Delivery time for driver.", type: .danger)
         }else {
             let dic = ["user_id" : USER_DETAILS?.id ?? 0,
-                       "customer_id" : objOrderRequest.customerId ?? 0 ,
-                       "order_id" : objOrderRequest.orderId ?? 0,
+                       "customer_id" : objOrderRequest.orderDetails?.customerDetails?.id ?? 0 ,
+                       "order_id" : objOrderRequest.orderDetails?.id ?? 0,
                        "driver_id" : selectedDriverId ?? 0,
                        "pickup_time" : pickupTime,
                        "delivery_time" : deliveryTimes,
@@ -71,7 +71,8 @@ class DriverStatusViewController: BaseViewController{
             if #available(iOS 13.4, *) {
                 datePicker.preferredDatePickerStyle = .wheels
             }
-            datePicker.minimumDate = Date()
+        let earlyDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())
+            datePicker.minimumDate = earlyDate
             //ToolBar
             let toolbar = UIToolbar();
             toolbar.sizeToFit()

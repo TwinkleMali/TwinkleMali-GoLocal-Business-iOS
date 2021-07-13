@@ -41,6 +41,7 @@ extension LoginViewDataSource :UITableViewDelegate,UITableViewDataSource {
                 cell.textField.isSecureTextEntry = false
                 cell.textField.text = viewModel.getEmail()
                 cell.textField.delegate = self
+                cell.textField.keyboardType = .emailAddress
                 cell.textField.returnKeyType = .next
                 cell.textField.tag = -10
                 cell.imgIcon.image = #imageLiteral(resourceName: "icon_email")
@@ -54,6 +55,7 @@ extension LoginViewDataSource :UITableViewDelegate,UITableViewDataSource {
                 cell.textField.isSecureTextEntry = true
                 cell.textField.delegate = self
                 cell.lblTitle.text = "Password"
+                cell.textField.keyboardType = .default
                 cell.textField.text = viewModel.getPassword()
                 cell.textField.returnKeyType = .done
                 cell.imgIcon.image = #imageLiteral(resourceName: "icon_lock")

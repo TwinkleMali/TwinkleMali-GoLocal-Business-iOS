@@ -28,6 +28,10 @@ class OrderDataSource: NSObject {
         tableView.register("PastOrdersTVCell")
         tableView.register("RequestDetailsOrderTVCell")
         tableView.register("OrderButtonTVCell")
+        var frame = CGRect.zero
+        frame.size.height = .leastNormalMagnitude
+        tableView.tableHeaderView = UIView(frame: frame)
+        
     }
 }
 
@@ -37,7 +41,11 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
         if tableView == self.tableView{
             print("@Main")
             //return 1
-            return self.viewModel.getOrderListCount(orderType: orderViewController?.selOrder ?? 0)
+            if viewModel.isOrderAvailable(forType: orderViewController?.selOrder ?? 0) {
+                return self.viewModel.getOrderListCount(orderType: orderViewController?.selOrder ?? 0)
+            } else {
+                return 0
+            }
         }else {
             print("@Child")
             return 1
@@ -53,7 +61,13 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
         var secondOrderProductCount = 0
         
         let objFirstOrderDetail = self.viewModel.getOrder(listAt: section, orderAt: 0, orderType: orderViewController?.selOrder ?? 0)
-        firstOrderProductCount = objFirstOrderDetail.shopDetail?.products?.count ?? 0
+        var count = 0
+        if let products = objFirstOrderDetail.shopDetail?.products{
+            for product in products{
+                count += product.selectedProducts?.count ?? 0
+            }
+        }
+        firstOrderProductCount = count //objFirstOrderDetail.shopDetail?.products?.count ?? 0
         if firstOrderProductCount > 0 {
             firstOrderProductCount -= 1
         }
@@ -112,13 +126,21 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
             let section = indexPath.section
             let row = indexPath.row
             let currType = orderViewController?.selOrder ?? 0
+            
             let isMerged = viewModel.isOrderMerged(listAt: section, orderType: currType)
             var firstOrderProductCount = 0
             var secondOrderProductCount = 0
             
             let selType = orderViewController?.selOrder ?? 0
             let objFirstOrderDetail = self.viewModel.getOrder(listAt: section, orderAt: 0, orderType: orderViewController?.selOrder ?? 0)
-            firstOrderProductCount = objFirstOrderDetail.shopDetail?.products?.count ?? 0
+        var count = 0
+        if let products = objFirstOrderDetail.shopDetail?.products{
+            for product in products{
+                count += product.selectedProducts?.count ?? 0
+            }
+        }
+        firstOrderProductCount = count
+        //firstOrderProductCount = objFirstOrderDetail.shopDetail?.products?.count ?? 0
             if isMerged {
                 let objSecondOrderDetail = self.viewModel.getOrder(listAt: section, orderAt: 1, orderType: orderViewController?.selOrder ?? 0)
                 secondOrderProductCount = objSecondOrderDetail.shopDetail?.products?.count ?? 0
@@ -169,7 +191,8 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
                         cell.lbltimerDec.isHidden = true
                         cell.lblDriverName.isHidden = true
                     }
-                    addDashedBorder(withColor: .gray, view: cell.imgDottedLine)
+                    //addDashedBorder(withColor: .gray, view: cell.imgDottedLine)
+                    cell.imgDottedLine.createDottedLine(width: 0.5, color: UIColor.black.cgColor)
                     cell.layoutIfNeeded()
                     let objOrderDetail = self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType: orderViewController?.selOrder ?? 0)
                     let objCustomerDetail = self.viewModel.getCustomerDetails(listAt: section, orderAt: noOfOrder, orderType: orderViewController?.selOrder ?? 0)
@@ -211,21 +234,23 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
                     let selType = orderViewController?.selOrder ?? 0
                     let objOrderDetail = self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType: orderViewController?.selOrder ?? 0)
                     
-                    let objProduct : [String:Any] = self.viewModel.getProductArray(orderId: objOrderDetail.id ?? 0,
-                                                                                   orderType: selType)[productRow]
-                    cell.leftPaddingConst.constant = 20
-                    cell.rightPaddingConst.constant = 20
-                    cell.lblOrderName.text = "\(objProduct["productName"].asStringOrEmpty())"
-                    cell.lblQty.text = "Qty : \(objProduct["quantity"].asStringOrEmpty())"
-                    let addons = objProduct["addons"] as! [Addons]
-                    let addonName = addons.map({$0.addonName ?? ""}).joined(separator: ",")
-                   
-                    if addonName.count > 0{
-                        cell.lblOrderDescription.text = "\(objProduct["variationName"].asStringOrEmpty()) - \(addonName)"
-                    }else {
-                        cell.lblOrderDescription.text = "\(objProduct["variationName"].asStringOrEmpty())"
+                    let arrobjProduct : [[String:Any]] = self.viewModel.getProductArray(orderId: objOrderDetail.id ?? 0,
+                                                                                      orderType: selType)
+                    if arrobjProduct.count > 0{
+                        let objProduct : [String:Any] = arrobjProduct[productRow]
+                        cell.leftPaddingConst.constant = 20
+                        cell.rightPaddingConst.constant = 20
+                        cell.lblOrderName.text = "\(objProduct["productName"].asStringOrEmpty())"
+                        cell.lblQty.text = "Qty : \(objProduct["quantity"].asStringOrEmpty())"
+                        let addons = objProduct["addons"] as! [Addons]
+                        let addonName = addons.map({$0.addonName ?? ""}).joined(separator: ",")
+                        
+                        if addonName.count > 0{
+                            cell.lblOrderDescription.text = "\(objProduct["variationName"].asStringOrEmpty()) - \(addonName)"
+                        }else {
+                            cell.lblOrderDescription.text = "\(objProduct["variationName"].asStringOrEmpty())"
+                        }
                     }
-                    
                     cell.btnView.tag = (section*100)+noOfOrder
                     //cell.btnView.accessibilityValue = "\(tableView.tag)"
                     cell.btnView.addTarget(self.orderViewController, action: #selector(self.orderViewController?.actionOrderDetail(_:)),for: .touchUpInside)
@@ -251,11 +276,12 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
                     print("@currCellType : ",currCellType)
                     print("@isMerged : ",isMerged)
                     cell.mainView.layer.maskedCorners = currCellType == 2 ? (isMerged ? [] : [.layerMinXMaxYCorner, .layerMaxXMaxYCorner] ): [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-                    
-                    cell.lblOrderTotal.text = "\(CURRENCY_SYMBOL)\(self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType:orderViewController?.selOrder ?? 0).orderTotalAmount ?? 0)"
+                    let orderAmount = self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType:orderViewController?.selOrder ?? 0).orderTotalAmount ?? 0
+                    cell.lblOrderTotal.text = orderAmount.getAmountInString()
                     
                     let date : String = self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType:orderViewController?.selOrder ?? 0).sentShopRequestAt ?? ""
-                    cell.lblRequestedTime.text = "Requested Time : \(date.toDateString(outputFormat: REQUESTED_TIME_FORMATE) ?? "-")"
+                    let utcdate = date.toDate()?.UTCtoLocal(format: REQUESTED_TIME_FORMATE)
+                    cell.lblRequestedTime.text = "Requested Time : \(utcdate ?? "-")"
                     cell.lblOrderId.text = "Order ID : #\(self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType:orderViewController?.selOrder ?? 0).orderUniqueId ?? "")"
                     let date1 : String = self.viewModel.getOrder(listAt: section, orderAt: noOfOrder, orderType:orderViewController?.selOrder ?? 0).updatedAt ?? ""
                     cell.btnView.addTarget(self.orderViewController, action: #selector(self.orderViewController?.actionOrderDetail(_:)),for: .touchUpInside)
@@ -293,7 +319,6 @@ extension OrderDataSource: UITableViewDelegate,UITableViewDataSource{
         vc.arrOrders = viewModel.getArrOrder(listAt: section,orderType:orderType) ?? []
         self.orderViewController?.navigationController?.pushViewController(vc, animated: true)
     }
-    
     func scrollViewDidEndDecelerating(_ scrollView : UIScrollView) {
             let currentOffset = scrollView.contentOffset.y
             let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height

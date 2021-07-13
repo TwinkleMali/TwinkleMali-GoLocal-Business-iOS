@@ -442,29 +442,36 @@ class DriverLocationViewController: BaseViewController {
 
         let distanceInMeters = coordinate₀.distance(from: coordinate₁) // result is in meters
         
-        let time = distanceInMeters / 400
+        let timeInMinute = distanceInMeters / 400
+        if timeInMinute == 0 {
+            print("around 10 Minutes")
+            tmproutetime = "around 10 minits"
+        } else if timeInMinute > 50 && timeInMinute < 60
+        {
+            print("around 1 hour(\(timeInMinute.rounded(toPlaces: 0))minits)")
+            tmproutetime = "around 1 hour(\(timeInMinute.rounded(toPlaces: 0))minits)"
+        }
+        else if timeInMinute >= 60
+        {
+            print("Hours : ",(Double(timeInMinute/60).rounded(toPlaces: 1).rounded(toPlaces: 0)))
+            tmproutetime = "\(Int(Double(timeInMinute/60).rounded(toPlaces: 1).rounded(toPlaces: 0))) Hrs"
+        }
+        else
+        {
+            print("Minit : ",timeInMinute.rounded(toPlaces: 0))
+            tmproutetime = "\(Int(timeInMinute.rounded(toPlaces: 0))) min"
+        }
+        
+        //            let distanceInKM = distanceInMeters / 1000
+        //
+        //        let distanceMiles = distanceMeters.converted(to: UnitLength.miles)
 
-            if time > 50 && time < 60
-            {
-                print("around 1 hour(\(time.rounded(toPlaces: 0))minits)")
-            }
-            else if time >= 60
-            {
-                print("Hours : ",(Double(time/60).rounded(toPlaces: 1).rounded(toPlaces: 0)))
-                tmproutetime = "\(Int(Double(time/60).rounded(toPlaces: 1).rounded(toPlaces: 0))) Hrs"
-            }
-            else
-            {
-                print("Minit : ",time.rounded(toPlaces: 0))
-                tmproutetime = "\(Int(time.rounded(toPlaces: 0))) min"
-            }
-            
-            
-            let distanceInKM = distanceInMeters / 1000
+        let distanceMeters = Measurement(value: distanceInMeters, unit: UnitLength.meters)
+        let miles = distanceMeters.converted(to: UnitLength.miles).value
             if distanceInMeters >= 1000
             {
-                tmproutedist = "\(distanceInKM.rounded(toPlaces: 2)) KM"
-                return "\(distanceInKM.rounded(toPlaces: 2)) km"
+                tmproutedist = "\(miles.rounded(toPlaces: 2)) Miles"
+                return "\(miles.rounded(toPlaces: 2)) Miles"
                 
             }
             else

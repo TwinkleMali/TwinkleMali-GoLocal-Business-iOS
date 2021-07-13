@@ -52,9 +52,9 @@ extension DriverListViewDataSource : UITableViewDataSource,UITableViewDelegate {
             }
 
             if objDriver.phone != nil && objDriver.phone.asStringOrEmpty().length > 0{
-                cell.lblDriverNumber.text = "\(objDriver.phone.asStringOrEmpty())"
+                cell.lblDriverNumber.text = "+\(objDriver.phonecode ?? 0) \(objDriver.phone.asStringOrEmpty())"
             }else {
-                cell.lblDriverNumber.text = "No number"
+                cell.lblDriverNumber.text = ""
             }
             
             if objDriver.driverStatus == DriverStatus.Offline.rawValue {

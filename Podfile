@@ -16,6 +16,7 @@ target 'GoLocal' do
   pod 'TTTAttributedLabel'
   pod 'AACarousel'
   pod 'Cosmos', '~> 22.1' #rating
+  pod 'GrowingTextView', '0.7.2'
   #pod 'OTPFieldView'#Phone Code Verification
   pod 'GoogleSignIn'
   pod 'GoogleMaps'

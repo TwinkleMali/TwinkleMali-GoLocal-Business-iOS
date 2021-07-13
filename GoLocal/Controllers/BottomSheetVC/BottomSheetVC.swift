@@ -25,6 +25,8 @@ class BottomSheetVC: UIViewController {
     @IBOutlet weak var btnCancel: UIButton!
     @IBOutlet weak var lblTitle : UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var btnClearFilter: UIButton!
+    @IBOutlet weak var clearButtonHeight: NSLayoutConstraint! // 0 / 44
     var strTitle : String = ""
     var arrOptions : [String]!
     var arrRejectOptions : [RejectReasons] = []
@@ -37,6 +39,8 @@ class BottomSheetVC: UIViewController {
         self.tableView.register("BottomSheetCell")
         self.tableView.register("CommonButtonTVCell")
         if strTitle == BS_REJECT_REASON{
+            clearButtonHeight.constant = 0
+            btnClearFilter.isHidden = true
             if USER_DEFAULTS.contains(key: defaultsKey.RejectReasons.rawValue){
                 let arrReason = USER_DEFAULTS.array(forKey: defaultsKey.RejectReasons.rawValue)! as NSArray
                 for reasonObj in arrReason{
@@ -44,26 +48,55 @@ class BottomSheetVC: UIViewController {
                 }               
                 tableView.reloadData()
             }
+        } else {
+            clearButtonHeight.constant = 44
+            self.btnClearFilter.isUserInteractionEnabled = selectedOption > -1
+            self.btnClearFilter.alpha = selectedOption > -1 ? 1 : 0.5
         }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.5) {
+            self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
         if(touch?.view?.tag == -786) {
-            self.dismiss(animated: true, completion: nil)
+            UIView.animate(withDuration: 0.5) {
+                self.view.backgroundColor = UIColor.clear
+            } completion: { (_) in
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     @IBAction func actionSelection(_ sender: UIButton) {
         if selectedOption != nil{
-            self.delegate?.didSelectOption(selValue: arrRejectOptions[selectedOption].reason ?? "")
-            self.dismiss(animated: true, completion: nil)
+            
+            UIView.animate(withDuration: 0.5) {
+                self.view.backgroundColor = UIColor.clear
+            } completion: { (_) in
+                self.dismiss(animated: true, completion: nil)
+                self.delegate?.didSelectOption(selValue: self.arrRejectOptions[self.selectedOption].reason ?? "")
+            }
         }
     }
     
+    @IBAction func actionClearfilter(_ sender: Any) {
+        UIView.animate(withDuration: 0.5) {
+            self.view.backgroundColor = UIColor.clear
+        } completion: { (_) in
+            self.dismiss(animated: true, completion: nil)
+            self.delegate?.didSelectOption(selValue: "Clear")
+        }
+    }
     @IBAction func btnCancel(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        UIView.animate(withDuration: 0.5) {
+            self.view.backgroundColor = UIColor.clear
+        } completion: { (_) in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 
@@ -124,8 +157,12 @@ extension BottomSheetVC : UITableViewDelegate, UITableViewDataSource
             tableView.reloadData()
         }else {
             let str = arrOptions[indexPath.row]
-            self.dismiss(animated: true, completion: nil)
-            self.delegate?.didSelectOption(selValue: str)
+            UIView.animate(withDuration: 0.5) {
+                self.view.backgroundColor = UIColor.clear
+            } completion: { (_) in
+                self.dismiss(animated: true, completion: nil)
+                self.delegate?.didSelectOption(selValue: str)
+            }
         }
     }
 }

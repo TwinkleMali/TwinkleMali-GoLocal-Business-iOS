@@ -85,7 +85,12 @@ var DEVICE_UDID : String {
 }
 
 var GOOGLE_KEY = "AIzaSyBusjBEjxzIkmDySEwGOHVx_SoD6PQagNo" 
-var GOOGLE_ID = "700091628143-6p8sh1c1u1bcsj3qmttj4pvnrf9e7mt9.apps.googleusercontent.com"
+var GOOGLE_ID = "1049357683894-0nfb17pkv6lsdj8gt28pgd3qeibcvahm.apps.googleusercontent.com"
+//MARK:- PlaceHolders
+
+let STORE_IMAGES_PLACEHOLDER = #imageLiteral(resourceName: "product_details_placeholder")
+let STORE_LIST_IMAGES_PLACEHOLDER = #imageLiteral(resourceName: "product_placeholder")
+let STORE_LOGO_PLACEHOLDER = #imageLiteral(resourceName: "store_list_placeholder")
 
 func saveUserInUserDefaults(user: User) {
     let encoder = JSONEncoder()
@@ -140,6 +145,12 @@ var IS_UPDATE_POPUP_SEEN = false
 var CURRENT_VERSION = ""
 let APP_NAME = "Go Local First Business"
 let USER_DEFAULTS = UserDefaults.standard
+
+//MARK:- VARIABLES FOR NOTIFICATION CLICK NAVIGATION
+var IS_FROM_PUSH_NOTIFICATION : Bool = false
+var PUSH_USER_INFO = [String : Any]()
+var IS_APP_OPEN_FROM_NOTIFICATION_LAUNCH : Bool = true
+var IS_FROM_LOCAL_NOTIFICATION : Bool = false
 
 
 //MARK:- Bottomsheet Title

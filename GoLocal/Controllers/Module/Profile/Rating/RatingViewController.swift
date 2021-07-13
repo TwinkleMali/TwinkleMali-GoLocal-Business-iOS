@@ -17,11 +17,12 @@ class RatingViewController: BaseViewController {
     var viewModel = RatingViewModel()
     var giveRatingView: GiveRatingViewController?
     var isLoader : Bool = false
+    var isScrolling = false
     //Load more
     @IBOutlet weak var indicatorView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var offset = 0
-    var isLoadMore:Bool = false
+//    var offset = 0
+//    var isLoadMore:Bool = false
     var selRating : RatingReviews!
     
     override func viewDidLoad() {
@@ -30,20 +31,21 @@ class RatingViewController: BaseViewController {
         self.tableView.delegate = dataSource
         self.tableView.dataSource = dataSource
         isLoader = true
-        getRatingReviews(offset: offset)
+        getRatingReviews(isLoadMore: false)
     }
     
-    func loadMoreRequest() {
-        offset = offset + 1
-        isLoader = false
-        getRatingReviews(offset: offset)
-    }
+//    func loadMoreRequest() {
+//        offset = offset + 1
+//        isLoader = false
+//        getRatingReviews(offset: offset)
+//    }
     
     @IBAction func btnBack(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc func actionReplayToRating(_ sender: UIButton) {
+        self.viewModel.updateReplyIndex(index: sender.tag)
         selRating = viewModel.getRatings(at: sender.tag)
         giveRatingView = GiveRatingViewController(nibName: "GiveRatingViewController", bundle: nil)
         giveRatingView?.rating = Double(selRating.rating ?? 0)
@@ -54,9 +56,11 @@ class RatingViewController: BaseViewController {
 
 extension RatingViewController: GiveRatingViewControllerDelegate{
     func actioncancel() {
+        self.viewModel.updateReplyIndex(index: -1)
     }
     
     func actionSendReview(strReply: String) {
+        
         replyToRatingReview(strReply: strReply, reviewId: selRating.id ?? 0)
     }
 }

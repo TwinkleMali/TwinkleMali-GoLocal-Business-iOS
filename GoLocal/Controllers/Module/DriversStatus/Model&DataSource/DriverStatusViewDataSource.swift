@@ -258,7 +258,7 @@ extension DriverStatusViewDataSource : UITableViewDataSource,UITableViewDelegate
                         cell.vwInput.isHidden = false
                         cell.btnEdit.setImage(UIImage(named:"driver_select_icon"), for: .normal)
 //                        cell.txtDeliveryTime.text = "\(selectedMin.aIntOrEmpty()) Minutes"
-                        cell.txtDeliveryTime.text = "\(driverStatusViewController?.selectedMin.aIntOrEmpty() ?? 0) Minutes"
+                        cell.txtDeliveryTime.text = "\( (self.driverStatusViewController?.pickupTime ?? 0) / 60) Minutes"
                     }else {
                         cell.btnEdit.setImage(UIImage(named:"driver_unselect_icon"), for: .normal)
                     }

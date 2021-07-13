@@ -13,6 +13,7 @@ class EditProfileViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btnEdit: UIButton!
     @IBOutlet weak var vwNav: UIView!
+    @IBOutlet weak var lblTitle: UILabel!
     var isEditEnable : Bool = false
     var viewModel = LoginViewModel()
     var dataSource: EditProfileDataSource?
@@ -31,6 +32,7 @@ class EditProfileViewController: BaseViewController {
         if isEditEnable{
             isEditEnable = false
             tableView.isUserInteractionEnabled = false
+            lblTitle.text = "Personal Information"
             btnEdit.setTitle("Edit Information", for: .normal)
         }else {
             self.navigationController?.popViewController(animated: true)
@@ -42,6 +44,7 @@ class EditProfileViewController: BaseViewController {
             isEditEnable = false
             tableView.isUserInteractionEnabled = false
             btnEdit.setTitle("Edit Information", for: .normal)
+            lblTitle.text = "Personal Information"
             if validate() {
                 let  param : [String : Any] = [
                     "user_id": USER_DETAILS?.id ?? 0,
@@ -56,6 +59,7 @@ class EditProfileViewController: BaseViewController {
             isEditEnable = true
             tableView.isUserInteractionEnabled = true
             btnEdit.setTitle("Save", for: .normal)
+            lblTitle.text = "Edit Information"
             tableView.reloadData()
         }
     }

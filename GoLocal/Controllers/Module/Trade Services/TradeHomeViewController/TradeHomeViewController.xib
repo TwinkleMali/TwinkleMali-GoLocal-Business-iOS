@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TradeHomeViewController" customModule="GoLocal" customModuleProvider="target">
+            <connections>
+                <outlet property="btnHistory" destination="Nmc-rh-E5A" id="tWl-V1-kVL"/>
+                <outlet property="btnQR" destination="TK7-2j-ZPr" id="5tk-FW-Lhw"/>
+                <outlet property="lblDataNotFound" destination="CIL-gB-zwq" id="yil-M9-gmS"/>
+                <outlet property="tableView" destination="5Tv-9y-r4d" id="rOe-sq-bvl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Tv-9y-r4d">
+                    <rect key="frame" x="0.0" y="99" width="414" height="797"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuF-gp-fsg" userLabel="navView" customClass="CardView" customModule="GoLocal" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nav_golocal_logo" translatesAutoresizingMaskIntoConstraints="NO" id="GCt-5w-LqM">
+                            <rect key="frame" x="20" y="44" width="175" height="53"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TK7-2j-ZPr">
+                            <rect key="frame" x="359" y="44" width="55" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="TK7-2j-ZPr" secondAttribute="height" multiplier="1:1" id="MmO-YU-9MZ"/>
+                            </constraints>
+                            <state key="normal" image="scan_icon"/>
+                            <connections>
+                                <action selector="actionQR:" destination="-1" eventType="touchUpInside" id="God-Qb-GDY"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nmc-rh-E5A">
+                            <rect key="frame" x="302" y="44" width="55" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="Nmc-rh-E5A" secondAttribute="height" id="U2t-8z-sLz"/>
+                            </constraints>
+                            <color key="tintColor" name="AppGreenColor"/>
+                            <state key="normal" image="trade_pending_icon"/>
+                            <connections>
+                                <action selector="actionHistory:" destination="-1" eventType="touchUpInside" id="aNh-cL-X4K"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Nmc-rh-E5A" firstAttribute="top" secondItem="TK7-2j-ZPr" secondAttribute="top" id="2Lk-uw-Yqg"/>
+                        <constraint firstAttribute="bottom" secondItem="TK7-2j-ZPr" secondAttribute="bottom" id="C4H-QL-uo9"/>
+                        <constraint firstItem="TK7-2j-ZPr" firstAttribute="leading" secondItem="Nmc-rh-E5A" secondAttribute="trailing" constant="2" id="KY5-rG-bzt"/>
+                        <constraint firstItem="Nmc-rh-E5A" firstAttribute="centerY" secondItem="TK7-2j-ZPr" secondAttribute="centerY" id="VQv-u5-Bzs"/>
+                        <constraint firstAttribute="bottom" secondItem="GCt-5w-LqM" secondAttribute="bottom" constant="2" id="kk4-yr-hzb"/>
+                        <constraint firstItem="GCt-5w-LqM" firstAttribute="leading" secondItem="nuF-gp-fsg" secondAttribute="leading" constant="20" id="oLH-DM-tjb"/>
+                        <constraint firstAttribute="trailing" secondItem="TK7-2j-ZPr" secondAttribute="trailing" id="pZ3-QE-vZ1"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetWidth">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetHeight">
+                            <integer key="value" value="0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.80000000000000004"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" systemColor="systemGrayColor"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quotation request not found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIL-gB-zwq">
+                    <rect key="frame" x="100" y="443" width="214.5" height="20"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="17"/>
+                    <color key="textColor" systemColor="systemGrayColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="nuF-gp-fsg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2rh-zl-ZRD"/>
+                <constraint firstAttribute="bottom" secondItem="5Tv-9y-r4d" secondAttribute="bottom" id="5Xf-J0-cQ5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="nuF-gp-fsg" secondAttribute="bottom" constant="-55" id="6Ft-hr-aAW"/>
+                <constraint firstItem="TK7-2j-ZPr" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Cpu-7D-YNq"/>
+                <constraint firstAttribute="trailing" secondItem="nuF-gp-fsg" secondAttribute="trailing" id="ZzX-Ae-dYn"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="GCt-5w-LqM" secondAttribute="top" id="hlK-24-N3c"/>
+                <constraint firstItem="CIL-gB-zwq" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="jZD-ZS-xQG"/>
+                <constraint firstItem="5Tv-9y-r4d" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nwt-jv-JRg"/>
+                <constraint firstItem="CIL-gB-zwq" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="odK-Rb-v0H"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5Tv-9y-r4d" secondAttribute="trailing" id="rNG-Qi-A2x"/>
+                <constraint firstItem="nuF-gp-fsg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="uzV-KU-Sgq"/>
+                <constraint firstItem="5Tv-9y-r4d" firstAttribute="top" secondItem="nuF-gp-fsg" secondAttribute="bottom" id="xcG-PN-7hp"/>
+            </constraints>
+            <point key="canvasLocation" x="-16" y="101"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="nav_golocal_logo" width="175" height="44"/>
+        <image name="scan_icon" width="23" height="23"/>
+        <image name="trade_pending_icon" width="23" height="23"/>
+        <namedColor name="AppGreenColor">
+            <color red="0.0" green="0.43900001049041748" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

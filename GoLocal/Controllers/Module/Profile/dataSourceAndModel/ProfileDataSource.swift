@@ -54,6 +54,12 @@ extension ProfileDataSource: UITableViewDelegate,UITableViewDataSource{
             } else {
                 return UITableView.automaticDimension
             }
+        } else if self.viewModel.getItemName(at: indexPath.row) == "Rating And Reviews" {
+            if USER_DETAILS?.roleId == UserRole.LocalBusiness.rawValue {
+                return 0
+            } else {
+                return UITableView.automaticDimension
+            }
         }
         return UITableView.automaticDimension
     }

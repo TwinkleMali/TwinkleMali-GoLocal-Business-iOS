@@ -27,14 +27,14 @@ public struct BillingDetails : Codable{
   // MARK: Properties
   public var offerAppliedOnDelivery: Int?
   public var offerAppliedOnServiceCharge: Int?
-  public var tip: Int?
+  public var tip: Double?
   public var appliedCouponCode: String?
-  public var serviceCharge: Int?
-  public var deliveryCharge: Int?
-  public var totalItemsPrice: Float?
-  public var offerDiscountPrice: Int?
+  public var serviceCharge: Double?
+  public var deliveryCharge: Double?
+  public var totalItemsPrice: Double?
+  public var offerDiscountPrice: Double?
   public var isCouponApplied: Int?
-  public var grandTotal: Float?
+  public var grandTotal: Double?
 
   // MARK: SwiftyJSON Initializers
   /// Initiates the instance based on the object.
@@ -51,14 +51,14 @@ public struct BillingDetails : Codable{
   public init(json: JSON) {
     offerAppliedOnDelivery = json[SerializationKeys.offerAppliedOnDelivery].int
     offerAppliedOnServiceCharge = json[SerializationKeys.offerAppliedOnServiceCharge].int
-    tip = json[SerializationKeys.tip].int
+    tip = json[SerializationKeys.tip].double
     appliedCouponCode = json[SerializationKeys.appliedCouponCode].string
-    serviceCharge = json[SerializationKeys.serviceCharge].int
-    deliveryCharge = json[SerializationKeys.deliveryCharge].int
-    totalItemsPrice = json[SerializationKeys.totalItemsPrice].float
-    offerDiscountPrice = json[SerializationKeys.offerDiscountPrice].int
+    serviceCharge = json[SerializationKeys.serviceCharge].double
+    deliveryCharge = json[SerializationKeys.deliveryCharge].double
+    totalItemsPrice = json[SerializationKeys.totalItemsPrice].double
+    offerDiscountPrice = json[SerializationKeys.offerDiscountPrice].double
     isCouponApplied = json[SerializationKeys.isCouponApplied].int
-    grandTotal = json[SerializationKeys.grandTotal].float
+    grandTotal = json[SerializationKeys.grandTotal].double
   }
 
   /// Generates description of the object in the form of a NSDictionary.

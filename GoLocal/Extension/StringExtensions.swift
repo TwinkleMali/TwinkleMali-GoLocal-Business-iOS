@@ -88,7 +88,60 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
-    
+    //Chat date
+    func getChatDateFromServer() -> String
+       {
+           let dateStr          = self
+           let formatter        = DateFormatter()
+           formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+           let currDate : Date = formatter.date(from: dateStr)! as Date
+           
+           let todayDt = NSDate()
+           let todaystr = formatter.string(from: todayDt as Date)
+           let todaydate : Date = formatter.date(from: todaystr)! as Date
+           
+           
+           if (todaydate >= currDate)
+           {
+               let startDate:NSDate = todaydate as NSDate
+               let endDate:Date = currDate as Date
+               
+               let int_days = daysBetweenDates(startDate: startDate as Date,endDate: endDate)
+               
+               if int_days == -1
+               {
+                  return "Yesterday"
+               }
+               else if int_days == 0
+               {
+                  return ""
+               }
+               else if int_days < -1
+               {
+                  formatter.dateFormat = "dd MMM"
+                  let todaystr1 = formatter.string(from: todayDt as Date)
+                  return todaystr1
+               }
+               else
+               {
+                   return ""
+               }
+               
+               
+           }
+           else
+           {
+               return ""
+           }
+       }
+    func daysBetweenDates(startDate: Date , endDate: Date) -> Int {
+           let calendar = Calendar.current
+           
+           let components = calendar.dateComponents([Calendar.Component.day], from: startDate, to: endDate)
+           
+           return components.day!
+       }
+
 //    func substring(_ startIndex: Int, length: Int) -> String {
 //        let start = self.characters.index(self.startIndex, offsetBy: startIndex)
 //        let end = self.characters.index(self.startIndex, offsetBy: startIndex + length)
@@ -214,4 +267,20 @@ extension Date
     let newDate = calendar.date(from: date_components)!
     return newDate
   }
+}
+extension Float{
+    func getAmountInString() -> String{
+        String(format: "\(CURRENCY_SYMBOL)%.2f", self)
+    }
+    func getroundedWith1Decimal() -> String{
+        String(format: "%.1f", self)
+    }
+}
+extension Double{
+    func getAmountInString() -> String{
+        String(format: "\(CURRENCY_SYMBOL)%.2f", self)
+    }
+    func getroundedWith1Decimal() -> String{
+        String(format: "%.1f", self)
+    }
 }

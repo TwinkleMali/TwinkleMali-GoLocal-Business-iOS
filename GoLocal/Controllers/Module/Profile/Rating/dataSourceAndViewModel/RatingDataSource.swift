@@ -74,10 +74,15 @@ extension RatingDataSource: UITableViewDelegate, UITableViewDataSource{
                 }
                 
                 cell.startratingView.rating = Double(obj.rating ?? 0)
-               
+                cell.btnReplayToReview.isHidden = obj.replies?.count ?? 0 > 0
                 cell.btnReplayToReview.tag = indexPath.section
                 cell.btnReplayToReview.addTarget(self.ratingViewController, action: #selector(self.ratingViewController?.actionReplayToRating(_:)), for: .touchUpInside)
                 cell.selectionStyle = .none
+                let ip = indexPath
+                if (tableView.indexPathsForVisibleRows!.contains(ip)) && ratingViewController?.isScrolling ?? false && ( ip.section == viewModel.getRatingCount() - 2) && viewModel.isLoadMoreEnabled(){
+                    self.ratingViewController?.getRatingReviews(isLoadMore: true)
+                    self.ratingViewController?.isScrolling = false
+                }
                 return cell
             }
         }else {
@@ -108,5 +113,8 @@ extension RatingDataSource: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.estimatedRowHeight
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        ratingViewController?.isScrolling  = true
     }
 }

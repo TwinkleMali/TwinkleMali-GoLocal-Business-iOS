@@ -256,6 +256,35 @@ class SocketIOHandler: NSObject {
             print(result)
         })
     }
+    //MARK:- GET ALL MESSAGE 
+    func getChatMessages(dic : [String : Any])  {
+        socket?.emitWithAck(API_SOCKET_GET_ORDER_CHAT_MESSAGE, dic).timingOut(after: 0, callback: { (result) in
+            print(result)
+             //NotificationCenter.default.post(name: NSNotification.Name("NewOrder"), object: nil, userInfo: result[0] as? [AnyHashable : Any])
+            if let messages = result[0] as? NSDictionary{
+                postNotification(withName: notificationCenterKeys.getAllMessages.rawValue, userInfo: messages as! [AnyHashable : Any])
+            }
+        })
+    }
+    
+    //MARK:- SEND MESSAGE TO DRIVER FOR TAKEAWAY ORDER
+    func sendMessage(dic : [String : Any])  {
+        socket?.emitWithAck(API_SOCKET_SEND_ORDER_CHAT_MESSAGE, dic).timingOut(after: 0, callback: { (result) in
+            print(result)
+             //NotificationCenter.default.post(name: NSNotification.Name("NewOrder"), object: nil, userInfo: result[0] as? [AnyHashable : Any])
+            if let dict = result[0] as? NSDictionary{
+                if let messageObjArr = dict[WSDATA] as? NSArray {
+                     let messageObj = messageObjArr[0]
+                    if let json = try? JSONSerialization.data(withJSONObject: messageObj, options: .prettyPrinted) {
+                        let message = try? JSONDecoder().decode(Message.self, from: json)
+                        print("SENT _ MESSAGE : ",message)
+                    }
+                }
+                //print("@ChatStatus : ",messageObj.orderStatus ?? "")
+                postNotification(withName: notificationCenterKeys.receiveMessage.rawValue, userInfo: dict as! [AnyHashable : Any])
+            }
+        })
+    }
     
     //MARK: - START DRIVER LOCATION UPDATE
     func StartDriverLocationUpdate(dic : [String : Any])
@@ -287,6 +316,66 @@ class SocketIOHandler: NSObject {
         socket?.emitWithAck(API_SOCKET_CHANGE_PAYMENT_REQUEST_STATUS, dic).timingOut(after: 0, callback: { (result) in
             postNotification(withName: notificationCenterKeys.changeBusinessPaymentRequestStatus.rawValue, userInfo: result[0] as! [String : Any])
             print("CHANGE BUSINESS PAYMENT REQUEST STATUS : \(result)")
+        })
+    }
+    
+    //MARK:-  SUBMIT_SERVICE_QUOTATION
+    func submitServiceQuotation(dic : [String : Any]) {
+        socket?.emitWithAck(API_SOCKET_SUBMIT_SERVICE_QUOTATION, dic).timingOut(after: 0, callback: { (result) in
+            print("API_SOCKET_SUBMIT_SERVICE_QUOTATION : \(result)")
+            if let dict = result[0] as? [String : Any] {
+                postNotification(withName: notificationCenterKeys.submitServiceQuotation.rawValue, userInfo: dict)
+            }
+        })
+    }
+    
+    //MARK:- CHANGE_TRADE_SERVICE_STATUS
+    func changeTradeServiceStatus(dic : [String : Any]) {
+        socket?.emitWithAck(API_SOCKET_CHANGE_TRADE_SERVICE_STATUS, dic).timingOut(after: 0, callback: { (result) in
+            print("API_SOCKET_CHANGE_TRADE_SERVICE_STATUS : \(result)")
+            if let dict = result[0] as? [String : Any] {
+                postNotification(withName: notificationCenterKeys.changeTradeServiceStatus.rawValue, userInfo: dict)
+            }
+        })
+    }
+    
+    //MARK:- CHANGE_TRADE_SERVICE_STATUS
+    func getTradeRequestExtraCharges(dic : [String : Any]) {
+        socket?.emitWithAck(API_SOCKET_GET_TRADE_REQUEST_EXTRA_CHARGES, dic).timingOut(after: 0, callback: { (result) in
+            print("API_SOCKET_GET_TRADE_REQUEST_EXTRA_CHARGES : \(result)")
+            if let dict = result[0] as? [String : Any] {
+                postNotification(withName: notificationCenterKeys.getTradeRequestExtraCharges.rawValue, userInfo: dict)
+            }
+        })
+    }
+    
+    //MARK:- MAKE_EXTRA_CHARGE_REQUEST
+    func makeExtraChargeRequest(dic : [String : Any]) {
+        socket?.emitWithAck(API_SOCKET_MAKE_EXTRA_CHARGE_REQUEST, dic).timingOut(after: 0, callback: { (result) in
+            print("API_SOCKET_MAKE_EXTRA_CHARGE_REQUEST : \(result)")
+            if let dict = result[0] as? [String : Any] {
+                postNotification(withName: notificationCenterKeys.makeExtraChargeRequest.rawValue, userInfo: dict)
+            }
+        })
+    }
+    
+    //MARK:- MAKE_SERVICE_PAYMENT_REQUEST
+    func makeServicePaymentRequest(dic : [String : Any]) {
+        socket?.emitWithAck(API_SOCKET_MAKE_SERVICE_PAYMENT_REQUEST, dic).timingOut(after: 0, callback: { (result) in
+            print("API_SOCKET_MAKE_SERVICE_PAYMENT_REQUEST : \(result)")
+            if let dict = result[0] as? [String : Any] {
+                postNotification(withName: notificationCenterKeys.makeServicePaymentRequest.rawValue, userInfo: dict)
+            }
+        })
+    }
+    
+    //MARK:- CONFIRM_TRADE_SERVICE_CASH_PAYMENT
+    func confirmTradeServiceCashPayment(dic : [String : Any]) {
+        socket?.emitWithAck(API_SOCKET_CONFIRM_TRADE_SERVICE_CASH_PAYMENT, dic).timingOut(after: 0, callback: { (result) in
+            print("API_SOCKET_CONFIRM_TRADE_SERVICE_CASH_PAYMENT : \(result)")
+            if let dict = result[0] as? [String : Any] {
+                postNotification(withName: notificationCenterKeys.confirmTradeServiceCashPayment.rawValue, userInfo: dict)
+            }
         })
     }
     
@@ -345,10 +434,31 @@ class SocketIOHandler: NSObject {
             }
         })
 
+        //EVENT HANDLE FOR RECEIVE CHAT MESSAGE
+        socket?.on(API_SOCKET_GET_NEW_MESSAGE_ACK, callback: { (data, ack) in
+            print("EVENT FOR API_SOCKET_GET_NEW_MESSAGE_ACK")
+            print(data)
+            
+            if let dict = data[0] as? NSDictionary{
+                if let messageObjArr = dict[WSDATA] as? NSArray {
+                     let messageObj = messageObjArr[0]
+                    if let json = try? JSONSerialization.data(withJSONObject: messageObj, options: .prettyPrinted) {
+                        let message = try? JSONDecoder().decode(Message.self, from: json)
+                        print("RECEIVED _ MESSAGE : ",message)
+                        postNotification(withName: notificationCenterKeys.receiveMessageAck.rawValue, userInfo: dict as! [AnyHashable : Any])
+                    }
+                }
+                //print("@ChatStatus : ",messageObj.orderStatus ?? "")
+                
+            }
+        })
+        
         //EVENT FOR CHANGE TAKEAWAY ORDER STATUS
         socket?.on(API_ORDER_STATUS_CHANGE_ACK, callback: { (data, ack) in
             print("EVENT FOR API_ORDER_STATUS_CHANGE_ACK")
         })
+        
+        
         
         //MARK:- DRIVER LOCATION UPDATE
         socket?.on(API_SOCKET_DRIVER_LOCATION_CHANGED, callback: { (data, ack) in
@@ -358,12 +468,55 @@ class SocketIOHandler: NSObject {
                 postNotification(withName: notificationCenterKeys.updateDriverLocation.rawValue, userInfo: dict)
             }
         })
-        //MARK:- HANDLE PAYMENT REQUEST STATUS
+        //MARK:- HANDLE PAYMENT_REQUEST_STATUS_CHANGE_ACK
         socket?.on(API_SOCKET_PAYMENT_REQUEST_STATUS_CHANGE_ACK, callback: { (data, ack) in
             if let dict = data[0] as? [String : Any] {
                 //POST NOTIFICATION
                 //APP_DELEGATE.scheduleNotification(notificationType: .driverLocationUpdated)
                 postNotification(withName: notificationCenterKeys.paymentRequestStatusChangeAck.rawValue, userInfo: dict)
+            }
+        })
+        //MARK:- HANDLE TRADE_BUSINESS_SERVICE_REQUEST
+        socket?.on(API_SOCKET_TRADE_BUSINESS_SERVICE_REQUEST, callback: { (data, ack) in
+            if let dict = data[0] as? [String : Any] {
+                print("API_SOCKET_TRADE_BUSINESS_SERVICE_REQUEST : ",dict)
+                postNotification(withName: notificationCenterKeys.trade_business_service_request.rawValue, userInfo: dict)
+            }
+        })
+        //MARK:- HANDLE TRADE_REQUEST_CANCELLED
+        socket?.on(API_SOCKET_TRADE_REQUEST_CANCELLED, callback: { (data, ack) in
+            if let dict = data[0] as? [String : Any] {
+                print("API_SOCKET_TRADE_REQUEST_CANCELLED : ",dict)
+                postNotification(withName: notificationCenterKeys.trade_request_cancelled.rawValue, userInfo: dict)
+            }
+        })
+        //MARK:- HANDLE QUOTATION_STATUS_CHANGE_ACK
+        socket?.on(API_SOCKET_QUOTATION_STATUS_CHANGE_ACK, callback: { (data, ack) in
+            if let dict = data[0] as? [String : Any] {
+                print("API_SOCKET_QUOTATION_STATUS_CHANGE_ACK : ",dict)
+                postNotification(withName: notificationCenterKeys.quotation_status_change_ack.rawValue, userInfo: dict)
+            }
+        })
+        //MARK:- HANDLE EXTRA_CHARGE_REQUEST_STATUS_CHANGE_ACK
+        socket?.on(API_SOCKET_EXTRA_CHARGE_REQUEST_STATUS_CHANGE_ACK, callback: { (data, ack) in
+            if let dict = data[0] as? [String : Any] {
+                print("API_SOCKET_EXTRA_CHARGE_REQUEST_STATUS_CHANGE_ACK : ",dict)
+                postNotification(withName: notificationCenterKeys.extra_charge_request_status_change_ack.rawValue, userInfo: dict)
+            }
+        })
+        //MARK:- HANDLE TRADE_PAYMENT_RECEIVED_ACK
+        socket?.on(API_SOCKET_TRADE_PAYMENT_RECEIVED_ACK, callback: { (data, ack) in
+            if let dict = data[0] as? [String : Any] {
+                print("API_SOCKET_TRADE_PAYMENT_RECEIVED_ACK : ",dict)
+                postNotification(withName: notificationCenterKeys.trade_payment_received_ack.rawValue, userInfo: dict)
+            }
+        })
+        
+        //MARK:- HANDLE CONFIRM_CASH_PAYMENT
+        socket?.on(API_SOCKET_CONFIRM_CASH_PAYMENT, callback: { (data, ack) in
+            if let dict = data[0] as? [String : Any] {
+                print("API_SOCKET_CONFIRM_CASH_PAYMENT : ",dict)
+                postNotification(withName: notificationCenterKeys.confirm_cash_payment.rawValue, userInfo: dict)
             }
         })
     }

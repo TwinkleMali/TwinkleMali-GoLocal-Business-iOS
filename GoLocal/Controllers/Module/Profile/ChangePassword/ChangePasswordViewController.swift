@@ -61,7 +61,7 @@ class ChangePasswordViewController: BaseViewController {
         }else if  USER_DEFAULTS.value(forKey: defaultsKey.password.rawValue).asStringOrEmpty() != viewModel.getCurrentPwd(){
             strMessage = "Invalid Current Password"
         }else if viewModel.getNewPwd() != viewModel.getConfirmPwd(){
-            strMessage = "Invalid Confirm Password"
+            strMessage = "Confirm password and New password should be matched or same"
         }else {
             return true
         }

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.otf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="146" id="KGk-i7-Jjw" customClass="DepositOptionTVCell" customModule="GoLocal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="146"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="146"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jil-Wv-cai">
+                        <rect key="frame" x="20" y="8" width="341" height="41"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay in advance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9P-WF-LAY">
+                                <rect key="frame" x="10" y="0.0" width="116.5" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="xJf-dJ-j2y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YlB-Fn-DbB">
+                                <rect key="frame" x="1" y="40" width="339" height="0.0"/>
+                                <subviews>
+                                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sa1-pN-Zdq">
+                                        <rect key="frame" x="0.0" y="0.0" width="339" height="40"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wv5-zT-im4">
+                                                <rect key="frame" x="10" y="10" width="319" height="20"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="actionTextChanged:" destination="KGk-i7-Jjw" eventType="editingDidEnd" id="XPY-a1-Sfv"/>
+                                                </connections>
+                                            </textField>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0h-aR-vzm">
+                                                <rect key="frame" x="10" y="30" width="319" height="1"/>
+                                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="0.80000000000000004" id="ZGI-S0-UkV"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Wv5-zT-im4" firstAttribute="leading" secondItem="sa1-pN-Zdq" secondAttribute="leading" constant="10" id="8Vw-v3-hsB"/>
+                                            <constraint firstItem="h0h-aR-vzm" firstAttribute="leading" secondItem="Wv5-zT-im4" secondAttribute="leading" id="L97-Gb-7B4"/>
+                                            <constraint firstAttribute="trailing" secondItem="Wv5-zT-im4" secondAttribute="trailing" constant="10" id="fvZ-mC-eyE"/>
+                                            <constraint firstItem="h0h-aR-vzm" firstAttribute="top" secondItem="Wv5-zT-im4" secondAttribute="bottom" id="jSl-oV-9Qx"/>
+                                            <constraint firstItem="Wv5-zT-im4" firstAttribute="centerY" secondItem="sa1-pN-Zdq" secondAttribute="centerY" id="jbo-EC-Lzv"/>
+                                            <constraint firstItem="h0h-aR-vzm" firstAttribute="trailing" secondItem="Wv5-zT-im4" secondAttribute="trailing" id="jtn-hh-vr9"/>
+                                            <constraint firstAttribute="height" constant="40" id="lNE-N2-uak"/>
+                                            <constraint firstItem="Wv5-zT-im4" firstAttribute="top" secondItem="sa1-pN-Zdq" secondAttribute="top" constant="10" id="tVk-8X-1pS"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown_arrow_icon" translatesAutoresizingMaskIntoConstraints="NO" id="5fo-rU-Hxf">
+                                <rect key="frame" x="317" y="16" width="14" height="8"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miN-Cm-7bC">
+                                <rect key="frame" x="0.0" y="0.0" width="341" height="40"/>
+                                <connections>
+                                    <action selector="actionToggleView:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jdU-Bi-SPJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="YlB-Fn-DbB" firstAttribute="top" secondItem="K9P-WF-LAY" secondAttribute="bottom" id="49b-q2-2op"/>
+                            <constraint firstAttribute="trailing" secondItem="miN-Cm-7bC" secondAttribute="trailing" id="CbB-4t-ZGh"/>
+                            <constraint firstItem="YlB-Fn-DbB" firstAttribute="top" secondItem="miN-Cm-7bC" secondAttribute="bottom" id="D0T-QF-82b"/>
+                            <constraint firstItem="K9P-WF-LAY" firstAttribute="top" secondItem="jil-Wv-cai" secondAttribute="top" id="KDI-kM-avi"/>
+                            <constraint firstItem="YlB-Fn-DbB" firstAttribute="leading" secondItem="jil-Wv-cai" secondAttribute="leading" constant="1" id="MBR-51-fxs"/>
+                            <constraint firstAttribute="bottom" secondItem="YlB-Fn-DbB" secondAttribute="bottom" constant="1" id="MiP-go-e74"/>
+                            <constraint firstItem="K9P-WF-LAY" firstAttribute="leading" secondItem="jil-Wv-cai" secondAttribute="leading" constant="10" id="NA9-Sk-Eyb"/>
+                            <constraint firstAttribute="trailing" secondItem="YlB-Fn-DbB" secondAttribute="trailing" constant="1" id="RwX-fX-m10"/>
+                            <constraint firstItem="5fo-rU-Hxf" firstAttribute="centerY" secondItem="K9P-WF-LAY" secondAttribute="centerY" id="Yfd-Md-vz5"/>
+                            <constraint firstItem="miN-Cm-7bC" firstAttribute="leading" secondItem="jil-Wv-cai" secondAttribute="leading" id="fHk-pu-WXM"/>
+                            <constraint firstAttribute="trailing" secondItem="5fo-rU-Hxf" secondAttribute="trailing" constant="10" id="fZK-5X-NV7"/>
+                            <constraint firstItem="miN-Cm-7bC" firstAttribute="top" secondItem="jil-Wv-cai" secondAttribute="top" id="qd2-TB-doR"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="jil-Wv-cai" secondAttribute="trailing" constant="20" id="27k-sE-EYf"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="jil-Wv-cai" secondAttribute="bottom" constant="8" id="7fC-2T-joW"/>
+                    <constraint firstItem="jil-Wv-cai" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ZCZ-cV-27o"/>
+                    <constraint firstItem="jil-Wv-cai" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="oc6-Bh-ADT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnToggleView" destination="miN-Cm-7bC" id="t7W-di-Xwr"/>
+                <outlet property="imgArrow" destination="5fo-rU-Hxf" id="y7f-p2-tqQ"/>
+                <outlet property="lblTitle" destination="K9P-WF-LAY" id="fSN-jF-1Fs"/>
+                <outlet property="mainView" destination="jil-Wv-cai" id="J8W-6g-kRu"/>
+                <outlet property="textAmount" destination="Wv5-zT-im4" id="TTI-cu-rMe"/>
+                <outlet property="viewTextField" destination="sa1-pN-Zdq" id="qLu-5B-0yN"/>
+            </connections>
+            <point key="canvasLocation" x="44.20289855072464" y="105.80357142857143"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="dropdown_arrow_icon" width="14" height="8"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

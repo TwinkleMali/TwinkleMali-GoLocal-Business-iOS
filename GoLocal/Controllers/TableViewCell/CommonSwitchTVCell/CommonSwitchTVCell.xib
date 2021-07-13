@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-SemiBold.otf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="CommonSwitchTVCell" customModule="GoLocal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="355" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="355" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G4j-Dl-ctj">
+                        <rect key="frame" x="5" y="0.0" width="345" height="80"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4X-W9-Oc7">
+                                <rect key="frame" x="10" y="10" width="325" height="50"/>
+                                <subviews>
+                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="V85-Oc-AiZ">
+                                        <rect key="frame" x="3" y="3" width="319" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="opE-uQ-DLM">
+                                                <rect key="frame" x="0.0" y="0.0" width="159.5" height="44"/>
+                                                <color key="backgroundColor" name="AppGreenColor"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="17"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <state key="normal" title="Enter bid amount">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                                        <integer key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actionSwitchToDelivery:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fHG-fJ-gtq"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXN-gK-LxX">
+                                                <rect key="frame" x="159.5" y="0.0" width="159.5" height="44"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                <state key="normal" title="Call out fee only">
+                                                    <color key="titleColor" red="0.0" green="0.43921568630000002" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                                        <integer key="value" value="22"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actionSwitchToCollection:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kRr-gb-M0a"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="31Q-kS-3Dg"/>
+                                    <constraint firstAttribute="trailing" secondItem="V85-Oc-AiZ" secondAttribute="trailing" constant="3" id="6OZ-Id-Adi"/>
+                                    <constraint firstItem="V85-Oc-AiZ" firstAttribute="leading" secondItem="k4X-W9-Oc7" secondAttribute="leading" constant="3" id="P1g-ne-ds5"/>
+                                    <constraint firstItem="V85-Oc-AiZ" firstAttribute="top" secondItem="k4X-W9-Oc7" secondAttribute="top" constant="3" id="ZIc-3b-Vcr"/>
+                                    <constraint firstAttribute="bottom" secondItem="V85-Oc-AiZ" secondAttribute="bottom" constant="3" id="k42-I6-448"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="k4X-W9-Oc7" firstAttribute="leading" secondItem="G4j-Dl-ctj" secondAttribute="leading" constant="10" id="4BC-WI-Kze"/>
+                            <constraint firstItem="k4X-W9-Oc7" firstAttribute="top" secondItem="G4j-Dl-ctj" secondAttribute="top" constant="10" id="g1g-VG-kM8"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="k4X-W9-Oc7" secondAttribute="bottom" constant="10" id="myb-zG-wOe"/>
+                            <constraint firstAttribute="trailing" secondItem="k4X-W9-Oc7" secondAttribute="trailing" constant="10" id="tRc-sC-sv3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="G4j-Dl-ctj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="SHo-uU-lcQ"/>
+                    <constraint firstItem="G4j-Dl-ctj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="SRi-SV-MbY"/>
+                    <constraint firstAttribute="bottom" secondItem="G4j-Dl-ctj" secondAttribute="bottom" id="aIA-X0-Gg6"/>
+                    <constraint firstAttribute="trailing" secondItem="G4j-Dl-ctj" secondAttribute="trailing" constant="5" id="tgP-u6-Ge9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnSwitchToCollection" destination="jXN-gK-LxX" id="G7d-Vn-5x6"/>
+                <outlet property="btnSwitchToDelivery" destination="opE-uQ-DLM" id="i6a-pj-KaZ"/>
+                <outlet property="viewSwitch" destination="k4X-W9-Oc7" id="4Ez-59-0fk"/>
+            </connections>
+            <point key="canvasLocation" x="-47.10144927536232" y="22.098214285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AppGreenColor">
+            <color red="0.0" green="0.43900001049041748" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
