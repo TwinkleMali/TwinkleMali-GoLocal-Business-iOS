@@ -3162,7 +3162,7 @@
 				CODE_SIGN_ENTITLEMENTS = GoLocal/GoLocal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = NUV8D2659N;
 				INFOPLIST_FILE = GoLocal/SupportingFiles/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -3188,7 +3188,7 @@
 				CODE_SIGN_ENTITLEMENTS = GoLocal/GoLocal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = NUV8D2659N;
 				INFOPLIST_FILE = GoLocal/SupportingFiles/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

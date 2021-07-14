@@ -54,6 +54,10 @@ enum TAKEAWAY_ORDER_STATUS : Int {
     case DELIVERED
     case CANCELLED
 }
+enum ORDER_TYPE :String {
+    case SCHEDULED = "Scheduled"
+    case NORMAL = "Normal"
+}
 
 enum EditProfileField : Int {
     case firstname = 0

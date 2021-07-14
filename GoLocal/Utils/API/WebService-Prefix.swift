@@ -7,7 +7,7 @@
 
 import Foundation
 
-//Service Type
+//Service Type`
 let GET = "GET"
 let POST = "POST"
 let MEDIA = "MEDIA"

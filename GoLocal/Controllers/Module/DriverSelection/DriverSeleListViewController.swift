@@ -124,6 +124,7 @@ class DriverSeleListViewController: BaseViewController{
                        "merge_with_order_id":0] as [String : Any]
             print("accept dic : \(dic)")
             socketAcceptOrderRequest(dictionary: dic)
+            //self.showBanner(bannerTitle: .none, message: "TEST", type: .success)
         }
     }
     
@@ -135,7 +136,13 @@ class DriverSeleListViewController: BaseViewController{
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels
         }
-        let earlyDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())
+        
+        var earlyDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date())
+        if self.objOrderRequest.orderDetails?.orderType ?? "" == ORDER_TYPE.SCHEDULED.rawValue {
+            let scheduledDate = objOrderRequest.orderDetails?.orderScheduledDate?.toDate()
+            let scheduledDateTimeLocal = scheduledDate?.UTCtoLocal().toDate()
+            earlyDate = Calendar.current.date(byAdding: .minute, value: 15, to: scheduledDateTimeLocal!)
+        }
         datePicker.minimumDate = earlyDate
         //ToolBar
         let toolbar = UIToolbar();

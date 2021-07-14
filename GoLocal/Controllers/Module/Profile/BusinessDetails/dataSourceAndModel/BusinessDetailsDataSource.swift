@@ -398,8 +398,10 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                 if indexPath.row == 0 {
                     cell.lblTitle.isHidden = false
                     cell.lblTitle.text = "Opening and Closing Time"
+                    cell.btnClosed.isHidden = true
                 }else if indexPath.row == 1 {
                     cell.svTitle.isHidden = false
+                    cell.btnClosed.isHidden = true
                 }else{
                     
                     let customIndex : Int = indexPath.row - 2
@@ -418,7 +420,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                         cell.txtCloseTime.alpha = 0.5
                         cell.btnSwitch.alpha = 0.5
                     }
-                    let days = ["","","Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
+                    let days = ["","","Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
                     cell.btnSwitch.setTitle(days[indexPath.row], for: .normal)
                     if  viewModel.getShopSchedule().count > 0 && viewModel.getShopSchedule()[customIndex].isClosed == 0{
                         cell.btnSwitch.setImage(UIImage(named: "switch_on"), for: .normal)
@@ -430,7 +432,7 @@ extension BusinessDetailsDataSource: UITableViewDelegate,UITableViewDataSource{
                         cell.txtCloseTime.text = viewModel.getShopSchedule()[customIndex].closingTime
                         cell.txtOpenTime.layer.borderWidth = 1
                         cell.txtCloseTime.layer.borderWidth = 1
-                        cell.btnSwitch.setTitle(String((viewModel.getShopSchedule()[customIndex].weekday?.prefix(3))!), for: .normal)
+                       // cell.btnSwitch.setTitle(String((viewModel.getShopSchedule()[customIndex].weekday?.prefix(3))!), for: .normal)
                     }else {
                         cell.btnSwitch.setImage(UIImage(named: "switch_off"), for: .normal)
                         cell.btnSwitch.accessibilityLabel = "switch_off"
