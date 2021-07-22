@@ -13,7 +13,7 @@ let POST = "POST"
 let MEDIA = "MEDIA"
 let PRIVATE_KEY = "kashfk=1gdj1123_asdq283y059==="
 
-let isLive = false
+let isLive = true
 let IS_TESTDATA = 1
 
 //http://clientapp.narola.online/sv/GoLocalFirst/API

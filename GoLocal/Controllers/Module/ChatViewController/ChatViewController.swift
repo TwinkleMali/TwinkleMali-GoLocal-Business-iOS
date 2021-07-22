@@ -263,6 +263,7 @@ class ChatViewController: BaseViewController {
  
 extension ChatViewController : UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        self.btnSend.isEnabled = textView.text.count > 0
+        let text = textView.text.replacingOccurrences(of: " ", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
+        self.btnSend.isEnabled = text.count > 0
     }
 }
