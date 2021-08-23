@@ -123,7 +123,19 @@ class DriverSeleListViewController: BaseViewController{
                        "merge_request_id":"",
                        "merge_with_order_id":0] as [String : Any]
             print("accept dic : \(dic)")
-            socketAcceptOrderRequest(dictionary: dic)
+            
+            switch APP_DELEGATE?.socketIOHandler?.socket?.status{
+                case .connected:
+                    if (APP_DELEGATE!.socketIOHandler!.isJoinSocket){
+                        socketAcceptOrderRequest(dictionary: dic)
+                    }else {
+                        showBanner(bannerTitle: .none, message: kSERVER_NOT_RESPONDING, type: .warning)
+                    }
+                default:
+                    showBanner(bannerTitle: .none, message: kSERVER_NOT_RESPONDING, type: .warning)
+                    break
+            }
+            //socketAcceptOrderRequest(dictionary: dic)
             //self.showBanner(bannerTitle: .none, message: "TEST", type: .success)
         }
     }

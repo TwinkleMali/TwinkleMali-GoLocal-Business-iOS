@@ -36,6 +36,7 @@ let APP_DELEGATE = UIApplication.shared.delegate as? AppDelegate
 let kCHECK_INTERNET_CONNECTION   =  "Check your internet connection"
 let kPROBLEM_FROM_SERVER         =  "Problem Receiving Data From Server"
 let kSOMETHING_WENT_WRONG         =  "Something Went Wrong"
+let kSERVER_NOT_RESPONDING     = "Server is not responding. Please try again later."
 let kCHECK_CAMERA = "Warning"
 let kCHECK_CAMERA_MSG = "You don't have camera"
 let MESSAGE = "Please try again later."

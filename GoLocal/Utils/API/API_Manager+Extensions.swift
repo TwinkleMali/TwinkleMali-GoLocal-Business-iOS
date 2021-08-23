@@ -752,6 +752,7 @@ extension TradeHomeViewController {
             "user_id":USER_DETAILS?.id ?? 0,
             "latitude":USER_DETAILS?.latitude ?? "",
             "longitude": USER_DETAILS?.longitude ?? "",
+            "postcode":USER_DETAILS?.zipcode ?? "",
             "shop_id":USER_DETAILS?.shopId ?? 0
         ]
         self.viewModel.clearRequeets()
