@@ -113,10 +113,11 @@ func socketGetOrderDetail(strOrder : String){
 }
 
 func socketAcceptOrderRequest(dictionary : [String : Any]){
-    switch APP_DELEGATE?.socketIOHandler?.socket?.status{
+    APP_DELEGATE!.socketIOHandler?.AcceptOrderRequest(dictionary: dictionary)
+    /*switch APP_DELEGATE?.socketIOHandler?.socket?.status{
         case .connected?:
             if (APP_DELEGATE!.socketIOHandler!.isJoinSocket){
-                APP_DELEGATE!.socketIOHandler?.AcceptOrderRequest(dictionary: dictionary)
+                
             }
             break
             
@@ -128,10 +129,10 @@ func socketAcceptOrderRequest(dictionary : [String : Any]){
             APP_DELEGATE?.socketIOHandler?.foreground()
             socketAcceptOrderRequest(dictionary: dictionary)
         break
-        
+    
         default:
             break
-    }
+    }*/
 }
 
 //MARK: - CHANGE PLACEHOLDER COLOR

@@ -429,7 +429,6 @@
 		0022D8322600869300A246D1 /* MobileNumberTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileNumberTVCell.xib; sourceTree = "<group>"; };
 		0025339925D500B900A21776 /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
 		0025339A25D500B900A21776 /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
-		0025339C25D503AD00A21776 /* GoLocal-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GoLocal-Bridging-Header.h"; sourceTree = "<group>"; };
 		0025339D25D50D4C00A21776 /* BusinessDrivers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDrivers.swift; sourceTree = "<group>"; };
 		0025339E25D50D4D00A21776 /* Drivers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drivers.swift; sourceTree = "<group>"; };
 		0036BB1C25BAE87F00FFCC5E /* AddAccountTextFieldTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAccountTextFieldTVCell.swift; sourceTree = "<group>"; };
@@ -589,6 +588,7 @@
 		00F16F7425E8C9350078C2F1 /* DeliveryRouteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryRouteVC.swift; sourceTree = "<group>"; };
 		00F16F7625E8C97B0078C2F1 /* DeliveryRouteVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeliveryRouteVC.xib; sourceTree = "<group>"; };
 		1CA99F730DCD6D9911964887 /* Pods-GoLocal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoLocal.release.xcconfig"; path = "Target Support Files/Pods-GoLocal/Pods-GoLocal.release.xcconfig"; sourceTree = "<group>"; };
+		345E2E4826D3856800478980 /* GoLocal-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GoLocal-Bridging-Header.h"; sourceTree = "<group>"; };
 		463D38DA2641132200726BF7 /* OrderCommonDetailsTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCommonDetailsTVCell.swift; sourceTree = "<group>"; };
 		463D38DB2641132200726BF7 /* OrderCommonDetailsTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCommonDetailsTVCell.xib; sourceTree = "<group>"; };
 		463D38DE264129E700726BF7 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -2102,8 +2102,8 @@
 		46CDA3ED2589D5890089105D /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				345E2E4826D3856800478980 /* GoLocal-Bridging-Header.h */,
 				46D479FA26821AD500AE756E /* GoogleService-Info.plist */,
-				0025339C25D503AD00A21776 /* GoLocal-Bridging-Header.h */,
 				00A468F525C91E29008B7671 /* Info.plist */,
 				46CDA3EE2589D5890089105D /* Resorces */,
 				46CDA3F72589D5890089105D /* Assets.xcassets */,
@@ -3160,9 +3160,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoLocal/GoLocal.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development: Tom Dean (SF6HYRR98F)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = NUV8D2659N;
 				INFOPLIST_FILE = GoLocal/SupportingFiles/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -3173,7 +3173,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.golocalfirst.businessapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dev;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jagjeetsinghlabana/Documents/Projects/GitHub/GoLocal/Business/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/c100-174/Downloads/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -3186,9 +3186,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = GoLocal/GoLocal.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "Apple Distribution: Go Local First Ltd (NUV8D2659N)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = NUV8D2659N;
 				INFOPLIST_FILE = GoLocal/SupportingFiles/info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -3199,7 +3199,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.golocalfirst.businessapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = golocal_first_business_dis;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jagjeetsinghlabana/Documents/Projects/GitHub/GoLocal/Business/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/c100-174/Downloads/TwinkleMali-GoLocal-Business-iOS/GoLocal/SupportingFiles/GoLocal-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

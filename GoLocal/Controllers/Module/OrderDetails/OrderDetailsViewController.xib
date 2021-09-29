@@ -114,7 +114,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Cancelled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQX-89-YFh">
-                            <rect key="frame" x="20" y="0.0" width="131.5" height="45"/>
+                            <rect key="frame" x="20" y="0.0" width="150.5" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="I63-HW-lcn"/>
                             </constraints>
@@ -177,7 +177,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alK-kt-b0r">
-                            <rect key="frame" x="154.5" y="0.0" width="105.5" height="62.5"/>
+                            <rect key="frame" x="145.5" y="0.0" width="123" height="62.5"/>
                             <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

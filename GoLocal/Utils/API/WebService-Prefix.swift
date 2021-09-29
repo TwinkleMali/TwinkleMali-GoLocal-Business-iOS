@@ -98,8 +98,8 @@ let API_SendBusinessNotifications = "\(WEBSERVICE_PATH)SendBusinessNotifications
 
 
 
-let liveSocketURL = "https://narola.golocalfirst.co.uk:3081"//"http://3.16.214.74:3080"
-let debugSocketURL = "https://narola.golocalfirst.co.uk:3080"//"https://narola.golocalfirst.co.uk:3080"//"http://192.168.100.174:8055"
+let liveSocketURL = "https://narola.golocalfirst.co.uk:3081"
+let debugSocketURL = "https://narola.golocalfirst.co.uk:3080"
 let SOCKET_SERVER_PATH =  isLive ? liveSocketURL : debugSocketURL
 
 let API_SOCKET_JOIN = "join_socket"

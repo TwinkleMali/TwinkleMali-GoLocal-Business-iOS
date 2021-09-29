@@ -49,6 +49,7 @@ class DriversListViewController: BaseViewController{
     
     override func viewWillAppear(_ animated: Bool) {
     }
+    
     @IBAction func TextChange(_ sender: UITextField) {
         viewModel.setSearchedText(text: sender.text ?? "")
         self.tableView.reloadData()
@@ -81,6 +82,6 @@ class DriversListViewController: BaseViewController{
             self.view.layoutIfNeeded()
         }
     }   
-   
+    
 }
 

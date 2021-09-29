@@ -458,8 +458,8 @@
             filePath = "GoLocal/Utils/API/API_Manager+Extensions.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "981"
-            endingLineNumber = "981"
+            startingLineNumber = "982"
+            endingLineNumber = "982"
             landmarkName = "getNotificationHistory(isLoadMore:)"
             landmarkType = "7">
          </BreakpointContent>

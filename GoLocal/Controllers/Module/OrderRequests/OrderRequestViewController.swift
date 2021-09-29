@@ -159,7 +159,7 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
     @objc func actionAcceptRequest(_ sender : UIButton) {
         viewModel.setSelectedOrderIndex(index: sender.tag)
         let objRequest = viewModel.getOrderRequest(at: sender.tag)
-        if let mergerRequestDetail = objRequest?.orderDetails?.mergerRequestDetail{
+        if let mergerRequestDetail = objRequest?.orderDetails?.mergerRequestDetail, mergerRequestDetail.mergeRequestId != nil{
             openConfirmationPopup(orderUniqId: mergerRequestDetail.orderUniqueId ?? "")
         } else {
             if viewModel.getOrderRequest(at: sender.tag)?.orderDetails?.deliveryType == DeliveryType.collection.rawValue {
@@ -182,6 +182,7 @@ class OrderRequestViewController: BaseViewController, BottomSheetDelegate {
         let vc = BottomSheetVC(nibName: "BottomSheetVC", bundle: nil)
         vc.strTitle = BS_REJECT_REASON
         vc.delegate = self
+        vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
         }
     }
